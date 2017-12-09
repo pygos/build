@@ -1,0 +1,17 @@
+build_release() {
+	local RELEASE_DIR="$1"
+	local ROOTFS_SQFS="$2"
+
+	local rootfs_image=$(basename $ROOTFS_SQFS)
+	local bootdir="$RELEASE_DIR/boot"
+
+	mkdir -p "$bootdir"
+	cp -r ${PKGDEPLOYDIR}/linux-rpi3/* "$bootdir"
+	cp -r ${PKGDEPLOYDIR}/boot-rpi3/* "$bootdir"
+	cp "$SCRIPTDIR/cfg/$CFG/cmdline.txt" "$bootdir"
+	cp "$ROOTFS_SQFS" "$bootdir"
+	sed -i 's/ROOTFSFILE/'$rootfs_image'/g' "$bootdir/cmdline.txt"
+
+	cp "$SCRIPTDIR/cfg/$CFG/install.sh" "$RELEASE_DIR"
+	cp "$SCRIPTDIR/cfg/$CFG/genimage.sh" "$RELEASE_DIR"
+}

@@ -1,0 +1,39 @@
+VERSION="4.4.12"
+SRCDIR="bash-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://ftp.gnu.org/gnu/bash/"
+SHA256SUM="57d8432be54541531a496fd4904fdc08c12542f43605a9202594fa5d5f9f2331"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="" --host="$TARGET" --without-bash-malloc \
+			 --with-installed-readline
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install
+
+	${TARGET}-strip --discard-all ${DEPLOY}/bin/bash
+
+	ln -sv bash "$DEPLOY/bin/sh"
+
+	rm -r "$DEPLOY/share/doc"
+	rm -r "$DEPLOY/share/info"
+	rm -r "$DEPLOY/share/man"
+
+	mv "$DEPLOY/lib" "$DEVDEPLOY"
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+}

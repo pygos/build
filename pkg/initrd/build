@@ -1,0 +1,98 @@
+filetype() {
+	local argv1="$1"
+
+	# symlink test must come before file test
+	if [ -L "${argv1}" ]; then
+		echo "slink"
+	elif [ -f "${argv1}" ]; then
+		echo "file"
+	elif [ -d "${argv1}" ]; then
+		echo "dir"
+	else
+		echo "invalid"
+	fi
+	return 0
+}
+
+# for each file print a line in following format
+# <filetype> <name> <path to file> <octal mode> <uid> <gid>
+# for links, devices etc the format differs. See gen_init_cpio for details
+parse() {
+	local location="$1"
+	local name="/${location#${srcdir}}"
+	# change '//' into '/'
+	name=$(echo "$name" | sed -e 's://*:/:g')
+	local mode="$2"
+	local uid="$3"
+	local gid="$4"
+	local ftype=$(filetype "${location}")
+	local str="${mode} 0 0 "
+
+	[ "${ftype}" = "invalid" ] && return 0
+	[ "${location}" = "${srcdir}" ] && return 0
+
+	case "${ftype}" in
+	"file")
+		str="${ftype} ${name} ${location} ${str}"
+		;;
+	"slink")
+		local target=`readlink "${location}"`
+		str="${ftype} ${name} ${target} ${str}"
+		;;
+	*)
+		str="${ftype} ${name} ${str}"
+		;;
+	esac
+
+	echo "${str}"
+
+	return 0
+}
+
+# process one directory (incl sub-directories)
+dir_filelist() {
+	srcdir=$(echo "$1" | sed -e 's://*:/:g')
+	dirlist=$(find "${srcdir}" -printf "%p %m %U %G\n")
+
+	# If $dirlist is only one line, then the directory is empty
+	if [  "$(echo "${dirlist}" | wc -l)" -gt 1 ]; then
+		echo "${dirlist}" | while read x; do
+			parse ${x}
+		done
+	fi
+}
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	# populate with default directory structure
+	for dir in dev proc sys bin lib newroot images; do
+		mkdir -p "$OUTPUT/$dir"
+	done
+
+	ln -s "/bin" "$OUTPUT/sbin"
+
+	# add init script
+	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$OUTPUT/init"
+	chmod +x "$OUTPUT/init"
+
+	# 'install' packages to initrd
+	cp -r ${PKGDEPLOYDIR}/bbstatic/* "$OUTPUT"
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	local LSTFILE="$DEPLOY/initrd.list"
+
+	dir_filelist "$BUILD" > "$LSTFILE"
+	echo "dir /dev 0755 0 0" >> "$LSTFILE"
+	echo "nod /dev/console 600 0 0  c 5 1" >> "$LSTFILE"
+}

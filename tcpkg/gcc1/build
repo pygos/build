@@ -1,0 +1,46 @@
+VERSION="7.2.0"
+SRCDIR="gcc-$VERSION"
+TARBALL="gcc-$VERSION.tar.xz"
+URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
+SHA256SUM="1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a"
+
+prepare() {
+	for child in cloog gmp isl mpc mpfr; do
+		unset -f build deploy prepare
+		unset -v VERSION TARBALL URL SRCDIR SHA256SUM
+		source "$SCRIPTDIR/tcpkg/$child/build"
+
+		if [ ! -e "$child" ]; then
+			echo "installing symlink to $child..."
+			ln -s "$PKGSRCDIR/$SRCDIR" "$child"
+		else
+			if [ ! -L "$child" ]; then
+				echo "ERROR: $child " \
+					"exists but is not a symlink!"
+				exit 1
+			fi
+		fi
+	done
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="$TCDIR" --target="$TARGET" \
+			--build="$HOSTTUPLE" --host="$HOSTTUPLE" \
+			--with-sysroot="$TCDIR/$TARGET" \
+			--disable-nls --disable-shared --without-headers \
+			--disable-multilib --disable-decimal-float \
+			--disable-libgomp --disable-libmudflap \
+			--disable-libssp --disable-libatomic \
+			--disable-libquadmath --disable-threads \
+			--enable-languages=c --with-newlib \
+			--with-arch="$GCC_CPU" $GCC_EXTRACFG
+
+	make -j $NUMJOBS all-gcc all-target-libgcc
+}
+
+deploy() {
+	make install-gcc install-target-libgcc
+}

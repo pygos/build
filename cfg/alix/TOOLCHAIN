@@ -1,0 +1,6 @@
+TARGET="i686-linux-musl"
+GCC_CPU="i686"
+
+GCC_EXTRACFG="--disable-libmpx --disable-libssp"
+
+LINUXPKG="linux"

@@ -1,0 +1,77 @@
+#!/bin/sh
+
+PATH=/bin
+
+/bin/busybox --install
+busybox sleep 1
+busybox mount -t proc proc /proc
+busybox mount -t sysfs sysfs /sys
+busybox mount -t devtmpfs none /dev
+
+root_sfs=""
+root=""
+singleuser=0
+
+for param in `cat /proc/cmdline`; do
+	case $param in
+	root=*)
+		root="${param##root=}"
+		;;
+	root_sfs=*)
+		root_sfs="${param##root_sfs=}"
+		;;
+	single*)
+		singleuser=1
+		;;
+	esac
+done
+
+if [ -z "${root}" ]; then
+	echo "No root drive specified!"
+	exec /bin/busybox sh
+fi
+
+if [ -z "${root_sfs}" ]; then
+	echo "No squashfs image specified!"
+	exec /bin/busybox sh
+fi
+
+while [ ! -e ${root} ]; do
+	echo "Waiting for root"
+	busybox sleep 1
+done
+
+mount ${root} /images
+
+if [ ! -e /images/${root_sfs} ]; then
+	echo "${root_sfs} not found!"
+	exec /bin/busybox sh
+	exit 1
+fi
+
+mount -t squashfs /images/${root_sfs} /newroot
+mount -t devtmpfs none /newroot/dev
+mount -t proc proc /newroot/proc
+mount -t sysfs sysfs /newroot/sys
+mount -t tmpfs none /newroot/tmp
+mount -t tmpfs none /newroot/var
+mount -t tmpfs none /newroot/run
+
+chmod 755 /newroot/var
+mkdir -p /newroot/run/log/journal
+mkdir -p /newroot/var/log/fsck
+mkdir -p /newroot/var/log/nginx
+mkdir -p /newroot/var/log/mpd
+mkdir -p /newroot/var/spool/
+mkdir -p /newroot/var/lib/
+mkdir -p /newroot/var/tmp
+ln -s /run /newroot/var/run
+ln -s /run/lock /newroot/var/lock
+
+# cleanup mounts
+umount -l /images
+umount -l /dev
+umount /sys
+umount /proc
+
+exec /bin/busybox switch_root /newroot /bin/bash

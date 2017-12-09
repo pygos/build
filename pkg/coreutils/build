@@ -1,0 +1,32 @@
+VERSION="8.28"
+SRCDIR="coreutils-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://ftp.gnu.org/gnu/coreutils/"
+SHA256SUM="1117b1a16039ddd84d51a9923948307cfa28c2cea03d1a2438742253df0a0c65"
+
+prepare() {
+	local PKGSCRIPTDIR="$1"
+
+	for PATCH in ${PKGSCRIPTDIR}/*.patch; do
+		patch -p1 < $PATCH
+	done
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="" --host="$TARGET" \
+			--enable-no-install-program=kill,uptime,dir,vdir,chcon,pinky,runcon
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+	rm -r "$DEPLOY/share"
+}

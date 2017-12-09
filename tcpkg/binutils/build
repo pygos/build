@@ -1,0 +1,25 @@
+VERSION="2.29.1"
+SRCDIR="binutils-$VERSION"
+TARBALL="binutils-$VERSION.tar.bz2"
+URL="http://ftp.gnu.org/gnu/binutils"
+SHA256SUM="1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="$TCDIR" --target="$TARGET" \
+			--with-sysroot="$TCDIR/$TARGET" \
+			--disable-nls --disable-multilib
+
+	make configure-host
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make install
+}

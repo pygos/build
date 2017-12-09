@@ -1,0 +1,36 @@
+# inherit package details from kernel package
+source "$SCRIPTDIR/pkg/$LINUXPKG/build"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/linux.config"
+	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
+
+	export KBUILD_OUTPUT="$OUTPUT"
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" mrproper
+	cp "$CFGFILE" "$OUTPUT/.config"
+
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS modules
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/linux.config"
+	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
+
+	mkdir -p "$DEPLOY/lib/modules"
+
+	export KBUILD_OUTPUT="$BUILD"
+	make -C "$SOURCE" O="$BUILD" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" INSTALL_MOD_PATH="$DEPLOY" modules_install
+}

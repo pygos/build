@@ -1,0 +1,4 @@
+gcc2
+libgcc
+musl
+pkg-config

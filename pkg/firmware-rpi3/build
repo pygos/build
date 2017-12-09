@@ -1,0 +1,43 @@
+VERSION="1.20170427"
+SRCDIR="firmware-${VERSION}"
+TARBALL="${VERSION}"
+URL="https://codeload.github.com/raspberrypi/firmware/tar.gz"
+SHA256SUM="e253084463a0a3ba908396ac383169397d53bc55307d0d8471f2814f2458fa1b"
+
+#export BRCM43430FW_BUILD_DIR=$(BUILD_DIR)/brcm43430fw
+#export BRCM43430FW_SOURCE_DIR=$(SOURCE_DIR)/brcm43430fw
+#export BRCM43430FW_DEPLOY_DIR=$(DEPLOY_DIR)/brcm43430fw
+#BRCM43430FW_VERSION=brcmfmac43430-sdio
+#BRCM43430FW_SRCDIR=$(BRCM43430FW_BUILD_DIR)/brcm43430fw-$(BRCM43430FW_VERSION)
+#BRCM43430FW_FILE=$(BRCM43430FW_VERSION).txt
+#BRCM43430FW_URL=https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm80211/brcm/${BRCM43430FW_FILE}
+#
+#brcm43430fw_deploy:
+#	mkdir -p $(BRCM43430FW_DEPLOY_DIR)/lib/firmware/brcm/
+#	cp  $(BRCM43430FW_BUILD_DIR)/${BRCM43430FW_FILE} $(BRCM43430FW_DEPLOY_DIR)/lib/firmware/brcm/
+#	rsync -aH $(BRCM43430FW_DEPLOY_DIR)/lib $(PRE_ROOTFS_DEPLOY_DIR)/rootfs/
+
+prepare() {
+	return
+}
+
+build() {
+	return
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	cp -r "$SOURCE/hardfp/opt" "$DEPLOY/"
+
+	mkdir -p "$DEVDEPLOY/opt/vc"
+	mv "$DEPLOY/opt/vc/include" "$DEVDEPLOY"
+
+	cp -r "$DEPLOY/opt/vc/lib" "$DEVDEPLOY/opt/vc"
+	rm ${DEPLOY}/opt/vc/lib/*.a
+	rm -r "${DEPLOY}/opt/vc/lib/pkgconfig"
+	rm -r "${DEPLOY}/opt/vc/src"
+}

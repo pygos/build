@@ -1,0 +1,42 @@
+VERSION="1.20170427-1"
+SRCDIR="linux-raspberrypi-kernel_${VERSION}"
+TARBALL="raspberrypi-kernel_${VERSION}"
+URL="https://codeload.github.com/raspberrypi/linux/tar.gz"
+SHA256SUM="c9b60483e901556a2fbab64c06be8a9eba884f3eaac98ba39347e82bb0a00f5b"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/linux.config"
+	local INITRDLIST="$PKGDEPLOYDIR/initrd/initrd.list"
+
+	export KBUILD_OUTPUT="$OUTPUT"
+	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" mrproper
+
+	cp "$CFGFILE" "$OUTPUT/.config"
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" oldconfig
+
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS zImage dtbs
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/linux.config"
+
+	pushd $BUILD
+	install -m 755 "arch/arm/boot/zImage" "$DEPLOY/kernel.img"
+	cp arch/arm/boot/dts/*.dtb "$DEPLOY/"
+	popd
+}

@@ -1,0 +1,49 @@
+MAJOR="4"
+MINOR="14"
+RELEASE="1"
+
+VERSION="$MAJOR.$MINOR.$RELEASE"
+SRCDIR="linux-$VERSION"
+TARBALL="linux-$VERSION.tar.xz"
+URL="https://www.kernel.org/pub/linux/kernel/v$MAJOR.x"
+SHA256SUM="6fb9f67002f986ce3905b35466e35c394e0fa3eb7c32df508514717955cb4de7"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/linux.config"
+	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
+	local LINUX_TGT=$(head -2 "$CFGFILE" | tail -1 | cut -b 3-)
+	local INITRDLIST="$PKGDEPLOYDIR/initrd/initrd.list"
+
+	export KBUILD_OUTPUT="$OUTPUT"
+
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" mrproper
+	cp "$CFGFILE" "$OUTPUT/.config"
+
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS $LINUX_TGT
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/linux.config"
+	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
+	local LINUX_TGT=$(head -2 "$CFGFILE" | tail -1 | cut -b 3-)
+
+	mkdir -p "$DEPLOY/boot"
+
+	pushd $BUILD
+	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/boot/vmlinuz-$VERSION"
+	popd
+}

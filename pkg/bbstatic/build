@@ -1,0 +1,38 @@
+VERSION="1.27.2"
+SRCDIR="busybox-$VERSION"
+TARBALL="busybox-$VERSION.tar.bz2"
+URL="https://busybox.net/downloads"
+SHA256SUM="9d4be516b61e6480f156b11eb42577a13529f75d3383850bb75c50c285de63df"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	local CFGFILE="$SCRIPTDIR/cfg/$CFG/bbstatic.config"
+	local BB_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
+	local SYSROOT="$TCDIR/$TARGET"
+
+	cp "$CFGFILE" "$OUTPUT/.config"
+
+	export KBUILD_OUTPUT="$OUTPUT"
+
+	make -C "$INPUT" O="$OUTPUT" ARCH="$BB_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_SYSROOT=.*,CONFIG_SYSROOT="'$SYSROOT'",'
+
+	make -C "$INPUT" O="$OUTPUT" ARCH="$BB_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	mkdir -p "$DEPLOY/bin"
+	cp "$BUILD/busybox" "$DEPLOY/bin"
+	ln -s "/bin/busybox" "$DEPLOY/bin/sh"
+}

@@ -1,0 +1,5 @@
+coreutils
+bash
+rootfs
+linux_modules
+firmware-rpi3

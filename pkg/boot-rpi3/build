@@ -1,0 +1,25 @@
+# inherit package details from kernel package
+source "$SCRIPTDIR/pkg/firmware-rpi3/build"
+
+prepare() {
+	return
+}
+
+build() {
+	return
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	cp -r ${SOURCE}/boot/* "$DEPLOY/"
+
+	rm $DEPLOY/kernel7.img
+	rm $DEPLOY/kernel.img
+	rm $DEPLOY/COPYING.linux
+	rm $DEPLOY/*.dtb
+
+	cp "$SCRIPTDIR/cfg/$CFG/boot-config.txt" "$DEPLOY/config.txt"
+}

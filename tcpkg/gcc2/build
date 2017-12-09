@@ -1,0 +1,28 @@
+# inherit package details from first stage GCC
+source "$SCRIPTDIR/tcpkg/gcc1/build"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="$TCDIR" --target="$TARGET" \
+			--build="$HOSTTUPLE" --host="$HOSTTUPLE" \
+			--with-sysroot="$TCDIR/$TARGET" \
+			--disable-nls --enable-languages=c,c++ \
+			--enable-c99 --enable-long-long \
+			--disable-libmudflap --disable-multilib \
+			--disable-libmpx --disable-libssp \
+			--disable-libsanitizer \
+			--with-arch="$GCC_CPU" $GCC_EXTRACFG \
+			--with-native-system-header-dir="/include"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make install
+}
