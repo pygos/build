@@ -1,0 +1,28 @@
+VERSION="2.9.2"
+SRCDIR="nano-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://ftp.gnu.org/gnu/nano/"
+SHA256SUM="4eccb7451b5729ce8abae8f9a5679f32e41ae58df73ea86b850ec45b10a83d55"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="" --host="$TARGET" --enable-utf8
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm -r "$DEPLOY/share/"
+}

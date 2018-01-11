@@ -3,3 +3,4 @@ bash
 rootfs
 linux_modules
 firmware-rpi3
+nano
