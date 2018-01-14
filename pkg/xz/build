@@ -1,0 +1,33 @@
+VERSION="5.2.3"
+SRCDIR="xz-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://tukaani.org/xz/"
+SHA256SUM="7876096b053ad598c31f6df35f7de5cd9ff2ba3162e5a5554e4fc198447e0347"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --disable-static
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+	rm ${DEPLOY}/lib/*.la
+	rm -r "$DEPLOY/share"
+	rm -r "$DEPLOY/lib/pkgconfig"
+}
