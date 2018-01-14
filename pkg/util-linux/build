@@ -1,0 +1,90 @@
+VERSION="2.31"
+SRCDIR="util-linux-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://www.kernel.org/pub/linux/utils/util-linux/v$VERSION/"
+SHA256SUM="f9be7cdcf4fc5c5064a226599acdda6bdf3d86c640152ba01ea642d91108dc8a"
+
+prepare() {
+	local PKGSCRIPTDIR="$1"
+
+	for PATCH in ${PKGSCRIPTDIR}/*.patch; do
+		patch -p1 < $PATCH
+	done
+}
+
+build() {
+	local SOURCE="$1"
+
+	$SOURCE/configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
+			--prefix="" --host="$TARGET" \
+			--with-bashcompletiondir="/share/bash-completion/completions" \
+			--sbindir="/bin" \
+			--disable-pylibmount \
+			--disable-static \
+			--without-python \
+			--without-systemd \
+			--without-systemdsystemunitdir \
+			--disable-makeinstall-chown \
+			--disable-makeinstall-setuid \
+			--disable-agetty \
+			--disable-cal \
+			--disable-chmem \
+			--disable-fdformat \
+			--disable-fsck \
+			--disable-logger \
+			--disable-mesg \
+			--disable-minix \
+			--disable-bfs \
+			--disable-more \
+			--disable-nologin \
+			--disable-nsenter \
+			--disable-pivot_root \
+			--disable-raw \
+			--disable-sulogin \
+			--disable-switch_root \
+			--disable-ul \
+			--disable-unshare \
+			--disable-utmpdump \
+			--disable-uuidd \
+			--disable-wall \
+			--disable-zramctl
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	mkdir -p "$DEPLOY/var/lib/hwclock"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+
+	rm -r "$DEPLOY/share/man"
+	rm -r "$DEPLOY/lib/pkgconfig"
+	rm -r "$DEPLOY/share/doc"
+	rm -r ${DEPLOY}/lib/*.la
+
+	if [ -e "$DEPLOY/sbin" ]; then
+		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
+		rmdir ${DEPLOY}/sbin
+	fi
+
+	for UTIL in chcpu chrt col colcrt colrm column ctrlaltdel setarch \
+		    isosize look lsns mcookie mkfs mkswap readprofile rev \
+		    script scriptreplay setsid swaplabel swapoff swapon \
+		    uname26 i386 linux32 linux64 whereis last lastb \
+		    lslogins fsck.cramfs mkfs.cramfs;
+	do
+		local path="$DEPLOY/bin/$UTIL"
+
+		if [ -f "$path" ] || [ -L "$path" ]; then
+			rm "$path"
+		fi
+	done
+}

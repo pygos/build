@@ -2,3 +2,4 @@ coreutils
 bash
 rootfs
 nano
+util-linux

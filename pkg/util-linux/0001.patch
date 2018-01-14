@@ -1,0 +1,465 @@
+--- a/configure
++++ b/configure
+@@ -20474,231 +20474,6 @@ fi
+ have_ncursesw=no
+ have_ncursesw_header=no
+ if test "x$with_ncursesw" != xno; then :
+-
+-
+-
+-
+-
+-  # ncurses6-config
+-  #
+-  if test "x$have_ncursesw" = xno; then :
+-
+-    if test -n "$ac_tool_prefix"; then
+-  # Extract the first word of "${ac_tool_prefix}ncursesw6-config", so it can be a program name with args.
+-set dummy ${ac_tool_prefix}ncursesw6-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_NCURSESW6_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$NCURSESW6_CONFIG"; then
+-  ac_cv_prog_NCURSESW6_CONFIG="$NCURSESW6_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_NCURSESW6_CONFIG="${ac_tool_prefix}ncursesw6-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-NCURSESW6_CONFIG=$ac_cv_prog_NCURSESW6_CONFIG
+-if test -n "$NCURSESW6_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $NCURSESW6_CONFIG" >&5
+-$as_echo "$NCURSESW6_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-fi
+-if test -z "$ac_cv_prog_NCURSESW6_CONFIG"; then
+-  ac_ct_NCURSESW6_CONFIG=$NCURSESW6_CONFIG
+-  # Extract the first word of "ncursesw6-config", so it can be a program name with args.
+-set dummy ncursesw6-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_ac_ct_NCURSESW6_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$ac_ct_NCURSESW6_CONFIG"; then
+-  ac_cv_prog_ac_ct_NCURSESW6_CONFIG="$ac_ct_NCURSESW6_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_ac_ct_NCURSESW6_CONFIG="ncursesw6-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-ac_ct_NCURSESW6_CONFIG=$ac_cv_prog_ac_ct_NCURSESW6_CONFIG
+-if test -n "$ac_ct_NCURSESW6_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ct_NCURSESW6_CONFIG" >&5
+-$as_echo "$ac_ct_NCURSESW6_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-  if test "x$ac_ct_NCURSESW6_CONFIG" = x; then
+-    NCURSESW6_CONFIG=""
+-  else
+-    case $cross_compiling:$ac_tool_warned in
+-yes:)
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+-$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+-ac_tool_warned=yes ;;
+-esac
+-    NCURSESW6_CONFIG=$ac_ct_NCURSESW6_CONFIG
+-  fi
+-else
+-  NCURSESW6_CONFIG="$ac_cv_prog_NCURSESW6_CONFIG"
+-fi
+-
+-    if { { $as_echo "$as_me:${as_lineno-$LINENO}: \$NCURSESW6_CONFIG --version >/dev/null"; } >&5
+-  ($NCURSESW6_CONFIG --version >/dev/null) 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-      have_ncursesw=yes
+-      NCURSES_LIBS=`$NCURSESW6_CONFIG --libs`
+-      NCURSES_CFLAGS=`$NCURSESW6_CONFIG --cflags`
+-    else
+-      have_ncursesw=no
+-    fi
+-
+-fi
+-
+-  # ncurses5-config
+-  #
+-  if test "x$have_ncursesw" = xno; then :
+-
+-    if test -n "$ac_tool_prefix"; then
+-  # Extract the first word of "${ac_tool_prefix}ncursesw5-config", so it can be a program name with args.
+-set dummy ${ac_tool_prefix}ncursesw5-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_NCURSESW5_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$NCURSESW5_CONFIG"; then
+-  ac_cv_prog_NCURSESW5_CONFIG="$NCURSESW5_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_NCURSESW5_CONFIG="${ac_tool_prefix}ncursesw5-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-NCURSESW5_CONFIG=$ac_cv_prog_NCURSESW5_CONFIG
+-if test -n "$NCURSESW5_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $NCURSESW5_CONFIG" >&5
+-$as_echo "$NCURSESW5_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-fi
+-if test -z "$ac_cv_prog_NCURSESW5_CONFIG"; then
+-  ac_ct_NCURSESW5_CONFIG=$NCURSESW5_CONFIG
+-  # Extract the first word of "ncursesw5-config", so it can be a program name with args.
+-set dummy ncursesw5-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_ac_ct_NCURSESW5_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$ac_ct_NCURSESW5_CONFIG"; then
+-  ac_cv_prog_ac_ct_NCURSESW5_CONFIG="$ac_ct_NCURSESW5_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_ac_ct_NCURSESW5_CONFIG="ncursesw5-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-ac_ct_NCURSESW5_CONFIG=$ac_cv_prog_ac_ct_NCURSESW5_CONFIG
+-if test -n "$ac_ct_NCURSESW5_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ct_NCURSESW5_CONFIG" >&5
+-$as_echo "$ac_ct_NCURSESW5_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-  if test "x$ac_ct_NCURSESW5_CONFIG" = x; then
+-    NCURSESW5_CONFIG=""
+-  else
+-    case $cross_compiling:$ac_tool_warned in
+-yes:)
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+-$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+-ac_tool_warned=yes ;;
+-esac
+-    NCURSESW5_CONFIG=$ac_ct_NCURSESW5_CONFIG
+-  fi
+-else
+-  NCURSESW5_CONFIG="$ac_cv_prog_NCURSESW5_CONFIG"
+-fi
+-
+-    if { { $as_echo "$as_me:${as_lineno-$LINENO}: \$NCURSESW5_CONFIG --version >/dev/null"; } >&5
+-  ($NCURSESW5_CONFIG --version >/dev/null) 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-      have_ncursesw=yes
+-      NCURSES_LIBS=`$NCURSESW5_CONFIG --libs`
+-      NCURSES_CFLAGS=`$NCURSESW5_CONFIG --cflags`
+-    else
+-      have_ncursesw=no
+-    fi
+-
+-fi
+-
+   # pkg-config (not supported by ncurses upstream by default)
+   #
+   if test "x$have_ncursesw" = xno; then :
+@@ -20933,230 +20708,6 @@ esac
+ 
+ if test "x$have_ncursesw" = xno -a "x$with_ncurses" != xno ; then :
+ 
+-
+-
+-
+-
+-  # ncurses6-config
+-  #
+-  if test "x$have_ncurses" = xno; then :
+-
+-    if test -n "$ac_tool_prefix"; then
+-  # Extract the first word of "${ac_tool_prefix}ncurses6-config", so it can be a program name with args.
+-set dummy ${ac_tool_prefix}ncurses6-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_NCURSES6_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$NCURSES6_CONFIG"; then
+-  ac_cv_prog_NCURSES6_CONFIG="$NCURSES6_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_NCURSES6_CONFIG="${ac_tool_prefix}ncurses6-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-NCURSES6_CONFIG=$ac_cv_prog_NCURSES6_CONFIG
+-if test -n "$NCURSES6_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $NCURSES6_CONFIG" >&5
+-$as_echo "$NCURSES6_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-fi
+-if test -z "$ac_cv_prog_NCURSES6_CONFIG"; then
+-  ac_ct_NCURSES6_CONFIG=$NCURSES6_CONFIG
+-  # Extract the first word of "ncurses6-config", so it can be a program name with args.
+-set dummy ncurses6-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_ac_ct_NCURSES6_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$ac_ct_NCURSES6_CONFIG"; then
+-  ac_cv_prog_ac_ct_NCURSES6_CONFIG="$ac_ct_NCURSES6_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_ac_ct_NCURSES6_CONFIG="ncurses6-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-ac_ct_NCURSES6_CONFIG=$ac_cv_prog_ac_ct_NCURSES6_CONFIG
+-if test -n "$ac_ct_NCURSES6_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ct_NCURSES6_CONFIG" >&5
+-$as_echo "$ac_ct_NCURSES6_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-  if test "x$ac_ct_NCURSES6_CONFIG" = x; then
+-    NCURSES6_CONFIG=""
+-  else
+-    case $cross_compiling:$ac_tool_warned in
+-yes:)
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+-$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+-ac_tool_warned=yes ;;
+-esac
+-    NCURSES6_CONFIG=$ac_ct_NCURSES6_CONFIG
+-  fi
+-else
+-  NCURSES6_CONFIG="$ac_cv_prog_NCURSES6_CONFIG"
+-fi
+-
+-    if { { $as_echo "$as_me:${as_lineno-$LINENO}: \$NCURSES6_CONFIG --version >/dev/null"; } >&5
+-  ($NCURSES6_CONFIG --version >/dev/null) 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-      have_ncurses=yes
+-      NCURSES_LIBS=`$NCURSES6_CONFIG --libs`
+-      NCURSES_CFLAGS=`$NCURSES6_CONFIG --cflags`
+-    else
+-      have_ncurses=no
+-    fi
+-
+-fi
+-
+-  # ncurses5-config
+-  #
+-  if test "x$have_ncurses" = xno; then :
+-
+-    if test -n "$ac_tool_prefix"; then
+-  # Extract the first word of "${ac_tool_prefix}ncurses5-config", so it can be a program name with args.
+-set dummy ${ac_tool_prefix}ncurses5-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_NCURSES5_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$NCURSES5_CONFIG"; then
+-  ac_cv_prog_NCURSES5_CONFIG="$NCURSES5_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_NCURSES5_CONFIG="${ac_tool_prefix}ncurses5-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-NCURSES5_CONFIG=$ac_cv_prog_NCURSES5_CONFIG
+-if test -n "$NCURSES5_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $NCURSES5_CONFIG" >&5
+-$as_echo "$NCURSES5_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-fi
+-if test -z "$ac_cv_prog_NCURSES5_CONFIG"; then
+-  ac_ct_NCURSES5_CONFIG=$NCURSES5_CONFIG
+-  # Extract the first word of "ncurses5-config", so it can be a program name with args.
+-set dummy ncurses5-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_ac_ct_NCURSES5_CONFIG+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$ac_ct_NCURSES5_CONFIG"; then
+-  ac_cv_prog_ac_ct_NCURSES5_CONFIG="$ac_ct_NCURSES5_CONFIG" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_ac_ct_NCURSES5_CONFIG="ncurses5-config"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-fi
+-fi
+-ac_ct_NCURSES5_CONFIG=$ac_cv_prog_ac_ct_NCURSES5_CONFIG
+-if test -n "$ac_ct_NCURSES5_CONFIG"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ct_NCURSES5_CONFIG" >&5
+-$as_echo "$ac_ct_NCURSES5_CONFIG" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-  if test "x$ac_ct_NCURSES5_CONFIG" = x; then
+-    NCURSES5_CONFIG=""
+-  else
+-    case $cross_compiling:$ac_tool_warned in
+-yes:)
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
+-$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
+-ac_tool_warned=yes ;;
+-esac
+-    NCURSES5_CONFIG=$ac_ct_NCURSES5_CONFIG
+-  fi
+-else
+-  NCURSES5_CONFIG="$ac_cv_prog_NCURSES5_CONFIG"
+-fi
+-
+-    if { { $as_echo "$as_me:${as_lineno-$LINENO}: \$NCURSES5_CONFIG --version >/dev/null"; } >&5
+-  ($NCURSES5_CONFIG --version >/dev/null) 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then
+-      have_ncurses=yes
+-      NCURSES_LIBS=`$NCURSES5_CONFIG --libs`
+-      NCURSES_CFLAGS=`$NCURSES5_CONFIG --cflags`
+-    else
+-      have_ncurses=no
+-    fi
+-
+-fi
+-
+   # pkg-config (not supported by ncurses upstream by default)
+   #
+   if test "x$have_ncurses" = xno; then :
