@@ -6,3 +6,4 @@ firmware-rpi3
 nano
 util-linux
 kmod
+grep
