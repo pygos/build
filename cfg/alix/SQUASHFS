@@ -5,5 +5,7 @@ nano
 util-linux
 grep
 less
+xz
 gzip
 bzip2
+tar

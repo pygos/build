@@ -8,5 +8,7 @@ util-linux
 kmod
 grep
 less
+xz
 gzip
 bzip2
+tar
