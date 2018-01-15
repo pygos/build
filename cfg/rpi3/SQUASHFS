@@ -18,3 +18,4 @@ sed
 gawk
 inetutils
 ethtool
+iproute2

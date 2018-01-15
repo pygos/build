@@ -1,0 +1,40 @@
+VERSION="4.14.1"
+SRCDIR="iproute2-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://www.kernel.org/pub/linux/utils/net/iproute2/"
+SHA256SUM="d43ac068afcc350a448f4581b6e292331ef7e4e7aa746e34981582d5fdb10067"
+
+prepare() {
+	local PKGSCRIPTDIR="$1"
+
+	for PATCH in ${PKGSCRIPTDIR}/*.patch; do
+		patch -p1 < $PATCH
+	done
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	cp -r ${SOURCE}/* ${BUILD}
+
+	make HOSTCC="gcc" AR="${TARGET}-ar" LD="${TARGET}-ld" CC="${TARGET}-gcc" SYSROOT="$TCDIR/$TARGET"
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	mkdir -p "$DEPLOY/var/lib/arpd"
+	make DESTDIR="$DEPLOY" SYSROOT="$TCDIR/$TARGET" install
+
+	rm -r "$DEPLOY/include"
+	rm -r "$DEPLOY/share/doc"
+	rm -r "$DEPLOY/share/man"
+
+	for program in arpd bridge devlink genl ifstat ip lnstat nstat rdma rtacct rtmon ss tc tipc; do
+		${TARGET}-strip --discard-all ${DEPLOY}/bin/$program
+	done
+}
