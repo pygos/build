@@ -1,0 +1,28 @@
+VERSION="4.13"
+SRCDIR="ethtool-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://www.kernel.org/pub/software/network/ethtool/"
+SHA256SUM="b7c1a380007d30eaf261a63b3cfc000f9d93f9eb7626dcd48b5d2a733af99cba"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="" --host="$TARGET" --sbindir="/bin"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm -r "$DEPLOY/share"
+}

@@ -14,3 +14,4 @@ findutils
 sed
 gawk
 inetutils
+ethtool
