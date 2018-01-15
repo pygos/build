@@ -4,3 +4,4 @@ rootfs
 nano
 util-linux
 grep
+less
