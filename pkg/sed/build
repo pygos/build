@@ -1,0 +1,28 @@
+VERSION="4.4"
+SRCDIR="sed-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://ftp.gnu.org/gnu/sed/"
+SHA256SUM="cbd6ebc5aaf080ed60d0162d7f6aeae58211a1ee9ba9bb25623daa6cd942683b"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm -r "$DEPLOY/share"
+}
