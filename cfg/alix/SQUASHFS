@@ -10,3 +10,4 @@ gzip
 bzip2
 tar
 diffutils
+findutils

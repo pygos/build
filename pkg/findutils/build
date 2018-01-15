@@ -1,0 +1,29 @@
+VERSION="4.6.0"
+SRCDIR="findutils-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://ftp.gnu.org/gnu/findutils/"
+SHA256SUM="ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" \
+			  --localstatedir=/var/lib/locate
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm -r "$DEPLOY/share"
+}
