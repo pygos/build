@@ -8,3 +8,4 @@ util-linux
 kmod
 grep
 less
+gzip
