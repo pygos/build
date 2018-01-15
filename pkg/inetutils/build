@@ -1,0 +1,32 @@
+VERSION="1.9.4"
+SRCDIR="inetutils-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://ftp.gnu.org/gnu/inetutils/"
+SHA256SUM="849d96f136effdef69548a940e3e0ec0624fc0c81265296987986a0dd36ded37"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="" --host="$TARGET" --disable-servers \
+			 --disable-dnsdomainname --disable-hostname \
+			 --disable-rcp --disable-rexec --disable-rlogin \
+			 --disable-rsh --disable-logger --disable-talk \
+			 --disable-ifconfig
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm -r "$DEPLOY/share"
+}
