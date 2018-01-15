@@ -6,3 +6,4 @@ util-linux
 grep
 less
 gzip
+bzip2
