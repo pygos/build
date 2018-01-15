@@ -12,3 +12,4 @@ tar
 diffutils
 findutils
 sed
+gawk

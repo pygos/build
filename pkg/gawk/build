@@ -1,0 +1,31 @@
+VERSION="4.2.0"
+SRCDIR="gawk-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://ftp.gnu.org/gnu/gawk/"
+SHA256SUM="d4f3cd31c001fd0ed52832d4fbfbdfeaa38ad541c182f80ff8fdf87324a6a9f2"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm "$DEPLOY/bin/gawk-$VERSION"
+	rm -r "$DEPLOY/include"
+	rm -r "$DEPLOY/share/info"
+	rm -r "$DEPLOY/share/man"
+}
