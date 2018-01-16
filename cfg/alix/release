@@ -1,6 +1,7 @@
 build_release() {
 	local RELEASE_DIR="$1"
-	local ROOTFS_SQFS="$2"
+
+	local ROOTFS_SQFS=$(find $PKGDEPLOYDIR/rootfs-${CFG}/ -name '*.img')
 
 	local fname=$(find $PKGDEPLOYDIR/linux/ -name 'vmlinuz*')
 	local linux_image=$(basename $fname)

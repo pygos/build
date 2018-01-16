@@ -23,8 +23,6 @@ PKGLOGDIR="$BUILDROOT/$CFG/log"
 PKGDOWNLOADDIR="$BUILDROOT/download"
 PACKAGELIST="$BUILDROOT/$CFG/pkglist"
 
-SQFS="$BUILDROOT/$CFG/rootfs.img"
-
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGBUILDDIR" "$PKGLOGDIR"
 mkdir -p "$PKGDEPLOYDIR" "$TCDIR/bin"
 
@@ -109,7 +107,7 @@ mkdir -p "$RELEASEDIR"
 unset -f build_release
 source "$SCRIPTDIR/cfg/$CFG/release"
 
-build_release "$RELEASEDIR" "$SQFS"
+build_release "$RELEASEDIR"
 
 if [ -e "${BUILDROOT}/${CFG}/release-${CFG}.tar.gz" ]; then
 	rm "${BUILDROOT}/${CFG}/release-${CFG}.tar.gz"

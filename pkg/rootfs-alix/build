@@ -33,7 +33,5 @@ deploy() {
 	local BUILD="$2"
 	local DEPLOY="$3"
 
-	rm -f "$SQFS"
-
-	mksquashfs "$BUILD" "$SQFS" -all-root -no-progress -no-xattrs
+	mksquashfs "$BUILD" "$DEPLOY/rootfs.img" -all-root -no-progress -no-xattrs
 }
