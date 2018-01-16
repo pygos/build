@@ -70,8 +70,7 @@ save_toolchain
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-cat "$SCRIPTDIR/cfg/$CFG/PACKAGES" | sort -u > "$BUILDROOT/$CFG/rawpkg"
-
+echo "release-${CFG}" > "$BUILDROOT/$CFG/rawpkg"
 dependencies "$BUILDROOT/$CFG/rawpkg" "$PACKAGELIST" "pkg"
 cat "$PACKAGELIST"
 
@@ -91,29 +90,4 @@ while read pkg; do
 
 	restore_toolchain
 done < "$PACKAGELIST"
-
-############################## release package ###############################
-
-echo "--- building release package ---"
-
-RELEASEDIR="$BUILDROOT/$CFG/release-$CFG"
-
-if [ -d "$RELEASEDIR" ]; then
-	rm -r "$RELEASEDIR"
-fi
-
-mkdir -p "$RELEASEDIR"
-
-unset -f build_release
-source "$SCRIPTDIR/cfg/$CFG/release"
-
-build_release "$RELEASEDIR"
-
-if [ -e "${BUILDROOT}/${CFG}/release-${CFG}.tar.gz" ]; then
-	rm "${BUILDROOT}/${CFG}/release-${CFG}.tar.gz"
-fi
-
-pushd "$BUILDROOT/$CFG" > /dev/null
-tar czf "${BUILDROOT}/${CFG}/release-${CFG}.tar.gz" "release-${CFG}"
-popd  > /dev/null
 

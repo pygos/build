@@ -1,0 +1,30 @@
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	local ROOTFS_SQFS=$(find $PKGDEPLOYDIR/rootfs-${CFG}/ -name '*.img')
+
+	local rootfs_image=$(basename $ROOTFS_SQFS)
+	local bootdir="$BUILD/boot"
+
+	mkdir -p "$bootdir"
+	cp -r ${PKGDEPLOYDIR}/linux-rpi3/* "$bootdir"
+	cp -r ${PKGDEPLOYDIR}/boot-rpi3/* "$bootdir"
+	cp "$SCRIPTDIR/pkg/release-${CFG}/cmdline.txt" "$bootdir"
+	cp "$ROOTFS_SQFS" "$bootdir"
+	sed -i 's/ROOTFSFILE/'$rootfs_image'/g' "$bootdir/cmdline.txt"
+
+	cp "$SCRIPTDIR/pkg/release-${CFG}/install.sh" "$BUILD"
+	cp "$SCRIPTDIR/pkg/release-${CFG}/genimage.sh" "$BUILD"
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	pushd "$PKGBUILDDIR" > /dev/null
+	tar czf "${DEPLOY}/release-${CFG}.tar.gz" "release-${CFG}"
+	popd > /dev/null
+}
