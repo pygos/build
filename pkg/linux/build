@@ -41,9 +41,7 @@ deploy() {
 	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
 	local LINUX_TGT=$(head -2 "$CFGFILE" | tail -1 | cut -b 3-)
 
-	mkdir -p "$DEPLOY/boot"
-
 	pushd $BUILD
-	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/boot/vmlinuz-$VERSION"
+	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/vmlinuz-$VERSION"
 	popd
 }
