@@ -21,5 +21,5 @@ deploy() {
 	rm $DEPLOY/COPYING.linux
 	rm $DEPLOY/*.dtb
 
-	cp "$SCRIPTDIR/cfg/$CFG/boot-config.txt" "$DEPLOY/config.txt"
+	cp "$SCRIPTDIR/pkg/boot-rpi3/config.txt" "$DEPLOY/config.txt"
 }
