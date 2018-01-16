@@ -1,0 +1,39 @@
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	# setup skeleton
+	mkdir -pv ${BUILD}/{bin,etc,dev,sys,proc,tmp,var,run}
+
+	echo "/lib" > "$BUILD/etc/ld-musl-i386.path"
+
+	# install packages to rootfs
+	cat "$SCRIPTDIR/pkg/rootfs-alix/depends" | sort -u > "$BUILD/rawpkg"
+
+	dependencies "$BUILD/rawpkg" "$BUILD/etc/packages" "pkg"
+	echo "toolchain" >> "$BUILD/etc/packages"
+	rm -f "$BUILD/rawpkg"
+
+	while read pkgname; do
+		if [ ! -e "$PKGDEPLOYDIR/$pkgname" ]; then
+			continue
+		fi
+
+		cp -ru --remove-destination ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD"
+	done < "$BUILD/etc/packages"
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	rm -f "$SQFS"
+
+	mksquashfs "$BUILD" "$SQFS" -all-root -no-progress -no-xattrs
+}

@@ -24,7 +24,6 @@ PKGDOWNLOADDIR="$BUILDROOT/download"
 PACKAGELIST="$BUILDROOT/$CFG/pkglist"
 
 SQFS="$BUILDROOT/$CFG/rootfs.img"
-SQFS_DIR="$BUILDROOT/$CFG/squashfs"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGBUILDDIR" "$PKGLOGDIR"
 mkdir -p "$PKGDEPLOYDIR" "$TCDIR/bin"
@@ -73,8 +72,7 @@ save_toolchain
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-cat "$SCRIPTDIR/cfg/$CFG/PACKAGES" "$SCRIPTDIR/cfg/$CFG/SQUASHFS" | \
-	sort -u > "$BUILDROOT/$CFG/rawpkg"
+cat "$SCRIPTDIR/cfg/$CFG/PACKAGES" | sort -u > "$BUILDROOT/$CFG/rawpkg"
 
 dependencies "$BUILDROOT/$CFG/rawpkg" "$PACKAGELIST" "pkg"
 cat "$PACKAGELIST"
@@ -95,29 +93,6 @@ while read pkg; do
 
 	restore_toolchain
 done < "$PACKAGELIST"
-
-############################### squashfs image ###############################
-
-echo "--- building squashfs ---"
-
-cat "$SCRIPTDIR/cfg/$CFG/SQUASHFS" | sort -u > "$BUILDROOT/$CFG/rawpkg"
-dependencies "$BUILDROOT/$CFG/rawpkg" "$PACKAGELIST" "pkg"
-echo "toolchain" >> "$PACKAGELIST"
-
-mkdir -p "$SQFS_DIR"
-
-while read pkg; do
-	if [ -e "$PKGDEPLOYDIR/$pkg" ]; then
-		cp -ru --remove-destination ${PKGDEPLOYDIR}/${pkg}/* "$SQFS_DIR"
-		echo "$pkg"
-	fi
-done < "$PACKAGELIST"
-
-if [ -f "$SQFS" ]; then
-	rm "$SQFS"
-fi
-
-mksquashfs "$SQFS_DIR" "$SQFS" -all-root -no-progress -no-xattrs 2>&1 > "$PKGLOGDIR/rootfs.log"
 
 ############################## release package ###############################
 

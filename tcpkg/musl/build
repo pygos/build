@@ -26,6 +26,4 @@ deploy() {
 	rm $DEPLOY/lib/*.a $DEPLOY/lib/*.o
 
 	mkdir -p "$DEPLOY/etc"
-
-	cp ${SCRIPTDIR}/cfg/${CFG}/ld-musl-* "$DEPLOY/etc/"
 }

@@ -1,11 +1,7 @@
 coreutils
 bash
-rootfs
-linux_modules
-firmware-rpi3
 nano
 util-linux
-kmod
 grep
 less
 xz
