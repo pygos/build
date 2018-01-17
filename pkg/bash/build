@@ -33,6 +33,7 @@ deploy() {
 	rm -r "$DEPLOY/share/doc"
 	rm -r "$DEPLOY/share/info"
 	rm -r "$DEPLOY/share/man"
+	rm -r "$DEPLOY/share/locale"
 
 	mv "$DEPLOY/lib" "$DEVDEPLOY"
 	mv "$DEPLOY/include" "$DEVDEPLOY"

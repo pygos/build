@@ -26,4 +26,5 @@ deploy() {
 
 	rm -r "$DEPLOY/share/info"
 	rm -r "$DEPLOY/share/man"
+	rm -r "$DEPLOY/share/locale"
 }
