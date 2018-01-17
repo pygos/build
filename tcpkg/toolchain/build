@@ -1,7 +1,3 @@
-prepare() {
-	return
-}
-
 build() {
 	return
 }

@@ -1,10 +1,6 @@
 # inherit package details from kernel package
 source "$SCRIPTDIR/pkg/firmware-rpi3/build"
 
-prepare() {
-	return
-}
-
 build() {
 	return
 }

@@ -1,7 +1,3 @@
-prepare() {
-	return
-}
-
 build() {
 	local SOURCE="$1"
 	local BUILD="$2"

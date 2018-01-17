@@ -62,10 +62,6 @@ dir_filelist() {
 	fi
 }
 
-prepare() {
-	return
-}
-
 build() {
 	local INPUT="$1"
 	local OUTPUT="$2"
