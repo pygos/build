@@ -1,0 +1,51 @@
+# /etc/profile
+
+# System wide environment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+
+if [ -x /bin/id ]; then
+	if [ -z "$EUID" ]; then
+		# ksh workaround
+		EUID=`id -u`
+		UID=`id -ru`
+	fi
+
+	USER="`id -un`"
+	LOGNAME=$USER
+fi
+
+HOSTNAME=$(/bin/cat /etc/hostname)
+HISTSIZE=1000
+HISTCONTROL=ignoreboth
+PATH=/bin
+
+export PATH USER LOGNAME HOSTNAME HISTSIZE HISTCONTROL
+
+# By default, we want umask to get set. This sets it for login shell
+# Current threshold for system reserved uid/gids is 1000
+if [ $UID -gt 999 ] && [ "`id -gn`" = "`id -un`" ]; then
+	umask 002
+else
+	umask 022
+fi
+
+for i in /etc/profile.d/*.sh ; do
+	if [ -r "$i" ]; then
+		if [ "${-#*i}" != "$-" ]; then 
+			. "$i"
+		else
+			. "$i" >/dev/null
+		fi
+	fi
+done
+
+unset i
+
+if [ -n "${BASH_VERSION-}" ] ; then
+	if [ -f /etc/bashrc ] ; then
+		# Bash login shells run only /etc/profile
+		# Bash non-login shells run only /etc/bashrc
+		# Check for double sourcing is done in /etc/bashrc.
+		. /etc/bashrc
+	fi
+fi

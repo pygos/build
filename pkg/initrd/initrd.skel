@@ -107,4 +107,6 @@ umount -l /dev
 umount /sys
 umount /proc
 
-exec /bin/busybox switch_root /newroot /bin/bash
+unset -v singleuser overlay_dev root root_sfs
+
+exec /bin/busybox switch_root /newroot /bin/bash --login

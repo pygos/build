@@ -1,0 +1,51 @@
+# /etc/bashrc
+
+# System wide functions and aliases
+# Environment stuff goes in /etc/profile
+
+# Prevent doublesourcing
+if [ -z "$BASHRCSOURCED" ]; then
+	BASHRCSOURCED="Y"
+
+	# are we an interactive shell?
+	if [ "$PS1" ]; then
+		shopt -s histappend
+		shopt -s checkwinsize
+		history -a
+
+		PROMPT_COMMAND=""
+
+		if test "$UID" = 0 ; then
+			PS1="\[\033[1;31m\][\u@\h \W]# \[\033[0m\]"
+		else
+			PS1="\[\033[0;32m\][\u@\h \W]$ \[\033[0m\]"
+		fi
+	fi
+
+	# We're not a login shell
+	if ! shopt -q login_shell ; then
+		# By default, we want umask to get set. This sets it for non-login shell.
+		# Current threshold for system reserved uid/gids is 1000
+		if [ $UID -gt 999 ] && [ "`id -gn`" = "`id -un`" ]; then
+			umask 002
+		else
+			umask 022
+		fi
+
+		SHELL=/bin/bash
+
+		# Only display echos from profile.d scripts if we are no login shell
+		# and interactive - otherwise just process them to set envvars
+		for i in /etc/profile.d/*.sh; do
+			if [ -r "$i" ]; then
+				if [ "$PS1" ]; then
+					. "$i"
+				else
+					. "$i" >/dev/null
+				fi
+			fi
+		done
+
+		unset i
+	fi
+fi
