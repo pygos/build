@@ -1,6 +1,7 @@
 base-files
 coreutils
 bash
+bash-completion
 nano
 util-linux
 grep
