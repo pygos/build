@@ -55,4 +55,62 @@ deploy() {
 	ln -s "libncursesw.so.$VERSION" "$DEVDEPLOY/lib/libtinfo.so"
 	ln -s "libncursesw.so.$VERSION" "$DEVDEPLOY/lib/libtinfo.so.$VERSION"
 	ln -s "libncursesw.a.$VERSION" "$DEVDEPLOY/lib/libtinfo.a"
+
+	# only keep relevant terminfo files
+	local olddir="$DEPLOY/share/terminfo.old"
+	local newdir="$DEPLOY/share/terminfo"
+
+	mv "$newdir" "$olddir"
+
+	for x in {0..9} ; do
+		mkdir -p "$newdir/$x/"
+	done
+	for x in {a..z} ; do
+		mkdir -p "$newdir/$x/"
+	done
+	for x in {A..Z} ; do
+		mkdir -p "$newdir/$x/"
+	done
+
+	mv "$olddir/a/ansi" "$newdir/a/"
+	mv "$olddir/d/dumb" "$newdir/d/"
+	mv "$olddir/g/gnome" "$newdir/g/"
+	mv "$olddir/g/gnome-fc5" "$newdir/g/"
+	mv "$olddir/g/gnome-rh72" "$newdir/g/"
+	mv "$olddir/g/gnome-rh80" "$newdir/g/"
+	mv "$olddir/g/gnome-rh90" "$newdir/g/"
+	mv "$olddir/g/gnome-256color" "$newdir/g/"
+	mv "$olddir/k/klone+color" "$newdir/k/"
+	mv "$olddir/k/konsole" "$newdir/k/"
+	mv "$olddir/k/konsole-256color" "$newdir/k/"
+	mv "$olddir/k/kvt" "$newdir/k/"
+	mv "$olddir/l/linux" "$newdir/l/"
+	mv "$olddir/l/linux-m" "$newdir/l/"
+	mv "$olddir/l/linux-nic" "$newdir/l/"
+	mv "$olddir/m/mlterm" "$newdir/m/"
+	mv "$olddir/n/nxterm" "$newdir/n/"
+	mv "$olddir/r/rxvt" "$newdir/r/"
+	mv "$olddir/r/rxvt-256color" "$newdir/r/"
+	mv "$olddir/r/rxvt-basic" "$newdir/r/"
+	mv "$olddir/r/rxvt-color" "$newdir/r/"
+	mv "$olddir/s/screen" "$newdir/s/"
+	mv "$olddir/s/screen-256color" "$newdir/s/"
+	mv "$olddir/s/screen-w" "$newdir/s/"
+	mv "$olddir/u/unknown" "$newdir/u/"
+	mv "$olddir/v/vt100" "$newdir/v/"
+	mv "$olddir/v/vt102" "$newdir/v/"
+	mv "$olddir/v/vt220" "$newdir/v/"
+	mv "$olddir/v/vt220-8" "$newdir/v/"
+	mv "$olddir/v/vt220-8bit" "$newdir/v/"
+	mv "$olddir/v/vt320" "$newdir/v/"
+	mv "$olddir/v/vt52" "$newdir/v/"
+	mv "$olddir/v/vte" "$newdir/v/"
+	mv "$olddir/x/xterm" "$newdir/x/"
+	mv "$olddir/x/xterm-256color" "$newdir/x/"
+	mv "$olddir/x/xterm-basic" "$newdir/x/"
+	mv "$olddir/x/xterm-color" "$newdir/x/"
+	mv "$olddir/x/xterm-nic" "$newdir/x/"
+	mv "$olddir/x/xterm-r6" "$newdir/x/"
+
+	rm -r "$olddir"
 }
