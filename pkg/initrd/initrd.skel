@@ -10,6 +10,7 @@ busybox mount -t devtmpfs none /dev
 
 root_sfs=""
 root=""
+overlay_dev=""
 singleuser=0
 
 for param in `cat /proc/cmdline`; do
@@ -19,6 +20,9 @@ for param in `cat /proc/cmdline`; do
 		;;
 	root_sfs=*)
 		root_sfs="${param##root_sfs=}"
+		;;
+	overlay_dev=*)
+		overlay_dev="${param##overlay_dev=}"
 		;;
 	single*)
 		singleuser=1
@@ -40,6 +44,20 @@ while [ ! -e ${root} ]; do
 	echo "Waiting for root"
 	busybox sleep 1
 done
+
+# file system setup
+overlay_mount() {
+	local lower=/newroot/${1}
+	local upper=/newroot/${2}
+	local work=/newroot/${2}_work
+	local target=/newroot/${3}
+
+	mount -t overlay overlay -olowerdir=${lower},upperdir=${upper},workdir=${work} ${target}
+}
+
+bind_mount() {
+	mount --bind /newroot/${1} /newroot/${2}
+}
 
 mount ${root} /images
 
@@ -67,6 +85,21 @@ mkdir -p /newroot/var/lib/
 mkdir -p /newroot/var/tmp
 ln -s /run /newroot/var/run
 ln -s /run/lock /newroot/var/lock
+
+if [ ! -z "$overlay_dev" ]; then
+	while [ ! -e ${overlay_dev} ]; do
+		echo "Waiting for overlay device"
+		busybox sleep 1
+	done
+
+	mount ${overlay_dev} /newroot/cfg/overlay
+
+	overlay_mount "cfg/preserve/etc" "cfg/overlay/etc" "etc"
+	overlay_mount "cfg/preserve/var_lib" "cfg/overlay/var_lib" "var/lib"
+else
+	bind_mount "cfg/preserve/etc" "etc"
+	bind_mount "cfg/preserve/var_lib" "var/lib"
+fi
 
 # cleanup mounts
 umount -l /images

@@ -4,7 +4,9 @@ build() {
 	local DEPLOY="$3"
 
 	# setup skeleton
-	mkdir -pv ${BUILD}/{bin,etc,dev,sys,proc,tmp,var,run}
+	mkdir -pv ${BUILD}/{bin,lib,etc,dev,sys,proc,tmp,var,run}
+	mkdir -pv ${BUILD}/{boot,usr,srv,mnt,opt}
+	mkdir -pv ${BUILD}/cfg/{preserve,overlay}
 
 	echo "/lib" > "$BUILD/etc/ld-musl-arm.path"
 	echo "/opt/vc/lib" >> "$BUILD/etc/ld-musl-arm.path"
@@ -23,6 +25,12 @@ build() {
 
 		cp -ru --remove-destination ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD"
 	done < "$BUILD/etc/packages"
+
+	# move configuration to preserve directory
+	mv ${BUILD}/etc ${BUILD}/cfg/preserve
+	mkdir -p ${BUILD}/etc
+
+	mv ${BUILD}/var/lib ${BUILD}/cfg/preserve/var_lib
 }
 
 deploy() {
