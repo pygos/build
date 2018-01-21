@@ -2,8 +2,9 @@ run_pkg_command_common() {
 	local NAME="$1"
 	local FUNCTION="$2"
 	local PKGDIR="$3"
-	local DEPLOYDIR="$4"
-	local CHECKFILE="$PKGLOGDIR/.${NAME}-${FUNCTION}"
+	local DEPLOYDIR="$PKGDEPLOYDIR/$4"
+	local OUT="$PKGBUILDDIR/$5"
+	local CHECKFILE="$PKGLOGDIR/.${6}-${FUNCTION}"
 
 	echo "$NAME - $FUNCTION"
 
@@ -15,8 +16,7 @@ run_pkg_command_common() {
 	unset -v VERSION TARBALL URL SRCDIR SHA256SUM
 	source "$SCRIPTDIR/$PKGDIR/$NAME/build"
 
-	local LOGFILE="$PKGLOGDIR/${NAME}-${FUNCTION}.log"
-	local OUT="$PKGBUILDDIR/$NAME"
+	local LOGFILE="$PKGLOGDIR/${7}-${FUNCTION}.log"
 	local SRC="$PKGSRCDIR/$SRCDIR"
 
 	mkdir -p "$DEPLOYDIR" "$OUT" "${DEPLOYDIR}-dev"
@@ -33,13 +33,9 @@ run_pkg_command_common() {
 }
 
 run_pkg_command() {
-	local DEPLOYDIR="$PKGDEPLOYDIR/$1"
-
-	run_pkg_command_common "$1" "$2" "pkg" "$DEPLOYDIR"
+	run_pkg_command_common "$1" "$2" "pkg" "$1" "$1" "$1" "$1"
 }
 
 run_tcpkg_command() {
-	local DEPLOYDIR="$PKGDEPLOYDIR/toolchain"
-
-	run_pkg_command_common "$1" "$2" "tcpkg" "$DEPLOYDIR"
+	run_pkg_command_common "$1" "$2" "tcpkg" "toolchain" "tc-$1" "tc-$1" "tc-$1"
 }
