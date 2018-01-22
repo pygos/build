@@ -1,0 +1,34 @@
+VERSION="0.8.6"
+SRCDIR="libbsd-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://libbsd.freedesktop.org/releases"
+SHA256SUM="467fbf9df1f49af11f7f686691057c8c0a7613ae5a870577bef9155de39f9687"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --disable-static
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm ${DEPLOY}/lib/*.la
+
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
+	rm -r "$DEPLOY/share"
+	rm -r "$DEPLOY/lib/pkgconfig"
+}
