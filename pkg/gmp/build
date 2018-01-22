@@ -1,0 +1,33 @@
+VERSION="6.1.2"
+SRCDIR="gmp-$VERSION"
+TARBALL="gmp-$VERSION.tar.bz2"
+URL="http://ftp.gnu.org/gnu/gmp"
+SHA256SUM="5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" \
+			  --disable-static --enable-cxx
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install
+
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
+	rm ${DEPLOY}/lib/*.la
+	rm -r "$DEPLOY/share"
+}
