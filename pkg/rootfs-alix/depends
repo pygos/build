@@ -18,3 +18,4 @@ inetutils
 ethtool
 iproute2
 unbound
+dnsmasq

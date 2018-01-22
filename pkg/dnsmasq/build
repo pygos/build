@@ -1,0 +1,33 @@
+VERSION="2.78"
+SRCDIR="dnsmasq-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="http://www.thekelleys.org.uk/dnsmasq"
+SHA256SUM="89949f438c74b0c7543f06689c319484bd126cc4b1f8c745c742ab397681252b"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	cp -r ${SOURCE}/* ${BUILD}
+
+	make CC=${TARGET}-gcc PREFIX="/" BINDIR="/bin" -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make CC=${TARGET}-gcc PREFIX="/" BINDIR="/bin" DESTDIR="$DEPLOY" install
+
+	${TARGET}-strip --discard-all "$DEPLOY/bin/dnsmasq"
+	rm -r "$DEPLOY/share"
+
+	mkdir -p "$DEPLOY/etc"
+	cp "$SOURCE/dnsmasq.conf.example" "$DEPLOY/etc/dnsmasq.conf"
+}
