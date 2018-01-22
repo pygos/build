@@ -1,0 +1,33 @@
+VERSION="0.9.8"
+SRCDIR="libunistring-$VERSION"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://ftp.gnu.org/gnu/libunistring"
+SHA256SUM="7b9338cf52706facb2e18587dceda2fbc4a2a3519efa1e15a3f2a68193942f80"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --disable-static
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm -r "$DEPLOY/share"
+	rm ${DEPLOY}/lib/*.la
+
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
+}
