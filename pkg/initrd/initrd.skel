@@ -96,9 +96,11 @@ if [ ! -z "$overlay_dev" ]; then
 
 	overlay_mount "cfg/preserve/etc" "cfg/overlay/etc" "etc"
 	overlay_mount "cfg/preserve/var_lib" "cfg/overlay/var_lib" "var/lib"
+	overlay_mount "cfg/preserve/root" "cfg/overlay/root" "root"
 else
 	bind_mount "cfg/preserve/etc" "etc"
 	bind_mount "cfg/preserve/var_lib" "var/lib"
+	bind_mount "cfg/preserve/root" "root"
 fi
 
 # cleanup mounts

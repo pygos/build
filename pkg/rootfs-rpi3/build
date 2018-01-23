@@ -31,6 +31,10 @@ build() {
 	mkdir -p ${BUILD}/etc
 
 	mv ${BUILD}/var/lib ${BUILD}/cfg/preserve/var_lib
+
+	mv ${BUILD}/root ${BUILD}/cfg/preserve
+	mkdir -p ${BUILD}/root
+	chmod 750 ${BUILD}/root
 }
 
 deploy() {

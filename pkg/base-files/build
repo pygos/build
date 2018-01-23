@@ -8,11 +8,11 @@ deploy() {
 	local DEPLOY="$3"
 
 	# home directory of root user
-	mkdir -p "$DEPLOY/usr/root"
-	chmod 750 "$DEPLOY/usr/root"
+	mkdir -p "$DEPLOY/root"
+	chmod 750 "$DEPLOY/root"
 
-	cp "$SCRIPTDIR/pkg/base-files/bash_profile" "$DEPLOY/usr/root/.bash_profile"
-	cp "$SCRIPTDIR/pkg/base-files/bashrc" "$DEPLOY/usr/root/.bashrc"
+	cp "$SCRIPTDIR/pkg/base-files/bash_profile" "$DEPLOY/root/.bash_profile"
+	cp "$SCRIPTDIR/pkg/base-files/bashrc" "$DEPLOY/root/.bashrc"
 
 	# /etc base files
 	mkdir -p "$DEPLOY/etc/skel"
