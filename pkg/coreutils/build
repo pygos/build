@@ -3,6 +3,7 @@ SRCDIR="coreutils-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/coreutils/"
 SHA256SUM="1117b1a16039ddd84d51a9923948307cfa28c2cea03d1a2438742253df0a0c65"
+DEPENDS=""
 
 prepare() {
 	local PKGSCRIPTDIR="$1"

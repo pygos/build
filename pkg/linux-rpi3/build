@@ -3,6 +3,7 @@ SRCDIR="linux-raspberrypi-kernel_${VERSION}"
 TARBALL="raspberrypi-kernel_${VERSION}"
 URL="https://codeload.github.com/raspberrypi/linux/tar.gz"
 SHA256SUM="c9b60483e901556a2fbab64c06be8a9eba884f3eaac98ba39347e82bb0a00f5b"
+DEPENDS="initrd"
 
 prepare() {
 	return

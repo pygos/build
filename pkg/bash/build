@@ -3,6 +3,7 @@ SRCDIR="bash-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/bash/"
 SHA256SUM="57d8432be54541531a496fd4904fdc08c12542f43605a9202594fa5d5f9f2331"
+DEPENDS="ncurses readline"
 
 prepare() {
 	return

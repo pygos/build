@@ -1,5 +1,6 @@
 # inherit package details from first stage GCC
 source "$SCRIPTDIR/tcpkg/gcc1/build"
+DEPENDS="gcc1 musl"
 
 build() {
 	local INPUT="$1"

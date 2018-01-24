@@ -1,14 +1,16 @@
+DEPENDS="rootfs-alix linux"
+
 build() {
 	local SOURCE="$1"
 	local BUILD="$2"
 	local DEPLOY="$3"
 
 	# copy output of immediate dependencies
-	while read pkgname; do
+	for pkgname in $DEPENDS; do
 		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
 			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD"
 		fi
-	done < "$SCRIPTDIR/pkg/release-${CFG}/depends"
+	done
 
 	# copy additional files from this package, subsitute filenames
 	local linux_image=$(basename $BUILD/vmlinuz*)

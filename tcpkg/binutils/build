@@ -3,6 +3,7 @@ SRCDIR="binutils-$VERSION"
 TARBALL="binutils-$VERSION.tar.bz2"
 URL="http://ftp.gnu.org/gnu/binutils"
 SHA256SUM="1509dff41369fb70aed23682351b663b56db894034773e6dbf7d5d6071fc55cc"
+DEPENDS=""
 
 prepare() {
 	return

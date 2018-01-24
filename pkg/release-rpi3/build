@@ -1,3 +1,5 @@
+DEPENDS="rootfs-rpi3 linux-rpi3 boot-rpi3"
+
 build() {
 	local SOURCE="$1"
 	local BUILD="$2"
@@ -6,11 +8,11 @@ build() {
 	# copy output of immediate dependencies
 	mkdir -p "$BUILD/boot"
 
-	while read pkgname; do
+	for pkgname in $DEPENDS; do
 		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
 			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD/boot"
 		fi
-	done < "$SCRIPTDIR/pkg/release-${CFG}/depends"
+	done
 
 	# copy files from this package
 	cp "$SCRIPTDIR/pkg/release-${CFG}/cmdline.txt" "$BUILD/boot"

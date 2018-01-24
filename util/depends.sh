@@ -2,14 +2,20 @@ dependencies_recursive() {
 	local NAME="$1"
 	local PKGDIR="$2"
 
-	if [ -e "$SCRIPTDIR/$PKGDIR/$NAME/depends" ]; then
-		while read DEP; do
-			echo "$NAME $DEP"
-		done < "$SCRIPTDIR/$PKGDIR/$NAME/depends"
+	unset -f build deploy prepare
+	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
+	source "$SCRIPTDIR/$PKGDIR/$NAME/build"
 
-		while read DEP; do
+	local depends="$DEPENDS"
+
+	if [ ! -z "$depends" ]; then
+		for DEP in $depends; do
+			echo "$NAME $DEP"
+		done
+
+		for DEP in $depends; do
 			dependencies_recursive "$DEP" "$PKGDIR"
-		done < "$SCRIPTDIR/$PKGDIR/$NAME/depends"
+		done
 	fi
 }
 

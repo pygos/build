@@ -3,6 +3,7 @@ SRCDIR="dnsmasq-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://www.thekelleys.org.uk/dnsmasq"
 SHA256SUM="89949f438c74b0c7543f06689c319484bd126cc4b1f8c745c742ab397681252b"
+DEPENDS=""
 
 prepare() {
 	return

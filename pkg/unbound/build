@@ -3,6 +3,7 @@ SRCDIR="unbound-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.unbound.net/downloads"
 SHA256SUM="e3b428e33f56a45417107448418865fe08d58e0e7fea199b855515f60884dd49"
+DEPENDS="libevent openssl expat"
 
 prepare() {
 	return

@@ -3,6 +3,7 @@ SRCDIR="kmod-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/kernel/kmod/"
 SHA256SUM="7165e6496656159dcb909a91ed708a0fe273a4b128b4b1dc997ccb5189eef1cd"
+DEPENDS="zlib xz"
 
 prepare() {
 	return

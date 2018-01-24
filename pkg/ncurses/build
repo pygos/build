@@ -3,6 +3,7 @@ SRCDIR="ncurses-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/ncurses/"
 SHA256SUM="f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260"
+DEPENDS=""
 
 prepare() {
 	return

@@ -1,3 +1,5 @@
+DEPENDS="gcc2"
+
 build() {
 	return
 }

@@ -3,6 +3,7 @@ SRCDIR="bash-completion-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://bash-completion.alioth.debian.org/files/"
 SHA256SUM="2b606804a7d5f823380a882e0f7b6c8a37b0e768e72c3d4107c51fbe8a46ae4f"
+DEPENDS="bash"
 
 prepare() {
 	return

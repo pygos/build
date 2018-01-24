@@ -4,7 +4,7 @@ fetch_package() {
 	echo "$NAME"
 
 	unset -f build deploy prepare
-	unset -v VERSION TARBALL URL SRCDIR SHA256SUM
+	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
 	source "$SCRIPTDIR/$PKGDIR/$NAME/build"
 
 	if [ -z "$TARBALL" ]; then

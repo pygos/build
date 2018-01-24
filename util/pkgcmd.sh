@@ -13,7 +13,7 @@ run_pkg_command_common() {
 	fi
 
 	unset -f build deploy prepare
-	unset -v VERSION TARBALL URL SRCDIR SHA256SUM
+	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
 	source "$SCRIPTDIR/$PKGDIR/$NAME/build"
 
 	local LOGFILE="$PKGLOGDIR/${7}-${FUNCTION}.log"

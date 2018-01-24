@@ -3,6 +3,7 @@ SRCDIR="nettle-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/nettle/"
 SHA256SUM="ae7a42df026550b85daca8389b6a60ba6313b0567f374392e54918588a411e94"
+DEPENDS="gmp"
 
 prepare() {
 	return

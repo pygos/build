@@ -3,6 +3,7 @@ SRCDIR="iproute2-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/net/iproute2/"
 SHA256SUM="d43ac068afcc350a448f4581b6e292331ef7e4e7aa746e34981582d5fdb10067"
+DEPENDS="bdb libmnl"
 
 prepare() {
 	local PKGSCRIPTDIR="$1"

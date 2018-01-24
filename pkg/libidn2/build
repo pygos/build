@@ -3,6 +3,7 @@ SRCDIR="libidn2-$VERSION"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/libidn"
 SHA256SUM="644b6b03b285fb0ace02d241d59483d98bc462729d8bb3608d5cad5532f3d2f0"
+DEPENDS="libiconv libunistring"
 
 prepare() {
 	return

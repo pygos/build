@@ -3,6 +3,7 @@ SRCDIR="busybox-$VERSION"
 TARBALL="busybox-$VERSION.tar.bz2"
 URL="https://busybox.net/downloads"
 SHA256SUM="9d4be516b61e6480f156b11eb42577a13529f75d3383850bb75c50c285de63df"
+DEPENDS=""
 
 prepare() {
 	return

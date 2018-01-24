@@ -3,6 +3,7 @@ SRCDIR="sqlite-autoconf-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://sqlite.org/2017/"
 SHA256SUM="d7dd516775005ad87a57f428b6f86afd206cb341722927f104d3f0cf65fbbbe3"
+DEPENDS="readline"
 
 prepare() {
 	return

@@ -1,3 +1,5 @@
+DEPENDS=$(cat "$SCRIPTDIR/cfg/$CFG/ROOTFS")
+
 build() {
 	local SOURCE="$1"
 	local BUILD="$2"

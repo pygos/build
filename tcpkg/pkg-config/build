@@ -3,6 +3,7 @@ SRCDIR="pkg-config-$VERSION"
 TARBALL="$SRCDIR.tar.gz"
 URL="https://pkg-config.freedesktop.org/releases/"
 SHA256SUM="6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591"
+DEPENDS=""
 
 prepare() {
 	return

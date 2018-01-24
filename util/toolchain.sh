@@ -14,15 +14,17 @@ restore_toolchain() {
 }
 
 install_build_deps() {
-	local pkg="$1"
+	local NAME="$1"
 
-	if [ ! -e "$SCRIPTDIR/pkg/$pkg/depends" ]; then
+	unset -f build deploy prepare
+	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
+	source "$SCRIPTDIR/pkg/$NAME/build"
+
+	if [ -z "$DEPENDS" ]; then
 		return
 	fi
 
-	dependencies "$pkg" "pkg" | grep -v "$pkg" > "$BUILDROOT/$CFG/deppkg"
-
-	while read deppkg; do
+	for deppkg in $DEPENDS; do
 		local devdir="$PKGDEPLOYDIR/${deppkg}-dev"
 
 		if [ -d "$devdir/include" ]; then
@@ -31,5 +33,5 @@ install_build_deps() {
 		if [ -d "$devdir/lib" ]; then
 			cp -R "$devdir/lib" "$TCDIR/$TARGET"
 		fi
-	done < "$BUILDROOT/$CFG/deppkg"
+	done
 }

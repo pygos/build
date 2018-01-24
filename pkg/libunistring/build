@@ -3,6 +3,7 @@ SRCDIR="libunistring-$VERSION"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/libunistring"
 SHA256SUM="7b9338cf52706facb2e18587dceda2fbc4a2a3519efa1e15a3f2a68193942f80"
+DEPENDS="libiconv"
 
 prepare() {
 	return

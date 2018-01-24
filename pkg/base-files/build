@@ -1,3 +1,5 @@
+DEPENDS=""
+
 build() {
 	return
 }

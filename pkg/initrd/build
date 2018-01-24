@@ -1,3 +1,5 @@
+DEPENDS="bbstatic"
+
 filetype() {
 	local argv1="$1"
 

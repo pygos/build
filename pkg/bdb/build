@@ -3,6 +3,7 @@ SRCDIR="db-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="http://download.oracle.com/berkeley-db/"
 SHA256SUM="a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb"
+DEPENDS=""
 
 prepare() {
 	return

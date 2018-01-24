@@ -3,6 +3,7 @@ SRCDIR="bzip2-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="http://www.bzip.org/1.0.6/"
 SHA256SUM="a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd"
+DEPENDS=""
 
 prepare() {
 	return

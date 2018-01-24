@@ -1,5 +1,6 @@
 # inherit package details from kernel package
 source "$SCRIPTDIR/pkg/$LINUXPKG/build"
+DEPENDS=""
 
 build() {
 	local INPUT="$1"

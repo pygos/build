@@ -3,6 +3,7 @@ SRCDIR="libtasn1-$VERSION"
 TARBALL="libtasn1-$VERSION.tar.gz"
 URL="https://ftp.gnu.org/gnu/libtasn1"
 SHA256SUM="7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca"
+DEPENDS=""
 
 prepare() {
 	return

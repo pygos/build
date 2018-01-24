@@ -1,3 +1,5 @@
+DEPENDS="gcc2 libgcc musl pkg-config"
+
 build() {
 	return
 }

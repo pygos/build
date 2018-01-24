@@ -3,6 +3,7 @@ SRCDIR="gcc-$VERSION"
 TARBALL="gcc-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
 SHA256SUM="1cf7adf8ff4b5aa49041c8734bbcf1ad18cc4c94d0029aae0f4e48841088479a"
+DEPENDS="binutils cloog gmp isl mpc mpfr linux_hdr"
 
 prepare() {
 	for child in cloog gmp isl mpc mpfr; do

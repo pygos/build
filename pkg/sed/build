@@ -3,6 +3,7 @@ SRCDIR="sed-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/sed/"
 SHA256SUM="cbd6ebc5aaf080ed60d0162d7f6aeae58211a1ee9ba9bb25623daa6cd942683b"
+DEPENDS=""
 
 prepare() {
 	return
