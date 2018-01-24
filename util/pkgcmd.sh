@@ -1,8 +1,8 @@
-run_pkg_command_common() {
+run_pkg_command() {
 	local FUNCTION="$1"
 	local DEPLOYDIR="$PKGDEPLOYDIR/$2"
-	local OUT="$PKGBUILDDIR/$3"
-	local CHECKFILE="$PKGLOGDIR/.${4}-${FUNCTION}"
+	local OUT="$PKGBUILDDIR/${PKGDIR}-${PKGNAME}"
+	local CHECKFILE="$PKGLOGDIR/.${PKGDIR}-${PKGNAME}-${FUNCTION}"
 
 	echo "$PKGNAME - $FUNCTION"
 
@@ -10,7 +10,7 @@ run_pkg_command_common() {
 		return
 	fi
 
-	local LOGFILE="$PKGLOGDIR/${5}-${FUNCTION}.log"
+	local LOGFILE="$PKGLOGDIR/${PKGDIR}-${PKGNAME}-${FUNCTION}.log"
 	local SRC="$PKGSRCDIR/$SRCDIR"
 
 	mkdir -p "$DEPLOYDIR" "$OUT" "${DEPLOYDIR}-dev"
@@ -24,12 +24,4 @@ run_pkg_command_common() {
 	(rmdir "${DEPLOYDIR}-dev" || true) 2> /dev/null ;
 
 	touch "$CHECKFILE"
-}
-
-run_pkg_command() {
-	run_pkg_command_common "$1" "$PKGNAME" "$PKGNAME" "$PKGNAME" "$PKGNAME"
-}
-
-run_tcpkg_command() {
-	run_pkg_command_common "$1" "toolchain" "tc-$PKGNAME" "tc-$PKGNAME" "tc-$PKGNAME"
 }

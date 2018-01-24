@@ -61,8 +61,8 @@ gen_cmake_toolchain_file
 
 while read pkg; do
 	include_pkg "tcpkg" "$pkg"
-	run_tcpkg_command "build"
-	run_tcpkg_command "deploy"
+	run_pkg_command "build" "toolchain"
+	run_pkg_command "deploy" "toolchain"
 done < "$PACKAGELIST"
 
 echo "--- backing up toolchain sysroot ---"
@@ -90,8 +90,8 @@ while read pkg; do
 
 	install_build_deps
 
-	run_pkg_command "build"
-	run_pkg_command "deploy"
+	run_pkg_command "build" "$PKGNAME"
+	run_pkg_command "deploy" "$PKGNAME"
 
 	restore_toolchain
 done < "$PACKAGELIST"
