@@ -12,11 +12,8 @@ build() {
 	echo "/opt/vc/lib" >> "$BUILD/etc/ld-musl-arm.path"
 
 	# install packages to rootfs
-	cat "$SCRIPTDIR/pkg/rootfs-rpi3/depends" | sort -u > "$BUILD/rawpkg"
-
-	dependencies "$BUILD/rawpkg" "$BUILD/etc/packages" "pkg"
+	dependencies "rootfs-rpi3" "pkg" | grep -v "rootfs-rpi3" > "$BUILD/etc/packages"
 	echo "toolchain" >> "$BUILD/etc/packages"
-	rm -f "$BUILD/rawpkg"
 
 	while read pkgname; do
 		if [ ! -e "$PKGDEPLOYDIR/$pkgname" ]; then

@@ -44,8 +44,7 @@ source "$SCRIPTDIR/util/cmake.sh"
 ############################## build toolchain ###############################
 echo "--- resolving toolchain dependencies ---"
 
-echo "toolchain" > "$BUILDROOT/$CFG/rawpkg"
-dependencies "$BUILDROOT/$CFG/rawpkg" "$PACKAGELIST" "tcpkg"
+dependencies "toolchain" "tcpkg" > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading toolchain files ---"
@@ -70,8 +69,7 @@ save_toolchain
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-echo "release-${CFG}" > "$BUILDROOT/$CFG/rawpkg"
-dependencies "$BUILDROOT/$CFG/rawpkg" "$PACKAGELIST" "pkg"
+dependencies "release-${CFG}" "pkg" > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading package files ---"

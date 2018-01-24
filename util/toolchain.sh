@@ -20,8 +20,7 @@ install_build_deps() {
 		return
 	fi
 
-	dependencies "$SCRIPTDIR/pkg/$pkg/depends" \
-			"$BUILDROOT/$CFG/deppkg" "pkg"
+	dependencies "$pkg" "pkg" | grep -v "$pkg" > "$BUILDROOT/$CFG/deppkg"
 
 	while read deppkg; do
 		local devdir="$PKGDEPLOYDIR/${deppkg}-dev"
