@@ -17,7 +17,7 @@ build() {
 	fi
 
 	# install packages to rootfs
-	dependencies "rootfs" "pkg" | grep -v "rootfs" > "$BUILD/etc/packages"
+	dependencies | tsort | tac | grep -v "$PKGNAME" > "$BUILD/etc/packages"
 	echo "toolchain" >> "$BUILD/etc/packages"
 
 	while read pkgname; do

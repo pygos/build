@@ -44,13 +44,15 @@ source "$SCRIPTDIR/util/cmake.sh"
 ############################## build toolchain ###############################
 echo "--- resolving toolchain dependencies ---"
 
-dependencies "toolchain" "tcpkg" > "$PACKAGELIST"
+include_pkg "tcpkg" "toolchain"
+dependencies | tsort | tac > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading toolchain files ---"
 
 while read pkg; do
-	fetch_package "tcpkg" "$pkg"
+	include_pkg "tcpkg" "$pkg"
+	fetch_package
 done < "$PACKAGELIST"
 
 echo "--- building toolchain ---"
@@ -58,8 +60,9 @@ echo "--- building toolchain ---"
 gen_cmake_toolchain_file
 
 while read pkg; do
-	run_tcpkg_command "$pkg" "build"
-	run_tcpkg_command "$pkg" "deploy"
+	include_pkg "tcpkg" "$pkg"
+	run_tcpkg_command "build"
+	run_tcpkg_command "deploy"
 done < "$PACKAGELIST"
 
 echo "--- backing up toolchain sysroot ---"
@@ -69,22 +72,26 @@ save_toolchain
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-dependencies "release-${CFG}" "pkg" > "$PACKAGELIST"
+include_pkg "pkg" "release-${CFG}"
+dependencies | tsort | tac > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading package files ---"
 
 while read pkg; do
-	fetch_package "pkg" "$pkg"
+	include_pkg "pkg" "$pkg"
+	fetch_package
 done < "$PACKAGELIST"
 
 echo "--- building package ---"
 
 while read pkg; do
-	install_build_deps "$pkg"
+	include_pkg "pkg" "$pkg"
 
-	run_pkg_command "$pkg" "build"
-	run_pkg_command "$pkg" "deploy"
+	install_build_deps
+
+	run_pkg_command "build"
+	run_pkg_command "deploy"
 
 	restore_toolchain
 done < "$PACKAGELIST"

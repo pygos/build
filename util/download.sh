@@ -1,11 +1,5 @@
 fetch_package() {
-	local PKGDIR="$1"
-	local NAME="$2"
-	echo "$NAME"
-
-	unset -f build deploy prepare
-	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
-	source "$SCRIPTDIR/$PKGDIR/$NAME/build"
+	echo "$PKGNAME - download"
 
 	if [ -z "$TARBALL" ]; then
 		return
@@ -23,14 +17,14 @@ fetch_package() {
 	popd > /dev/null
 
 	if [ ! -e "$PKGSRCDIR/$SRCDIR" ]; then
-		local LOGFILE="$PKGLOGDIR/${NAME}-prepare.log"
+		local LOGFILE="$PKGLOGDIR/${PKGNAME}-prepare.log"
 
-		echo "unpacking..."
+		echo "$PKGNAME - unpack"
 		tar -C "$PKGSRCDIR" -xf "$PKGDOWNLOADDIR/$TARBALL"
 
 		pushd "$PKGSRCDIR/$SRCDIR" > /dev/null
-		echo "preparing..."
-		prepare "$SCRIPTDIR/$PKGDIR/$NAME" &>> "$LOGFILE" < /dev/null
+		echo "$PKGNAME - prepare"
+		prepare "$SCRIPTDIR/$PKGDIR/$PKGNAME" &>> "$LOGFILE" < /dev/null
 		popd > /dev/null
 	fi
 }

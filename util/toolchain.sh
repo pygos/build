@@ -14,12 +14,6 @@ restore_toolchain() {
 }
 
 install_build_deps() {
-	local NAME="$1"
-
-	unset -f build deploy prepare
-	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
-	source "$SCRIPTDIR/pkg/$NAME/build"
-
 	if [ -z "$DEPENDS" ]; then
 		return
 	fi
