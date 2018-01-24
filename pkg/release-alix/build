@@ -1,4 +1,4 @@
-DEPENDS="rootfs-alix linux"
+DEPENDS="rootfs linux"
 
 build() {
 	local SOURCE="$1"

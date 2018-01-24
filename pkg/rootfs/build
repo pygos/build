@@ -10,10 +10,14 @@ build() {
 	mkdir -pv ${BUILD}/{boot,usr,srv,mnt,opt}
 	mkdir -pv ${BUILD}/cfg/{preserve,overlay}
 
-	echo "/lib" > "$BUILD/etc/ld-musl-i386.path"
+	echo "/lib" > "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
+
+	if [ -e "$SCRIPTDIR/cfg/$CFG/LDPATH" ]; then
+		cat "$SCRIPTDIR/cfg/$CFG/LDPATH" >> "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
+	fi
 
 	# install packages to rootfs
-	dependencies "rootfs-alix" "pkg" | grep -v "rootfs-alix" > "$BUILD/etc/packages"
+	dependencies "rootfs" "pkg" | grep -v "rootfs" > "$BUILD/etc/packages"
 	echo "toolchain" >> "$BUILD/etc/packages"
 
 	while read pkgname; do

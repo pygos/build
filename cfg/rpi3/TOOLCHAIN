@@ -1,5 +1,6 @@
 TARGET="arm-linux-musleabihf"
 GCC_CPU="armv6"
+MUSL_CPU="arm"
 
 GCC_EXTRACFG="--with-float=hard --with-fpu=neon-vfpv3"
 
