@@ -31,6 +31,6 @@ deploy() {
 	local DEPLOY="$3"
 
 	pushd "$PKGBUILDDIR" > /dev/null
-	tar czf "${DEPLOY}/release-${CFG}.tar.gz" "release-${CFG}"
+	tar czf "${DEPLOY}/release-${CFG}.tar.gz" "${PKGDIR}-release-${CFG}"
 	popd > /dev/null
 }
