@@ -48,6 +48,8 @@ MOUNTED=1
 mkdir /tmp/mnt.$$/etc /tmp/mnt.$$/etc_work
 mkdir /tmp/mnt.$$/var_lib /tmp/mnt.$$/var_lib_work
 mkdir /tmp/mnt.$$/root /tmp/mnt.$$/root_work
+chmod 750 /tmp/mnt.$$/root /tmp/mnt.$$/root_work
+chown 0:0 /tmp/mnt.$$/root /tmp/mnt.$$/root_work
 umount /tmp/mnt.$$
 MOUNTED=0
 
