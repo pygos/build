@@ -1,0 +1,42 @@
+VERSION="4.5"
+SRCDIR="shadow-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://github.com/shadow-maint/shadow/releases/download/${VERSION}"
+SHA256SUM="fc8c858381ad577a5c25ff5beb6ee60a34f8719c73e4e7c61e74188b4e54b741"
+DEPENDS=""
+
+prepare() {
+	sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+
+	sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
+		-e 's@/var/spool/mail@/var/mail@' etc/login.defs
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin\
+			--disable-man --without-libpam --without-selinux \
+			--with-sha-crypt --with-group-name-max-length=32
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	sed -i -e 's@HOME=/home@HOME=/usr@g' $DEPLOY/etc/default/useradd
+
+	rm -rf "$DEPLOY/share"
+
+	# *hrmpf*
+	if [ -e "$DEPLOY/sbin" ]; then
+		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
+		rmdir ${DEPLOY}/sbin
+	fi
+}
