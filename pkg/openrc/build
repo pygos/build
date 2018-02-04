@@ -1,0 +1,86 @@
+VERSION="0.34.11"
+SRCDIR="openrc-${VERSION}"
+TARBALL="${VERSION}.tar.gz"
+URL="https://github.com/OpenRC/openrc/archive"
+SHA256SUM="4e7b7510c363e99622400feba4b009ec0e0b57dbb99fd4cc678a7b5d2036e00a"
+DEPENDS="ncurses"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	cp -R ${SOURCE}/* ${BUILD}
+
+	for i in ${SCRIPTDIR}/${PKGDIR}/${PKGNAME}/*.patch; do
+		patch -p1 < $i
+	done
+
+	unset -v i
+
+	make CC=${TARGET}-gcc AR=${TARGET}-ar RANLIB=${TARGET}-ranlib \
+		LD=${TARGET}-ld LIBTERMCAP="-lncursesw" \
+		SBINDIR="/bin" INCDIR="/include" LIBNAME="lib" \
+		DESTDIR="$DEPLOY" OS=Linux BRANDING="distroname" \
+		MKNET=no MKSELINUX=no MKSTATICLIBS=no MKSYSVINIT=yes \
+		MKTERMCAP=ncurses UPREFIX="" \
+		-j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make SBINDIR="/bin" INCDIR="/include" LIBNAME="lib" \
+		DESTDIR="$DEPLOY" OS=Linux BRANDING="distroname" UPREFIX="" \
+		install
+
+	mv ${DEPLOY}/include ${DEVDEPLOY}
+	cp -R ${DEPLOY}/lib ${DEVDEPLOY}
+	rm -r ${DEPLOY}/lib/pkgconfig
+	rm ${DEPLOY}/lib/*.a
+	rm -r ${DEPLOY}/share
+	rm -r ${DEPLOY}/etc
+
+	for i in ${DEPLOY}/bin/*; do
+		if [ -f $i ]; then
+			${TARGET}-strip --discard-all $i
+		fi
+	done
+
+	for i in $(find "$DEPLOY/libexec/rc/bin" -type f -print | \
+			xargs file | grep ELF | cut -d: -f1); do
+		${TARGET}-strip --discard-all $i
+	done
+
+	for i in $(find "$DEPLOY/libexec/rc/sbin" -type f -print | \
+			xargs file | grep ELF | cut -d: -f1); do
+		${TARGET}-strip --discard-all $i
+	done
+
+	mkdir -p ${DEPLOY}/etc/{conf.d,init.d,runlevels,sysctl.d}
+	mkdir -p ${DEPLOY}/etc/runlevels/{boot,sysinit,shutdown,default}
+	cp -R "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$DEPLOY"
+
+	source "$SCRIPTDIR/cfg/$CFG/INIT"
+
+	for i in $GETTY_TTY; do
+		cat > "$DEPLOY/etc/conf.d/agetty.$i" << _EOF
+#quiet="yes"
+#baud="38400"
+term_type="linux"
+#agetty_options=""
+_EOF
+
+		ln -s "/etc/init.d/agetty" "$DEPLOY/etc/init.d/agetty.$i"
+		ln -s "/etc/init.d/agetty.$i" "$DEPLOY/etc/runlevels/default/agetty.$i"
+	done
+
+	unset -v i GETTY_TTY
+}
