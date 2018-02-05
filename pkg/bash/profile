@@ -14,7 +14,7 @@ if [ -x /bin/id ]; then
 	LOGNAME=$USER
 fi
 
-HOSTNAME=$(/bin/cat /etc/hostname)
+HOSTNAME=$(/bin/hostname)
 HISTSIZE=1000
 HISTCONTROL=ignoreboth
 PATH=/bin

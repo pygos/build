@@ -14,7 +14,7 @@ build() {
 	local OUTPUT="$2"
 
 	$INPUT/configure --prefix="" --host="$TARGET" --disable-servers \
-			 --disable-dnsdomainname --disable-hostname \
+			 --disable-dnsdomainname --enable-hostname \
 			 --disable-rcp --disable-rexec --disable-rlogin \
 			 --disable-rsh --disable-logger --disable-talk \
 			 --disable-ifconfig
