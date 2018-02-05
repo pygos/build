@@ -27,7 +27,7 @@ build() {
 			--without-systemdsystemunitdir \
 			--disable-makeinstall-chown \
 			--disable-makeinstall-setuid \
-			--disable-agetty \
+			--enable-agetty \
 			--disable-cal \
 			--disable-chmem \
 			--disable-fdformat \
