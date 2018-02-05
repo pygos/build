@@ -59,6 +59,59 @@ bind_mount() {
 	mount --bind /newroot/${1} /newroot/${2}
 }
 
+setup_vfs() {
+	local root=${1}
+
+	mount -t proc proc $root/proc
+	mount -t sysfs sysfs $root/sys
+	mount -t devtmpfs none $root/dev
+
+	# setup /dev
+	[ -e $root/dev/fd ] || ln -snf /proc/self/fd $root/dev/fd
+	[ -e $root/dev/stdin ] || ln -snf /proc/self/fd/0 $root/dev/stdin
+	[ -e $root/dev/stdout ] || ln -snf /proc/self/fd/1 $root/dev/stdout
+	[ -e $root/dev/stderr ] || ln -snf /proc/self/fd/2 $root/dev/stderr
+	[ -e $root/proc/kcore ] && ln -snf /proc/kcore $root/dev/core
+
+	for x in \
+		"mqueue dev/mqueue 1777 ,nodev mqueue" \
+		"devpts dev/pts 0755 ,gid=5,mode=0620 devpts" \
+		"tmpfs dev/shm 1777 ,nodev,mode=1777 shm" \
+	; do
+		set -- $x
+		grep -Eq "[[:space:]]+$1$" /proc/filesystems || continue
+
+		if [ ! -d "$root/$2" ]; then
+			mkdir -m $3 -p "$root/$2" >/dev/null 2>&1 || \
+				echo "Could not create $root/$2!"
+		fi
+
+		if [ -d "$root/$2" ]; then
+			mount -t $1 -o noexec,nosuid$4 $5 "$root/$2"
+		fi
+	done
+
+	# set up additional mounts in /proc and /sys
+	for x in \
+		"sys/kernel/security securityfs nodev,noexec,nosuid" \
+		"sys/kernel/config configfs nodev,noexec,nosuid" \
+		"sys/fs/fuse/connections fusectl nodev,noexec,nosuid" \
+		"sys/firmware/efi/efivars efivarfs ro" \
+		"proc/sys/fs/binfmt_misc binfmt_misc nodev,noexec,nosuid" \
+	; do
+		set -- $x
+
+		if [ -d "$root/$1" ]; then
+			if grep -qs $2 "$root/proc/filesystems"; then
+				echo "Mounting $2 filesystem"
+				mount -n -t $2 -o $3 $2 "$root/$1"
+			fi
+		fi
+	done
+
+	unset -v x
+}
+
 mount ${root} /images
 
 if [ ! -e /images/${root_sfs} ]; then
@@ -68,9 +121,7 @@ if [ ! -e /images/${root_sfs} ]; then
 fi
 
 mount -t squashfs /images/${root_sfs} /newroot
-mount -t devtmpfs none /newroot/dev
-mount -t proc proc /newroot/proc
-mount -t sysfs sysfs /newroot/sys
+setup_vfs "/newroot"
 mount -t tmpfs none /newroot/tmp
 mount -t tmpfs none /newroot/var
 mount -t tmpfs none /newroot/run
