@@ -27,6 +27,7 @@ build() {
 	cp "$SCRIPTDIR/pkg/$PKGNAME/hostname" "$BUILD/etc/hostname"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/hosts" "$BUILD/etc/hosts"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/passwd" "$BUILD/etc/passwd"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/shadow" "$BUILD/etc/shadow"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/group" "$BUILD/etc/group"
 
 	ln -s /proc/self/mounts "$BUILD/etc/mtab"
