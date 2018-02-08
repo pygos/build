@@ -1,0 +1,20 @@
+source "$SCRIPTDIR/pkg/file/build"
+DEPENDS=""
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="$TCDIR" --disable-static \
+			  --build="$HOSTTUPLE" --host="$HOSTTUPLE"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make install
+}
