@@ -162,4 +162,6 @@ umount /proc
 
 unset -v singleuser overlay_dev root root_sfs
 
-exec /bin/busybox switch_root /newroot /bin/bash --login
+/bin/busybox chroot /newroot /bin/openrc
+
+exec /bin/busybox switch_root /newroot /bin/openrc-init
