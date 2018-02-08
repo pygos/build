@@ -1,0 +1,42 @@
+VERSION="3.3.12"
+SRCDIR="procps-ng-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://sourceforge.net/projects/procps-ng/files/Production"
+SHA256SUM="6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4"
+DEPENDS="ncurses"
+
+prepare() {
+	local PKGSCRIPTDIR="$1"
+
+	for PATCH in ${PKGSCRIPTDIR}/*.patch; do
+		patch -p1 < $PATCH
+	done
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	ac_cv_func_malloc_0_nonnull=yes \
+	ac_cv_func_realloc_0_nonnull=yes \
+	$INPUT/configure --prefix="" --host="$TARGET" --disable-static \
+			--enable-watch8bit --with-ncurses --without-systemd \
+			--disable-kill --sbindir=/bin
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm ${DEPLOY}/lib/*.la
+	mv "$DEPLOY/include" "$DEVDEPLOY"
+	cp -R "$DEPLOY/lib" "$DEVDEPLOY"
+	rm -r "$DEPLOY/lib/pkgconfig"
+	rm -r "$DEPLOY/share"
+}

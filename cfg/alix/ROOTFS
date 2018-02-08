@@ -20,3 +20,4 @@ unbound
 dnsmasq
 shadow
 openrc
+procps-ng

@@ -1,0 +1,156 @@
+--- a/configure
++++ b/configure
+@@ -16818,12 +16818,12 @@ if test -n "$NCURSES_CFLAGS"; then
+     pkg_cv_NCURSES_CFLAGS="$NCURSES_CFLAGS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"ncurses\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "ncurses") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"ncursesw\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "ncursesw") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_NCURSES_CFLAGS=`$PKG_CONFIG --cflags "ncurses" 2>/dev/null`
++  pkg_cv_NCURSES_CFLAGS=`$PKG_CONFIG --cflags "ncursesw" 2>/dev/null`
+ 		      test "x$?" != "x0" && pkg_failed=yes
+ else
+   pkg_failed=yes
+@@ -16835,12 +16835,12 @@ if test -n "$NCURSES_LIBS"; then
+     pkg_cv_NCURSES_LIBS="$NCURSES_LIBS"
+  elif test -n "$PKG_CONFIG"; then
+     if test -n "$PKG_CONFIG" && \
+-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"ncurses\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "ncurses") 2>&5
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"ncursesw\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "ncursesw") 2>&5
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-  pkg_cv_NCURSES_LIBS=`$PKG_CONFIG --libs "ncurses" 2>/dev/null`
++  pkg_cv_NCURSES_LIBS=`$PKG_CONFIG --libs "ncursesw" 2>/dev/null`
+ 		      test "x$?" != "x0" && pkg_failed=yes
+ else
+   pkg_failed=yes
+@@ -16861,21 +16861,21 @@ else
+         _pkg_short_errors_supported=no
+ fi
+         if test $_pkg_short_errors_supported = yes; then
+-	        NCURSES_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "ncurses" 2>&1`
++	        NCURSES_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "ncursesw" 2>&1`
+         else
+-	        NCURSES_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "ncurses" 2>&1`
++	        NCURSES_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "ncursesw" 2>&1`
+         fi
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$NCURSES_PKG_ERRORS" >&5
+ 
+ 
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for initscr in -lncurses" >&5
+-$as_echo_n "checking for initscr in -lncurses... " >&6; }
+-if ${ac_cv_lib_ncurses_initscr+:} false; then :
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for initscr in -lncursesw" >&5
++$as_echo_n "checking for initscr in -lncursesw... " >&6; }
++if ${ac_cv_lib_ncursesw_initscr+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lncurses  $LIBS"
++LIBS="-lncursesw  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -16895,23 +16895,23 @@ return initscr ();
+ }
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_lib_ncurses_initscr=yes
++  ac_cv_lib_ncursesw_initscr=yes
+ else
+-  ac_cv_lib_ncurses_initscr=no
++  ac_cv_lib_ncursesw_initscr=no
+ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ncurses_initscr" >&5
+-$as_echo "$ac_cv_lib_ncurses_initscr" >&6; }
+-if test "x$ac_cv_lib_ncurses_initscr" = xyes; then :
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ncursesw_initscr" >&5
++$as_echo "$ac_cv_lib_ncursesw_initscr" >&6; }
++if test "x$ac_cv_lib_ncursesw_initscr" = xyes; then :
+   have_ncurses=yes
+ else
+   have_ncurses=no
+ fi
+ 
+-    for ac_header in curses.h ncurses.h term.h
++    for ac_header in curses.h ncursesw.h term.h
+ do :
+   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
+@@ -16930,19 +16930,19 @@ done
+     if test "x$have_ncurses" = xno; then
+       as_fn_error $? "ncurses support missing/incomplete (for partial build use --without-ncurses)" "$LINENO" 5
+     fi
+-    NCURSES_LIBS="-lncurses"
++    NCURSES_LIBS="-lncursesw"
+ 
+ elif test $pkg_failed = untried; then
+      	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+ 
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for initscr in -lncurses" >&5
+-$as_echo_n "checking for initscr in -lncurses... " >&6; }
+-if ${ac_cv_lib_ncurses_initscr+:} false; then :
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for initscr in -lncursesw" >&5
++$as_echo_n "checking for initscr in -lncursesw... " >&6; }
++if ${ac_cv_lib_ncursesw_initscr+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lncurses  $LIBS"
++LIBS="-lncursesw  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -16962,23 +16962,23 @@ return initscr ();
+ }
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"; then :
+-  ac_cv_lib_ncurses_initscr=yes
++  ac_cv_lib_ncursesw_initscr=yes
+ else
+-  ac_cv_lib_ncurses_initscr=no
++  ac_cv_lib_ncursesw_initscr=no
+ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ncurses_initscr" >&5
+-$as_echo "$ac_cv_lib_ncurses_initscr" >&6; }
+-if test "x$ac_cv_lib_ncurses_initscr" = xyes; then :
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ncursesw_initscr" >&5
++$as_echo "$ac_cv_lib_ncursesw_initscr" >&6; }
++if test "x$ac_cv_lib_ncursesw_initscr" = xyes; then :
+   have_ncurses=yes
+ else
+   have_ncurses=no
+ fi
+ 
+-    for ac_header in curses.h ncurses.h term.h
++    for ac_header in curses.h ncursesw.h term.h
+ do :
+   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
+@@ -16997,7 +16997,7 @@ done
+     if test "x$have_ncurses" = xno; then
+       as_fn_error $? "ncurses support missing/incomplete (for partial build use --without-ncurses)" "$LINENO" 5
+     fi
+-    NCURSES_LIBS="-lncurses"
++    NCURSES_LIBS="-lncursesw"
+ 
+ else
+ 	NCURSES_CFLAGS=$pkg_cv_NCURSES_CFLAGS
