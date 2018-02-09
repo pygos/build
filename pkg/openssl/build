@@ -13,14 +13,10 @@ build() {
 	local SOURCE="$1"
 	local BUILD="$2"
 
-	source "$SCRIPTDIR/board/$BOARD/OPENSSL"
-
 	$SOURCE/Configure --prefix=/ --cross-compile-prefix="${TARGET}-" \
 			  --openssldir=/etc/ssl --libdir=/lib \
 			  -DOPENSSL_NO_HEARTBEATS \
 			  threads shared zlib-dynamic no-async $OPENSSL_TARGET
-
-	unset -v OPENSSL_TARGET
 
 	make -j 1
 }

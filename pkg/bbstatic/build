@@ -14,18 +14,17 @@ build() {
 	local OUTPUT="$2"
 
 	local CFGFILE="$SCRIPTDIR/board/$BOARD/bbstatic.config"
-	local BB_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
 	local SYSROOT="$TCDIR/$TARGET"
 
 	cp "$CFGFILE" "$OUTPUT/.config"
 
 	export KBUILD_OUTPUT="$OUTPUT"
 
-	make -C "$INPUT" O="$OUTPUT" ARCH="$BB_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
+	make -C "$INPUT" O="$OUTPUT" CROSS_COMPILE="${TARGET}-" oldconfig
 	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
 	sed -i "$OUTPUT/.config" -e 's,^CONFIG_SYSROOT=.*,CONFIG_SYSROOT="'$SYSROOT'",'
 
-	make -C "$INPUT" O="$OUTPUT" ARCH="$BB_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS
+	make -C "$INPUT" O="$OUTPUT" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS
 }
 
 deploy() {

@@ -18,8 +18,6 @@ build() {
 	local OUTPUT="$2"
 
 	local CFGFILE="$SCRIPTDIR/board/$BOARD/linux.config"
-	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
-	local LINUX_TGT=$(head -2 "$CFGFILE" | tail -1 | cut -b 3-)
 	local INITRDLIST="$PKGDEPLOYDIR/initrd/initrd.list"
 
 	export KBUILD_OUTPUT="$OUTPUT"
@@ -37,10 +35,6 @@ deploy() {
 	local SOURCE="$1"
 	local BUILD="$2"
 	local DEPLOY="$3"
-
-	local CFGFILE="$SCRIPTDIR/board/$BOARD/linux.config"
-	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
-	local LINUX_TGT=$(head -2 "$CFGFILE" | tail -1 | cut -b 3-)
 
 	pushd $BUILD
 	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/vmlinuz-$VERSION"

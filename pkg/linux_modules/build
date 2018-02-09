@@ -7,7 +7,6 @@ build() {
 	local OUTPUT="$2"
 
 	local CFGFILE="$SCRIPTDIR/board/$BOARD/linux.config"
-	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
 
 	export KBUILD_OUTPUT="$OUTPUT"
 	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" mrproper
@@ -24,7 +23,6 @@ deploy() {
 	local DEPLOY="$3"
 
 	local CFGFILE="$SCRIPTDIR/board/$BOARD/linux.config"
-	local LINUX_CPU=$(head -1 "$CFGFILE" | cut -b 3-)
 
 	mkdir -p "$DEPLOY/lib/modules"
 

@@ -5,3 +5,6 @@ MUSL_CPU="i386"
 GCC_EXTRACFG="--disable-libmpx --disable-libssp"
 
 LINUXPKG="linux"
+LINUX_CPU="x86"
+LINUX_TGT="bzImage"
+OPENSSL_TARGET="linux-generic32 386"
