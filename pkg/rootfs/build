@@ -7,7 +7,7 @@ build() {
 
 	# setup skeleton
 	mkdir -pv ${BUILD}/{bin,lib,etc,dev,sys,proc,tmp,var,run}
-	mkdir -pv ${BUILD}/{boot,usr,srv,mnt,opt,root}
+	mkdir -pv ${BUILD}/{boot,usr,srv,mnt,opt}
 	mkdir -pv ${BUILD}/cfg/{preserve,overlay}
 
 	echo "/lib" > "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
@@ -16,21 +16,7 @@ build() {
 		cat "$SCRIPTDIR/cfg/$CFG/LDPATH" >> "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
 	fi
 
-	chmod 750 "$BUILD/root"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/bash_profile" "$BUILD/root/.bash_profile"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/bashrc" "$BUILD/root/.bashrc"
-
-	mkdir -pv ${BUILD}/etc/skel
-	cp "$SCRIPTDIR/pkg/$PKGNAME/bash_profile" "$BUILD/etc/skel/.bash_profile"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/bashrc" "$BUILD/etc/skel/.bashrc"
-
-	cp "$SCRIPTDIR/pkg/$PKGNAME/hostname" "$BUILD/etc/hostname"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/hosts" "$BUILD/etc/hosts"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/passwd" "$BUILD/etc/passwd"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/shadow" "$BUILD/etc/shadow"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/group" "$BUILD/etc/group"
-
-	ln -s /proc/self/mounts "$BUILD/etc/mtab"
+	cp -r "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$BUILD"
 
 	# install packages to rootfs
 	dependencies | tsort | tac | grep -v "$PKGNAME" > "$BUILD/etc/packages"
@@ -43,6 +29,10 @@ build() {
 
 		cp -ru --remove-destination ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD"
 	done < "$BUILD/etc/packages"
+
+	# setup root home directory
+	cp -r "$BUILD/etc/skel" "$BUILD/root"
+	chmod 750 "$BUILD/root"
 
 	# move configuration to preserve directory
 	mv ${BUILD}/etc ${BUILD}/cfg/preserve

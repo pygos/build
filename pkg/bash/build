@@ -39,7 +39,5 @@ deploy() {
 	mv "$DEPLOY/lib" "$DEVDEPLOY"
 	mv "$DEPLOY/include" "$DEVDEPLOY"
 
-	mkdir -p "$DEPLOY/etc/"
-	cp "$SCRIPTDIR/pkg/bash/bashrc" "$DEPLOY/etc/"
-	cp "$SCRIPTDIR/pkg/bash/profile" "$DEPLOY/etc/"
+	cp -r "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$DEPLOY"
 }
