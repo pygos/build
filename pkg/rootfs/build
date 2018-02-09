@@ -1,4 +1,4 @@
-DEPENDS=$(cat "$SCRIPTDIR/cfg/$CFG/ROOTFS")
+DEPENDS=$(cat "$SCRIPTDIR/board/$BOARD/ROOTFS")
 
 build() {
 	local SOURCE="$1"
@@ -12,8 +12,8 @@ build() {
 
 	echo "/lib" > "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
 
-	if [ -e "$SCRIPTDIR/cfg/$CFG/LDPATH" ]; then
-		cat "$SCRIPTDIR/cfg/$CFG/LDPATH" >> "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
+	if [ -e "$SCRIPTDIR/board/$BOARD/LDPATH" ]; then
+		cat "$SCRIPTDIR/board/$BOARD/LDPATH" >> "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
 	fi
 
 	cp -r "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$BUILD"

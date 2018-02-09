@@ -15,9 +15,9 @@ build() {
 	done
 
 	# copy files from this package
-	cp "$SCRIPTDIR/pkg/release-${CFG}/cmdline.txt" "$BUILD/boot"
-	cp "$SCRIPTDIR/pkg/release-${CFG}/install.sh" "$BUILD"
-	cp "$SCRIPTDIR/pkg/release-${CFG}/genimage.sh" "$BUILD"
+	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/cmdline.txt" "$BUILD/boot"
+	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/install.sh" "$BUILD"
+	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/genimage.sh" "$BUILD"
 
 	# substitute file names in scripts
 	local rootfs_image="rootfs.img"
@@ -31,6 +31,6 @@ deploy() {
 	local DEPLOY="$3"
 
 	pushd "$PKGBUILDDIR" > /dev/null
-	tar czf "${DEPLOY}/release-${CFG}.tar.gz" "${PKGDIR}-release-${CFG}"
+	tar czf "$DEPLOY/$PKGNAME.tar.gz" "${PKGDIR}-${PKGNAME}"
 	popd > /dev/null
 }

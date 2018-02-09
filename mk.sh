@@ -7,7 +7,7 @@ if [ ! $# -eq 1 ]; then
 	exit 1
 fi
 
-CFG="$1"
+BOARD="$1"
 
 ################################ basic setup ################################
 BUILDROOT=$(pwd)
@@ -15,20 +15,20 @@ SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 NUMJOBS=$(grep -e "^processor" /proc/cpuinfo | wc -l)
 HOSTTUPLE=$(uname -m)-$OSTYPE
 
-TCDIR="$BUILDROOT/$CFG/toolchain"
-PKGBUILDDIR="$BUILDROOT/$CFG/build"
+TCDIR="$BUILDROOT/$BOARD/toolchain"
+PKGBUILDDIR="$BUILDROOT/$BOARD/build"
 PKGSRCDIR="$BUILDROOT/src"
-PKGDEPLOYDIR="$BUILDROOT/$CFG/deploy"
-PKGLOGDIR="$BUILDROOT/$CFG/log"
+PKGDEPLOYDIR="$BUILDROOT/$BOARD/deploy"
+PKGLOGDIR="$BUILDROOT/$BOARD/log"
 PKGDOWNLOADDIR="$BUILDROOT/download"
-PACKAGELIST="$BUILDROOT/$CFG/pkglist"
+PACKAGELIST="$BUILDROOT/$BOARD/pkglist"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGBUILDDIR" "$PKGLOGDIR"
 mkdir -p "$PKGDEPLOYDIR" "$TCDIR/bin"
 
 export PATH="$TCDIR/bin:$PATH"
 
-source "$SCRIPTDIR/cfg/$CFG/TOOLCHAIN"
+source "$SCRIPTDIR/board/$BOARD/TOOLCHAIN"
 
 mkdir -p "$TCDIR/$TARGET"
 
@@ -72,7 +72,7 @@ save_toolchain
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-include_pkg "pkg" "release-${CFG}"
+include_pkg "pkg" "release-${BOARD}"
 dependencies | tsort | tac > "$PACKAGELIST"
 cat "$PACKAGELIST"
 

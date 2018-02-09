@@ -5,8 +5,6 @@ URL="https://www.openssl.org/source"
 SHA256SUM="de4d501267da39310905cb6dc8c6121f7a2cad45a7707f76df828fe1b85073af"
 DEPENDS="zlib"
 
-source "$SCRIPTDIR/cfg/$CFG/OPENSSL"
-
 prepare() {
 	return
 }
@@ -15,10 +13,14 @@ build() {
 	local SOURCE="$1"
 	local BUILD="$2"
 
+	source "$SCRIPTDIR/board/$BOARD/OPENSSL"
+
 	$SOURCE/Configure --prefix=/ --cross-compile-prefix="${TARGET}-" \
 			  --openssldir=/etc/ssl --libdir=/lib \
 			  -DOPENSSL_NO_HEARTBEATS \
 			  threads shared zlib-dynamic no-async $OPENSSL_TARGET
+
+	unset -v OPENSSL_TARGET
 
 	make -j 1
 }

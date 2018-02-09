@@ -19,7 +19,7 @@ build() {
 	cp "/usr/share/syslinux/mbr.bin" "$BUILD"
 
 	for script in install.sh genimage.sh syslinux.cfg; do
-		cp "$SCRIPTDIR/pkg/release-${CFG}/$script" "$BUILD"
+		cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/$script" "$BUILD"
 
 		sed -i 's/ROOTFSFILE/'$rootfs_image'/g' "$BUILD/$script"
 		sed -i 's/KERNELFILE/'$linux_image'/g' "$BUILD/$script"
@@ -32,6 +32,6 @@ deploy() {
 	local DEPLOY="$3"
 
 	pushd "$PKGBUILDDIR" > /dev/null
-	tar czf "${DEPLOY}/release-${CFG}.tar.gz" "${PKGDIR}-release-${CFG}"
+	tar czf "$DEPLOY/$PKGNAME.tar.gz" "${PKGDIR}-${PKGNAME}"
 	popd > /dev/null
 }
