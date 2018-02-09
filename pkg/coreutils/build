@@ -6,11 +6,7 @@ SHA256SUM="1117b1a16039ddd84d51a9923948307cfa28c2cea03d1a2438742253df0a0c65"
 DEPENDS=""
 
 prepare() {
-	local PKGSCRIPTDIR="$1"
-
-	for PATCH in ${PKGSCRIPTDIR}/*.patch; do
-		patch -p1 < $PATCH
-	done
+	apply_patches
 }
 
 build() {

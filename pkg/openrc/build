@@ -16,11 +16,7 @@ build() {
 
 	cp -R ${SOURCE}/* ${BUILD}
 
-	for i in ${SCRIPTDIR}/${PKGDIR}/${PKGNAME}/*.patch; do
-		patch -p1 < $i
-	done
-
-	unset -v i
+	apply_patches
 
 	make CC=${TARGET}-gcc AR=${TARGET}-ar RANLIB=${TARGET}-ranlib \
 		LD=${TARGET}-ld LIBTERMCAP="-lncursesw" \

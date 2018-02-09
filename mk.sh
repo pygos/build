@@ -40,6 +40,7 @@ source "$SCRIPTDIR/util/download.sh"
 source "$SCRIPTDIR/util/pkgcmd.sh"
 source "$SCRIPTDIR/util/toolchain.sh"
 source "$SCRIPTDIR/util/cmake.sh"
+source "$SCRIPTDIR/util/misc.sh"
 
 ############################## build toolchain ###############################
 echo "--- resolving toolchain dependencies ---"

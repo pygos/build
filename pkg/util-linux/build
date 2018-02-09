@@ -6,11 +6,7 @@ SHA256SUM="f9be7cdcf4fc5c5064a226599acdda6bdf3d86c640152ba01ea642d91108dc8a"
 DEPENDS="bash ncurses zlib"
 
 prepare() {
-	local PKGSCRIPTDIR="$1"
-
-	for PATCH in ${PKGSCRIPTDIR}/*.patch; do
-		patch -p1 < $PATCH
-	done
+	apply_patches
 }
 
 build() {
