@@ -32,6 +32,5 @@ deploy() {
 	rm ${DEPLOY}/lib/*.la
 	rm -r "$DEPLOY/share"
 
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

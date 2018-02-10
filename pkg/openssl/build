@@ -29,12 +29,9 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
-
 	rm "$DEPLOY/bin/c_rehash"
 	rm -r "$DEPLOY/etc/ssl/misc"
 	rm -r "$DEPLOY/share"
-	rm -r "$DEPLOY/lib/pkgconfig"
-	rm ${DEPLOY}/lib/*.a
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

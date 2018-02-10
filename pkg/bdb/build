@@ -38,8 +38,7 @@ deploy() {
 	done
 
 	rm -r "$DEPLOY/docs"
-
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
 	rm ${DEPLOY}/lib/*.la
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

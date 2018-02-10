@@ -33,12 +33,7 @@ deploy() {
 	rm -r "$DEPLOY/share/man"
 	rm "$DEPLOY/bin/ncursesw6-config"
 
-	mkdir -p "$DEVDEPLOY/lib"
-
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
-	rm ${DEPLOY}/lib/*.a
-	rm -r "$DEPLOY/lib/pkgconfig"
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 
 	mkdir -p "${DEVDEPLOY}/include/ncurses"
 
@@ -53,9 +48,7 @@ deploy() {
 
 	ln -s "libncursesw.so.$VERSION" "$DEPLOY/lib/libtinfo.so"
 	ln -s "libncursesw.so.$VERSION" "$DEPLOY/lib/libtinfo.so.$VERSION"
-	ln -s "libncursesw.so.$VERSION" "$DEVDEPLOY/lib/libtinfo.so"
-	ln -s "libncursesw.so.$VERSION" "$DEVDEPLOY/lib/libtinfo.so.$VERSION"
-	ln -s "libncursesw.a.$VERSION" "$DEVDEPLOY/lib/libtinfo.a"
+	ln -s "libncursesw.a" "$DEVDEPLOY/lib/libtinfo.a"
 
 	# only keep relevant terminfo files
 	local olddir="$DEPLOY/share/terminfo.old"

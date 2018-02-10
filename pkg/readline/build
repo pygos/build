@@ -26,8 +26,7 @@ deploy() {
 
 	make SHLIB_LIBS="-lncursesw" DESTDIR="$DEPLOY" install
 
-	mv "$DEPLOY/include" "$DEVDEPLOY"
 	rm -r "$DEPLOY/share"
 
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY/"
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

@@ -28,13 +28,12 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
-	rm -r "$DEPLOY/lib/pkgconfig"
 	rm -r "$DEPLOY/share/man"
 	rm -r ${DEPLOY}/lib/*.la
 
 	for target in depmod insmod lsmod modinfo modprobe rmmod; do
 		ln -sf kmod $DEPLOY/bin/$target
 	done
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

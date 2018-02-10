@@ -29,8 +29,5 @@ deploy() {
 	rm -r "$DEPLOY/share"
 	rm ${DEPLOY}/lib/*.la
 
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
-
-	rm -r "$DEPLOY/lib/pkgconfig"
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

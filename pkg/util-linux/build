@@ -59,11 +59,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	cp -r "$DEPLOY/lib" "$DEVDEPLOY"
-	mv "$DEPLOY/include" "$DEVDEPLOY"
-
 	rm -r "$DEPLOY/share/man"
-	rm -r "$DEPLOY/lib/pkgconfig"
 	rm -r "$DEPLOY/share/doc"
 	rm -r ${DEPLOY}/lib/*.la
 
@@ -84,4 +80,6 @@ deploy() {
 			rm "$path"
 		fi
 	done
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

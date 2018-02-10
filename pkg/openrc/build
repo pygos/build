@@ -37,10 +37,8 @@ deploy() {
 		DESTDIR="$DEPLOY" OS=Linux BRANDING="distroname" UPREFIX="" \
 		install
 
-	mv ${DEPLOY}/include ${DEVDEPLOY}
-	cp -R ${DEPLOY}/lib ${DEVDEPLOY}
-	rm -r ${DEPLOY}/lib/pkgconfig
-	rm ${DEPLOY}/lib/*.a
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+
 	rm -r ${DEPLOY}/share
 	rm -r ${DEPLOY}/etc
 

@@ -31,13 +31,10 @@ deploy() {
 
 	ln -sv bash "$DEPLOY/bin/sh"
 
-	rm -r "$DEPLOY/share/doc"
-	rm -r "$DEPLOY/share/info"
-	rm -r "$DEPLOY/share/man"
-	rm -r "$DEPLOY/share/locale"
-
-	mv "$DEPLOY/lib" "$DEVDEPLOY"
-	mv "$DEPLOY/include" "$DEVDEPLOY"
+	rm -r "$DEPLOY/share"
+	rm "$DEPLOY/bin/bashbug"
 
 	cp -r "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$DEPLOY"
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

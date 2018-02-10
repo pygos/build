@@ -26,8 +26,6 @@ deploy() {
 
 	make PREFIX="$DEPLOY" install
 
-	mv $DEPLOY/include $DEVDEPLOY
-	mv $DEPLOY/lib $DEVDEPLOY
 	rm -r $DEPLOY/man
 
 	${TARGET}-strip --discard-all ${DEPLOY}/bin/bunzip2
@@ -44,4 +42,6 @@ deploy() {
 	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzfgrep"
 	ln -s "/bin/bzmore" "$DEPLOY/bin/bzless"
 	ln -s "/bin/bzdiff" "$DEPLOY/bin/bzcmp"
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
