@@ -1,8 +1,8 @@
-VERSION="6.0"
+VERSION="6.1"
 SRCDIR="ncurses-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/ncurses/"
-SHA256SUM="f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260"
+SHA256SUM="aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17"
 DEPENDS=""
 
 prepare() {
@@ -17,7 +17,7 @@ build() {
 			--with-shared --without-debug \
 			--without-ada --enable-widec \
 			--with-pkg-config-libdir=/lib/pkgconfig \
-			--enable-pc-files
+			--enable-pc-files --disable-stripping
 
 	make -j $NUMJOBS
 }
@@ -32,6 +32,12 @@ deploy() {
 
 	rm -r "$DEPLOY/share/man"
 	rm "$DEPLOY/bin/ncursesw6-config"
+
+	for i in ${DEPLOY}/bin/*; do
+		${TARGET}-strip --discard-all $i
+	done
+
+	unset -v i
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 

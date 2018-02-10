@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -4,20 +4,20 @@ ifeq ($(VERBOSE),0)
+@@ -12,20 +12,20 @@ ifeq ($(VERBOSE),0)
  MAKEFLAGS += --no-print-directory
  endif
  

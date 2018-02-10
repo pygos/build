@@ -1,8 +1,8 @@
-VERSION="3210000"
+VERSION="3220000"
 SRCDIR="sqlite-autoconf-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
-URL="https://sqlite.org/2017/"
-SHA256SUM="d7dd516775005ad87a57f428b6f86afd206cb341722927f104d3f0cf65fbbbe3"
+URL="https://sqlite.org/2018/"
+SHA256SUM="2824ab1238b706bc66127320afbdffb096361130e23291f26928a027b885c612"
 DEPENDS="readline"
 
 prepare() {

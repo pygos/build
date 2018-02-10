@@ -1,0 +1,24 @@
+--- a/include/bsd/stdlib.h
++++ b/include/bsd/stdlib.h
+@@ -67,9 +67,6 @@ int sradixsort(const unsigned char **base, int nmemb,
+                const unsigned char *table, unsigned endbyte);
+ 
+ void *reallocf(void *ptr, size_t size);
+-#if defined(_GNU_SOURCE) && defined(__GLIBC__) && !__GLIBC_PREREQ(2, 26)
+-void *reallocarray(void *ptr, size_t nmemb, size_t size);
+-#endif
+ 
+ long long strtonum(const char *nptr, long long minval, long long maxval,
+                    const char **errstr);
+--- a/include/bsd/string.h
++++ b/include/bsd/string.h
+@@ -42,9 +42,6 @@ size_t strlcat(char *dst, const char *src, size_t siz);
+ char *strnstr(const char *str, const char *find, size_t str_len);
+ void strmode(mode_t mode, char *str);
+ 
+-#if defined(_GNU_SOURCE) && defined(__GLIBC__) && !__GLIBC_PREREQ(2, 25)
+-void explicit_bzero(void *buf, size_t len);
+-#endif
+ __END_DECLS
+ 
+ #endif
