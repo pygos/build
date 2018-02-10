@@ -1,8 +1,8 @@
-VERSION="3.1.4"
+VERSION="4.0.1"
 SRCDIR="mpfr-$VERSION"
-TARBALL="mpfr-$VERSION.tar.bz2"
+TARBALL="mpfr-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/mpfr"
-SHA256SUM="d3103a80cdad2407ed581f3618c4bed04e0c92d1cf771a65ead662cc397f7775"
+SHA256SUM="67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e"
 DEPENDS=""
 
 prepare() {
