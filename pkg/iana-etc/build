@@ -1,0 +1,24 @@
+VERSION="1"
+SRCDIR="iana-etc-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="1d38d5d90fa04e6f2cca46aad575d1b1c63d9443150abf66fe4dfaf0409358c2"
+DEPENDS=""
+
+prepare() {
+	return
+}
+
+build() {
+	return
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	mkdir -p "$DEPLOY/etc"
+	cp "$SOURCE/protocols" "$DEPLOY/etc"
+	cp "$SOURCE/services" "$DEPLOY/etc"
+}
