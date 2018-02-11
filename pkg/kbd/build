@@ -1,0 +1,39 @@
+VERSION="2.0.4"
+SRCDIR="kbd-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://www.kernel.org/pub/linux/utils/kbd"
+SHA256SUM="5fd90af6beb225a9bb9b9fb414c090fba53c9a55793e172f508cd43652e59a88"
+DEPENDS=""
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" \
+			  --disable-tests --enable-optional-progs \
+			  --enable-libkeymap --disable-vlock
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm ${DEPLOY}/lib/*.la
+	rm -r ${DEPLOY}/share/man
+
+	if [ -e ${DEPLOY}/share/doc ]; then
+		rm -r ${DEPLOY}/share/doc
+	fi
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+}
