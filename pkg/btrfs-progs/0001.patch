@@ -1,0 +1,12 @@
+diff --git a/mkfs/main.c.old b/mkfs/main.c
+index ea65c6d..79f985c 100644
+--- a/mkfs/main.c.old
++++ b/mkfs/main.c
+@@ -31,6 +31,7 @@
+ #include <uuid/uuid.h>
+ #include <ctype.h>
+ #include <blkid/blkid.h>
++#include <limits.h>
+ #include "ctree.h"
+ #include "disk-io.h"
+ #include "volumes.h"

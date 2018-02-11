@@ -1,0 +1,45 @@
+VERSION="4.15"
+SRCDIR="btrfs-progs-v${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs"
+SHA256SUM="9e3528c60c76970b73297ea4b01bdc23a70c39c82d540b61cf07a7c0612339e9"
+DEPENDS="util-linux zlib lzo"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	cp -r ${SOURCE}/* ${BUILD}
+
+	apply_patches
+
+	./configure --prefix="" --host="$TARGET" --sbindir=/bin \
+		    --disable-documentation --disable-convert \
+		    --disable-zstd --disable-backtrace
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install
+
+	# just some script that tells you to use a different command
+	rm "$DEPLOY/bin/fsck.btrfs"
+
+	for i in ${DEPLOY}/bin/*; do
+		${TARGET}-strip --discard-all $i
+	done
+
+	unset -v i
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+}
