@@ -28,3 +28,4 @@ psmisc
 file
 iana-etc
 btrfs-progs
+dosfstools

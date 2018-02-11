@@ -1,0 +1,30 @@
+VERSION="4.1"
+SRCDIR="dosfstools-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://github.com/dosfstools/dosfstools/releases/download/v${VERSION}"
+SHA256SUM="e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173"
+DEPENDS=""
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin \
+			  --disable-compat-symlinks --without-udev
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+	rm -r "$DEPLOY/share"
+}
