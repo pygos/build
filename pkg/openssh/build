@@ -1,0 +1,46 @@
+VERSION="7.6p1"
+SRCDIR="openssh-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable"
+SHA256SUM="a323caeeddfe145baaa0db16e98d784b1fbc7dd436a6bf1f479dfd5cd1d21723"
+DEPENDS="openssl zlib"
+
+prepare() {
+	apply_patches
+}
+
+build() {
+	local SOURCE="$1"
+	local BUILD="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin \
+			  --with-pie --without-pam --without-stackprotect \
+			  --without-selinux --disable-strip \
+			  --with-sandbox=seccomp_filter \
+			  --with-privsep-path=/var/lib/sshd
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+
+	make DESTDIR="$DEPLOY" install
+
+	mkdir -p "$DEPLOY/var/lib/sshd"
+	chmod 700 "$DEPLOY/var/lib/sshd"
+
+	rm -r "$DEPLOY/share"
+
+	for i in ${DEPLOY}/bin/* ${DEPLOY}/libexec/*; do
+		if [ -f $i ]; then
+			${TARGET}-strip --discard-all $i
+		fi
+	done
+
+	unset -v i
+
+	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$DEPLOY/bin"
+}

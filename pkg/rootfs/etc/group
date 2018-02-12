@@ -20,4 +20,5 @@ render:x:18:
 wheel:x:19:
 input:x:24:
 mail:x:34:
+sshd:x:50:
 nogroup:x:99:

@@ -30,3 +30,4 @@ iana-etc
 btrfs-progs
 dosfstools
 kbd
+openssh
