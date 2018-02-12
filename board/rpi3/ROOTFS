@@ -31,3 +31,4 @@ btrfs-progs
 dosfstools
 kbd
 openssh
+nftables

@@ -27,3 +27,4 @@ iana-etc
 btrfs-progs
 dosfstools
 openssh
+nftables
