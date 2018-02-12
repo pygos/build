@@ -1,0 +1,32 @@
+VERSION="1.0.9"
+SRCDIR="libnftnl-${VERSION}"
+TARBALL="${SRCDIR}.tar.bz2"
+URL="https://netfilter.org/projects/libnftnl/files"
+SHA256SUM="fec1d824aee301e59a11aeaae2a2d429cb99ead81e6bafab791a4dd6569b3635"
+DEPENDS="libmnl"
+
+prepare() {
+	return
+}
+
+build() {
+	local INPUT="$1"
+	local OUTPUT="$2"
+
+	$INPUT/configure --prefix="" --host="$TARGET"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	rm ${DEPLOY}/lib/*.la
+
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+}
