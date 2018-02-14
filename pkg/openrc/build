@@ -14,6 +14,8 @@ build() {
 	local BUILD="$2"
 	local DEPLOY="$3"
 
+	local distroname="${OS_NAME}-${OS_RELEASE}"
+
 	cp -R ${SOURCE}/* ${BUILD}
 
 	apply_patches
@@ -21,7 +23,7 @@ build() {
 	make CC=${TARGET}-gcc AR=${TARGET}-ar RANLIB=${TARGET}-ranlib \
 		LD=${TARGET}-ld LIBTERMCAP="-lncursesw" \
 		SBINDIR="/bin" INCDIR="/include" LIBNAME="lib" \
-		DESTDIR="$DEPLOY" OS=Linux BRANDING="distroname" \
+		DESTDIR="$DEPLOY" OS=Linux BRANDING="$distroname" \
 		MKNET=no MKSELINUX=no MKSTATICLIBS=no MKSYSVINIT=yes \
 		MKTERMCAP=ncurses UPREFIX="" \
 		-j $NUMJOBS
@@ -33,8 +35,10 @@ deploy() {
 	local DEPLOY="$3"
 	local DEVDEPLOY="$4"
 
+	local distroname="${OS_NAME}-${OS_RELEASE}"
+
 	make SBINDIR="/bin" INCDIR="/include" LIBNAME="lib" \
-		DESTDIR="$DEPLOY" OS=Linux BRANDING="distroname" UPREFIX="" \
+		DESTDIR="$DEPLOY" OS=Linux BRANDING="$distroname" UPREFIX="" \
 		install
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"

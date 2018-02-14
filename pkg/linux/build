@@ -28,6 +28,7 @@ build() {
 	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
 	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
 	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
 	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS $LINUX_TGT
 }
 
@@ -37,6 +38,6 @@ deploy() {
 	local DEPLOY="$3"
 
 	pushd $BUILD
-	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/vmlinuz-$VERSION"
+	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/vmlinuz"
 	popd
 }

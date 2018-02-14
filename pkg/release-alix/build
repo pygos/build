@@ -5,24 +5,27 @@ build() {
 	local BUILD="$2"
 	local DEPLOY="$3"
 
+	mkdir -p "$BUILD/$OS_RELEASE"
+
 	# copy output of immediate dependencies
 	for pkgname in $DEPENDS; do
 		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
-			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD"
+			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD/$OS_RELEASE"
 		fi
 	done
 
 	# copy additional files from this package, subsitute filenames
-	local linux_image=$(basename $BUILD/vmlinuz*)
-	local rootfs_image="rootfs.img"
+	local linux_image="$OS_RELEASE/vmlinuz"
+	local rootfs_image="$OS_RELEASE/rootfs.img"
 
 	cp "/usr/share/syslinux/mbr.bin" "$BUILD"
 
 	for script in install.sh genimage.sh syslinux.cfg; do
 		cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/$script" "$BUILD"
 
-		sed -i 's/ROOTFSFILE/'$rootfs_image'/g' "$BUILD/$script"
-		sed -i 's/KERNELFILE/'$linux_image'/g' "$BUILD/$script"
+		sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$BUILD/$script"
+		sed -i 's#KERNELFILE#'$linux_image'#g' "$BUILD/$script"
+		sed -i 's#VERSIONDIR#'$OS_RELEASE'#g' "$BUILD/$script"
 	done
 }
 

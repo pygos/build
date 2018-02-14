@@ -34,6 +34,11 @@ mkdir -p "$TCDIR/$TARGET"
 
 CMAKETCFILE="$TCDIR/toolchain.cmake"
 
+pushd "$SCRIPTDIR" > /dev/null
+OS_NAME="Pygos"
+OS_RELEASE=$(git describe --always --tags --broken --dirty)
+popd > /dev/null
+
 ############################# include utilities ##############################
 source "$SCRIPTDIR/util/depends.sh"
 source "$SCRIPTDIR/util/download.sh"

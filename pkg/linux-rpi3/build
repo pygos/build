@@ -26,6 +26,7 @@ build() {
 
 	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
 	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	sed -i "$OUTPUT/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
 	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS zImage dtbs
 }
 

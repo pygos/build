@@ -47,8 +47,7 @@ MOUNTED=1
 
 syslinux --install ${DEVICE}1
 cp syslinux.cfg /tmp/mnt.$$/syslinux.cfg
-cp ROOTFSFILE /tmp/mnt.$$/
-cp KERNELFILE /tmp/mnt.$$/
+cp -r VERSIONDIR /tmp/mnt.$$/
 
 umount /tmp/mnt.$$
 MOUNTED=0
