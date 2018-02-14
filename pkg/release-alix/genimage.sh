@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -u -e -x
+set -u -e
 
 FILE=$1
 MOUNTED=0
@@ -15,6 +15,11 @@ function do_cleanup() {
 trap do_cleanup ERR INT
 
 cd `dirname $0`
+
+if [ -e "$FILE" ]; then
+	echo "Error, $FILE exists"
+	exit 1
+fi
 
 truncate -s 1G $FILE
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -u -e -x
+set -u -e
 
 CONFIRM="Yes, I am"
 DEVICE=$1
