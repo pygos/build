@@ -1,8 +1,10 @@
 coreutils
 bash
 bash-completion
+linux_modules
 nano
 util-linux
+kmod
 grep
 less
 xz
