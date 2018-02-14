@@ -35,10 +35,7 @@ deploy() {
 	local BUILD="$2"
 	local DEPLOY="$3"
 
-	local CFGFILE="$SCRIPTDIR/board/$BOARD/linux.config"
-
 	pushd $BUILD
-	install -m 755 "arch/arm/boot/zImage" "$DEPLOY/kernel.img"
-	cp arch/arm/boot/dts/*.dtb "$DEPLOY/"
+	install -m 755 "arch/arm/boot/zImage" "$DEPLOY/vmlinuz"
 	popd
 }

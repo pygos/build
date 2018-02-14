@@ -16,7 +16,6 @@ deploy() {
 	rm $DEPLOY/kernel7.img
 	rm $DEPLOY/kernel.img
 	rm $DEPLOY/COPYING.linux
-	rm $DEPLOY/*.dtb
 
 	cp "$SCRIPTDIR/pkg/boot-rpi3/config.txt" "$DEPLOY/config.txt"
 }

@@ -56,3 +56,5 @@
 dtparam=audio=on
 
 enable_uart=1
+
+kernel=KERNELFILE

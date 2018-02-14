@@ -20,9 +20,15 @@ build() {
 	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/genimage.sh" "$BUILD"
 
 	# substitute file names in scripts
-	local rootfs_image="rootfs.img"
+	mkdir -p "$BUILD/boot/$OS_RELEASE"
+	mv "$BUILD/boot/rootfs.img" "$BUILD/boot/$OS_RELEASE"
+	mv "$BUILD/boot/vmlinuz" "$BUILD/boot/$OS_RELEASE"
 
-	sed -i 's/ROOTFSFILE/'$rootfs_image'/g' "$BUILD/boot/cmdline.txt"
+	local rootfs_image="$OS_RELEASE/rootfs.img"
+	local kernel_image="$OS_RELEASE/vmlinuz"
+
+	sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$BUILD/boot/cmdline.txt"
+	sed -i 's#KERNELFILE#'$kernel_image'#g' "$BUILD/boot/config.txt"
 }
 
 deploy() {
