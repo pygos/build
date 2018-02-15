@@ -33,11 +33,7 @@ deploy() {
 	rm -r "$DEPLOY/share/man"
 	rm "$DEPLOY/bin/ncursesw6-config"
 
-	for i in ${DEPLOY}/bin/*; do
-		${TARGET}-strip --discard-all $i
-	done
-
-	unset -v i
+	strip_files ${DEPLOY}/bin/*
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 

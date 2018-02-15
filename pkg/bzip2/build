@@ -28,10 +28,7 @@ deploy() {
 
 	rm -r $DEPLOY/man
 
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/bunzip2
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/bzip2
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/bzip2recover
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/bzcat
+	strip_files ${DEPLOY}/bin/*
 
 	rm "$DEPLOY/bin/bzegrep"
 	rm "$DEPLOY/bin/bzfgrep"

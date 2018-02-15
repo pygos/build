@@ -35,11 +35,6 @@ deploy() {
 	# just some script that tells you to use a different command
 	rm "$DEPLOY/bin/fsck.btrfs"
 
-	for i in ${DEPLOY}/bin/*; do
-		${TARGET}-strip --discard-all $i
-	done
-
-	unset -v i
-
+	strip_files ${DEPLOY}/bin/*
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

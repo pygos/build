@@ -27,7 +27,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/bash
+	strip_files ${DEPLOY}/bin/bash
 
 	ln -sv bash "$DEPLOY/bin/sh"
 

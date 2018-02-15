@@ -6,6 +6,20 @@ apply_patches() {
 	done
 }
 
+strip_files() {
+	local f
+
+	for f in $@; do
+		if [ ! -f "$f" ]; then
+			continue
+		fi
+
+		if file $f | grep -q -i elf; then
+			${TARGET}-strip --discard-all "$f"
+		fi
+	done
+}
+
 split_dev_deploy() {
 	local lib f
 

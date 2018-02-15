@@ -25,9 +25,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/less
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/lesskey
-	${TARGET}-strip --discard-all ${DEPLOY}/bin/lessecho
+	strip_files ${DEPLOY}/bin/*
 
 	rm -r "$DEPLOY/share"
 }

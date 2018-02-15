@@ -46,21 +46,7 @@ deploy() {
 	rm -r ${DEPLOY}/share
 	rm -r ${DEPLOY}/etc
 
-	for i in ${DEPLOY}/bin/*; do
-		if [ -f $i ]; then
-			${TARGET}-strip --discard-all $i
-		fi
-	done
-
-	for i in $(find "$DEPLOY/libexec/rc/bin" -type f -print | \
-			xargs file | grep ELF | cut -d: -f1); do
-		${TARGET}-strip --discard-all $i
-	done
-
-	for i in $(find "$DEPLOY/libexec/rc/sbin" -type f -print | \
-			xargs file | grep ELF | cut -d: -f1); do
-		${TARGET}-strip --discard-all $i
-	done
+	strip_files ${DEPLOY}/bin/* ${DEPLOY}/libexec/rc/{bin,sbin}/*
 
 	mkdir -p ${DEPLOY}/etc/{conf.d,init.d,runlevels,sysctl.d}
 	mkdir -p ${DEPLOY}/etc/runlevels/{boot,sysinit,shutdown,default}

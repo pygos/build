@@ -31,7 +31,5 @@ deploy() {
 	rm -r "$DEPLOY/share/doc"
 	rm -r "$DEPLOY/share/man"
 
-	for program in arpd bridge devlink genl ifstat ip lnstat nstat rdma rtacct rtmon ss tc tipc; do
-		${TARGET}-strip --discard-all ${DEPLOY}/bin/$program
-	done
+	strip_files ${DEPLOY}/bin/*
 }

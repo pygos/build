@@ -26,7 +26,7 @@ deploy() {
 
 	make CC=${TARGET}-gcc PREFIX="/" BINDIR="/bin" DESTDIR="$DEPLOY" install
 
-	${TARGET}-strip --discard-all "$DEPLOY/bin/dnsmasq"
+	strip_files "$DEPLOY/bin/dnsmasq"
 	rm -r "$DEPLOY/share"
 
 	mkdir -p "$DEPLOY/etc"

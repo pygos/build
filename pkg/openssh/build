@@ -34,13 +34,7 @@ deploy() {
 
 	rm -r "$DEPLOY/share"
 
-	for i in ${DEPLOY}/bin/* ${DEPLOY}/libexec/*; do
-		if [ -f $i ]; then
-			${TARGET}-strip --discard-all $i
-		fi
-	done
-
-	unset -v i
+	strip_files ${DEPLOY}/bin/* ${DEPLOY}/libexec/*
 
 	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$DEPLOY/bin"
 }
