@@ -26,7 +26,5 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm ${DEPLOY}/lib/*.la
-
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

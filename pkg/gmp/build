@@ -27,7 +27,6 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 
-	rm ${DEPLOY}/lib/*.la
 	rm -r "$DEPLOY/share"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"

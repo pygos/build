@@ -61,7 +61,6 @@ deploy() {
 
 	rm -r "$DEPLOY/share/man"
 	rm -r "$DEPLOY/share/doc"
-	rm -r ${DEPLOY}/lib/*.la
 
 	if [ -e "$DEPLOY/sbin" ]; then
 		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin

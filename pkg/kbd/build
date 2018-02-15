@@ -28,7 +28,6 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm ${DEPLOY}/lib/*.la
 	rm -r ${DEPLOY}/share/man
 
 	if [ -e ${DEPLOY}/share/doc ]; then

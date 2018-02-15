@@ -29,7 +29,6 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 
 	rm -r "$DEPLOY/share/man"
-	rm -r ${DEPLOY}/lib/*.la
 
 	for target in depmod insmod lsmod modinfo modprobe rmmod; do
 		ln -sf kmod $DEPLOY/bin/$target

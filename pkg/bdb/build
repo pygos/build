@@ -32,7 +32,5 @@ deploy() {
 	strip_files ${DEPLOY}/lib/*.so ${DEPLOY}/bin/db_*
 
 	rm -r "$DEPLOY/docs"
-	rm ${DEPLOY}/lib/*.la
-
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
