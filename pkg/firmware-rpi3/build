@@ -1,8 +1,8 @@
-VERSION="1.20170427"
+VERSION="1.20171029"
 SRCDIR="firmware-${VERSION}"
-TARBALL="${VERSION}"
-URL="https://codeload.github.com/raspberrypi/firmware/tar.gz"
-SHA256SUM="e253084463a0a3ba908396ac383169397d53bc55307d0d8471f2814f2458fa1b"
+TARBALL="${VERSION}.tar.gz"
+URL="https://github.com/raspberrypi/firmware/archive"
+SHA256SUM="46ce28c8d87ef22bdcc57ac1836ca3f04d1ec6f46580ff5a30bf76b3c0822117"
 DEPENDS=""
 
 #export BRCM43430FW_BUILD_DIR=$(BUILD_DIR)/brcm43430fw
