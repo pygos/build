@@ -13,7 +13,9 @@ build() {
 deploy() {
 	local INPUT="$1"
 	local OUTPUT="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
 
 	export KBUILD_OUTPUT="$OUTPUT"
-	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" INSTALL_HDR_PATH="$TCDIR/$TARGET" headers_install
+	make -C "$INPUT" O="$OUTPUT" ARCH="$LINUX_CPU" INSTALL_HDR_PATH="$DEVDEPLOY" headers_install
 }

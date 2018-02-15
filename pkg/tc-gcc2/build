@@ -1,6 +1,6 @@
 # inherit package details from first stage GCC
 source "$SCRIPTDIR/pkg/tc-gcc1/build"
-DEPENDS="tc-gcc1 tc-musl"
+DEPENDS="tc-gcc1 tc-musl tc-linux_hdr"
 
 build() {
 	local INPUT="$1"
@@ -21,5 +21,38 @@ build() {
 }
 
 deploy() {
+	local SOURCE="$1"
+	local BUILD="$2"
+	local DEPLOY="$3"
+	local DEVDEPLOY="$4"
+
 	make install
+
+	local f dep
+
+	for f in $(ls ${TCDIR}/${TARGET}/include); do
+		for dep in $DEPENDS; do
+			if [ -e ${PKGDEPLOYDIR}/${dep}-dev/include/$f ]; then
+				rm -rf "$TCDIR/$TARGET/include/$f"
+			fi
+		done
+	done
+
+	for f in $(ls ${TCDIR}/${TARGET}/lib); do
+		for dep in $DEPENDS; do
+			if [ -e ${PKGDEPLOYDIR}/${dep}-dev/lib/$f ]; then
+				rm -rf "$TCDIR/$TARGET/lib/$f"
+				continue
+			fi
+			if [ -e ${PKGDEPLOYDIR}/${dep}/lib/$f ]; then
+				rm -rf "$TCDIR/$TARGET/lib/$f"
+			fi
+		done
+	done
+
+	mkdir -p "$DEPLOY/lib"
+	mv ${TCDIR}/${TARGET}/{include,lib} "$DEVDEPLOY"
+	rm ${DEVDEPLOY}/lib/*.la
+	mv ${DEVDEPLOY}/lib/*.so* "$DEPLOY/lib"
+	mv ${DEPLOY}/lib/*.py "$DEVDEPLOY/lib"
 }
