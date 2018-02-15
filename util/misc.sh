@@ -1,8 +1,10 @@
 apply_patches() {
 	local PATCH
 
-	for PATCH in $SCRIPTDIR/$PKGDIR/$PKGNAME/*.patch; do
-		patch -p1 < $PATCH
+	for PATCH in $SCRIPTDIR/pkg/$PKGNAME/*.patch; do
+		if [ -f $PATCH ]; then
+			patch -p1 < $PATCH
+		fi
 	done
 }
 

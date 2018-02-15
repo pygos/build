@@ -1,4 +1,5 @@
 DEPENDS=$(cat "$SCRIPTDIR/board/$BOARD/ROOTFS")
+DEPENDS="$DEPENDS toolchain"
 
 build() {
 	local SOURCE="$1"
@@ -10,17 +11,10 @@ build() {
 	mkdir -pv ${BUILD}/{boot,usr,srv,mnt,opt}
 	mkdir -pv ${BUILD}/cfg/{preserve,overlay}
 
-	echo "/lib" > "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
-
-	if [ -e "$SCRIPTDIR/board/$BOARD/LDPATH" ]; then
-		cat "$SCRIPTDIR/board/$BOARD/LDPATH" >> "$BUILD/etc/ld-musl-${MUSL_CPU}.path"
-	fi
-
-	cp -r "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$BUILD"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$BUILD"
 
 	# install packages to rootfs
 	dependencies | tsort | tac | grep -v "$PKGNAME" > "$BUILD/etc/packages"
-	echo "toolchain" >> "$BUILD/etc/packages"
 
 	while read pkgname; do
 		if [ ! -e "$PKGDEPLOYDIR/$pkgname" ]; then

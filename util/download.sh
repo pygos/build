@@ -24,7 +24,7 @@ fetch_package() {
 
 		pushd "$PKGSRCDIR/$SRCDIR" > /dev/null
 		echo "$PKGNAME - prepare"
-		prepare "$SCRIPTDIR/$PKGDIR/$PKGNAME" &>> "$LOGFILE" < /dev/null
+		prepare "$SCRIPTDIR/pkg/$PKGNAME" &>> "$LOGFILE" < /dev/null
 		popd > /dev/null
 	fi
 }

@@ -3,7 +3,7 @@ SRCDIR="libseccomp-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://github.com/seccomp/libseccomp/releases/download/v${VERSION}"
 SHA256SUM="7fc28f4294cc72e61c529bedf97e705c3acf9c479a8f1a3028d4cd2ca9f3b155"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	return

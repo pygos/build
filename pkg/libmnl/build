@@ -3,7 +3,7 @@ SRCDIR="libmnl-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://www.netfilter.org/projects/libmnl/files/"
 SHA256SUM="171f89699f286a5854b72b91d06e8f8e3683064c5901fb09d954a9ab6f551f81"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	return

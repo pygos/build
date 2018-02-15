@@ -34,7 +34,7 @@ deploy() {
 	rm -r "$DEPLOY/share"
 	rm "$DEPLOY/bin/bashbug"
 
-	cp -r "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$DEPLOY"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

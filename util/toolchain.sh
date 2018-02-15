@@ -7,10 +7,12 @@ save_toolchain() {
 }
 
 restore_toolchain() {
-	pushd "$TCDIR/$TARGET" > /dev/null
-	rm -r include lib
-	tar zxf "${TCDIR}/${TARGET}.tar.gz"
-	popd > /dev/null
+	if [ -e "${TCDIR}/${TARGET}.tar.gz" ]; then
+		pushd "$TCDIR/$TARGET" > /dev/null
+		rm -r include lib
+		tar zxf "${TCDIR}/${TARGET}.tar.gz"
+		popd > /dev/null
+	fi
 }
 
 install_build_deps() {

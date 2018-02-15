@@ -1,8 +1,8 @@
 run_pkg_command() {
 	local FUNCTION="$1"
-	local DEPLOYDIR="$PKGDEPLOYDIR/$2"
-	local OUT="$PKGBUILDDIR/${PKGDIR}-${PKGNAME}"
-	local CHECKFILE="$PKGLOGDIR/.${PKGDIR}-${PKGNAME}-${FUNCTION}"
+	local DEPLOYDIR="$PKGDEPLOYDIR/$PKGNAME"
+	local OUT="$PKGBUILDDIR/${PKGNAME}"
+	local CHECKFILE="$PKGLOGDIR/.${PKGNAME}-${FUNCTION}"
 
 	echo "$PKGNAME - $FUNCTION"
 
@@ -10,7 +10,7 @@ run_pkg_command() {
 		return
 	fi
 
-	local LOGFILE="$PKGLOGDIR/${PKGDIR}-${PKGNAME}-${FUNCTION}.log"
+	local LOGFILE="$PKGLOGDIR/${PKGNAME}-${FUNCTION}.log"
 	local SRC="$PKGSRCDIR/$SRCDIR"
 
 	mkdir -p "$DEPLOYDIR" "$OUT" "${DEPLOYDIR}-dev"

@@ -3,7 +3,7 @@ SRCDIR="shadow-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://github.com/shadow-maint/shadow/releases/download/${VERSION}"
 SHA256SUM="fc8c858381ad577a5c25ff5beb6ee60a34f8719c73e4e7c61e74188b4e54b741"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	sed -i 's/groups$(EXEEXT) //' src/Makefile.in

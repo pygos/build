@@ -1,10 +1,9 @@
 include_pkg() {
-	PKGDIR="$1"		# globally visible package directory
-	PKGNAME="$2"		# globally visible package name
+	PKGNAME="$1"		# globally visible package name
 
 	unset -f build deploy prepare
 	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
-	source "$SCRIPTDIR/$PKGDIR/$PKGNAME/build"
+	source "$SCRIPTDIR/pkg/$PKGNAME/build"
 }
 
 dependencies() {
@@ -16,7 +15,7 @@ dependencies() {
 		done
 
 		for DEP in $depends; do
-			include_pkg "$PKGDIR" "$DEP"
+			include_pkg "$DEP"
 			dependencies
 		done
 	fi

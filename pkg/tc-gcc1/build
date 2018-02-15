@@ -3,13 +3,13 @@ SRCDIR="gcc-$VERSION"
 TARBALL="gcc-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
 SHA256SUM="832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c"
-DEPENDS="binutils cloog gmp isl mpc mpfr linux_hdr"
+DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr tc-linux_hdr"
 
 prepare() {
 	for child in cloog gmp isl mpc mpfr; do
 		unset -f build deploy prepare
-		unset -v VERSION TARBALL URL SRCDIR SHA256SUM
-		source "$SCRIPTDIR/tcpkg/$child/build"
+		unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
+		source "$SCRIPTDIR/pkg/$child/build"
 
 		if [ ! -e "$child" ]; then
 			echo "installing symlink to $child..."

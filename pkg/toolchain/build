@@ -1,4 +1,4 @@
-DEPENDS="gcc2 musl pkg-config file"
+DEPENDS="tc-gcc2 tc-musl tc-pkg-config tc-file"
 
 build() {
 	return
@@ -11,4 +11,7 @@ deploy() {
 
 	rsync -aH --files-from="$SCRIPTDIR/board/$BOARD/libgcc_files.txt" \
 		"$TCDIR/$TARGET" "$DEPLOY"
+
+	gen_cmake_toolchain_file
+	save_toolchain
 }

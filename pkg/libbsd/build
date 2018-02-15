@@ -3,7 +3,7 @@ SRCDIR="libbsd-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://libbsd.freedesktop.org/releases"
 SHA256SUM="f548f10e5af5a08b1e22889ce84315b1ebe41505b015c9596bad03fd13a12b31"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	apply_patches

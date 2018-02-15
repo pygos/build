@@ -3,7 +3,7 @@ SRCDIR="xz-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://tukaani.org/xz/"
 SHA256SUM="7876096b053ad598c31f6df35f7de5cd9ff2ba3162e5a5554e4fc198447e0347"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	return

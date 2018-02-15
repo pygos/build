@@ -47,57 +47,29 @@ source "$SCRIPTDIR/util/toolchain.sh"
 source "$SCRIPTDIR/util/cmake.sh"
 source "$SCRIPTDIR/util/misc.sh"
 
-############################## build toolchain ###############################
-echo "--- resolving toolchain dependencies ---"
-
-include_pkg "tcpkg" "toolchain"
-dependencies | tsort | tac > "$PACKAGELIST"
-cat "$PACKAGELIST"
-
-echo "--- downloading toolchain files ---"
-
-while read pkg; do
-	include_pkg "tcpkg" "$pkg"
-	fetch_package
-done < "$PACKAGELIST"
-
-echo "--- building toolchain ---"
-
-gen_cmake_toolchain_file
-
-while read pkg; do
-	include_pkg "tcpkg" "$pkg"
-	run_pkg_command "build" "toolchain"
-	run_pkg_command "deploy" "toolchain"
-done < "$PACKAGELIST"
-
-echo "--- backing up toolchain sysroot ---"
-
-save_toolchain
-
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-include_pkg "pkg" "release-${BOARD}"
+include_pkg "release-${BOARD}"
 dependencies | tsort | tac > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading package files ---"
 
 while read pkg; do
-	include_pkg "pkg" "$pkg"
+	include_pkg "$pkg"
 	fetch_package
 done < "$PACKAGELIST"
 
 echo "--- building package ---"
 
 while read pkg; do
-	include_pkg "pkg" "$pkg"
+	include_pkg "$pkg"
 
 	install_build_deps
 
-	run_pkg_command "build" "$PKGNAME"
-	run_pkg_command "deploy" "$PKGNAME"
+	run_pkg_command "build"
+	run_pkg_command "deploy"
 
 	restore_toolchain
 done < "$PACKAGELIST"

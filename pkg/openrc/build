@@ -50,7 +50,7 @@ deploy() {
 
 	mkdir -p ${DEPLOY}/etc/{conf.d,init.d,runlevels,sysctl.d}
 	mkdir -p ${DEPLOY}/etc/runlevels/{boot,sysinit,shutdown,default}
-	cp -R "$SCRIPTDIR/$PKGDIR/$PKGNAME/etc" "$DEPLOY"
+	cp -R "$SCRIPTDIR/pkg/$PKGNAME/etc" "$DEPLOY"
 
 	source "$SCRIPTDIR/board/$BOARD/INIT"
 

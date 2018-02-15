@@ -3,7 +3,7 @@ SRCDIR="ethtool-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/software/network/ethtool/"
 SHA256SUM="71f7fd32483ffdc7c6c4d882e230714eb101df0a46cbe396dbeb8ac78f1ef91a"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	return

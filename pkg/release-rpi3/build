@@ -15,9 +15,9 @@ build() {
 	done
 
 	# copy files from this package
-	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/cmdline.txt" "$BUILD/boot"
-	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/install.sh" "$BUILD"
-	cp "$SCRIPTDIR/$PKGDIR/$PKGNAME/genimage.sh" "$BUILD"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/cmdline.txt" "$BUILD/boot"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/install.sh" "$BUILD"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/genimage.sh" "$BUILD"
 
 	# substitute file names in scripts
 	mkdir -p "$BUILD/boot/$OS_RELEASE"
@@ -37,6 +37,6 @@ deploy() {
 	local DEPLOY="$3"
 
 	pushd "$PKGBUILDDIR" > /dev/null
-	tar czf "$DEPLOY/$PKGNAME.tar.gz" "${PKGDIR}-${PKGNAME}"
+	tar czf "$DEPLOY/$PKGNAME.tar.gz" "$PKGNAME"
 	popd > /dev/null
 }
