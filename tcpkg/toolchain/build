@@ -1,9 +1,14 @@
-DEPENDS="gcc2 libgcc musl pkg-config file"
+DEPENDS="gcc2 musl pkg-config file"
 
 build() {
 	return
 }
 
 deploy() {
-	return
+	local INPUT="$1"
+	local OUTPUT="$2"
+	local DEPLOY="$3"
+
+	rsync -aH --files-from="$SCRIPTDIR/board/$BOARD/libgcc_files.txt" \
+		"$TCDIR/$TARGET" "$DEPLOY"
 }
