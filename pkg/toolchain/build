@@ -1,4 +1,4 @@
-DEPENDS="tc-gcc2 tc-musl tc-linux_hdr tc-pkg-config tc-file"
+DEPENDS="tc-gcc2 musl linux_headers tc-pkg-config tc-file"
 
 build() {
 	return
