@@ -36,7 +36,5 @@ deploy() {
 	local BUILD="$2"
 	local DEPLOY="$3"
 
-	pushd "$PKGBUILDDIR" > /dev/null
-	tar czf "$DEPLOY/$PKGNAME.tar.gz" "$PKGNAME"
-	popd > /dev/null
+	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
 }

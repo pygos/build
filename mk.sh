@@ -23,7 +23,7 @@ PKGLOGDIR="$BUILDROOT/$BOARD/log"
 PKGDOWNLOADDIR="$BUILDROOT/download"
 PACKAGELIST="$BUILDROOT/$BOARD/pkglist"
 
-mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGBUILDDIR" "$PKGLOGDIR"
+mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
 mkdir -p "$PKGDEPLOYDIR" "$TCDIR/bin"
 
 export PATH="$TCDIR/bin:$PATH"
@@ -71,6 +71,7 @@ while read pkg; do
 	run_pkg_command "build"
 	run_pkg_command "deploy"
 
+	rm -rf "$PKGBUILDDIR"
 	restore_toolchain
 done < "$PACKAGELIST"
 

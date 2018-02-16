@@ -67,20 +67,21 @@ dir_filelist() {
 build() {
 	local INPUT="$1"
 	local OUTPUT="$2"
+	local DEPLOY="$3"
 
 	# populate with default directory structure
 	for dir in dev proc sys bin lib newroot images; do
-		mkdir -p "$OUTPUT/$dir"
+		mkdir -p "$DEPLOY/$dir"
 	done
 
-	ln -s "/bin" "$OUTPUT/sbin"
+	ln -s "/bin" "$DEPLOY/sbin"
 
 	# add init script
-	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$OUTPUT/init"
-	chmod +x "$OUTPUT/init"
+	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$DEPLOY/init"
+	chmod +x "$DEPLOY/init"
 
 	# 'install' packages to initrd
-	cp -r ${PKGDEPLOYDIR}/bbstatic/* "$OUTPUT"
+	cp -r ${PKGDEPLOYDIR}/bbstatic/* "$DEPLOY"
 }
 
 deploy() {
@@ -88,9 +89,11 @@ deploy() {
 	local BUILD="$2"
 	local DEPLOY="$3"
 
-	local LSTFILE="$DEPLOY/initrd.list"
+	local LSTFILE="$BUILD/initrd.list"
 
-	dir_filelist "$BUILD" > "$LSTFILE"
+	dir_filelist "$DEPLOY" > "$LSTFILE"
 	echo "dir /dev 0755 0 0" >> "$LSTFILE"
 	echo "nod /dev/console 600 0 0  c 5 1" >> "$LSTFILE"
+
+	mv "$LSTFILE" "$DEPLOY"
 }
