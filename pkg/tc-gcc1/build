@@ -25,19 +25,16 @@ prepare() {
 }
 
 build() {
-	local INPUT="$1"
-	local OUTPUT="$2"
-
-	$INPUT/configure --prefix="$TCDIR" --target="$TARGET" \
-			--build="$HOSTTUPLE" --host="$HOSTTUPLE" \
-			--with-sysroot="$TCDIR/$TARGET" \
-			--disable-nls --disable-shared --without-headers \
-			--disable-multilib --disable-decimal-float \
-			--disable-libgomp --disable-libmudflap \
-			--disable-libssp --disable-libatomic \
-			--disable-libquadmath --disable-threads \
-			--enable-languages=c --with-newlib \
-			--with-arch="$GCC_CPU" $GCC_EXTRACFG
+	$1/configure --prefix="$TCDIR" --target="$TARGET" \
+		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
+		     --with-sysroot="$TCDIR/$TARGET" \
+		     --disable-nls --disable-shared --without-headers \
+		     --disable-multilib --disable-decimal-float \
+		     --disable-libgomp --disable-libmudflap \
+		     --disable-libssp --disable-libatomic \
+		     --disable-libquadmath --disable-threads \
+		     --enable-languages=c --with-newlib \
+		     --with-arch="$GCC_CPU" $GCC_EXTRACFG
 
 	make -j $NUMJOBS all-gcc all-target-libgcc
 }

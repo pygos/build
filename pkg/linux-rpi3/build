@@ -10,32 +10,25 @@ prepare() {
 }
 
 build() {
-	local INPUT="$1"
-	local OUTPUT="$2"
-
-	local CFGFILE="$SCRIPTDIR/board/$BOARD/linux.config"
 	local INITRDLIST="$PKGDEPLOYDIR/initrd/initrd.list"
 
-	export KBUILD_OUTPUT="$OUTPUT"
-	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" mrproper
+	export KBUILD_OUTPUT="$PKGBUILDDIR"
+	make -C "$1" O="$PKGBUILDDIR" ARCH="arm" CROSS_COMPILE="${TARGET}-" mrproper
 
-	cp "$CFGFILE" "$OUTPUT/.config"
-	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
-	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
-	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" oldconfig
+	cp "$SCRIPTDIR/board/$BOARD/linux.config" "$PKGBUILDDIR/.config"
+	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	make -C "$1" O="$PKGBUILDDIR" ARCH="arm" CROSS_COMPILE="${TARGET}-" oldconfig
 
-	sed -i "$OUTPUT/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
-	sed -i "$OUTPUT/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
-	sed -i "$OUTPUT/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
-	make -C "$INPUT" O="$OUTPUT" ARCH="arm" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS zImage dtbs
+	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
+	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
+	make -C "$1" O="$PKGBUILDDIR" ARCH="arm" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS zImage dtbs
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
-	pushd $BUILD
 	install -m 755 "arch/arm/boot/zImage" "$DEPLOY/vmlinuz"
-	popd
 }

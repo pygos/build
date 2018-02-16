@@ -10,10 +10,7 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-	local BUILD="$2"
-
-	cp -r ${SOURCE}/* ${BUILD}
+	cp -r ${1}/* ${PKGBUILDDIR}
 
 	apply_patches
 
@@ -26,9 +23,8 @@ build() {
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
-	local DEVDEPLOY="$4"
+	local DEPLOY="$2"
+	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
 

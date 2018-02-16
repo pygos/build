@@ -2,39 +2,37 @@ DEPENDS="rootfs linux-rpi3 boot-rpi3"
 
 build() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
 	# copy output of immediate dependencies
-	mkdir -p "$BUILD/boot"
+	mkdir -p "$PKGBUILDDIR/boot"
 
 	for pkgname in $DEPENDS; do
 		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
-			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD/boot"
+			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$PKGBUILDDIR/boot"
 		fi
 	done
 
 	# copy files from this package
-	cp "$SCRIPTDIR/pkg/$PKGNAME/cmdline.txt" "$BUILD/boot"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/install.sh" "$BUILD"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/genimage.sh" "$BUILD"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/cmdline.txt" "$PKGBUILDDIR/boot"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/install.sh" "$PKGBUILDDIR"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/genimage.sh" "$PKGBUILDDIR"
 
 	# substitute file names in scripts
-	mkdir -p "$BUILD/boot/$OS_RELEASE"
-	mv "$BUILD/boot/rootfs.img" "$BUILD/boot/$OS_RELEASE"
-	mv "$BUILD/boot/vmlinuz" "$BUILD/boot/$OS_RELEASE"
+	mkdir -p "$PKGBUILDDIR/boot/$OS_RELEASE"
+	mv "$PKGBUILDDIR/boot/rootfs.img" "$PKGBUILDDIR/boot/$OS_RELEASE"
+	mv "$PKGBUILDDIR/boot/vmlinuz" "$PKGBUILDDIR/boot/$OS_RELEASE"
 
 	local rootfs_image="$OS_RELEASE/rootfs.img"
 	local kernel_image="$OS_RELEASE/vmlinuz"
 
-	sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$BUILD/boot/cmdline.txt"
-	sed -i 's#KERNELFILE#'$kernel_image'#g' "$BUILD/boot/config.txt"
+	sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$PKGBUILDDIR/boot/cmdline.txt"
+	sed -i 's#KERNELFILE#'$kernel_image'#g' "$PKGBUILDDIR/boot/config.txt"
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
 	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
 }

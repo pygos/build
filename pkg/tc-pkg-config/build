@@ -10,16 +10,14 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-	local BUILD="$2"
 
-	$SOURCE/configure --prefix="$TCDIR" --target="$TARGET" \
-			--build="$HOSTTUPLE" --host="$HOSTTUPLE" \
-			--with-sysroot="$TCDIR/$TARGET" \
-			--with-pc-path="$TCDIR/$TARGET/lib/pkgconfig" \
-			--with-system-include-path="/include" \
-			--with-system-library-path="/lib" \
-			--with-internal-glib
+	$1/configure --prefix="$TCDIR" --target="$TARGET" \
+		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
+		     --with-sysroot="$TCDIR/$TARGET" \
+		     --with-pc-path="$TCDIR/$TARGET/lib/pkgconfig" \
+		     --with-system-include-path="/include" \
+		     --with-system-library-path="/lib" \
+		     --with-internal-glib
 
 	make -j $NUMJOBS
 }

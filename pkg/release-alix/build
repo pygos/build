@@ -2,15 +2,15 @@ DEPENDS="rootfs linux"
 
 build() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
-	mkdir -p "$BUILD/$OS_RELEASE"
+	mkdir -p "$PKGBUILDDIR/$OS_RELEASE"
 
 	# copy output of immediate dependencies
 	for pkgname in $DEPENDS; do
 		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
-			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD/$OS_RELEASE"
+			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* \
+				"$PKGBUILDDIR/$OS_RELEASE"
 		fi
 	done
 
@@ -18,21 +18,20 @@ build() {
 	local linux_image="$OS_RELEASE/vmlinuz"
 	local rootfs_image="$OS_RELEASE/rootfs.img"
 
-	cp "/usr/share/syslinux/mbr.bin" "$BUILD"
+	cp "/usr/share/syslinux/mbr.bin" "$PKGBUILDDIR"
 
 	for script in install.sh genimage.sh syslinux.cfg; do
-		cp "$SCRIPTDIR/pkg/$PKGNAME/$script" "$BUILD"
+		cp "$SCRIPTDIR/pkg/$PKGNAME/$script" "$PKGBUILDDIR"
 
-		sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$BUILD/$script"
-		sed -i 's#KERNELFILE#'$linux_image'#g' "$BUILD/$script"
-		sed -i 's#VERSIONDIR#'$OS_RELEASE'#g' "$BUILD/$script"
+		sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$PKGBUILDDIR/$script"
+		sed -i 's#KERNELFILE#'$linux_image'#g' "$PKGBUILDDIR/$script"
+		sed -i 's#VERSIONDIR#'$OS_RELEASE'#g' "$PKGBUILDDIR/$script"
 	done
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
 	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
 }

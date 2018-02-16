@@ -13,20 +13,16 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-	local BUILD="$2"
-
-	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin\
-			--disable-man --without-libpam --without-selinux \
-			--with-sha-crypt --with-group-name-max-length=32
+	$1/configure --prefix="" --host="$TARGET" --sbindir=/bin \
+		     --disable-man --without-libpam --without-selinux \
+		     --with-sha-crypt --with-group-name-max-length=32
 
 	make -j $NUMJOBS
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
 	make DESTDIR="$DEPLOY" install-strip
 

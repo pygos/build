@@ -10,22 +10,18 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-	local BUILD="$2"
-
-	$SOURCE/configure --prefix="" --host="$TARGET" --disable-static \
-			  --sysconfdir=/etc --with-pidfile=/run/unbound.pid \
-			  --sbindir=/bin --with-libexpat="$TCDIR/$TARGET" \
-			  --with-ssl="$TCDIR/$TARGET"
+	$1/configure --prefix="" --host="$TARGET" --disable-static \
+		     --sysconfdir=/etc --with-pidfile=/run/unbound.pid \
+		     --sbindir=/bin --with-libexpat="$TCDIR/$TARGET" \
+		     --with-ssl="$TCDIR/$TARGET"
 
 	make -j $NUMJOBS
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
-	local DEVDEPLOY="$4"
+	local DEPLOY="$2"
+	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
 

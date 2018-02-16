@@ -10,12 +10,8 @@ prepare() {
 }
 
 build() {
-	local INPUT="$1"
-	local OUTPUT="$2"
-
-	$INPUT/configure --prefix="$TCDIR" --target="$TARGET" \
-			--with-sysroot="$TCDIR/$TARGET" \
-			--disable-nls --disable-multilib
+	$1/configure --prefix="$TCDIR" --target="$TARGET" --disable-nls \
+		     --with-sysroot="$TCDIR/$TARGET" --disable-multilib
 
 	make configure-host
 	make -j $NUMJOBS

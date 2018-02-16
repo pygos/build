@@ -3,52 +3,53 @@ DEPENDS="$DEPENDS toolchain"
 
 build() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
 	# setup skeleton
-	mkdir -pv ${BUILD}/{bin,lib,etc,dev,sys,proc,tmp,var,run}
-	mkdir -pv ${BUILD}/{boot,usr,srv,mnt,opt}
-	mkdir -pv ${BUILD}/cfg/{preserve,overlay}
+	mkdir -pv ${PKGBUILDDIR}/{bin,lib,etc,dev,sys,proc,tmp,var,run}
+	mkdir -pv ${PKGBUILDDIR}/{boot,usr,srv,mnt,opt}
+	mkdir -pv ${PKGBUILDDIR}/cfg/{preserve,overlay}
 
-	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$BUILD"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGBUILDDIR"
 
 	# install packages to rootfs
-	dependencies | tsort | tac | grep -v "$PKGNAME" > "$BUILD/etc/packages"
+	dependencies | tsort | tac | \
+		grep -v "$PKGNAME" > "$PKGBUILDDIR/etc/packages"
 
 	while read pkgname; do
 		if [ ! -e "$PKGDEPLOYDIR/$pkgname" ]; then
 			continue
 		fi
 
-		cp -ru --remove-destination ${PKGDEPLOYDIR}/${pkgname}/* "$BUILD"
-	done < "$BUILD/etc/packages"
+		cp -ru --remove-destination ${PKGDEPLOYDIR}/${pkgname}/* \
+			"$PKGBUILDDIR"
+	done < "$PKGBUILDDIR/etc/packages"
 
 	# version info
 	local fname=$(echo "${OS_NAME}-release" | tr '[:upper:]' '[:lower:]')
 
-	echo $OS_RELEASE > $BUILD/etc/$fname
+	echo $OS_RELEASE > $PKGBUILDDIR/etc/$fname
 
 	# setup root home directory
-	cp -r "$BUILD/etc/skel" "$BUILD/root"
-	chmod 750 "$BUILD/root"
+	cp -r "$PKGBUILDDIR/etc/skel" "$PKGBUILDDIR/root"
+	chmod 750 "$PKGBUILDDIR/root"
 
 	# move configuration to preserve directory
-	mv ${BUILD}/etc ${BUILD}/cfg/preserve
-	mkdir -p ${BUILD}/etc
+	mv ${PKGBUILDDIR}/etc ${PKGBUILDDIR}/cfg/preserve
+	mkdir -p ${PKGBUILDDIR}/etc
 
-	mv ${BUILD}/var/lib ${BUILD}/cfg/preserve/var_lib
+	mv ${PKGBUILDDIR}/var/lib ${PKGBUILDDIR}/cfg/preserve/var_lib
 
-	mv ${BUILD}/root ${BUILD}/cfg/preserve
-	mkdir -p ${BUILD}/root
-	chmod 750 ${BUILD}/root
-	chmod 750 ${BUILD}/cfg/preserve/root
+	mv ${PKGBUILDDIR}/root ${PKGBUILDDIR}/cfg/preserve
+	mkdir -p ${PKGBUILDDIR}/root
+	chmod 750 ${PKGBUILDDIR}/root
+	chmod 750 ${PKGBUILDDIR}/cfg/preserve/root
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
+	local DEPLOY="$2"
 
-	mksquashfs "$BUILD" "$DEPLOY/rootfs.img" -all-root -no-progress -no-xattrs
+	mksquashfs "$PKGBUILDDIR" "$DEPLOY/rootfs.img" \
+		-all-root -no-progress -no-xattrs
 }

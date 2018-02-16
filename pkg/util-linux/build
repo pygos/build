@@ -10,50 +10,29 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-
-	$SOURCE/configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
-			--prefix="" --host="$TARGET" \
-			--with-bashcompletiondir="/share/bash-completion/completions" \
-			--sbindir="/bin" \
-			--disable-pylibmount \
-			--disable-static \
-			--without-python \
-			--without-systemd \
-			--without-systemdsystemunitdir \
-			--disable-makeinstall-chown \
-			--disable-makeinstall-setuid \
-			--enable-agetty \
-			--disable-cal \
-			--disable-chmem \
-			--disable-fdformat \
-			--disable-fsck \
-			--disable-logger \
-			--disable-mesg \
-			--disable-minix \
-			--disable-bfs \
-			--disable-more \
-			--disable-nologin \
-			--disable-nsenter \
-			--disable-pivot_root \
-			--disable-raw \
-			--disable-sulogin \
-			--disable-switch_root \
-			--disable-ul \
-			--disable-unshare \
-			--disable-utmpdump \
-			--disable-uuidd \
-			--disable-wall \
-			--disable-zramctl
+	$1/configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
+		     --prefix="" --host="$TARGET" --sbindir="/bin" \
+		     --with-bashcompletiondir="/share/bash-completion/completions" \
+		     --disable-pylibmount --disable-static --without-python \
+		     --without-systemd --without-systemdsystemunitdir \
+		     --disable-cal --disable-chmem --disable-fdformat \
+		     --disable-fsck --disable-logger --disable-mesg \
+		     --disable-minix --disable-bfs --disable-more \
+		     --disable-nologin --disable-nsenter --disable-pivot_root \
+		     --disable-raw --disable-sulogin --disable-switch_root \
+		     --disable-ul --disable-unshare --disable-utmpdump \
+		     --disable-uuidd --disable-wall --disable-zramctl \
+		     --disable-makeinstall-chown \
+		     --disable-makeinstall-setuid \
+		     --enable-agetty \
 
 	make -j $NUMJOBS
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
-	local DEVDEPLOY="$4"
+	local DEPLOY="$2"
+	local DEVDEPLOY="$3"
 
 	mkdir -p "$DEPLOY/var/lib/hwclock"
 

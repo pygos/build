@@ -15,7 +15,7 @@ run_pkg_command() {
 	mkdir -p "$DEPLOYDIR" "$PKGBUILDDIR" "${DEPLOYDIR}-dev"
 
 	pushd "$PKGBUILDDIR" > /dev/null
-	$FUNCTION "$SRC" "$PKGBUILDDIR" "$DEPLOYDIR" "${DEPLOYDIR}-dev" &>> "$LOGFILE" < /dev/null
+	$FUNCTION "$SRC" "$DEPLOYDIR" "${DEPLOYDIR}-dev" &>> "$LOGFILE" < /dev/null
 	popd > /dev/null
 
 	(rmdir "$DEPLOYDIR" || true) 2> /dev/null ;

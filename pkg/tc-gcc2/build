@@ -3,28 +3,24 @@ source "$SCRIPTDIR/pkg/tc-gcc1/build"
 DEPENDS="tc-gcc1 tc-musl tc-linux_hdr"
 
 build() {
-	local INPUT="$1"
-	local OUTPUT="$2"
-
-	$INPUT/configure --prefix="$TCDIR" --target="$TARGET" \
-			--build="$HOSTTUPLE" --host="$HOSTTUPLE" \
-			--with-sysroot="$TCDIR/$TARGET" \
-			--disable-nls --enable-languages=c,c++ \
-			--enable-c99 --enable-long-long \
-			--disable-libmudflap --disable-multilib \
-			--disable-libmpx --disable-libssp \
-			--disable-libsanitizer \
-			--with-arch="$GCC_CPU" $GCC_EXTRACFG \
-			--with-native-system-header-dir="/include"
+	$1/configure --prefix="$TCDIR" --target="$TARGET" \
+		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
+		     --with-sysroot="$TCDIR/$TARGET" \
+		     --disable-nls --enable-languages=c,c++ \
+		     --enable-c99 --enable-long-long \
+		     --disable-libmudflap --disable-multilib \
+		     --disable-libmpx --disable-libssp \
+		     --disable-libsanitizer \
+		     --with-arch="$GCC_CPU" $GCC_EXTRACFG \
+		     --with-native-system-header-dir="/include"
 
 	make -j $NUMJOBS
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
-	local DEVDEPLOY="$4"
+	local DEPLOY="$2"
+	local DEVDEPLOY="$3"
 
 	make install
 

@@ -10,19 +10,15 @@ prepare() {
 }
 
 build() {
-	local INPUT="$1"
-	local OUTPUT="$2"
-
-	$INPUT/configure --prefix="" --host="$TARGET" --disable-static
+	$1/configure --prefix="" --host="$TARGET" --disable-static
 
 	make -j $NUMJOBS
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
-	local DEVDEPLOY="$4"
+	local DEPLOY="$2"
+	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install-strip
 

@@ -10,23 +10,19 @@ prepare() {
 }
 
 build() {
-	local INPUT="$1"
-	local OUTPUT="$2"
-
 	ac_cv_func_malloc_0_nonnull=yes \
 	ac_cv_func_realloc_0_nonnull=yes \
-	$INPUT/configure --prefix="" --host="$TARGET" --disable-static \
-			--enable-watch8bit --with-ncurses --without-systemd \
-			--disable-kill --sbindir=/bin
+	$1/configure --prefix="" --host="$TARGET" --disable-static \
+		     --enable-watch8bit --with-ncurses --without-systemd \
+		     --disable-kill --sbindir=/bin
 
 	make -j $NUMJOBS
 }
 
 deploy() {
 	local SOURCE="$1"
-	local BUILD="$2"
-	local DEPLOY="$3"
-	local DEVDEPLOY="$4"
+	local DEPLOY="$2"
+	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install-strip
 
