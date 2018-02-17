@@ -30,4 +30,5 @@ deploy() {
 	rm -r "$DEPLOY/share"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*
 }

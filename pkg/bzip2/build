@@ -37,4 +37,5 @@ deploy() {
 	ln -s "/bin/bzdiff" "$DEPLOY/bin/bzcmp"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	rmdir "$DEPLOY/lib"
 }

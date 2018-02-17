@@ -31,6 +31,6 @@ deploy() {
 	# just some script that tells you to use a different command
 	rm "$DEPLOY/bin/fsck.btrfs"
 
-	strip_files ${DEPLOY}/bin/*
+	strip_files ${DEPLOY}/{bin,lib}/*
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

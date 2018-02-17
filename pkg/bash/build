@@ -33,4 +33,5 @@ deploy() {
 	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	rm -r "$DEPLOY/lib"
 }

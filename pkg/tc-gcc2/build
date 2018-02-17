@@ -51,4 +51,6 @@ deploy() {
 	rm ${DEVDEPLOY}/lib/*.la
 	mv ${DEVDEPLOY}/lib/*.so* "$DEPLOY/lib"
 	mv ${DEPLOY}/lib/*.py "$DEVDEPLOY/lib"
+
+	strip_files ${DEPLOY}/lib/*
 }

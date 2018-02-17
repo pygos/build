@@ -44,7 +44,8 @@ deploy() {
 	rm -r ${DEPLOY}/share
 	rm -r ${DEPLOY}/etc
 
-	strip_files ${DEPLOY}/bin/* ${DEPLOY}/libexec/rc/{bin,sbin}/*
+	chmod 755 ${DEPLOY}/lib/*.so*
+	strip_files ${DEPLOY}/{bin,lib}/* ${DEPLOY}/libexec/rc/{bin,sbin}/*
 
 	mkdir -p ${DEPLOY}/etc/{conf.d,init.d,runlevels,sysctl.d}
 	mkdir -p ${DEPLOY}/etc/runlevels/{boot,sysinit,shutdown,default}

@@ -28,7 +28,7 @@ deploy() {
 	rm -r "$DEPLOY/share/man"
 	rm "$DEPLOY/bin/ncursesw6-config"
 
-	strip_files ${DEPLOY}/bin/*
+	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 

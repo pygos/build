@@ -11,6 +11,7 @@ build() {
 	mkdir -pv ${PKGBUILDDIR}/cfg/{preserve,overlay}
 
 	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGBUILDDIR"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/lib" "$PKGBUILDDIR"
 
 	# install packages to rootfs
 	dependencies | tsort | tac | \

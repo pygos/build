@@ -27,4 +27,5 @@ deploy() {
 	mv "$DEPLOY/share/pkgconfig" "$DEVDEPLOY/lib"
 
 	rm -r ${DEPLOY}/share
+	strip_files ${DEPLOY}/lib/*
 }

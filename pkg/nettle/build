@@ -23,4 +23,5 @@ deploy() {
 	make DESTDIR="$DEPLOY" install
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	strip_files ${DEPLOY}/{bin,lib}/*
 }

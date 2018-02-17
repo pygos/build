@@ -21,7 +21,5 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm -r "$DEPLOY/share/info"
-	rm -r "$DEPLOY/share/man"
-	rm -r "$DEPLOY/share/locale"
+	rm -r "$DEPLOY/share" "$DEPLOY/lib"
 }

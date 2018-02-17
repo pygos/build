@@ -22,7 +22,9 @@ deploy() {
 
 	make SHLIB_LIBS="-lncursesw" DESTDIR="$DEPLOY" install
 
-	rm -r "$DEPLOY/share"
+	rm -r "$DEPLOY/share" "$DEPLOY/bin"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	chmod 755 ${DEPLOY}/lib/*
+	strip_files ${DEPLOY}/lib/*
 }

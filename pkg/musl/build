@@ -33,4 +33,6 @@ deploy() {
 	if [ -e "$SCRIPTDIR/board/$BOARD/LDPATH" ]; then
 		cat "$SCRIPTDIR/board/$BOARD/LDPATH" >> "$DEPLOY/etc/ld-musl-${MUSL_CPU}.path"
 	fi
+
+	strip_files ${DEPLOY}/lib/*
 }

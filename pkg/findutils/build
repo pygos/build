@@ -22,5 +22,5 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm -r "$DEPLOY/share"
+	rm -r "$DEPLOY/share" "$DEPLOY/lib"
 }

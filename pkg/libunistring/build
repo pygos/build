@@ -23,6 +23,7 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 
 	rm -r "$DEPLOY/share"
+	rm "$DEPLOY/lib/charset.alias"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
