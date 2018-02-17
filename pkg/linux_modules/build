@@ -9,6 +9,7 @@ build() {
 
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
+	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS modules
 }
 
