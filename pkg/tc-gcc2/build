@@ -28,7 +28,7 @@ deploy() {
 
 	for f in $(ls ${TCDIR}/${TARGET}/include); do
 		for dep in $DEPENDS; do
-			if [ -e ${PKGDEPLOYDIR}/${dep}-dev/include/$f ]; then
+			if [ -e ${PKGDEVDEPLOYDIR}/${dep}/include/$f ]; then
 				rm -rf "$TCDIR/$TARGET/include/$f"
 			fi
 		done
@@ -36,7 +36,7 @@ deploy() {
 
 	for f in $(ls ${TCDIR}/${TARGET}/lib); do
 		for dep in $DEPENDS; do
-			if [ -e ${PKGDEPLOYDIR}/${dep}-dev/lib/$f ]; then
+			if [ -e ${PKGDEVDEPLOYDIR}/${dep}/lib/$f ]; then
 				rm -rf "$TCDIR/$TARGET/lib/$f"
 				continue
 			fi

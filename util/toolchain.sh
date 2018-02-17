@@ -21,7 +21,7 @@ install_build_deps() {
 	fi
 
 	for deppkg in $DEPENDS; do
-		local devdir="$PKGDEPLOYDIR/${deppkg}-dev"
+		local devdir="$PKGDEVDEPLOYDIR/$deppkg"
 
 		if [ -d "$devdir/include" ]; then
 			cp -R "$devdir/include" "$TCDIR/$TARGET"
