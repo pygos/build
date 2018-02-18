@@ -1,97 +1,29 @@
 DEPENDS="bbstatic"
 
-filetype() {
-	local argv1="$1"
-
-	# symlink test must come before file test
-	if [ -L "${argv1}" ]; then
-		echo "slink"
-	elif [ -f "${argv1}" ]; then
-		echo "file"
-	elif [ -d "${argv1}" ]; then
-		echo "dir"
-	else
-		echo "invalid"
-	fi
-	return 0
-}
-
-# for each file print a line in following format
-# <filetype> <name> <path to file> <octal mode> <uid> <gid>
-# for links, devices etc the format differs. See gen_init_cpio for details
-parse() {
-	local location="$1"
-	local name="/${location#${srcdir}}"
-	# change '//' into '/'
-	name=$(echo "$name" | sed -e 's://*:/:g')
-	local mode="$2"
-	local uid="$3"
-	local gid="$4"
-	local ftype=$(filetype "${location}")
-	local str="${mode} 0 0 "
-
-	[ "${ftype}" = "invalid" ] && return 0
-	[ "${location}" = "${srcdir}" ] && return 0
-
-	case "${ftype}" in
-	"file")
-		str="${ftype} ${name} ${location} ${str}"
-		;;
-	"slink")
-		local target=`readlink "${location}"`
-		str="${ftype} ${name} ${target} ${str}"
-		;;
-	*)
-		str="${ftype} ${name} ${str}"
-		;;
-	esac
-
-	echo "${str}"
-
-	return 0
-}
-
-# process one directory (incl sub-directories)
-dir_filelist() {
-	srcdir=$(echo "$1" | sed -e 's://*:/:g')
-	dirlist=$(find "${srcdir}" -printf "%p %m %U %G\n")
-
-	# If $dirlist is only one line, then the directory is empty
-	if [  "$(echo "${dirlist}" | wc -l)" -gt 1 ]; then
-		echo "${dirlist}" | while read x; do
-			parse ${x}
-		done
-	fi
-}
-
 build() {
-	local INPUT="$1"
-	local DEPLOY="$2"
-
-	# populate with default directory structure
-	for dir in dev proc sys bin lib newroot images; do
-		mkdir -p "$DEPLOY/$dir"
-	done
-
-	ln -s "/bin" "$DEPLOY/sbin"
-
-	# add init script
-	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$DEPLOY/init"
-	chmod +x "$DEPLOY/init"
-
-	# 'install' packages to initrd
-	cp -r ${PKGDEPLOYDIR}/bbstatic/* "$DEPLOY"
+	return
 }
 
 deploy() {
-	local SOURCE="$1"
+	local INPUT="$1"
 	local DEPLOY="$2"
 
-	local LSTFILE="$PKGBUILDDIR/initrd.list"
+	cp "$PKGDEPLOYDIR/bbstatic/bin/busybox" "$DEPLOY"
+	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$DEPLOY/init"
+	chmod +x "$DEPLOY/init"
 
-	dir_filelist "$DEPLOY" > "$LSTFILE"
-	echo "dir /dev 0755 0 0" >> "$LSTFILE"
-	echo "nod /dev/console 600 0 0  c 5 1" >> "$LSTFILE"
-
-	mv "$LSTFILE" "$DEPLOY"
+cat > "$DEPLOY/initrd.list" <<_EOF
+dir /dev 0755 0 0
+dir /lib 0775 0 0
+dir /bin 0775 0 0
+dir /sys 0775 0 0
+dir /proc 0775 0 0
+dir /newroot 0775 0 0
+dir /images 0775 0 0
+slink /sbin /bin 0777 0 0
+nod /dev/console 600 0 0  c 5 1
+file /bin/busybox $DEPLOY/busybox 0775 0 0
+slink /bin/sh /bin/busybox 0777 0 0
+file /init $DEPLOY/init 0775 0 0
+_EOF
 }
