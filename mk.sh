@@ -65,14 +65,18 @@ done < "$PACKAGELIST"
 echo "--- building package ---"
 
 while read pkg; do
-	include_pkg "$pkg"
+	if [ ! -e "$PKGLOGDIR/.$pkg" ]; then
+		include_pkg "$pkg"
 
-	install_build_deps
+		install_build_deps
 
-	run_pkg_command "build"
-	run_pkg_command "deploy"
+		run_pkg_command "build"
+		run_pkg_command "deploy"
 
-	rm -rf "$PKGBUILDDIR"
-	restore_toolchain
+		rm -rf "$PKGBUILDDIR"
+		restore_toolchain
+
+		touch "$PKGLOGDIR/.$pkg"
+	fi
 done < "$PACKAGELIST"
 
