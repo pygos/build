@@ -45,7 +45,6 @@ source "$SCRIPTDIR/util/depends.sh"
 source "$SCRIPTDIR/util/download.sh"
 source "$SCRIPTDIR/util/pkgcmd.sh"
 source "$SCRIPTDIR/util/toolchain.sh"
-source "$SCRIPTDIR/util/cmake.sh"
 source "$SCRIPTDIR/util/misc.sh"
 
 ############################### build packages ###############################
@@ -62,21 +61,20 @@ while read pkg; do
 	fetch_package
 done < "$PACKAGELIST"
 
-echo "--- building package ---"
+echo "--- building packages ---"
 
 while read pkg; do
 	if [ ! -e "$PKGLOGDIR/.$pkg" ]; then
 		include_pkg "$pkg"
-
 		install_build_deps
-
 		run_pkg_command "build"
 		run_pkg_command "deploy"
-
-		rm -rf "$PKGBUILDDIR"
 		restore_toolchain
 
+		rm -rf "$PKGBUILDDIR"
 		touch "$PKGLOGDIR/.$pkg"
 	fi
 done < "$PACKAGELIST"
+
+echo "--- done ---"
 

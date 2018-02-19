@@ -22,6 +22,5 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 
-	mkdir -p "$DEVDEPLOY/lib"
-	mv "$DEPLOY/share/pkgconfig" "$DEVDEPLOY/lib"
+	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

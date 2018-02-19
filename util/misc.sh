@@ -34,6 +34,11 @@ split_dev_deploy() {
 		mv "$1/lib/pkgconfig" "$2/lib"
 	fi
 
+	if [ -d "$1/share/pkgconfig" ]; then
+		mkdir -p "$2/lib"
+		mv "$1/share/pkgconfig" "$2/lib"
+	fi
+
 	for f in ${1}/lib/*.la; do
 		if [ -e "$f" ]; then
 			rm "$f"

@@ -16,10 +16,6 @@ restore_toolchain() {
 }
 
 install_build_deps() {
-	if [ -z "$DEPENDS" ]; then
-		return
-	fi
-
 	for deppkg in $DEPENDS; do
 		local devdir="$PKGDEVDEPLOYDIR/$deppkg"
 

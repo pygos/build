@@ -23,11 +23,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm -r ${DEPLOY}/share/man
-
-	if [ -e ${DEPLOY}/share/doc ]; then
-		rm -r ${DEPLOY}/share/doc
-	fi
+	rm -rf ${DEPLOY}/share/doc ${DEPLOY}/share/man
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

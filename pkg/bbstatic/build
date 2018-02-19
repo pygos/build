@@ -29,5 +29,4 @@ deploy() {
 
 	mkdir -p "$DEPLOY/bin"
 	cp "$PKGBUILDDIR/busybox" "$DEPLOY/bin"
-	ln -s "/bin/busybox" "$DEPLOY/bin/sh"
 }

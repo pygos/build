@@ -33,13 +33,13 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 	local DEVDEPLOY="$3"
+	local UTIL
 
 	mkdir -p "$DEPLOY/var/lib/hwclock"
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm -r "$DEPLOY/share/man"
-	rm -r "$DEPLOY/share/doc"
+	rm -r "$DEPLOY/share/man" "$DEPLOY/share/doc"
 
 	if [ -e "$DEPLOY/sbin" ]; then
 		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin

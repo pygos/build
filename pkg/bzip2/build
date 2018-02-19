@@ -26,10 +26,7 @@ deploy() {
 
 	strip_files ${DEPLOY}/bin/*
 
-	rm "$DEPLOY/bin/bzegrep"
-	rm "$DEPLOY/bin/bzfgrep"
-	rm "$DEPLOY/bin/bzless"
-	rm "$DEPLOY/bin/bzcmp"
+	rm ${DEPLOY}/bin/{bzegrep,bzfgrep,bzless,bzcmp}
 
 	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzegrep"
 	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzfgrep"

@@ -23,9 +23,7 @@ deploy() {
 	mkdir -p "$DEPLOY/var/lib/arpd"
 	make DESTDIR="$DEPLOY" SYSROOT="$TCDIR/$TARGET" install
 
-	rm -r "$DEPLOY/include"
-	rm -r "$DEPLOY/share/doc"
-	rm -r "$DEPLOY/share/man"
+	rm -r "$DEPLOY/include" "$DEPLOY/share/doc" "$DEPLOY/share/man"
 
 	strip_files ${DEPLOY}/bin/*
 }

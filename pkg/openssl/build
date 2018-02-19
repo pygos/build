@@ -26,8 +26,7 @@ deploy() {
 	make DESTDIR="$DEPLOY" install
 
 	rm "$DEPLOY/bin/c_rehash"
-	rm -r "$DEPLOY/etc/ssl/misc"
-	rm -r "$DEPLOY/share"
+	rm -r "$DEPLOY/etc/ssl/misc" "$DEPLOY/share"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*

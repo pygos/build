@@ -8,7 +8,6 @@ deploy() {
 	local INPUT="$1"
 	local DEPLOY="$2"
 
-	cp "$PKGDEPLOYDIR/bbstatic/bin/busybox" "$DEPLOY"
 	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$DEPLOY/init"
 	chmod +x "$DEPLOY/init"
 
@@ -22,7 +21,7 @@ dir /newroot 0775 0 0
 dir /images 0775 0 0
 slink /sbin /bin 0777 0 0
 nod /dev/console 600 0 0  c 5 1
-file /bin/busybox $DEPLOY/busybox 0775 0 0
+file /bin/busybox $PKGDEPLOYDIR/bbstatic/bin/busybox 0775 0 0
 slink /bin/sh /bin/busybox 0777 0 0
 file /init $DEPLOY/init 0775 0 0
 _EOF

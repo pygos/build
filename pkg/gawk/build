@@ -22,7 +22,5 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 
 	rm "$DEPLOY/bin/gawk-$VERSION"
-	rm -r "$DEPLOY/include"
-	rm -r "$DEPLOY/share/info"
-	rm -r "$DEPLOY/share/man"
+	rm -r "$DEPLOY/include" "$DEPLOY/share/info" "$DEPLOY/share/man"
 }

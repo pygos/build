@@ -24,8 +24,7 @@ deploy() {
 	make DESTDIR="$DEPLOY" install
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
-	mv "$DEPLOY/share/pkgconfig" "$DEVDEPLOY/lib"
+	strip_files ${DEPLOY}/lib/*
 
 	rm -r ${DEPLOY}/share
-	strip_files ${DEPLOY}/lib/*
 }
