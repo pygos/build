@@ -7,9 +7,7 @@ DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr linux_headers"
 
 prepare() {
 	for child in cloog gmp isl mpc mpfr; do
-		unset -f build deploy prepare
-		unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
-		source "$SCRIPTDIR/pkg/$child/build"
+		include_pkg "tc-$child"
 
 		if [ ! -e "$child" ]; then
 			echo "installing symlink to $child..."
