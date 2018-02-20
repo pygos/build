@@ -51,7 +51,12 @@ deploy() {
 	mkdir -p ${DEPLOY}/etc/runlevels/{boot,sysinit,shutdown,default}
 	cp -R "$SCRIPTDIR/pkg/$PKGNAME/etc" "$DEPLOY"
 
-	source "$SCRIPTDIR/board/$BOARD/INIT"
+	if [ -e "$SCRIPTDIR/board/$BOARD/INIT" ]; then
+		source "$SCRIPTDIR/board/$BOARD/INIT"
+	fi
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/INIT" ]; then
+		source "$SCRIPTDIR/product/$PRODUCT/INIT"
+	fi
 
 	for i in $GETTY_TTY; do
 		cat > "$DEPLOY/etc/conf.d/agetty.$i" << _EOF

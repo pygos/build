@@ -26,5 +26,12 @@ deploy() {
 	rm -r "$DEPLOY/share"
 
 	mkdir -p "$DEPLOY/etc"
-	cp "$SOURCE/dnsmasq.conf.example" "$DEPLOY/etc/dnsmasq.conf"
+
+	cat_file_override "dnsmasq.conf" > "$DEPLOY/etc/dnsmasq.conf"
+
+	if [ ! -s "$DEPLOY/etc/dnsmasq.conf" ]; then
+		cp "$SOURCE/dnsmasq.conf.example" "$DEPLOY/etc/dnsmasq.conf"
+	fi
+
+	mkdir -p "$DEPLOY/etc/dnsmasq.d"
 }

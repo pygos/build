@@ -5,7 +5,7 @@ DEPENDS="toolchain"
 build() {
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" mrproper
-	cp "$SCRIPTDIR/board/$BOARD/linux.config" "$PKGBUILDDIR/.config"
+	cat_file_override "linux.config" > "$PKGBUILDDIR/.config"
 
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'

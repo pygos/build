@@ -2,12 +2,13 @@
 
 set -e
 
-if [ ! $# -eq 1 ]; then
-	echo "usage: $0 <config>"
+if [ ! $# -eq 2 ]; then
+	echo "usage: $0 <board> <product>"
 	exit 1
 fi
 
 BOARD="$1"
+PRODUCT="$2"
 
 ################################ basic setup ################################
 BUILDROOT=$(pwd)
@@ -15,14 +16,31 @@ SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 NUMJOBS=$(grep -e "^processor" /proc/cpuinfo | wc -l)
 HOSTTUPLE=$($SCRIPTDIR/util/config.guess)
 
-TCDIR="$BUILDROOT/$BOARD/toolchain"
-PKGBUILDDIR="$BUILDROOT/$BOARD/build"
+if [ ! -d "$SCRIPTDIR/product/$PRODUCT" ]; then
+	echo "No configuration for this product: $PRODUCT"
+	exit 1
+fi
+
+if [ ! -d "$SCRIPTDIR/board/$BOARD" ]; then
+	echo "No configuration for this board: $BOARD"
+	exit 1
+fi
+
+if [ -e "$SCRIPTDIR/product/$PRODUCT/BOARDS" ]; then
+	if ! grep -q "$BOARD" "$SCRIPTDIR/product/$PRODUCT/BOARDS"; then
+		echo "Error, $PRODUCT cannot be built for $BOARD"
+		exit 1
+	fi
+fi
+
+TCDIR="$BUILDROOT/${BOARD}-${PRODUCT}/toolchain"
+PKGBUILDDIR="$BUILDROOT/${BOARD}-${PRODUCT}/build"
 PKGSRCDIR="$BUILDROOT/src"
-PKGDEPLOYDIR="$BUILDROOT/$BOARD/deploy"
-PKGDEVDEPLOYDIR="$BUILDROOT/$BOARD/deploy-dev"
-PKGLOGDIR="$BUILDROOT/$BOARD/log"
+PKGDEPLOYDIR="$BUILDROOT/${BOARD}-${PRODUCT}/deploy"
+PKGDEVDEPLOYDIR="$BUILDROOT/${BOARD}-${PRODUCT}/deploy-dev"
+PKGLOGDIR="$BUILDROOT/${BOARD}-${PRODUCT}/log"
 PKGDOWNLOADDIR="$BUILDROOT/download"
-PACKAGELIST="$BUILDROOT/$BOARD/pkglist"
+PACKAGELIST="$BUILDROOT/${BOARD}-${PRODUCT}/pkglist"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
 mkdir -p "$PKGDEPLOYDIR" "$PKGDEVDEPLOYDIR" "$TCDIR/bin"

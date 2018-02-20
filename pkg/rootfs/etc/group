@@ -21,4 +21,6 @@ wheel:x:19:
 input:x:24:
 mail:x:34:
 sshd:x:50:
+dnsmasq:x:51:
+unbound:x:52:
 nogroup:x:99:

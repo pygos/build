@@ -1,5 +1,4 @@
-DEPENDS=$(cat "$SCRIPTDIR/board/$BOARD/ROOTFS")
-DEPENDS="$DEPENDS toolchain"
+DEPENDS=$(cat_file_merge "ROOTFS" | sort -u)
 
 build() {
 	local SOURCE="$1"

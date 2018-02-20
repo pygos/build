@@ -28,11 +28,7 @@ deploy() {
 
 	mkdir -p "$DEPLOY/etc"
 
-	echo "/lib" > "$DEPLOY/etc/ld-musl-${MUSL_CPU}.path"
-
-	if [ -e "$SCRIPTDIR/board/$BOARD/LDPATH" ]; then
-		cat "$SCRIPTDIR/board/$BOARD/LDPATH" >> "$DEPLOY/etc/ld-musl-${MUSL_CPU}.path"
-	fi
+	cat_file_merge "LDPATH" > "$DEPLOY/etc/ld-musl-${MUSL_CPU}.path"
 
 	strip_files ${DEPLOY}/lib/*
 }

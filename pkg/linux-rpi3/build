@@ -15,7 +15,7 @@ build() {
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 	make -C "$1" O="$PKGBUILDDIR" ARCH="arm" CROSS_COMPILE="${TARGET}-" mrproper
 
-	cp "$SCRIPTDIR/board/$BOARD/linux.config" "$PKGBUILDDIR/.config"
+	cat_file_override "linux.config" > "$PKGBUILDDIR/.config"
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_CROSS_COMPILE=.*,CONFIG_CROSS_COMPILE="'$TARGET'-",'
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
 	make -C "$1" O="$PKGBUILDDIR" ARCH="arm" CROSS_COMPILE="${TARGET}-" oldconfig

@@ -27,6 +27,16 @@ deploy() {
 
 	rm -r "$DEPLOY/share"
 
+	mkdir -p "$DEPLOY/etc/unbound/unbound.conf.d"
+	mkdir -p "$DEPLOY/var/lib/unbound"
+
+	cat > "$DEPLOY/etc/unbound/unbound.conf" << _EOF
+include: "/etc/unbound/unbound.conf.d/*.conf"
+_EOF
+
+	cat_file_override "unbound.conf" > \
+		"$DEPLOY/etc/unbound/unbound.conf.d/server.conf"
+
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/{bin,lib}/*
 }
