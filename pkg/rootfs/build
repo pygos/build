@@ -51,6 +51,6 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	mksquashfs "$PKGBUILDDIR" "$DEPLOY/rootfs.img" \
+	mksquashfs "$PKGBUILDDIR" "$DEPLOY/rootfs.img" -comp xz \
 		-all-root -no-progress -no-xattrs
 }
