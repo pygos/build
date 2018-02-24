@@ -1,0 +1,35 @@
+VERSION="7.0.1"
+SRCDIR="dhcpcd-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://roy.marples.name/downloads/dhcpcd"
+SHA256SUM="8b36537fbcc00771b9a6c9ccd71b5011df27b3f892e926b199a195fad2f3f3c8"
+DEPENDS="toolchain"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	cp -r $SOURCE/* $PKGBUILDDIR
+
+	./configure --prefix="" --host="$TARGET" --sbindir=/bin \
+		    --datadir=/share --disable-static
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	make DESTDIR="$DEPLOY" install
+
+	chmod 755 $DEPLOY/bin/*
+	strip_files $DEPLOY/bin/*
+	cat_file_override "dhcpcd.conf" > "$DEPLOY/etc/dhcpcd.conf"
+
+	rm -rf "$DEPLOY/usr"
+}

@@ -9,3 +9,4 @@ dosfstools
 nftables
 kbd
 firmware-rpi3
+dhcpcd

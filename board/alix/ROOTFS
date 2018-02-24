@@ -7,3 +7,4 @@ iana-etc
 btrfs-progs
 dosfstools
 nftables
+dhcpcd
