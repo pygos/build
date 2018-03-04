@@ -160,8 +160,10 @@ umount -l /dev
 umount /sys
 umount /proc
 
+if [ "$singleuser" == "1" ]; then
+	unset -v singleuser overlay_dev root root_sfs
+	exec /bin/busybox switch_root /newroot /bin/bash
+fi
+
 unset -v singleuser overlay_dev root root_sfs
-
-/bin/busybox chroot /newroot /bin/openrc
-
-exec /bin/busybox switch_root /newroot /bin/openrc-init
+exec /bin/busybox switch_root /newroot /bin/init

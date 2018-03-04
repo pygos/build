@@ -1,0 +1,46 @@
+VERSION="0.1"
+SRCDIR="init-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="56fb57c7cc1b869642028497f81ea20f42d17821cd60af3d3b6a58170123f750"
+DEPENDS="toolchain"
+
+prepare() {
+	return
+}
+
+build() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+	local svc
+
+	make DESTDIR="$DEPLOY" install-strip
+
+	mkdir -p "$DEPLOY/etc/init.d"
+
+	if [ -e "$SCRIPTDIR/board/$BOARD/INIT" ]; then
+		source "$SCRIPTDIR/board/$BOARD/INIT"
+	fi
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/INIT" ]; then
+		source "$SCRIPTDIR/product/$PRODUCT/INIT"
+	fi
+
+	for svc in hostname loopback sysctl hwclock sysinit; do
+		ln -s "/share/init/$svc" "$DEPLOY/etc/init.d/$svc"
+	done
+
+	for svc in $GETTY_TTY; do
+		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
+	done
+
+	unset -v i GETTY_TTY
+}

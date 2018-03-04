@@ -14,7 +14,7 @@ findutils
 sed
 gawk
 shadow
-openrc
 procps-ng
 psmisc
 file
+init
