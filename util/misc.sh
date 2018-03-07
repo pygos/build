@@ -67,13 +67,15 @@ split_dev_deploy() {
 	fi
 
 	if [ -d "$1/lib/pkgconfig" ]; then
-		mkdir -p "$2/lib"
-		mv "$1/lib/pkgconfig" "$2/lib"
+		mkdir -p "$2/lib/pkgconfig"
+		mv $1/lib/pkgconfig/* "$2/lib/pkgconfig"
+		rmdir "$1/lib/pkgconfig"
 	fi
 
 	if [ -d "$1/share/pkgconfig" ]; then
-		mkdir -p "$2/lib"
-		mv "$1/share/pkgconfig" "$2/lib"
+		mkdir -p "$2/lib/pkgconfig"
+		mv $1/share/pkgconfig/* "$2/lib/pkgconfig"
+		rmdir "$1/share/pkgconfig"
 	fi
 
 	for f in ${1}/lib/*.la; do
