@@ -13,7 +13,7 @@ BOARD="$1"
 BUILDROOT=$(pwd)
 SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 NUMJOBS=$(grep -e "^processor" /proc/cpuinfo | wc -l)
-HOSTTUPLE=$(uname -m)-$OSTYPE
+HOSTTUPLE=$($SCRIPTDIR/util/config.guess)
 
 TCDIR="$BUILDROOT/$BOARD/toolchain"
 PKGBUILDDIR="$BUILDROOT/$BOARD/build"
