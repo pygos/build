@@ -1,8 +1,8 @@
 VERSION="0.1"
 SRCDIR="init-${VERSION}"
-TARBALL="${SRCDIR}.tar.gz"
+TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="56fb57c7cc1b869642028497f81ea20f42d17821cd60af3d3b6a58170123f750"
+SHA256SUM="eb317583e0fb8bb8a50e1229128e0fea0c4f18cbedbeec79fcf3e742679a45e1"
 DEPENDS="toolchain"
 
 prepare() {
@@ -34,13 +34,13 @@ deploy() {
 		source "$SCRIPTDIR/product/$PRODUCT/INIT"
 	fi
 
-	for svc in hostname loopback sysctl hwclock sysinit; do
-		ln -s "/share/init/$svc" "$DEPLOY/etc/init.d/$svc"
-	done
+	if [ "x$HWCLOCK" == "xyes" ]; then
+		ln -s "/share/init/hwclock" "$DEPLOY/etc/init.d/hwclock"
+	fi
 
 	for svc in $GETTY_TTY; do
 		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
 	done
 
-	unset -v i GETTY_TTY
+	unset -v i GETTY_TTY HWCLOCK
 }

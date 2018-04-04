@@ -1,1 +1,2 @@
 GETTY_TTY="ttyS0"
+HWCLOCK="yes"
