@@ -1,8 +1,8 @@
-VERSION="7.0.1"
+VERSION="7.0.2"
 SRCDIR="dhcpcd-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://roy.marples.name/downloads/dhcpcd"
-SHA256SUM="8b36537fbcc00771b9a6c9ccd71b5011df27b3f892e926b199a195fad2f3f3c8"
+SHA256SUM="c52bfae93d327004081a33e867dec50ea580e0d399bbfd662978bfd73c84f405"
 DEPENDS="toolchain"
 
 prepare() {
