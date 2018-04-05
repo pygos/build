@@ -1,8 +1,8 @@
-VERSION="1.1.18"
+VERSION="1.1.19"
 SRCDIR="musl-$VERSION"
 TARBALL="$SRCDIR.tar.gz"
 URL="https://www.musl-libc.org/releases"
-SHA256SUM="d017ee5d01aec0c522a1330fdff06b1e428cb409e1db819cc4935d5da4a5a118"
+SHA256SUM="db59a8578226b98373f5b27e61f0dd29ad2456f4aa9cec587ba8c24508e4c1d9"
 DEPENDS="tc-gcc1 linux_headers"
 
 prepare() {
