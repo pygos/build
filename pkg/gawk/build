@@ -10,7 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET"
+	$1/configure --prefix="" --host="$TARGET" --libexecdir="/lib/libexec"
 
 	make -j $NUMJOBS
 }

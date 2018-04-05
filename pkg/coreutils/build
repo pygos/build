@@ -10,7 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" \
+	$1/configure --prefix="" --host="$TARGET" --libexecdir=/lib/libexec \
 		     --enable-no-install-program=kill,uptime,dir,vdir,chcon,pinky,runcon
 
 	make -j $NUMJOBS

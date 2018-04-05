@@ -13,7 +13,8 @@ build() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin
+	$SOURCE/configure --prefix="" --host="$TARGET" --sbindir=/bin \
+			  --libexecdir=/lib/libexec
 
 	make -j $NUMJOBS
 }
