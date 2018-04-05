@@ -1,8 +1,8 @@
-VERSION="3.3.12"
+VERSION="3.3.13"
 SRCDIR="procps-ng-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://sourceforge.net/projects/procps-ng/files/Production"
-SHA256SUM="6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4"
+SHA256SUM="52b05b2bd5b05f46f24766a10474337ebadd828df9915e2b178df291cf88f7d3"
 DEPENDS="ncurses"
 
 prepare() {
@@ -14,7 +14,7 @@ build() {
 	ac_cv_func_realloc_0_nonnull=yes \
 	$1/configure --prefix="" --host="$TARGET" --disable-static \
 		     --enable-watch8bit --with-ncurses --without-systemd \
-		     --disable-kill --sbindir=/bin
+		     --disable-kill --disable-numa --sbindir=/bin
 
 	make -j $NUMJOBS
 }

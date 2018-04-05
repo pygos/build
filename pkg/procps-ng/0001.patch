@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -16818,12 +16818,12 @@ if test -n "$NCURSES_CFLAGS"; then
+@@ -16855,12 +16855,12 @@ if test -n "$NCURSES_CFLAGS"; then
      pkg_cv_NCURSES_CFLAGS="$NCURSES_CFLAGS"
   elif test -n "$PKG_CONFIG"; then
      if test -n "$PKG_CONFIG" && \
@@ -16,7 +16,7 @@
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
-@@ -16835,12 +16835,12 @@ if test -n "$NCURSES_LIBS"; then
+@@ -16872,12 +16872,12 @@ if test -n "$NCURSES_LIBS"; then
      pkg_cv_NCURSES_LIBS="$NCURSES_LIBS"
   elif test -n "$PKG_CONFIG"; then
      if test -n "$PKG_CONFIG" && \
@@ -32,7 +32,7 @@
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
-@@ -16861,21 +16861,21 @@ else
+@@ -16898,21 +16898,21 @@ else
          _pkg_short_errors_supported=no
  fi
          if test $_pkg_short_errors_supported = yes; then
@@ -60,7 +60,7 @@
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  
-@@ -16895,23 +16895,23 @@ return initscr ();
+@@ -16932,23 +16932,23 @@ return initscr ();
  }
  _ACEOF
  if ac_fn_c_try_link "$LINENO"; then :
@@ -90,7 +90,7 @@
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
  ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
-@@ -16930,19 +16930,19 @@ done
+@@ -16967,19 +16967,19 @@ done
      if test "x$have_ncurses" = xno; then
        as_fn_error $? "ncurses support missing/incomplete (for partial build use --without-ncurses)" "$LINENO" 5
      fi
@@ -115,7 +115,7 @@
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  
-@@ -16962,23 +16962,23 @@ return initscr ();
+@@ -16999,23 +16999,23 @@ return initscr ();
  }
  _ACEOF
  if ac_fn_c_try_link "$LINENO"; then :
@@ -145,7 +145,7 @@
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
  ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
-@@ -16997,7 +16997,7 @@ done
+@@ -17034,7 +17034,7 @@ done
      if test "x$have_ncurses" = xno; then
        as_fn_error $? "ncurses support missing/incomplete (for partial build use --without-ncurses)" "$LINENO" 5
      fi
