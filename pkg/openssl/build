@@ -1,8 +1,8 @@
-VERSION="1.1.0g"
+VERSION="1.1.0h"
 SRCDIR="openssl-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.openssl.org/source"
-SHA256SUM="de4d501267da39310905cb6dc8c6121f7a2cad45a7707f76df828fe1b85073af"
+SHA256SUM="5835626cde9e99656585fc7aaa2302a73a7e1340bf8c14fd635a62c66802a517"
 DEPENDS="zlib"
 
 prepare() {
