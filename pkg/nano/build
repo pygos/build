@@ -1,8 +1,8 @@
-VERSION="2.9.3"
+VERSION="2.9.5"
 SRCDIR="nano-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/nano/"
-SHA256SUM="7783bcfd4b2d5dc0bf64d4bd07b1a19e7ba3c91da881a4249772a36b972d4012"
+SHA256SUM="7b8d181cb57f42fa86a380bb9ad46abab859b60383607f731b65a9077f4b4e19"
 DEPENDS="ncurses"
 
 prepare() {
