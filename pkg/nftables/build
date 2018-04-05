@@ -1,8 +1,8 @@
-VERSION="0.8.2"
+VERSION="0.8.3"
 SRCDIR="nftables-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://netfilter.org/projects/nftables/files"
-SHA256SUM="675f0aaf88f11e7eacef63dc89cb65d207d9e09c3ea6d518f0ebbb013f0767ec"
+SHA256SUM="d16be1f5db88e95d29fc0b0e4df88acd079f3ee8e2b872ec7673f9a0d5d95e38"
 DEPENDS="libmnl libnftnl gmp readline ncurses"
 
 prepare() {
