@@ -1,8 +1,8 @@
-VERSION="487"
+VERSION="530"
 SRCDIR="less-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/less/"
-SHA256SUM="f3dc8455cb0b2b66e0c6b816c00197a71bf6d1787078adeee0bcf2aea4b12706"
+SHA256SUM="503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2"
 DEPENDS="ncurses"
 
 prepare() {
