@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -20474,231 +20474,6 @@ fi
+@@ -20795,231 +20795,6 @@ fi
  have_ncursesw=no
  have_ncursesw_header=no
  if test "x$with_ncursesw" != xno; then :
@@ -232,7 +232,7 @@
    # pkg-config (not supported by ncurses upstream by default)
    #
    if test "x$have_ncursesw" = xno; then :
-@@ -20933,230 +20708,6 @@ esac
+@@ -21254,230 +21029,6 @@ esac
  
  if test "x$have_ncursesw" = xno -a "x$with_ncurses" != xno ; then :
  
