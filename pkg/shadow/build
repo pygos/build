@@ -35,4 +35,6 @@ deploy() {
 		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
 		rmdir ${DEPLOY}/sbin
 	fi
+
+	rm $DEPLOY/bin/{vigr,vipw,chsh}
 }
