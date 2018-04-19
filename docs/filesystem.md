@@ -21,11 +21,12 @@ to `/lib`).
 The `/usr/share` directory containing application data has also been moved to
 the filesystem root (i.e. there is a `/share`).
 
-Many systems have a `/usr/libexec` directory containing executable not intended
+Many systems have a `/usr/libexec` directory containing executables not intended
 to be run by people but by programs. This has been moved to `/lib/libexec`.
 
 The `/usr` directory is still present but now serves its original purpose again.
-Storing user home directories.
+Storing user home directories. For instance, the `/root` directory has been
+moved to `/usr/root`.
 
 Since build tools, source code and headers are typically not installed, there
 is currently no need to think about where to put `/usr/include` or `/usr/src`.
@@ -52,12 +53,6 @@ kernel and squasfs image in order to apply updates, the later for other
 temporary mounts.
 
 
-Depending on the system configuration, the `/usr` directory may contain read
-only user home directories, may be used as a mount point for a dedicated
-partition or network share with home directories, or may be used for an overlay
-setup as outlined below.
-
-
 ## Persistent Configuration Changes
 
 A directory `/cfg` was added to implement an overlay mount setup. The directory
@@ -80,7 +75,9 @@ squashfs image, but changes can be made. The altered files are stored on the
 dedicated partition or device mounted to `/cfg/overlay`.
 
 
-A similar setup is used for the `/var/lib` and the `/root` directories.
+A similar setup is used for the `/var/lib` and the `/usr` directories. The
+`/var/lib` directory combines `/cfg/preserve/var_lib` with overlays from
+`/cfg/overlay/var_lib`.
 
 
 This setup allows for simple management of site local configuration changes,
