@@ -31,19 +31,17 @@ build() {
 	echo $OS_RELEASE > $PKGBUILDDIR/etc/$fname
 
 	# setup root home directory
-	cp -r "$PKGBUILDDIR/etc/skel" "$PKGBUILDDIR/root"
-	chmod 750 "$PKGBUILDDIR/root"
+	mkdir -p "$PKGBUILDDIR/cfg/preserve/usr"
+
+	cp -r "$PKGBUILDDIR/etc/skel" "$PKGBUILDDIR/cfg/preserve/usr/root"
+	chmod 750 "$PKGBUILDDIR/cfg/preserve/usr/root"
 
 	# move configuration to preserve directory
-	mv ${PKGBUILDDIR}/etc ${PKGBUILDDIR}/cfg/preserve
-	mkdir -p ${PKGBUILDDIR}/etc
+	mv "$PKGBUILDDIR/etc" "$PKGBUILDDIR/cfg/preserve"
+	mv "$PKGBUILDDIR/var/lib" "$PKGBUILDDIR/cfg/preserve/var_lib"
+	rm -rf "$PKGBUILDDIR/var"
 
-	mv ${PKGBUILDDIR}/var/lib ${PKGBUILDDIR}/cfg/preserve/var_lib
-
-	mv ${PKGBUILDDIR}/root ${PKGBUILDDIR}/cfg/preserve
-	mkdir -p ${PKGBUILDDIR}/root
-	chmod 750 ${PKGBUILDDIR}/root
-	chmod 750 ${PKGBUILDDIR}/cfg/preserve/root
+	mkdir -p ${PKGBUILDDIR}/{etc,var}
 }
 
 deploy() {
