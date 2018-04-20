@@ -6,7 +6,7 @@ build() {
 
 	# setup skeleton
 	mkdir -pv ${PKGBUILDDIR}/{bin,lib,etc,dev,sys,proc,tmp,var,run}
-	mkdir -pv ${PKGBUILDDIR}/{boot,usr,srv,mnt,opt}
+	mkdir -pv ${PKGBUILDDIR}/{boot,usr,mnt}
 	mkdir -pv ${PKGBUILDDIR}/cfg/{preserve,overlay}
 
 	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGBUILDDIR"

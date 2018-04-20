@@ -110,17 +110,3 @@ For the time being, it has been decided to not include multiarch support.
 All packages are built for a single target architecture. This simplifies both
 the build process and the final system as well as reducing the memory footprint
 of the system image.
-
-
-## The srv and opt directories
-
-A `/srv` directory is included in the filesystem to store static service files
-such as web sites served by a web server. The intention is to have those files
-backed into the squashfs image.
-
-If custom applications are built and bundled into the filesystem, it is
-strongly encouraged to use the standard locations for those. However, if it is
-desired for some reason, a `/opt` directory is also added by default. The
-contents of the `PATH` variable and the configuration file of the loader may
-have to be adjusted.
-
