@@ -30,6 +30,10 @@ build() {
 
 	echo $OS_RELEASE > $PKGBUILDDIR/etc/$fname
 
+	# remove write flag from all static files/directories
+	find $PKGBUILDDIR/{bin,lib,share} -type f -exec chmod a-w {} \;
+	find $PKGBUILDDIR/{bin,lib,share} -type d -exec chmod a-w {} \;
+
 	# setup root home directory
 	mkdir -p "$PKGBUILDDIR/cfg/preserve/usr"
 
@@ -50,4 +54,8 @@ deploy() {
 
 	mksquashfs "$PKGBUILDDIR" "$DEPLOY/rootfs.img" -comp xz \
 		-all-root -no-progress -no-xattrs
+
+	# add write flag again, so we can remove the build directory
+	find $PKGBUILDDIR/{bin,lib,share} -type d -exec chmod u+w {} \;
+	find $PKGBUILDDIR/{bin,lib,share} -type f -exec chmod u+w {} \;
 }
