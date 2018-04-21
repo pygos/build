@@ -26,7 +26,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	mkdir -p "$DEPLOY/etc/init.d"
+	cp -r ${SCRIPTDIR}/pkg/${PKGNAME}/{etc,lib,share} "$DEPLOY"
 
 	if [ -e "$SCRIPTDIR/board/$BOARD/INIT" ]; then
 		source "$SCRIPTDIR/board/$BOARD/INIT"

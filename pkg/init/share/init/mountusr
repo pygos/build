@@ -1,0 +1,5 @@
+description "mount /usr"
+type wait
+target boot
+before vfs
+exec /lib/libexec/init/overlay.sh usr /usr
