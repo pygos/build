@@ -1,20 +1,29 @@
-cat_file_override() {
+file_path_override() {
 	local fname="$1"
 
 	if [ -e "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}" ]; then
-		cat "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}"
+		echo "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}"
 		return
 	fi
 	if [ -e "$SCRIPTDIR/product/$PRODUCT/$fname" ]; then
-		cat "$SCRIPTDIR/product/$PRODUCT/$fname"
+		echo "$SCRIPTDIR/product/$PRODUCT/$fname"
 		return
 	fi
 	if [ -e "$SCRIPTDIR/board/$BOARD/$fname" ]; then
-		cat "$SCRIPTDIR/board/$BOARD/$fname"
+		echo "$SCRIPTDIR/board/$BOARD/$fname"
 		return
 	fi
 	if [ -e "$SCRIPTDIR/product/common/$fname" ]; then
-		cat "$SCRIPTDIR/product/common/$fname"
+		echo "$SCRIPTDIR/product/common/$fname"
+		return
+	fi
+}
+
+cat_file_override() {
+	local path=$(file_path_override "$1")
+
+	if [ ! -z "$path" ]; then
+		cat "$path"
 	fi
 }
 

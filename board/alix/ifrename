@@ -1,0 +1,2 @@
+# Rename ALIX board interfaces to port0...port2
+eth*,00:0d:b9:*,port

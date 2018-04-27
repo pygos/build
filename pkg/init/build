@@ -39,6 +39,12 @@ deploy() {
 		ln -s "/share/init/hwclock" "$DEPLOY/etc/init.d/hwclock"
 	fi
 
+	svc=$(file_path_override "ifrename")
+	if [ ! -z "$svc" ]; then
+		cp "$svc" "$DEPLOY/etc/netcfg/ifrename"
+		ln -s "/share/init/ifrename" "$DEPLOY/etc/init.d/ifrename"
+	fi
+
 	for svc in $GETTY_TTY; do
 		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
 	done

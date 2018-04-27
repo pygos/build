@@ -1,0 +1,2 @@
+# Rename Raspberry Pi ethernet interfaces to port<X>
+eth*,b8:27:eb:*,port
