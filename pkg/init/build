@@ -45,6 +45,14 @@ deploy() {
 		ln -s "/share/init/ifrename" "$DEPLOY/etc/init.d/ifrename"
 	fi
 
+	svc=$(file_path_override "interfaces")
+	if [ ! -z "$svc" ]; then
+		for svc in $svc/*; do
+			[ -f "$svc" ] || continue
+			cp "$svc" "$DEPLOY/etc/netcfg/"
+		done
+	fi
+
 	for svc in $GETTY_TTY; do
 		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
 	done
