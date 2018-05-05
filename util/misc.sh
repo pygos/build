@@ -1,20 +1,18 @@
 file_path_override() {
-	local fname="$1"
-
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}" ]; then
-		echo "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}"
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1" ]; then
+		echo "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1"
 		return
 	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$fname" ]; then
-		echo "$SCRIPTDIR/product/$PRODUCT/$fname"
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$1" ]; then
+		echo "$SCRIPTDIR/product/$PRODUCT/$1"
 		return
 	fi
-	if [ -e "$SCRIPTDIR/board/$BOARD/$fname" ]; then
-		echo "$SCRIPTDIR/board/$BOARD/$fname"
+	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
+		echo "$SCRIPTDIR/board/$BOARD/$1"
 		return
 	fi
-	if [ -e "$SCRIPTDIR/product/common/$fname" ]; then
-		echo "$SCRIPTDIR/product/common/$fname"
+	if [ -e "$SCRIPTDIR/product/common/$1" ]; then
+		echo "$SCRIPTDIR/product/common/$1"
 		return
 	fi
 }
@@ -28,19 +26,17 @@ cat_file_override() {
 }
 
 cat_file_merge() {
-	local fname="$1"
-
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}" ]; then
-		cat "$SCRIPTDIR/product/$PRODUCT/${fname}.${BOARD}"
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1" ]; then
+		cat "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1"
 	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$fname" ]; then
-		cat "$SCRIPTDIR/product/$PRODUCT/$fname"
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$1" ]; then
+		cat "$SCRIPTDIR/product/$PRODUCT/$1"
 	fi
-	if [ -e "$SCRIPTDIR/board/$BOARD/$fname" ]; then
-		cat "$SCRIPTDIR/board/$BOARD/$fname"
+	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
+		cat "$SCRIPTDIR/board/$BOARD/$1"
 	fi
-	if [ -e "$SCRIPTDIR/product/common/$fname" ]; then
-		cat "$SCRIPTDIR/product/common/$fname"
+	if [ -e "$SCRIPTDIR/product/common/$1" ]; then
+		cat "$SCRIPTDIR/product/common/$1"
 	fi
 }
 

@@ -34,6 +34,9 @@ deploy() {
 	if [ -e "$SCRIPTDIR/product/$PRODUCT/INIT" ]; then
 		source "$SCRIPTDIR/product/$PRODUCT/INIT"
 	fi
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/INIT" ]; then
+		source "$SCRIPTDIR/product/$PRODUCT/$BOARD/INIT"
+	fi
 
 	if [ "x$HWCLOCK" == "xyes" ]; then
 		ln -s "/share/init/hwclock" "$DEPLOY/etc/init.d/hwclock"
