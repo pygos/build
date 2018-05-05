@@ -1,0 +1,9 @@
+description "DHCP client - master service"
+type respawn limit 5
+target boot
+after sysinit ifrename ifcfg
+
+exec {
+	mkdir -p /var/db/dhcpcd
+	dhcpcd -B --inactive
+}

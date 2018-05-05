@@ -57,5 +57,14 @@ deploy() {
 		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
 	done
 
-	unset -v i GETTY_TTY HWCLOCK
+	if [ ! -z "$DHCP_PORTS" ]; then
+		ln -s "/share/init/dhcpcdmaster" \
+			"$DEPLOY/etc/init.d/dhcpcdmaster"
+	fi
+
+	for svc in $DHCP_PORTS; do
+		ln -s "/share/init/dhcpcd" "$DEPLOY/etc/init.d/dhcpcd@$svc"
+	done
+
+	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS
 }
