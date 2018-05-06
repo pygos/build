@@ -30,3 +30,10 @@ deploy() {
 	mkdir -p "$DEPLOY/bin"
 	cp "$PKGBUILDDIR/busybox" "$DEPLOY/bin"
 }
+
+check_update() {
+	curl --silent -L "$URL" | \
+	    grep -o ">busybox-[0-9.]*tar.bz2<" | \
+	    sed 's/>busybox-//g' | sed 's/.tar.bz2<//g' | \
+	    verson_find_greatest "$VERSION"
+}

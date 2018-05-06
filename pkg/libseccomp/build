@@ -26,3 +26,9 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L https://github.com/seccomp/libseccomp/releases | \
+	    grep -o "libseccomp-[0-9.]*tar.gz" | sed 's/libseccomp-//g' | \
+	    sed 's/.tar.gz//g' | verson_find_greatest "$VERSION"
+}

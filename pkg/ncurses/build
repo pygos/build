@@ -69,3 +69,9 @@ deploy() {
 
 	rm -r "$olddir"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">ncurses-[0-9.]*tar.gz<" | \
+	    sed 's/>ncurses-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

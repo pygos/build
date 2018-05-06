@@ -26,3 +26,9 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L https://sqlite.org/download.html | \
+	    grep -o sqlite-autoconf-[0-9]*.tar.gz | grep -o [0-9]* | \
+	    verson_find_greatest "$VERSION"
+}

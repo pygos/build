@@ -24,3 +24,9 @@ deploy() {
 	rm "$DEPLOY/bin/gawk-$VERSION"
 	rm -r "$DEPLOY/include" "$DEPLOY/share/info" "$DEPLOY/share/man"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">gawk-[0-9.]*tar.xz<" | \
+	    sed 's/>gawk-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

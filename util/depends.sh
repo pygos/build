@@ -1,7 +1,7 @@
 include_pkg() {
 	PKGNAME="$1"		# globally visible package name
 
-	unset -f build deploy prepare
+	unset -f build deploy prepare check_update
 	unset -v VERSION TARBALL URL SRCDIR SHA256SUM DEPENDS
 	source "$SCRIPTDIR/pkg/$PKGNAME/build"
 }

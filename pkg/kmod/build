@@ -32,3 +32,9 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">kmod-[0-9.]*tar.xz<" | \
+	    sed 's/>kmod-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

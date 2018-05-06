@@ -35,3 +35,9 @@ deploy() {
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	rm -r "$DEPLOY/lib"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">bash-[0-9.]*tar.gz<" | \
+	    sed 's/>bash-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

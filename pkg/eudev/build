@@ -31,3 +31,9 @@ deploy() {
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	rmdir "$DEPLOY/share"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o "eudev-[0-9.]*tar.gz" | \
+	    sed 's/eudev-//g' | sed 's/.tar.gz//g' | \
+	    verson_find_greatest "$VERSION"
+}

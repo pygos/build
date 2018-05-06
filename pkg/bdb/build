@@ -29,3 +29,9 @@ deploy() {
 	rm -r "$DEPLOY/docs"
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	# we need to login to access newer versions
+	# ... because Oracle, thats why!
+	return
+}

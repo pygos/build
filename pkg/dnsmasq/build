@@ -35,3 +35,9 @@ deploy() {
 
 	mkdir -p "$DEPLOY/etc/dnsmasq.d"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">dnsmasq-[0-9.]*tar.xz<" | \
+	    sed 's/>dnsmasq-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

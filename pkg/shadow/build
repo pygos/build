@@ -38,3 +38,10 @@ deploy() {
 
 	rm $DEPLOY/bin/{vigr,vipw,chsh}
 }
+
+check_update() {
+	curl --silent -L https://github.com/shadow-maint/shadow/releases | \
+	    grep -o "shadow-[0-9.]*tar.xz" | \
+	    sed 's/shadow-//g' | sed 's/.tar.xz//g' | \
+	    verson_find_greatest "$VERSION"
+}

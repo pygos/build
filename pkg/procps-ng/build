@@ -30,3 +30,9 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">procps-ng-[0-9.]*tar.xz<" | \
+	    sed 's/>procps-ng-//g' | sed 's/.tar.xz<//g' |\
+	    verson_find_greatest "$VERSION"
+}

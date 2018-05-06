@@ -21,3 +21,7 @@ deploy() {
 	cp "$SOURCE/protocols" "$DEPLOY/etc"
 	cp "$SOURCE/services" "$DEPLOY/etc"
 }
+
+check_update() {
+	return
+}

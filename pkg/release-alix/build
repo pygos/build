@@ -35,3 +35,7 @@ deploy() {
 
 	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
 }
+
+check_update() {
+	return
+}

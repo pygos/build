@@ -32,3 +32,10 @@ deploy() {
 	strip_files ${DEPLOY}/{bin,lib}/*
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L "$URL" | \
+	    grep -o ">btrfs-progs-v[0-9.]*tar.xz<" | \
+	    sed 's/>btrfs-progs-v//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

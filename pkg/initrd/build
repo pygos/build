@@ -26,3 +26,7 @@ slink /bin/sh /bin/busybox 0777 0 0
 file /init $DEPLOY/init 0775 0 0
 _EOF
 }
+
+check_update() {
+	return
+}

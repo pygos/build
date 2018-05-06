@@ -27,3 +27,9 @@ deploy() {
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/lib/*.so*
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">gmp-[0-9.]*tar.bz2<" | \
+	    sed 's/>gmp-//g' | sed 's/.tar.bz2<//g' | \
+	    verson_find_greatest "$VERSION"
+}

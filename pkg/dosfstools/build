@@ -24,3 +24,10 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 	rm -r "$DEPLOY/share"
 }
+
+check_update() {
+	curl --silent -L "https://github.com/dosfstools/dosfstools/releases" |\
+	    grep -o "dosfstools-[0-9.]*tar.xz" | \
+	    sed 's/dosfstools-//g' | sed 's/.tar.xz//g' | \
+	    verson_find_greatest "$VERSION"
+}

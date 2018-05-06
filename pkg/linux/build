@@ -34,3 +34,10 @@ deploy() {
 
 	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/vmlinuz"
 }
+
+check_update() {
+	curl --silent -L https://www.kernel.org/ | \
+	    grep -o linux-[0-9.]*tar.xz | \
+	    sed 's/linux-//g' | sed 's/.tar.xz//g' | \
+	    verson_find_greatest "$VERSION"
+}

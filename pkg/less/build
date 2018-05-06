@@ -25,3 +25,9 @@ deploy() {
 
 	rm -r "$DEPLOY/share"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">less-[0-9.]*tar.gz<" | \
+	    sed 's/>less-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

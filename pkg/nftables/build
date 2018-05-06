@@ -23,3 +23,9 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">nftables-[0-9.]*tar.bz2<" | \
+	    sed 's/>nftables-//g' | sed 's/.tar.bz2<//g' | grep -v 0.099 |\
+	    verson_find_greatest "$VERSION"
+}

@@ -16,3 +16,9 @@ build() {
 deploy() {
 	return
 }
+
+check_update() {
+	curl --silent --list-only "$URL/" | grep -o "isl-[0-9.]*tar.bz2" | \
+	    sed 's/isl-//g' | sed 's/.tar.bz2//g' | \
+	    verson_find_greatest "$VERSION"
+}

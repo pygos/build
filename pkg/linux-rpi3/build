@@ -32,3 +32,12 @@ deploy() {
 
 	install -m 755 "arch/arm/boot/zImage" "$DEPLOY/vmlinuz"
 }
+
+check_update() {
+	local version=$(echo $VERSION | sed 's/-[0-9]*$//g')
+
+	curl --silent -L "https://github.com/raspberrypi/linux/releases" | \
+	    grep -o "raspberrypi-kernel_[0-9.]*-[0-9]" | \
+	    sed 's/raspberrypi-kernel_//g' | sed 's/-/./g' | \
+	    verson_find_greatest "$version"
+}

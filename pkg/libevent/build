@@ -27,3 +27,9 @@ deploy() {
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/lib/*
 }
+
+check_update() {
+	curl --silent -L https://github.com/libevent/libevent/releases | \
+	    grep -o "libevent-[0-9.]*-stable" | grep -o "[0-9.]*" | \
+	    verson_find_greatest "$VERSION"
+}

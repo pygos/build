@@ -27,3 +27,12 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	local version=$(echo "$VERSION" | sed 's/R_//g' | sed 's/_/./g')
+
+	curl --silent -L "https://github.com/libexpat/libexpat/releases" | \
+	    grep -o "expat-[0-9.]*tar.bz2" | \
+	    sed 's/expat-//g' | sed 's/.tar.bz2//g' | \
+	    verson_find_greatest "$version"
+}

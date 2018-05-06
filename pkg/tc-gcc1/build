@@ -40,3 +40,10 @@ build() {
 deploy() {
 	make install-gcc install-target-libgcc
 }
+
+check_update() {
+	curl --silent -L "http://ftp.gnu.org/gnu/gcc" | \
+	    grep -o ">gcc-[0-9.]*/<" | \
+	    sed 's/>gcc-//g' | sed 's/\/<//g' | \
+	    verson_find_greatest "$VERSION"
+}

@@ -35,3 +35,11 @@ deploy() {
 
 	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$DEPLOY/bin"
 }
+
+check_update() {
+	local version=$(echo $VERSION | sed 's/p/./g')
+
+	curl --silent -L "$URL" | grep -o ">openssh-[0-9.]*p[0-9]*.tar.gz<" | \
+	    sed 's/>openssh-//g' | sed 's/.tar.gz<//g' | sed 's/p/./g' | \
+	    verson_find_greatest "$version"
+}

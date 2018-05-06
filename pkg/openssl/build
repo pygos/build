@@ -31,3 +31,12 @@ deploy() {
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*
 }
+
+check_update() {
+	local version=$(echo $VERSION | sed 's/\([[:lower:]]\)/.\1/g')
+
+	curl --silent -L "$URL" | grep -o ">openssl-[0-9a-z.]*tar.gz<" | \
+	    sed 's/>openssl-//g' | sed 's/.tar.gz<//g' | \
+	    sed 's/\([[:lower:]]\)/.\1/g' | \
+	    verson_find_greatest "$version"
+}

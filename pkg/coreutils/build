@@ -23,3 +23,9 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 	rm -r "$DEPLOY/share" "$DEPLOY/lib"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">coreutils-[0-9.]*tar.xz<" | \
+	    sed 's/>coreutils-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

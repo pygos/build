@@ -71,3 +71,7 @@ deploy() {
 
 	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS
 }
+
+check_update() {
+	return
+}

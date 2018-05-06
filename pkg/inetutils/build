@@ -27,3 +27,9 @@ deploy() {
 	rm -r "$DEPLOY/share" "$DEPLOY/lib"
 	(rmdir "$DEPLOY/libexec" || true) 2> /dev/null ;
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">inetutils-[0-9.]*tar.xz<" | \
+	    sed 's/>inetutils-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

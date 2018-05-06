@@ -24,3 +24,10 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L "$URL" | \
+	    grep -o ">bash-completion-[0-9.]*tar.gz<" | grep -v "2008" |\
+	    sed 's/>bash-completion-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

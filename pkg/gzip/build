@@ -22,3 +22,9 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 	rm -r "$DEPLOY/share"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">gzip-[0-9.]*tar.xz<" | \
+	    sed 's/>gzip-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

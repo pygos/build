@@ -34,3 +34,9 @@ deploy() {
 
 	rm -rf "$DEPLOY/usr"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">dhcpcd-[0-9.]*tar.xz<" | \
+	    sed 's/>dhcpcd-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

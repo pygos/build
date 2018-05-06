@@ -25,3 +25,9 @@ deploy() {
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/{bin,lib}/*
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">nettle-[0-9.]*tar.gz<" | \
+	    sed 's/>nettle-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

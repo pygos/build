@@ -1,8 +1,5 @@
-VERSION="6.1.2"
-SRCDIR="gmp-$VERSION"
-TARBALL="gmp-$VERSION.tar.bz2"
-URL="http://ftp.gnu.org/gnu/gmp"
-SHA256SUM="5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2"
+# inherit package details from target GMP package
+source "$SCRIPTDIR/pkg/gmp/build"
 DEPENDS=""
 
 prepare() {

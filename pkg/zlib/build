@@ -28,3 +28,9 @@ deploy() {
 
 	rm -r ${DEPLOY}/share
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o "xz-[0-9.]*tar.xz" | \
+	    sed 's/zlib-//g' | sed 's/.tar.xz//g' | \
+	    verson_find_greatest "$VERSION"
+}

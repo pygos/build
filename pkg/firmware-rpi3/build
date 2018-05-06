@@ -32,3 +32,9 @@ deploy() {
 	strip_files ${DEPLOY}/opt/vc/lib/*.so
 	strip_files ${DEPLOY}/opt/vc/lib/plugins/*.so
 }
+
+check_update() {
+	curl --silent -L https://github.com/raspberrypi/firmware/releases | \
+	     grep -o "[0-9.]\+tar.gz" | sed 's/.tar.gz//g' | \
+	     verson_find_greatest "$VERSION"
+}

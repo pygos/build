@@ -27,3 +27,9 @@ deploy() {
 
 	strip_files ${DEPLOY}/bin/*
 }
+
+check_update() {
+	curl --silent -L $URL | grep -o "iproute2-[0-9.]*tar.xz" | \
+	    sed 's/iproute2-//g' | sed 's/.tar.xz//g' | \
+	    verson_find_greatest "$VERSION"
+}

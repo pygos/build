@@ -59,3 +59,7 @@ deploy() {
 	find $PKGBUILDDIR/{bin,lib,share} -type d -exec chmod u+w {} \;
 	find $PKGBUILDDIR/{bin,lib,share} -type f -exec chmod u+w {} \;
 }
+
+check_update() {
+	return
+}

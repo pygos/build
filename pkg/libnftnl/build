@@ -24,3 +24,9 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">libnftnl-[0-9.]*tar.bz2<" | \
+	    sed 's/>libnftnl-//g' | sed 's/.tar.bz2<//g' | \
+	    verson_find_greatest "$VERSION"
+}

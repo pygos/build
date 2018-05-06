@@ -26,3 +26,9 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
+
+check_update() {
+	curl --silent --list-only "$URL/" | grep -o "file-[0-9.]*tar.gz" | \
+	    sed 's/file-//g' | sed 's/.tar.gz//g' | \
+	    verson_find_greatest "$VERSION"
+}

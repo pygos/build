@@ -26,3 +26,9 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 	rm -r "$DEPLOY/share"
 }
+
+check_update() {
+	curl --silent -L $URL | grep -o ">psmisc-[0-9.]*tar.xz<" | \
+	    sed 's/>psmisc-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

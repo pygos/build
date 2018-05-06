@@ -23,3 +23,9 @@ deploy() {
 
 	rm -r "$DEPLOY/share" "$DEPLOY/lib"
 }
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">diffutils-[0-9.]*tar.xz<" | \
+	    sed 's/>diffutils-//g' | sed 's/.tar.xz<//g' | \
+	    verson_find_greatest "$VERSION"
+}
