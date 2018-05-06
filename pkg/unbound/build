@@ -1,8 +1,8 @@
-VERSION="1.7.0"
+VERSION="1.7.1"
 SRCDIR="unbound-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.unbound.net/downloads"
-SHA256SUM="94dd9071fb13d8ccd122a3ac67c4524a3324d0e771fc7a8a7c49af8abfb926a2"
+SHA256SUM="56e085ef582c5372a20207de179d0edb4e541e59f87be7d4ee1d00d12008628d"
 DEPENDS="libevent openssl expat"
 
 prepare() {
