@@ -11,10 +11,6 @@ file_path_override() {
 		echo "$SCRIPTDIR/board/$BOARD/$1"
 		return
 	fi
-	if [ -e "$SCRIPTDIR/product/common/$1" ]; then
-		echo "$SCRIPTDIR/product/common/$1"
-		return
-	fi
 }
 
 cat_file_override() {
@@ -34,9 +30,6 @@ cat_file_merge() {
 	fi
 	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
 		cat "$SCRIPTDIR/board/$BOARD/$1"
-	fi
-	if [ -e "$SCRIPTDIR/product/common/$1" ]; then
-		cat "$SCRIPTDIR/product/common/$1"
 	fi
 }
 
