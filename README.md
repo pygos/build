@@ -28,6 +28,8 @@ see [docs/build.md](docs/build.md).
 
 For an overview of the available documentation see [docs/index.md](docs/index.md).
 
+By the way, before you ask: the default root password for the demo setup is
+*reindeerflotilla*.
 
 ## Target configuration
 
