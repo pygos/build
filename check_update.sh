@@ -10,7 +10,7 @@ export LINUXPKG="linux"
 # utilities
 source "$SCRIPTDIR/util/depends.sh"
 source "$SCRIPTDIR/util/version.sh"
-source "$SCRIPTDIR/util/misc.sh"
+source "$SCRIPTDIR/util/override.sh"
 
 # check all packages
 for pkg in $SCRIPTDIR/pkg/*; do
