@@ -9,31 +9,3 @@
  
  /* programs issuing bindtextdomain() also need LOCALEDIR string */
  #ifndef LOCALEDIR
---- a/procio.c.old
-+++ b/procio.c
-@@ -24,7 +24,6 @@
- #endif
- #include <errno.h>
- #include <fcntl.h>
--#include <libio.h>
- #include <limits.h>
- #include <stdio.h>
- #include <stdlib.h>
---- a/proc/numa.h.old
-+++ b/proc/numa.h
-@@ -22,6 +22,14 @@
- 
- #include <features.h>
- 
-+#ifdef __cplusplus
-+# define __BEGIN_DECLS extern "C" {
-+# define __END_DECLS }
-+#else
-+# define __BEGIN_DECLS
-+# define __END_DECLS
-+#endif
-+
- __BEGIN_DECLS
- 
- void numa_init (void);
-

@@ -1,8 +1,8 @@
-VERSION="3.3.13"
+VERSION="3.3.14"
 SRCDIR="procps-ng-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://sourceforge.net/projects/procps-ng/files/Production"
-SHA256SUM="52b05b2bd5b05f46f24766a10474337ebadd828df9915e2b178df291cf88f7d3"
+SHA256SUM="5eda0253999b7d786e690edfa73301b3113c7a67058478866e98e9ff6736726c"
 DEPENDS="ncurses"
 
 prepare() {
