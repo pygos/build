@@ -28,15 +28,7 @@ deploy() {
 
 	cp -r ${SCRIPTDIR}/pkg/${PKGNAME}/{etc,lib,share} "$DEPLOY"
 
-	if [ -e "$SCRIPTDIR/board/$BOARD/INIT" ]; then
-		source "$SCRIPTDIR/board/$BOARD/INIT"
-	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/INIT" ]; then
-		source "$SCRIPTDIR/product/$PRODUCT/INIT"
-	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/INIT" ]; then
-		source "$SCRIPTDIR/product/$PRODUCT/$BOARD/INIT"
-	fi
+	include_merge "INIT"
 
 	if [ "x$HWCLOCK" == "xyes" ]; then
 		ln -s "/share/init/hwclock" "$DEPLOY/etc/init.d/hwclock"

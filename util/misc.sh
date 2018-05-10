@@ -33,6 +33,26 @@ cat_file_merge() {
 	fi
 }
 
+include_override() {
+	local path=$(file_path_override "$1")
+
+	if [ ! -z "$path" ]; then
+		source "$path"
+	fi
+}
+
+include_merge() {
+	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
+		source "$SCRIPTDIR/board/$BOARD/$1"
+	fi
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$1" ]; then
+		source "$SCRIPTDIR/product/$PRODUCT/$1"
+	fi
+	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1" ]; then
+		source "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1"
+	fi
+}
+
 apply_patches() {
 	local PATCH
 

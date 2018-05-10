@@ -47,12 +47,6 @@ mkdir -p "$PKGDEPLOYDIR" "$PKGDEVDEPLOYDIR" "$TCDIR/bin"
 
 export PATH="$TCDIR/bin:$PATH"
 
-source "$SCRIPTDIR/board/$BOARD/TOOLCHAIN"
-
-mkdir -p "$TCDIR/$TARGET"
-
-CMAKETCFILE="$TCDIR/toolchain.cmake"
-
 pushd "$SCRIPTDIR" > /dev/null
 OS_NAME="Pygos"
 OS_RELEASE=$(git describe --always --tags --dirty)
@@ -64,6 +58,13 @@ source "$SCRIPTDIR/util/download.sh"
 source "$SCRIPTDIR/util/pkgcmd.sh"
 source "$SCRIPTDIR/util/toolchain.sh"
 source "$SCRIPTDIR/util/misc.sh"
+
+############################## toolchain config ##############################
+include_merge "TOOLCHAIN"
+
+mkdir -p "$TCDIR/$TARGET"
+
+CMAKETCFILE="$TCDIR/toolchain.cmake"
 
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
