@@ -24,7 +24,7 @@ build() {
 		     --disable-uuidd --disable-wall --disable-zramctl \
 		     --disable-makeinstall-chown \
 		     --disable-makeinstall-setuid \
-		     --enable-agetty \
+		     --enable-agetty
 
 	make -j $NUMJOBS
 }
@@ -37,7 +37,8 @@ deploy() {
 
 	mkdir -p "$DEPLOY/var/lib/hwclock"
 
-	make DESTDIR="$DEPLOY" install-strip
+	make DESTDIR="$DEPLOY" install
+	strip_files ${DEPLOY}/{bin,lib}/*
 
 	rm -r "$DEPLOY/share/man" "$DEPLOY/share/doc"
 
