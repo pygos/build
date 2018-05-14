@@ -36,8 +36,7 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L https://www.kernel.org/ | \
-	    grep -o linux-[0-9.]*tar.xz | \
-	    sed 's/linux-//g' | sed 's/.tar.xz//g' | \
-	    verson_find_greatest "$VERSION"
+	curl --silent -L https://www.kernel.org/feeds/kdist.xml | \
+	     grep -o "[0-9.]*: longterm" | grep -o "[0-9.]*" | \
+	     verson_find_greatest "$VERSION"
 }
