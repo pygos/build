@@ -20,6 +20,7 @@ deploy() {
 	local DEPLOY="$2"
 	local DEVDEPLOY="$3"
 
+	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
 
 	rm -r "$DEPLOY/share"

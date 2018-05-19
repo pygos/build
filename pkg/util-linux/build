@@ -37,6 +37,7 @@ deploy() {
 
 	mkdir -p "$DEPLOY/var/lib/hwclock"
 
+	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
 	strip_files ${DEPLOY}/{bin,lib}/*
 
