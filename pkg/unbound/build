@@ -3,7 +3,7 @@ SRCDIR="unbound-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.unbound.net/downloads"
 SHA256SUM="56e085ef582c5372a20207de179d0edb4e541e59f87be7d4ee1d00d12008628d"
-DEPENDS="libevent openssl expat"
+DEPENDS="openssl expat libbsd"
 
 prepare() {
 	return
@@ -27,15 +27,9 @@ deploy() {
 
 	rm -r "$DEPLOY/share"
 
-	mkdir -p "$DEPLOY/etc/unbound/unbound.conf.d"
 	mkdir -p "$DEPLOY/var/lib/unbound"
 
-	cat > "$DEPLOY/etc/unbound/unbound.conf" << _EOF
-include: "/etc/unbound/unbound.conf.d/*.conf"
-_EOF
-
-	cat_file_override "unbound.conf" > \
-		"$DEPLOY/etc/unbound/unbound.conf.d/server.conf"
+	cat_file_override "unbound.conf" > "$DEPLOY/etc/unbound/unbound.conf"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/{bin,lib}/*
