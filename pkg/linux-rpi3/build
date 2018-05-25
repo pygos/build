@@ -34,7 +34,7 @@ deploy() {
 }
 
 check_update() {
-	local version=$(echo $VERSION | sed 's/-[0-9]*$//g')
+	local version=$(echo $VERSION | sed 's/-/./g')
 
 	curl --silent -L "https://github.com/raspberrypi/linux/releases" | \
 	    grep -o "raspberrypi-kernel_[0-9.]*-[0-9]" | \
