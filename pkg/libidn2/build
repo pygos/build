@@ -1,8 +1,8 @@
-VERSION="2.0.4"
+VERSION="2.0.5"
 SRCDIR="libidn2-$VERSION"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/libidn"
-SHA256SUM="644b6b03b285fb0ace02d241d59483d98bc462729d8bb3608d5cad5532f3d2f0"
+SHA256SUM="53f69170886f1fa6fa5b332439c7a77a7d22626a82ef17e2c1224858bb4ca2b8"
 DEPENDS="libiconv libunistring"
 
 prepare() {
