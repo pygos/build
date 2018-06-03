@@ -22,6 +22,7 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 	local DEVDEPLOY="$3"
+	local tag alg type digest
 
 	make DESTDIR="$DEPLOY" install
 
@@ -33,6 +34,20 @@ deploy() {
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/{bin,lib}/*
+
+	echo "generating trust anchor root.key"
+
+	curl --silent -L https://data.iana.org/root-anchors/root-anchors.xml |\
+	sed ':a;N;$!ba;s/\n//g' |\
+	grep -o -P -e "<KeyDigest.*?</KeyDigest>" |\
+	while read line; do
+		tag=$(echo $line | grep -o -e "<KeyTag>[0-9]*</" | grep -o -w "[0-9]*")
+		alg=$(echo $line | grep -o -e "<Algorithm>[0-9]*</" | grep -o -w "[0-9]*")
+		type=$(echo $line | grep -o -e "<DigestType>[0-9]*</" | grep -o -w "[0-9]*")
+		digest=$(echo $line | grep -o -e "<Digest>[A-F0-9]*</" | grep -o -w "[A-F0-9]*")
+
+		echo ". IN DS $tag $alg $type $digest" >> "$DEPLOY/var/lib/unbound/root.key"
+	done
 }
 
 check_update() {
