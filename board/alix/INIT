@@ -1,3 +1,4 @@
 GETTY_TTY="ttyS0"
 HWCLOCK="yes"
 DHCP_PORTS=""
+SERVICES=""

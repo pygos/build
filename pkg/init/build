@@ -61,7 +61,11 @@ deploy() {
 		ln -s "/share/init/dhcpcd" "$DEPLOY/etc/init.d/dhcpcd@$svc"
 	done
 
-	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS
+	for svc in $SERVICES; do
+		ln -s "/share/init/$svc" "$DEPLOY/etc/init.d/$svc"
+	done
+
+	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS SERVICES
 }
 
 check_update() {
