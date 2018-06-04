@@ -28,8 +28,6 @@ deploy() {
 
 	rm -r "$DEPLOY/share"
 
-	mkdir -p "$DEPLOY/var/lib/unbound"
-
 	cat_file_override "unbound.conf" > "$DEPLOY/etc/unbound/unbound.conf"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
@@ -46,7 +44,7 @@ deploy() {
 		type=$(echo $line | grep -o -e "<DigestType>[0-9]*</" | grep -o -w "[0-9]*")
 		digest=$(echo $line | grep -o -e "<Digest>[A-F0-9]*</" | grep -o -w "[A-F0-9]*")
 
-		echo ". IN DS $tag $alg $type $digest" >> "$DEPLOY/var/lib/unbound/root.key"
+		echo ". IN DS $tag $alg $type $digest" >> "$DEPLOY/etc/unbound/root.key"
 	done
 }
 
