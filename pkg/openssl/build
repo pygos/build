@@ -24,9 +24,7 @@ deploy() {
 	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
-
-	rm "$DEPLOY/bin/c_rehash"
-	rm -r "$DEPLOY/etc/ssl/misc" "$DEPLOY/share"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*

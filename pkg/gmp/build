@@ -23,11 +23,11 @@ deploy() {
 	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
 
-	rm -r "$DEPLOY/share"
-
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/lib/*.so*
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
+
 
 check_update() {
 	curl --silent -L "$URL" | grep -o ">gmp-[0-9.]*tar.bz2<" | \

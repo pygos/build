@@ -1,0 +1,17 @@
+lib/libnftables.so.0.0.0 m 555 0 0
+lib/libnftables.so.0 m 777 0 0
+lib/libnftables.so m 777 0 0
+bin/nft m 555 0 0
+etc/nftables m 755 0 0
+etc/nftables/all-in-one.nft m 644 0 0
+etc/nftables/arp-filter.nft m 644 0 0
+etc/nftables/bridge-filter.nft m 644 0 0
+etc/nftables/inet-filter.nft m 644 0 0
+etc/nftables/ipv4-filter.nft m 644 0 0
+etc/nftables/ipv4-mangle.nft m 644 0 0
+etc/nftables/ipv4-nat.nft m 644 0 0
+etc/nftables/ipv4-raw.nft m 644 0 0
+etc/nftables/ipv6-filter.nft m 644 0 0
+etc/nftables/ipv6-mangle.nft m 644 0 0
+etc/nftables/ipv6-nat.nft m 644 0 0
+etc/nftables/ipv6-raw.nft m 644 0 0

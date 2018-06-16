@@ -1,0 +1,3 @@
+lib/libmnl.so.0.2.0 m 555 0 0
+lib/libmnl.so.0 m 777 0 0
+lib/libmnl.so m 777 0 0

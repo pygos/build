@@ -27,42 +27,61 @@ deploy() {
 	make DESTDIR="$DEPLOY" install-strip
 
 	cp -r ${SCRIPTDIR}/pkg/${PKGNAME}/{etc,lib,share} "$DEPLOY"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	include_merge "INIT"
 
 	if [ "x$HWCLOCK" == "xyes" ]; then
 		ln -s "/share/init/hwclock" "$DEPLOY/etc/init.d/hwclock"
+		echo "etc/init.d/hwclock m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
 	fi
 
 	svc=$(file_path_override "ifrename")
 	if [ ! -z "$svc" ]; then
 		cp "$svc" "$DEPLOY/etc/netcfg/ifrename"
 		ln -s "/share/init/ifrename" "$DEPLOY/etc/init.d/ifrename"
+
+		echo "etc/netcfg/ifrename m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "etc/init.d/ifrename m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
 	fi
 
 	svc=$(file_path_override "interfaces")
 	if [ ! -z "$svc" ]; then
+		echo "etc/init.d/ifcfg m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+
 		for svc in $svc/*; do
 			[ -f "$svc" ] || continue
 			cp "$svc" "$DEPLOY/etc/netcfg/"
+			svc=$(basename $svc)
+			echo "etc/netcfg/$svc m 644 0 0" >> \
+			     "$DEPLOY/rootfs_files.txt"
 		done
 	fi
 
 	for svc in $GETTY_TTY; do
 		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
+		echo "etc/init.d/agetty@$svc m 777 0 0" >> \
+		     "$DEPLOY/rootfs_files.txt"
 	done
 
 	if [ ! -z "$DHCP_PORTS" ]; then
 		ln -s "/share/init/dhcpcdmaster" \
 			"$DEPLOY/etc/init.d/dhcpcdmaster"
+
+		echo "etc/init.d/dhcpcdmaster m 777 0 0" >> \
+		     "$DEPLOY/rootfs_files.txt"
 	fi
 
 	for svc in $DHCP_PORTS; do
 		ln -s "/share/init/dhcpcd" "$DEPLOY/etc/init.d/dhcpcd@$svc"
+
+		echo "etc/init.d/dhcpcd@$svc m 777 0 0" >> \
+		     "$DEPLOY/rootfs_files.txt"
 	done
 
 	for svc in $SERVICES; do
 		ln -s "/share/init/$svc" "$DEPLOY/etc/init.d/$svc"
+		echo "etc/init.d/$svc m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
 	done
 
 	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS SERVICES

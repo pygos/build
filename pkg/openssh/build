@@ -25,11 +25,9 @@ deploy() {
 	local DEPLOY="$2"
 
 	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	mkdir -p "$DEPLOY/var/lib/sshd"
-	chmod 700 "$DEPLOY/var/lib/sshd"
-
-	rm -r "$DEPLOY/share"
 
 	strip_files ${DEPLOY}/bin/* ${DEPLOY}/libexec/*
 

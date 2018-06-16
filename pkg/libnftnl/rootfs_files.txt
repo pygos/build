@@ -1,0 +1,3 @@
+lib/libnftnl.so.7.2.0 m 555 0 0
+lib/libnftnl.so.7 m 777 0 0
+lib/libnftnl.so m 777 0 0

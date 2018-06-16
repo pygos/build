@@ -41,27 +41,12 @@ deploy() {
 	make DESTDIR="$DEPLOY" install
 	strip_files ${DEPLOY}/{bin,lib}/*
 
-	rm -r "$DEPLOY/share/man" "$DEPLOY/share/doc"
-
 	if [ -e "$DEPLOY/sbin" ]; then
 		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
-		rmdir ${DEPLOY}/sbin
 	fi
 
-	for UTIL in chcpu chrt col colcrt colrm column ctrlaltdel setarch \
-		    isosize look lsns mcookie mkfs mkswap readprofile rev \
-		    script scriptreplay setsid swaplabel swapoff swapon \
-		    uname26 i386 linux32 linux64 whereis last lastb \
-		    lslogins fsck.cramfs mkfs.cramfs;
-	do
-		local path="$DEPLOY/bin/$UTIL"
-
-		if [ -f "$path" ] || [ -L "$path" ]; then
-			rm "$path"
-		fi
-	done
-
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
 
 check_update() {

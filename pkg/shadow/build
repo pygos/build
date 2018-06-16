@@ -25,18 +25,15 @@ deploy() {
 	local DEPLOY="$2"
 
 	make DESTDIR="$DEPLOY" install-strip
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	sed -i -e 's@HOME=/home@HOME=/usr@g' $DEPLOY/etc/default/useradd
-
-	rm -rf "$DEPLOY/share"
 
 	# *hrmpf*
 	if [ -e "$DEPLOY/sbin" ]; then
 		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
 		rmdir ${DEPLOY}/sbin
 	fi
-
-	rm $DEPLOY/bin/{vigr,vipw,chsh}
 }
 
 check_update() {

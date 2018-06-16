@@ -1,0 +1,13 @@
+lib/libcrypto.so.1.1 m 555 0 0
+lib/libcrypto.so m 777 0 0
+lib/libssl.so.1.1 m 555 0 0
+lib/libssl.so m 777 0 0
+lib/engines-1.1 m 555 0 0
+lib/engines-1.1/capi.so m 555 0 0
+lib/engines-1.1/padlock.so m 555 0 0
+bin/openssl m 555 0 0
+etc/ssl m 755 0 0
+etc/ssl/certs m 755 0 0
+etc/ssl/private m 755 0 0
+etc/ssl/openssl.cnf.dist m 644 0 0
+etc/ssl/openssl.cnf m 644 0 0

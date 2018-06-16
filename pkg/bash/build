@@ -27,13 +27,10 @@ deploy() {
 
 	ln -sv bash "$DEPLOY/bin/sh"
 
-	rm -r "$DEPLOY/share"
-	rm "$DEPLOY/bin/bashbug"
-
 	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$DEPLOY"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
-	rm -r "$DEPLOY/lib"
 }
 
 check_update() {

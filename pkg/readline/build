@@ -21,8 +21,7 @@ deploy() {
 	local DEVDEPLOY="$3"
 
 	make SHLIB_LIBS="-lncursesw" DESTDIR="$DEPLOY" install
-
-	rm -r "$DEPLOY/share" "$DEPLOY/bin"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	chmod 755 ${DEPLOY}/lib/*

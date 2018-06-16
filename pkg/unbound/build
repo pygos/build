@@ -25,8 +25,7 @@ deploy() {
 	local tag alg type digest
 
 	make DESTDIR="$DEPLOY" install
-
-	rm -r "$DEPLOY/share"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	cat_file_override "unbound.conf" > "$DEPLOY/etc/unbound/unbound.conf"
 

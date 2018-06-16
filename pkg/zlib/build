@@ -22,11 +22,10 @@ deploy() {
 	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/lib/*
-
-	rm -r ${DEPLOY}/share
 }
 
 check_update() {

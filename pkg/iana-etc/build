@@ -20,6 +20,7 @@ deploy() {
 	mkdir -p "$DEPLOY/etc"
 	cp "$SOURCE/protocols" "$DEPLOY/etc"
 	cp "$SOURCE/services" "$DEPLOY/etc"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
 
 check_update() {

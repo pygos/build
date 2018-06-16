@@ -1,0 +1,3 @@
+bin/less m 555 0 0
+bin/lesskey m 555 0 0
+bin/lessecho m 555 0 0

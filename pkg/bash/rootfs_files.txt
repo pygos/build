@@ -1,0 +1,6 @@
+bin/bash m 555 0 0
+bin/sh m 777 0 0
+etc/bashrc m 644 0 0
+etc/profile m 644 0 0
+etc/skel/.bashrc m 644 0 0
+etc/skel/.bash_profile m 644 0 0

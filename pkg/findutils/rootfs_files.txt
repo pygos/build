@@ -1,0 +1,5 @@
+bin/find m 555 0 0
+bin/xargs m 555 0 0
+bin/locate m 555 0 0
+bin/updatedb m 555 0 0
+var/lib/locate m 755 0 0

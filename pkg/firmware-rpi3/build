@@ -27,6 +27,7 @@ deploy() {
 	rm ${DEPLOY}/opt/vc/lib/*.a
 	rm -r "${DEPLOY}/opt/vc/lib/pkgconfig"
 	rm -r "${DEPLOY}/opt/vc/src"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	strip_files ${DEPLOY}/opt/vc/{bin,sbin}/*
 	strip_files ${DEPLOY}/opt/vc/lib/*.so

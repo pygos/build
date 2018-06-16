@@ -1,0 +1,6 @@
+lib/libmagic.so.1.0.0 m 555 0 0
+lib/libmagic.so.1 m 777 0 0
+lib/libmagic.so m 777 0 0
+bin/file m 555 0 0
+share/misc m 555 0 0
+share/misc/magic.mgc m 444 0 0

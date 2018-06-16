@@ -1,0 +1,13 @@
+lib/libkmod.so.2.3.3 m 555 0 0
+lib/libkmod.so.2 m 777 0 0
+lib/libkmod.so m 777 0 0
+bin/kmod m 555 0 0
+bin/depmod m 777 0 0
+bin/insmod m 777 0 0
+bin/lsmod m 777 0 0
+bin/modinfo m 777 0 0
+bin/modprobe m 777 0 0
+bin/rmmod m 777 0 0
+share/bash-completion m 555 0 0
+share/bash-completion/completions m 555 0 0
+share/bash-completion/completions/kmod m 444 0 0

@@ -23,17 +23,12 @@ deploy() {
 	make CC=${TARGET}-gcc PREFIX="/" BINDIR="/bin" DESTDIR="$DEPLOY" install
 
 	strip_files "$DEPLOY/bin/dnsmasq"
-	rm -r "$DEPLOY/share"
 
 	mkdir -p "$DEPLOY/etc"
 
 	cat_file_override "dnsmasq.conf" > "$DEPLOY/etc/dnsmasq.conf"
 
-	if [ ! -s "$DEPLOY/etc/dnsmasq.conf" ]; then
-		cp "$SOURCE/dnsmasq.conf.example" "$DEPLOY/etc/dnsmasq.conf"
-	fi
-
-	mkdir -p "$DEPLOY/etc/dnsmasq.d"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
 
 check_update() {

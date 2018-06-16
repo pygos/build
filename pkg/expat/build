@@ -23,7 +23,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install-strip
 
-	rm -r "$DEPLOY/share"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }

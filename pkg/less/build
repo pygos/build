@@ -20,10 +20,9 @@ deploy() {
 	local DEPLOY="$2"
 
 	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	strip_files ${DEPLOY}/bin/*
-
-	rm -r "$DEPLOY/share"
 }
 
 check_update() {

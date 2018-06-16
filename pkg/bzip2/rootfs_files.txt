@@ -1,0 +1,11 @@
+bin/bzip2 m 555 0 0
+bin/bunzip2 m 555 0 0
+bin/bzcat m 555 0 0
+bin/bzip2recover m 555 0 0
+bin/bzgrep m 555 0 0
+bin/bzmore m 555 0 0
+bin/bzdiff m 555 0 0
+bin/bzegrep m 777 0 0
+bin/bzfgrep m 777 0 0
+bin/bzless m 777 0 0
+bin/bzcmp m 777 0 0

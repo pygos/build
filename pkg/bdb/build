@@ -22,6 +22,7 @@ deploy() {
 	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	chmod 755 ${DEPLOY}/bin/db_*
 	strip_files ${DEPLOY}/lib/*.so ${DEPLOY}/bin/db_*

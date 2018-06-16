@@ -1,0 +1,2 @@
+bin/nano m 555 0 0
+bin/rnano m 777 0 0

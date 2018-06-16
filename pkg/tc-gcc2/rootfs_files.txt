@@ -1,0 +1,14 @@
+lib/libatomic.so m 777 0 0
+lib/libatomic.so.1 m 777 0 0
+lib/libatomic.so.1.2.0 m 555 0 0
+lib/libgcc_s.so m 444 0 0
+lib/libgcc_s.so.1 m 444 0 0
+lib/libgomp.so m 777 0 0
+lib/libgomp.so.1 m 777 0 0
+lib/libgomp.so.1.0.0 m 555 0 0
+lib/libitm.so m 777 0 0
+lib/libitm.so.1 m 777 0 0
+lib/libitm.so.1.0.0 m 555 0 0
+lib/libstdc++.so m 777 0 0
+lib/libstdc++.so.6 m 777 0 0
+lib/libstdc++.so.6.0.25 m 555 0 0

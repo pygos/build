@@ -53,4 +53,5 @@ deploy() {
 	mv ${DEPLOY}/lib/*.py "$DEVDEPLOY/lib"
 
 	strip_files ${DEPLOY}/lib/*
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }

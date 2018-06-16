@@ -22,8 +22,6 @@ deploy() {
 
 	make PREFIX="$DEPLOY" install
 
-	rm -r $DEPLOY/man
-
 	strip_files ${DEPLOY}/bin/*
 
 	rm ${DEPLOY}/bin/{bzegrep,bzfgrep,bzless,bzcmp}
@@ -32,9 +30,9 @@ deploy() {
 	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzfgrep"
 	ln -s "/bin/bzmore" "$DEPLOY/bin/bzless"
 	ln -s "/bin/bzdiff" "$DEPLOY/bin/bzcmp"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
-	rmdir "$DEPLOY/lib"
 }
 
 check_update() {

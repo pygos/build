@@ -24,8 +24,8 @@ deploy() {
 	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
-	rm -r "$DEPLOY/share/man"
 	rm "$DEPLOY/bin/ncursesw6-config"
 
 	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*
