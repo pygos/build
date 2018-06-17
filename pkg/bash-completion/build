@@ -1,12 +1,12 @@
-VERSION="2.1"
-SRCDIR="bash-completion-${VERSION}"
-TARBALL="${SRCDIR}.tar.bz2"
-URL="https://bash-completion.alioth.debian.org/files/"
-SHA256SUM="2b606804a7d5f823380a882e0f7b6c8a37b0e768e72c3d4107c51fbe8a46ae4f"
+VERSION="2.8"
+SRCDIR="bash-completion-upstream-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://salsa.debian.org/debian/bash-completion/-/archive/upstream/${VERSION}/"
+SHA256SUM="50985e7f1a1adc8e05cbea56f0f9753b5600f6ea176b42583184f300b1eed5ea"
 DEPENDS="bash"
 
 prepare() {
-	return
+	autoreconf --force --install --symlink
 }
 
 build() {
@@ -24,8 +24,7 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | \
-	    grep -o ">bash-completion-[0-9.]*tar.gz<" | grep -v "2008" |\
-	    sed 's/>bash-completion-//g' | sed 's/.tar.gz<//g' | \
+	curl --silent -L "https://salsa.debian.org/debian/bash-completion/tags" | \
+	    grep -o "upstream/[0-9.]*" | cut -d/ -f2 | sort -u | \
 	    verson_find_greatest "$VERSION"
 }
