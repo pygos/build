@@ -37,13 +37,12 @@ TCDIR="$BUILDROOT/${BOARD}-${PRODUCT}/toolchain"
 PKGBUILDDIR="$BUILDROOT/${BOARD}-${PRODUCT}/build"
 PKGSRCDIR="$BUILDROOT/src"
 PKGDEPLOYDIR="$BUILDROOT/${BOARD}-${PRODUCT}/deploy"
-PKGDEVDEPLOYDIR="$BUILDROOT/${BOARD}-${PRODUCT}/deploy-dev"
 PKGLOGDIR="$BUILDROOT/${BOARD}-${PRODUCT}/log"
 PKGDOWNLOADDIR="$BUILDROOT/download"
 PACKAGELIST="$BUILDROOT/${BOARD}-${PRODUCT}/pkglist"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
-mkdir -p "$PKGDEPLOYDIR" "$PKGDEVDEPLOYDIR" "$TCDIR/bin"
+mkdir -p "$PKGDEPLOYDIR" "$TCDIR/bin"
 
 export PATH="$TCDIR/bin:$PATH"
 
@@ -89,6 +88,7 @@ while read pkg; do
 		install_build_deps
 		run_pkg_command "build"
 		run_pkg_command "deploy"
+		deploy_dev_cleanup "$PKGDEPLOYDIR/$PKGNAME"
 		restore_toolchain
 
 		rm -rf "$PKGBUILDDIR"

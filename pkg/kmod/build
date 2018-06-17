@@ -19,7 +19,6 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 	local target
 
 	make DESTDIR="$DEPLOY" install-strip
@@ -28,8 +27,6 @@ deploy() {
 	for target in depmod insmod lsmod modinfo modprobe rmmod; do
 		ln -sf kmod $DEPLOY/bin/$target
 	done
-
-	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
 
 check_update() {

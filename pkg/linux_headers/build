@@ -10,8 +10,7 @@ build() {
 deploy() {
 	local INPUT="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
-	make -C "$INPUT" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" INSTALL_HDR_PATH="$DEVDEPLOY" headers_install
+	make -C "$INPUT" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" INSTALL_HDR_PATH="$DEPLOY" headers_install
 }

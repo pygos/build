@@ -18,14 +18,8 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install-strip
-
-	rm -r "$DEPLOY/share"
-	rm "$DEPLOY/lib/charset.alias"
-
-	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 }
 
 check_update() {

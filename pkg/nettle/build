@@ -18,11 +18,9 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
 
-	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
 	strip_files ${DEPLOY}/{bin,lib}/*
 }
 

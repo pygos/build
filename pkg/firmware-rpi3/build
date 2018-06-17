@@ -16,17 +16,8 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
-	cp -r "$SOURCE/hardfp/opt" "$DEPLOY/"
-
-	mkdir -p "$DEVDEPLOY/opt/vc"
-	mv "$DEPLOY/opt/vc/include" "$DEVDEPLOY"
-
-	cp -r "$DEPLOY/opt/vc/lib" "$DEVDEPLOY/opt/vc"
-	rm ${DEPLOY}/opt/vc/lib/*.a
-	rm -r "${DEPLOY}/opt/vc/lib/pkgconfig"
-	rm -r "${DEPLOY}/opt/vc/src"
+	cp -r "$SOURCE/hardfp/opt" "$DEPLOY"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 
 	strip_files ${DEPLOY}/opt/vc/{bin,sbin}/*

@@ -17,14 +17,9 @@ build() {
 deploy() {
 	local INPUT="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
-	DESTDIR="$DEVDEPLOY" make install-headers
-	DESTDIR="$DEVDEPLOY" make install-libs
-	rm $DEVDEPLOY/lib/*.so*
-
+	DESTDIR="$DEPLOY" make install-headers
 	DESTDIR="$DEPLOY" make install-libs
-	rm $DEPLOY/lib/*.a $DEPLOY/lib/*.o
 
 	mkdir -p "$DEPLOY/etc"
 
@@ -32,9 +27,9 @@ deploy() {
 
 	strip_files ${DEPLOY}/lib/*
 
-	find "$DEPLOY/lib" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
+	find ${DEPLOY}/lib/*.so* -exec stat {} --printf="%n m %a 0 0\\n" \; | \
 		sed "s#^$DEPLOY/##g" | sed "s/644/444/g" | \
-		sed "s/755/555/g" | tail -n +2 > "$DEPLOY/rootfs_files.txt"
+		sed "s/755/555/g" > "$DEPLOY/rootfs_files.txt"
 
 	find "$DEPLOY/etc" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
 		sed "s#^$DEPLOY/##g" | tail -n +2 >> "$DEPLOY/rootfs_files.txt"

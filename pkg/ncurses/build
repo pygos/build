@@ -21,7 +21,6 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
 	make DESTDIR="$DEPLOY" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
@@ -30,44 +29,20 @@ deploy() {
 
 	strip_files ${DEPLOY}/bin/* ${DEPLOY}/lib/*.so*
 
-	split_dev_deploy "$DEPLOY" "$DEVDEPLOY"
+	mkdir -p "${DEPLOY}/include/ncurses"
 
-	mkdir -p "${DEVDEPLOY}/include/ncurses"
-
-	for hdr in ${DEVDEPLOY}/include/ncursesw/*.h; do
+	for hdr in ${DEPLOY}/include/ncursesw/*.h; do
 		local fname=$(basename $hdr)
 		local target="../$fname"
 
-		mv "$hdr" "${DEVDEPLOY}/include"
-		ln -s "$target" "${DEVDEPLOY}/include/ncursesw/${fname}"
-		ln -s "$target" "${DEVDEPLOY}/include/ncurses/${fname}"
+		mv "$hdr" "${DEPLOY}/include"
+		ln -s "$target" "${DEPLOY}/include/ncursesw/${fname}"
+		ln -s "$target" "${DEPLOY}/include/ncurses/${fname}"
 	done
 
 	ln -s "libncursesw.so.$VERSION" "$DEPLOY/lib/libtinfo.so"
 	ln -s "libncursesw.so.$VERSION" "$DEPLOY/lib/libtinfo.so.$VERSION"
-	ln -s "libncursesw.a" "$DEVDEPLOY/lib/libtinfo.a"
-
-	# only keep relevant terminfo files
-	local olddir="$DEPLOY/share/terminfo.old"
-	local newdir="$DEPLOY/share/terminfo"
-	local term x
-
-	mv "$newdir" "$olddir"
-
-	for term in ansi dumb gnome gnome-fc5 gnome-rh72 gnome-rh80 \
-		    gnome-rh90 gnome-256color klone+color konsole \
-		    konsole-256color kvt linux linux-m linux-nic mlterm \
-		    nxterm rxvt rxvt-256color rxvt-basic rxvt-color screen \
-		    screen-256color screen-w unknown vt100 vt102 vt220 \
-		    vt220-8 vt220-8bit vt320 vt52 vte xterm xterm-256color \
-		    xterm-basic xterm-color xterm-nic xterm-r6;
-	do
-		x=${term:0:1}
-		mkdir -p "$newdir/$x"
-		mv "$olddir/$x/$term" "$newdir/$x"
-	done
-
-	rm -r "$olddir"
+	ln -s "libncursesw.a" "$DEPLOY/lib/libtinfo.a"
 }
 
 check_update() {

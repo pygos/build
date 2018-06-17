@@ -18,7 +18,6 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
 	mkdir -p "$DEPLOY/var/lib/arpd"
 	make DESTDIR="$DEPLOY" SYSROOT="$TCDIR/$TARGET" install

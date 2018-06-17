@@ -20,7 +20,6 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
-	local DEVDEPLOY="$3"
 
 	make install
 
@@ -28,7 +27,7 @@ deploy() {
 
 	for f in $(ls ${TCDIR}/${TARGET}/include); do
 		for dep in $DEPENDS; do
-			if [ -e ${PKGDEVDEPLOYDIR}/${dep}/include/$f ]; then
+			if [ -e ${PKGDEPLOYDIR}/${dep}/include/$f ]; then
 				rm -rf "$TCDIR/$TARGET/include/$f"
 			fi
 		done
@@ -36,10 +35,6 @@ deploy() {
 
 	for f in $(ls ${TCDIR}/${TARGET}/lib); do
 		for dep in $DEPENDS; do
-			if [ -e ${PKGDEVDEPLOYDIR}/${dep}/lib/$f ]; then
-				rm -rf "$TCDIR/$TARGET/lib/$f"
-				continue
-			fi
 			if [ -e ${PKGDEPLOYDIR}/${dep}/lib/$f ]; then
 				rm -rf "$TCDIR/$TARGET/lib/$f"
 			fi
@@ -47,10 +42,8 @@ deploy() {
 	done
 
 	mkdir -p "$DEPLOY/lib"
-	mv ${TCDIR}/${TARGET}/{include,lib} "$DEVDEPLOY"
-	rm ${DEVDEPLOY}/lib/*.la
-	mv ${DEVDEPLOY}/lib/*.so* "$DEPLOY/lib"
-	mv ${DEPLOY}/lib/*.py "$DEVDEPLOY/lib"
+	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
+	rm ${DEPLOY}/lib/*.la
 
 	strip_files ${DEPLOY}/lib/*
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"

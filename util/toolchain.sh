@@ -17,13 +17,10 @@ restore_toolchain() {
 
 install_build_deps() {
 	for deppkg in $DEPENDS; do
-		local devdir="$PKGDEVDEPLOYDIR/$deppkg"
+		local devdir="$PKGDEPLOYDIR/$deppkg"
 
 		if [ -d "$devdir/include" ]; then
 			cp -R "$devdir/include" "$TCDIR/$TARGET"
-		fi
-		if [ -d "$PKGDEPLOYDIR/$deppkg/lib" ]; then
-			cp -R "$PKGDEPLOYDIR/$deppkg/lib" "$TCDIR/$TARGET"
 		fi
 		if [ -d "$devdir/lib" ]; then
 			cp -R "$devdir/lib" "$TCDIR/$TARGET"
