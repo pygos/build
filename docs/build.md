@@ -27,10 +27,8 @@ downloaded package tar balls, in the later it extracts the tar balls.
 For target specific files, a `<BOARD>-<PRODUCT>` directory is created.
 Throughout the build system, this directory is refereed to as *build root*.
 
-Inside the build root directory a `deploy` and a `deploy-dev` directory are
-created. Binaries built by various packages end up in a sub directory of the
-former, development headers and static libraries in a sub directory in the
-later.
+Inside the build root a `deploy` directory is created. Build output for each
+package is deployed to a sub directory named after the package.
 
 The cross toolchain is stored in `<BOARD>-<PRODUCT>/toolchain`.
 
@@ -73,14 +71,15 @@ The `build` script is also expected to implement the following functions:
 * `build` is run to compile the package. The current working directory is a
   temporary directory inside the build root directory. The source directory
   is passed as first argument. The second argument is a path to the *deploy*
-  directory where binaries are installed  and the third argument is the path
-  to the *deploy-dev* sub directory where headers and static libraries are to
-  be installed. All output and error messages from the script are stored in
-  `<packagename>-build.log`.
+  directory where generated files are installed. All standard output and error
+  messages from the script are piped to `<packagename>-build.log`.
 * `deploy` is run after compilation to install the build output to the deploy
-  and deploy-dev directory. Arguments and working directory are the same as
-  for `build`. All output and error messages from the script are stored in
-  `<packagename>-deploy.log`.
+  directory. Arguments and working directory are the same as for `build`. All
+  output and error messages from the script are piped to
+  `<packagename>-deploy.log`. Once the function returns, the `mk.sh` script
+  strips everything installed to `bin` and `lib`, so the implementation doesn't
+  have to do that. In fact `install-strip` Makefile targets should not be used
+  since many implementations are broken for cross compilation.
 * `check_update` is only used by the `check_update.sh` script. It is supposed
   to find out if the package has a newer version available, and if so, echo it
   to stdout.
@@ -115,7 +114,6 @@ And a number of variables containing special directories:
   the package is being built.
 * `PKGSRCDIR` contains the root directory of all unpacked package tar balls
 * `PKGDEPLOYDIR` contains the root directory of all package deploy directories
-* `PKGDEVDEPLOYDIR` contains the root directory of all package deploy directories
 * `PKGLOGDIR` holds the absolute path of the directory containing all log files
 * `PKGDOWNLOADDIR` holds the absolute path of the directory containing all
   package tar balls
@@ -130,11 +128,10 @@ Some utility functions are provided for common package build tasks:
 * `apply_patches` can be used inside the `prepare` function to automatically
   apply patches stored in the package directory to the source tree.
 * `strip_files` takes a list of files as argument and runs the cross toolchain
-  strip program on those that are valid ELF binaries.
-* `split_dev_deploy` can be used in the `deploy` function to automatically move
-  development files from the deploy directory (first argument) to the deploy-dev
-  directory (second argument). This includes headers, pkgconfig files, static
-  libraries and libtool archives.
+  strip program on those that are valid ELF binaries. If a directory is
+  encountered, the function recursively processes the sub directory. Usually
+  you don't need to use this. The `mk.sh` script uses this function to after
+  the deploy step to process the `bin` and `lib` directories.
 * `verson_find_greatest` can be used in `check_update` to find the largest
   version number from a list. The list of version numbers is read from stdin.
   Version numbers can have up to four dot separated numbers or characters.
@@ -230,6 +227,7 @@ Currently, the following variables are used:
   should be synchronized with during system boot and shutdown.
 * `DHCP_PORTS` contains a space separated list of network interfaces on which
   to operate a DHCP client for network auto configuration.
+* `SERVICES` contains a space separated list of raw service names to enable.
 
 
 For configuring network interfaces, a file `ifrename` exists that assigns
