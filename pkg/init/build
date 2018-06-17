@@ -24,7 +24,7 @@ deploy() {
 	local DEPLOY="$2"
 	local svc
 
-	make DESTDIR="$DEPLOY" install-strip
+	make DESTDIR="$DEPLOY" install
 
 	cp -r ${SCRIPTDIR}/pkg/${PKGNAME}/{etc,lib,share} "$DEPLOY"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"

@@ -22,8 +22,6 @@ deploy() {
 	mkdir -p "$DEPLOY/var/lib/arpd"
 	make DESTDIR="$DEPLOY" SYSROOT="$TCDIR/$TARGET" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
-
-	strip_files ${DEPLOY}/bin/*
 }
 
 check_update() {

@@ -38,7 +38,6 @@ deploy() {
 
 	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
-	strip_files ${DEPLOY}/{bin,lib}/*
 
 	if [ -e "$DEPLOY/sbin" ]; then
 		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin

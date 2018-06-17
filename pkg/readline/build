@@ -21,9 +21,7 @@ deploy() {
 
 	make SHLIB_LIBS="-lncursesw" DESTDIR="$DEPLOY" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
-
 	chmod 755 ${DEPLOY}/lib/*
-	strip_files ${DEPLOY}/lib/*
 }
 
 check_update() {

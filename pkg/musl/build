@@ -25,8 +25,6 @@ deploy() {
 
 	cat_file_merge "LDPATH" > "$DEPLOY/etc/ld-musl-${MUSL_CPU}.path"
 
-	strip_files ${DEPLOY}/lib/*
-
 	find ${DEPLOY}/lib/*.so* -exec stat {} --printf="%n m %a 0 0\\n" \; | \
 		sed "s#^$DEPLOY/##g" | sed "s/644/444/g" | \
 		sed "s/755/555/g" > "$DEPLOY/rootfs_files.txt"

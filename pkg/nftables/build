@@ -20,7 +20,7 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	make DESTDIR="$DEPLOY" install-strip
+	make DESTDIR="$DEPLOY" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
 

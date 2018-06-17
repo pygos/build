@@ -12,9 +12,13 @@ strip_files() {
 	local f
 
 	for f in $@; do
-		if [ ! -f "$f" ]; then
-			continue
+		[ ! -L "$f" ] || continue;
+
+		if [ -d "$f" ]; then
+			strip_files ${f}/*
 		fi
+
+		[ -f "$f" ] || continue;
 
 		if file $f | grep -q -i elf; then
 			${TARGET}-strip --discard-all "$f"

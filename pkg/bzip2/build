@@ -21,8 +21,6 @@ deploy() {
 
 	make PREFIX="$DEPLOY" install
 
-	strip_files ${DEPLOY}/bin/*
-
 	rm ${DEPLOY}/bin/{bzegrep,bzfgrep,bzless,bzcmp}
 
 	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzegrep"

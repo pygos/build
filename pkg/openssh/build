@@ -26,11 +26,7 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
-
 	mkdir -p "$DEPLOY/var/lib/sshd"
-
-	strip_files ${DEPLOY}/bin/* ${DEPLOY}/libexec/*
-
 	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$DEPLOY/bin"
 }
 

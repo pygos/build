@@ -89,6 +89,7 @@ while read pkg; do
 		run_pkg_command "build"
 		run_pkg_command "deploy"
 		deploy_dev_cleanup "$PKGDEPLOYDIR/$PKGNAME"
+		strip_files ${PKGDEPLOYDIR}/${PKGNAME}/{bin,lib}
 		restore_toolchain
 
 		rm -rf "$PKGBUILDDIR"

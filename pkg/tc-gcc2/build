@@ -44,7 +44,5 @@ deploy() {
 	mkdir -p "$DEPLOY/lib"
 	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
 	rm ${DEPLOY}/lib/*.la
-
-	strip_files ${DEPLOY}/lib/*
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }

@@ -21,8 +21,6 @@ deploy() {
 
 	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
-
-	strip_files ${DEPLOY}/lib/*.so*
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
 

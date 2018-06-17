@@ -28,8 +28,6 @@ deploy() {
 
 	cat_file_override "unbound.conf" > "$DEPLOY/etc/unbound/unbound.conf"
 
-	strip_files ${DEPLOY}/{bin,lib}/*
-
 	echo "generating trust anchor root.key"
 
 	curl --silent -L https://data.iana.org/root-anchors/root-anchors.xml |\
