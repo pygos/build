@@ -11,10 +11,6 @@ share/bash-completion/completions/alias m 644 0 0
 share/bash-completion/completions/ant m 644 0 0
 share/bash-completion/completions/apache2ctl m 644 0 0
 share/bash-completion/completions/appdata-validate m 644 0 0
-share/bash-completion/completions/apt-build m 644 0 0
-share/bash-completion/completions/apt-cache m 644 0 0
-share/bash-completion/completions/apt-get m 644 0 0
-share/bash-completion/completions/aptitude m 644 0 0
 share/bash-completion/completions/arch m 644 0 0
 share/bash-completion/completions/arping m 644 0 0
 share/bash-completion/completions/arpspoof m 644 0 0
@@ -23,7 +19,6 @@ share/bash-completion/completions/aspell m 644 0 0
 share/bash-completion/completions/autoconf m 644 0 0
 share/bash-completion/completions/automake m 644 0 0
 share/bash-completion/completions/autoreconf m 644 0 0
-share/bash-completion/completions/autorpm m 644 0 0
 share/bash-completion/completions/autoscan m 644 0 0
 share/bash-completion/completions/avctrl m 644 0 0
 share/bash-completion/completions/badblocks m 644 0 0
@@ -78,8 +73,6 @@ share/bash-completion/completions/dict m 644 0 0
 share/bash-completion/completions/_dmesg m 644 0 0
 share/bash-completion/completions/dnsspoof m 644 0 0
 share/bash-completion/completions/dot m 644 0 0
-share/bash-completion/completions/dpkg m 644 0 0
-share/bash-completion/completions/dpkg-source m 644 0 0
 share/bash-completion/completions/dselect m 644 0 0
 share/bash-completion/completions/dsniff m 644 0 0
 share/bash-completion/completions/dumpdb m 644 0 0
@@ -91,7 +84,6 @@ share/bash-completion/completions/_eject m 644 0 0
 share/bash-completion/completions/eog m 644 0 0
 share/bash-completion/completions/ether-wake m 644 0 0
 share/bash-completion/completions/evince m 644 0 0
-share/bash-completion/completions/explodepkg m 644 0 0
 share/bash-completion/completions/export m 644 0 0
 share/bash-completion/completions/faillog m 644 0 0
 share/bash-completion/completions/fbgs m 644 0 0
@@ -152,7 +144,6 @@ share/bash-completion/completions/ifup m 644 0 0
 share/bash-completion/completions/info m 644 0 0
 share/bash-completion/completions/inject m 644 0 0
 share/bash-completion/completions/insmod m 644 0 0
-share/bash-completion/completions/installpkg m 644 0 0
 share/bash-completion/completions/interdiff m 644 0 0
 share/bash-completion/completions/invoke-rc.d m 644 0 0
 share/bash-completion/completions/_ionice m 644 0 0
@@ -216,7 +207,6 @@ share/bash-completion/completions/lzop m 644 0 0
 share/bash-completion/completions/macof m 644 0 0
 share/bash-completion/completions/mailmanctl m 644 0 0
 share/bash-completion/completions/make m 644 0 0
-share/bash-completion/completions/makepkg m 644 0 0
 share/bash-completion/completions/man m 644 0 0
 share/bash-completion/completions/mc m 644 0 0
 share/bash-completion/completions/mcrypt m 644 0 0
@@ -276,12 +266,6 @@ share/bash-completion/completions/pidof m 644 0 0
 share/bash-completion/completions/pine m 644 0 0
 share/bash-completion/completions/ping m 644 0 0
 share/bash-completion/completions/pkg-config m 644 0 0
-share/bash-completion/completions/pkg-get m 644 0 0
-share/bash-completion/completions/pkg_delete m 644 0 0
-share/bash-completion/completions/pkgadd m 644 0 0
-share/bash-completion/completions/pkgrm m 644 0 0
-share/bash-completion/completions/pkgtool m 644 0 0
-share/bash-completion/completions/pkgutil m 644 0 0
 share/bash-completion/completions/plague-client m 644 0 0
 share/bash-completion/completions/pm-hibernate m 644 0 0
 share/bash-completion/completions/pm-is-supported m 644 0 0
@@ -321,7 +305,6 @@ share/bash-completion/completions/radvdump m 644 0 0
 share/bash-completion/completions/rcs m 644 0 0
 share/bash-completion/completions/rdesktop m 644 0 0
 share/bash-completion/completions/remove_members m 644 0 0
-share/bash-completion/completions/removepkg m 644 0 0
 share/bash-completion/completions/_renice m 644 0 0
 share/bash-completion/completions/_repomanage m 644 0 0
 share/bash-completion/completions/reportbug m 644 0 0
@@ -333,21 +316,14 @@ share/bash-completion/completions/rmlist m 644 0 0
 share/bash-completion/completions/rmmod m 644 0 0
 share/bash-completion/completions/route m 644 0 0
 share/bash-completion/completions/rpcdebug m 644 0 0
-share/bash-completion/completions/rpm m 644 0 0
-share/bash-completion/completions/rpm2tgz m 644 0 0
-share/bash-completion/completions/rpmcheck m 644 0 0
 share/bash-completion/completions/rrdtool m 644 0 0
 share/bash-completion/completions/rsync m 644 0 0
 share/bash-completion/completions/_rtcwake m 644 0 0
 share/bash-completion/completions/_runuser m 644 0 0
 share/bash-completion/completions/sbcl m 644 0 0
-share/bash-completion/completions/sbopkg m 644 0 0
 share/bash-completion/completions/screen m 644 0 0
 share/bash-completion/completions/sh m 644 0 0
 share/bash-completion/completions/sitecopy m 644 0 0
-share/bash-completion/completions/slackpkg m 644 0 0
-share/bash-completion/completions/slapt-get m 644 0 0
-share/bash-completion/completions/slapt-src m 644 0 0
 share/bash-completion/completions/smartctl m 644 0 0
 share/bash-completion/completions/smbclient m 644 0 0
 share/bash-completion/completions/snownews m 644 0 0
@@ -392,7 +368,6 @@ share/bash-completion/completions/unrar m 644 0 0
 share/bash-completion/completions/unshunt m 644 0 0
 share/bash-completion/completions/update-alternatives m 644 0 0
 share/bash-completion/completions/update-rc.d m 644 0 0
-share/bash-completion/completions/upgradepkg m 644 0 0
 share/bash-completion/completions/urlsnarf m 644 0 0
 share/bash-completion/completions/useradd m 644 0 0
 share/bash-completion/completions/userdel m 644 0 0
@@ -430,8 +405,6 @@ share/bash-completion/completions/xxd m 644 0 0
 share/bash-completion/completions/xz m 644 0 0
 share/bash-completion/completions/xzdec m 644 0 0
 share/bash-completion/completions/ypmatch m 644 0 0
-share/bash-completion/completions/_yum m 644 0 0
-share/bash-completion/completions/yum-arch m 644 0 0
 share/bash-completion/completions/zopfli m 644 0 0
 share/bash-completion/completions/zopflipng m 644 0 0
 share/bash-completion/completions/7za m 777 0 0
@@ -442,7 +415,6 @@ share/bash-completion/completions/aclocal-1.13 m 777 0 0
 share/bash-completion/completions/aclocal-1.14 m 777 0 0
 share/bash-completion/completions/aclocal-1.15 m 777 0 0
 share/bash-completion/completions/phing m 777 0 0
-share/bash-completion/completions/aptitude-curses m 777 0 0
 share/bash-completion/completions/asciidoc.py m 777 0 0
 share/bash-completion/completions/automake-1.10 m 777 0 0
 share/bash-completion/completions/automake-1.11 m 777 0 0
@@ -471,9 +443,6 @@ share/bash-completion/completions/import m 777 0 0
 share/bash-completion/completions/stream m 777 0 0
 share/bash-completion/completions/cowthink m 777 0 0
 share/bash-completion/completions/rdict m 777 0 0
-share/bash-completion/completions/dpkg-deb m 777 0 0
-share/bash-completion/completions/dpkg-query m 777 0 0
-share/bash-completion/completions/dpkg-reconfigure m 777 0 0
 share/bash-completion/completions/mailsnarf m 777 0 0
 share/bash-completion/completions/msgsnarf m 777 0 0
 share/bash-completion/completions/civclient m 777 0 0
@@ -582,8 +551,6 @@ share/bash-completion/completions/g4 m 777 0 0
 share/bash-completion/completions/perldoc m 777 0 0
 share/bash-completion/completions/alpine m 777 0 0
 share/bash-completion/completions/ping6 m 777 0 0
-share/bash-completion/completions/pkg_info m 777 0 0
-share/bash-completion/completions/pkg_deinstall m 777 0 0
 share/bash-completion/completions/pkill m 777 0 0
 share/bash-completion/completions/pm-suspend m 777 0 0
 share/bash-completion/completions/pm-suspend-hybrid m 777 0 0
@@ -628,10 +595,6 @@ share/bash-completion/completions/ci m 777 0 0
 share/bash-completion/completions/co m 777 0 0
 share/bash-completion/completions/rlog m 777 0 0
 share/bash-completion/completions/rcsdiff m 777 0 0
-share/bash-completion/completions/rpmbuild m 777 0 0
-share/bash-completion/completions/rpmbuild-md5 m 777 0 0
-share/bash-completion/completions/rpm2txz m 777 0 0
-share/bash-completion/completions/rpm2targz m 777 0 0
 share/bash-completion/completions/smbget m 777 0 0
 share/bash-completion/completions/smbcacls m 777 0 0
 share/bash-completion/completions/smbcquotas m 777 0 0
