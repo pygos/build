@@ -1,8 +1,6 @@
 lib/libkeymap.so.0.0.0 m 555 0 0
 lib/libkeymap.so.0 m 777 0 0
 lib/libkeymap.so m 777 0 0
-bin/mapscrn m 555 0 0
-bin/loadunimap m 555 0 0
 bin/dumpkeys m 555 0 0
 bin/loadkeys m 555 0 0
 bin/showkey m 555 0 0
