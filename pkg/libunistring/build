@@ -1,8 +1,8 @@
-VERSION="0.9.9"
+VERSION="0.9.10"
 SRCDIR="libunistring-$VERSION"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/libunistring"
-SHA256SUM="a4d993ecfce16cf503ff7579f5da64619cee66226fb3b998dafb706190d9a833"
+SHA256SUM="eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7"
 DEPENDS="libiconv"
 
 prepare() {
