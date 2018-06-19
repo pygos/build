@@ -41,6 +41,14 @@ build() {
 
 	echo "etc/$fname m 644 0 0" >> "$DEPLOY/pseudo"
 
+	# local config files
+	fname=$(file_path_override "resolv.conf")
+
+	if [ ! -z "$fname" ]; then
+		cp "$fname" "./etc/resolv.conf"
+		echo "etc/resolv.conf m 644 0 0" >> "$DEPLOY/pseudo"
+	fi
+
 	# gather rootfs dependencies
 	dependencies | tsort | tac | \
 		grep -v "$PKGNAME" > "$PKGBUILDDIR/etc/packages"
