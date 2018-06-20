@@ -1,3 +1,12 @@
+--- a/rdma/include/uapi/rdma/rdma_user_cm.h
++++ b/rdma/include/uapi/rdma/rdma_user_cm.h
+@@ -37,5 +37,5 @@
+ #include <linux/types.h>
+ #include <linux/socket.h>
+-#include <linux/in6.h>
++#include <netinet/in.h>
+ #include <rdma/ib_user_verbs.h>
+ #include <rdma/ib_user_sa.h>
 --- a/include/uapi/linux/if_tunnel.h
 +++ b/include/uapi/linux/if_tunnel.h
 @@ -3,7 +3,6 @@
