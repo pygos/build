@@ -1,8 +1,8 @@
-VERSION="1.7.2"
+VERSION="1.7.3"
 SRCDIR="unbound-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.unbound.net/downloads"
-SHA256SUM="a85fc7bb34711992cf128b2012638ebb8dc1fe15818baa381f6489240845eaa0"
+SHA256SUM="c11de115d928a6b48b2165e0214402a7a7da313cd479203a7ce7a8b62cba602d"
 DEPENDS="openssl expat libbsd"
 
 prepare() {
