@@ -1,0 +1,35 @@
+VERSION="1.7.0"
+SRCDIR="ldns-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://www.nlnetlabs.nl/downloads/ldns"
+SHA256SUM="c19f5b1b4fb374cfe34f4845ea11b1e0551ddc67803bd6ddd5d2a20f0997a6cc"
+DEPENDS="openssl"
+
+prepare() {
+	return
+}
+
+build() {
+	ac_cv_func_malloc_0_nonnull=yes \
+	ac_cv_func_realloc_0_nonnull=yes \
+	$1/configure --prefix="" --build="$HOSTTUPLE" --host="$TARGET" \
+		     --sysconfdir=/etc --sbindir=/bin --disable-static \
+		     --with-drill --without-pyldns --without-pyldnsx \
+		     --without-p5-dns-ldns --with-ssl="$TCDIR/$TARGET"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+}
+
+check_update() {
+	curl --silent -L "$URL" | grep -o "ldns-[0-9.]*tar.gz" | \
+	    sed 's/ldns-//g' | sed 's/.tar.gz//g' | \
+	    verson_find_greatest "$VERSION"
+}

@@ -21,3 +21,4 @@ init
 unbound
 dnsmasq
 openssh
+ldns
