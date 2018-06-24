@@ -1,0 +1,23 @@
+VERSION="1"
+SRCDIR="linux-firmware-rpi3-$VERSION"
+TARBALL="$SRCDIR.tar.xz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="a4282e7cfee0d10c966a4ba73ac08a36923b75fc2bc3274c203c4db5f2d29488"
+DEPENDS="toolchain"
+
+prepare() {
+	return
+}
+
+build() {
+	cp -r $1/* "$PKGBUILDDIR"
+}
+
+deploy() {
+	make DESTDIR="$2" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$2"
+}
+
+check_update() {
+	return
+}
