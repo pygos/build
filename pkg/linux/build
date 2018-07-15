@@ -26,16 +26,24 @@ build() {
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_INITRAMFS_SOURCE=.*,CONFIG_INITRAMFS_SOURCE="'$INITRDLIST'",'
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS $LINUX_TGT
+	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS modules
 }
 
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	mkdir -p "$DEPLOY/boot"
+	mkdir -p "$DEPLOY/boot" "$DEPLOY/lib/modules"
 	cp "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/boot/vmlinuz"
 
+	export KBUILD_OUTPUT="$PKGBUILDDIR"
+	make -C "$SOURCE" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" INSTALL_MOD_PATH="$DEPLOY" modules_install
+
 	echo "boot/vmlinuz m 555 0 0" > "$DEPLOY/rootfs_files.txt"
+
+	find "$DEPLOY/lib" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
+		sed "s#^$DEPLOY/##g" | sed "s/644/444/g" | \
+		sed "s/755/555/g" >> "$DEPLOY/rootfs_files.txt"
 }
 
 check_update() {
