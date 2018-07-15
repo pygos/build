@@ -1,0 +1,31 @@
+VERSION="3.2.25"
+SRCDIR="libnl-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://www.infradead.org/~tgr/libnl/files"
+SHA256SUM="8beb7590674957b931de6b7f81c530b85dc7c1ad8fbda015398bc1e8d1ce8ec5"
+DEPENDS="toolchain"
+
+prepare() {
+	return
+}
+
+build() {
+	$1/configure --prefix="" --host="$TARGET" --disable-static \
+		     --disable-cli
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+}
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">libnl-[0-9.]*tar.gz<" | \
+	    sed 's/>libnl-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}

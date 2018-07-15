@@ -9,5 +9,6 @@ nftables
 kbd
 firmware-rpi3
 dhcpcd
+iw
 linux-firmware-rpi3
 linux-rpi3

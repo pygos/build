@@ -1,0 +1,35 @@
+VERSION="4.14"
+SRCDIR="iw-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://mirrors.edge.kernel.org/pub/software/network/iw"
+SHA256SUM="f01671c0074bfdec082a884057edba1b9efd35c89eda554638496f03b769ad89"
+DEPENDS="libnl3"
+
+prepare() {
+	return
+}
+
+build() {
+	cp -r ${1}/* ${PKGBUILDDIR}
+
+	export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
+	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
+	     SBINDIR=/bin DESTDIR="$2" -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
+	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
+	     SBINDIR=/bin DESTDIR="$DEPLOY" install
+
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+}
+
+check_update() {
+	curl --silent -L $URL | grep -o "iw-[0-9.]*tar.xz" | \
+	    sed 's/iw-//g' | sed 's/.tar.xz//g' | \
+	    verson_find_greatest "$VERSION"
+}
