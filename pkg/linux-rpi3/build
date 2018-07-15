@@ -1,8 +1,8 @@
-VERSION="1.20180417-1"
+VERSION="1.20180619-1"
 SRCDIR="linux-raspberrypi-kernel_${VERSION}"
 TARBALL="raspberrypi-kernel_${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/linux/archive"
-SHA256SUM="7808fe8fe260f6a8b1781cbd5585d739d900af57b6784aa04af3425d3632b03f"
+SHA256SUM="39b516162f043435cd0373845d7d5d967a2234323f353b3ee0ffe57ed9b9f57e"
 DEPENDS="initrd"
 
 prepare() {
