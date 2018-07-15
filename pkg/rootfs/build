@@ -82,6 +82,13 @@ build() {
 	sed -i 's#etc/#cfg/preserve/etc/#g' "$DEPLOY/pseudo"
 	sed -i 's#var/lib/#cfg/preserve/var_lib/#g' "$DEPLOY/pseudo"
 	sed -i 's#usr/#cfg/preserve/usr/#g' "$DEPLOY/pseudo"
+
+	# don't add stuff for the boot partition to the squashfs image
+	mv ${PKGBUILDDIR}/boot/* "$DEPLOY"
+
+	grep -v "^boot/" "$DEPLOY/pseudo" > "$DEPLOY/pseudo.temp"
+	mv "$DEPLOY/pseudo.temp" "$DEPLOY/pseudo"
+	echo "boot m 750 0 0" >> "$DEPLOY/pseudo"
 }
 
 deploy() {

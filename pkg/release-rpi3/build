@@ -1,4 +1,4 @@
-DEPENDS="rootfs linux-rpi3 boot-rpi3"
+DEPENDS="rootfs boot-rpi3"
 
 build() {
 	local SOURCE="$1"

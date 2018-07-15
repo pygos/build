@@ -11,3 +11,4 @@ kbd
 firmware-rpi3
 dhcpcd
 linux-firmware-rpi3
+linux-rpi3

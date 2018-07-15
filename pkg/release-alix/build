@@ -1,4 +1,4 @@
-DEPENDS="rootfs linux"
+DEPENDS="rootfs"
 
 build() {
 	local SOURCE="$1"

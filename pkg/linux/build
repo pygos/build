@@ -32,7 +32,10 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	install -m 755 "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/vmlinuz"
+	mkdir -p "$DEPLOY/boot"
+	cp "arch/$LINUX_CPU/boot/$LINUX_TGT" "$DEPLOY/boot/vmlinuz"
+
+	echo "boot/vmlinuz m 555 0 0" > "$DEPLOY/rootfs_files.txt"
 }
 
 check_update() {
