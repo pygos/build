@@ -1,8 +1,8 @@
-VERSION="1"
+VERSION="2"
 SRCDIR="linux-firmware-rpi3-$VERSION"
 TARBALL="$SRCDIR.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="a4282e7cfee0d10c966a4ba73ac08a36923b75fc2bc3274c203c4db5f2d29488"
+SHA256SUM="66e5bc59017f1df8b0e25dd49d4df91fd8f841954f9bc1efc2b88095fdf75e12"
 DEPENDS="toolchain"
 
 prepare() {
