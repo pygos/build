@@ -1,17 +1,16 @@
-VERSION="8.29"
+VERSION="8.30"
 SRCDIR="coreutils-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/coreutils/"
-SHA256SUM="92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e"
+SHA256SUM="e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057"
 DEPENDS="toolchain"
 
 prepare() {
-	apply_patches
+	return
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --libexecdir=/lib/libexec \
-		     --enable-no-install-program=kill,uptime,dir,vdir,chcon,pinky,runcon
+	$1/configure --prefix="" --host="$TARGET" --libexecdir=/lib/libexec
 
 	make -j $NUMJOBS
 }
