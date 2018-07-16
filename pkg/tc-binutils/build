@@ -1,8 +1,8 @@
-VERSION="2.30"
+VERSION="2.31"
 SRCDIR="binutils-$VERSION"
 TARBALL="binutils-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/binutils"
-SHA256SUM="6e46b8aeae2f727a36f0bd9505e405768a72218f1796f0d09757d45209871ae6"
+SHA256SUM="231036df7ef02049cdbff0681f4575e571f26ea8086cf70c2dcd3b6c0f4216bf"
 DEPENDS=""
 
 prepare() {
