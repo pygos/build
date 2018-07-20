@@ -1,1 +1,1 @@
-SERVICES+="unbound dnsmasq"
+SERVICES="$SERVICES unbound dnsmasq"
