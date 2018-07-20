@@ -1,1 +1,2 @@
 DHCP_PORTS="port0"
+SERVICES="$SERVICES hostapd"

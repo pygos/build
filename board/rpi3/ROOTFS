@@ -10,5 +10,6 @@ kbd
 firmware-rpi3
 dhcpcd
 iw
+hostapd
 linux-firmware-rpi3
 linux-rpi3
