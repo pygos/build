@@ -1,0 +1,35 @@
+VERSION="2.6"
+SRCDIR="hostapd-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://w1.fi/releases/"
+SHA256SUM="01526b90c1d23bec4b0f052039cc4456c2fd19347b4d830d1d58a0a6aea7117d"
+DEPENDS="libnl3 openssl"
+
+prepare() {
+	return
+}
+
+build() {
+	cp -r ${1}/* ${PKGBUILDDIR}
+	cp "$SCRIPTDIR/pkg/$PKGNAME/config" "$PKGBUILDDIR/hostapd/.config"
+
+	export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
+	make CC=${TARGET}-gcc -C hostapd -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	mkdir -p "$DEPLOY/etc"
+	cat_file_override "hostapd.conf" > "$DEPLOY/etc/hostapd.conf"
+
+	make -C hostapd BINDIR=/bin DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+}
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">hostapd-[0-9.]*tar.gz<" | \
+	    sed 's/>hostapd-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}
