@@ -60,6 +60,12 @@ deploy() {
 		SERVICES="$SERVICES nft"
 	fi
 
+	svc=$(file_path_override "sysctl.conf")
+	if [ ! -z "$svc" ]; then
+		cp "$svc" "$DEPLOY/etc/sysctl.conf"
+		echo "etc/sysctl.conf m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+	fi
+
 	svc=$(file_path_override "interfaces")
 	if [ ! -z "$svc" ]; then
 		echo "etc/init.d/ifcfg m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
