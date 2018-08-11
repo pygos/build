@@ -1,0 +1,3 @@
+lib/libpcap.so.1 m 777 0 0
+lib/libpcap.so m 777 0 0
+lib/libpcap.so.1.9.0 m 555 0 0

@@ -1,0 +1,32 @@
+VERSION="4.9.2"
+SRCDIR="tcpdump-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="http://www.tcpdump.org/release/"
+SHA256SUM="798b3536a29832ce0cbb07fafb1ce5097c95e308a6f592d14052e1ef1505fe79"
+DEPENDS="toolchain libnl3 openssl libpcap"
+
+prepare() {
+	apply_patches
+}
+
+build() {
+	$1/configure --prefix="" --host="$TARGET" --sbindir=/bin \
+		     --libexecdir=/lib/libexec --with-system-libpcap \
+		     --with-cap-ng --with-crypto="$TCDIR/$TARGET"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+}
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">tcpdump-[0-9.]*tar.gz<" | \
+	    sed 's/>tcpdump-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}
