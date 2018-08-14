@@ -1,8 +1,8 @@
-VERSION="8.1.0"
+VERSION="8.2.0"
 SRCDIR="gcc-$VERSION"
 TARBALL="gcc-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
-SHA256SUM="1d1866f992626e61349a1ccd0b8d5253816222cdc13390dcfaa74b093aa2b153"
+SHA256SUM="196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080"
 DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr linux_headers"
 
 prepare() {
