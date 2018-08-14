@@ -1,8 +1,8 @@
-VERSION="1.29.1"
+VERSION="1.29.2"
 SRCDIR="busybox-$VERSION"
 TARBALL="busybox-$VERSION.tar.bz2"
 URL="https://busybox.net/downloads"
-SHA256SUM="fc250730ea16d28839bfecda3c431683fa6bd4273ffca6b632cbeb3556c914c3"
+SHA256SUM="67d2fa6e147a45875fe972de62d907ef866fe784c495c363bf34756c444a5d61"
 DEPENDS="toolchain"
 
 prepare() {
