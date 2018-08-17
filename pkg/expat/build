@@ -1,8 +1,8 @@
-VERSION="R_2_2_5"
+VERSION="R_2_2_6"
 SRCDIR="libexpat-${VERSION}/expat"
 TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/libexpat/libexpat/archive"
-SHA256SUM="b3781742738611eaa737543ee94264dd511c52a3ba7e53111f7d705f6bff65a8"
+SHA256SUM="574499cba22a599393e28d99ecfa1e7fc85be7d6651d543045244d5b561cb7ff"
 DEPENDS="libbsd"
 
 prepare() {
