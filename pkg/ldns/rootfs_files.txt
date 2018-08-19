@@ -1,5 +1,4 @@
 bin/drill m 555 0 0
-bin/ldns-config m 555 0 0
 lib/libldns.so m 777 0 0
 lib/libldns.so.2 m 777 0 0
 lib/libldns.so.2.0.0 m 555 0 0

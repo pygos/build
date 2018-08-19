@@ -1,6 +1,4 @@
 bin/killall m 555 0 0
-bin/pslog m 555 0 0
 bin/prtstat m 555 0 0
 bin/pstree m 555 0 0
 bin/fuser m 555 0 0
-bin/pstree.x11 m 777 0 0

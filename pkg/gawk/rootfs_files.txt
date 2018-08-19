@@ -43,5 +43,4 @@ lib/gawk/time.so m 555 0 0
 lib/libexec/awk m 555 0 0
 lib/libexec/awk/pwcat m 555 0 0
 lib/libexec/awk/grcat m 555 0 0
-etc/profile.d/gawk.sh m 444 0 0
-etc/profile.d/gawk.csh m 444 0 0
+etc/profile.d/gawk.sh m 644 0 0

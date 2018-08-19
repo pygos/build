@@ -1,8 +1,5 @@
 bin/login m 555 0 0
 bin/su m 4555 0 0
-bin/nologin m 555 0 0
-bin/faillog m 555 0 0
-bin/lastlog m 555 0 0
 bin/chage m 4555 0 0
 bin/chfn m 4555 0 0
 bin/expiry m 4555 0 0
@@ -21,7 +18,6 @@ bin/groupmod m 555 0 0
 bin/grpck m 555 0 0
 bin/grpconv m 555 0 0
 bin/grpunconv m 555 0 0
-bin/logoutd m 555 0 0
 bin/newusers m 555 0 0
 bin/pwck m 555 0 0
 bin/pwconv m 555 0 0
