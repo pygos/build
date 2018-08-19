@@ -3,7 +3,7 @@ SRCDIR="iproute2-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/net/iproute2/"
 SHA256SUM="a9e6c70c95f513871c5e1f4e452c04fcb3c4d8a05be651bd794cd994a52daa45"
-DEPENDS="bdb libmnl"
+DEPENDS="libmnl"
 
 prepare() {
 	apply_patches
@@ -19,7 +19,6 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	mkdir -p "$DEPLOY/var/lib/arpd"
 	make DESTDIR="$DEPLOY" SYSROOT="$TCDIR/$TARGET" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
