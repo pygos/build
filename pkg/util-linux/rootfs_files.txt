@@ -6,7 +6,6 @@ bin/wdctl m 555 0 0
 bin/mountpoint m 555 0 0
 bin/lsblk m 555 0 0
 bin/findmnt m 555 0 0
-bin/kill m 555 0 0
 bin/agetty m 555 0 0
 bin/fstrim m 555 0 0
 bin/fsfreeze m 555 0 0

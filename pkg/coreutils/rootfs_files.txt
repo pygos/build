@@ -16,7 +16,6 @@ bin/stty m 555 0 0
 bin/yes m 555 0 0
 bin/df m 555 0 0
 bin/stdbuf m 555 0 0
-bin/[ m 555 0 0
 bin/b2sum m 555 0 0
 bin/base64 m 555 0 0
 bin/base32 m 555 0 0
@@ -35,7 +34,6 @@ bin/dd m 555 0 0
 bin/dircolors m 555 0 0
 bin/dirname m 555 0 0
 bin/du m 555 0 0
-bin/echo m 555 0 0
 bin/env m 555 0 0
 bin/expand m 555 0 0
 bin/expr m 555 0 0
@@ -66,7 +64,6 @@ bin/paste m 555 0 0
 bin/pathchk m 555 0 0
 bin/pr m 555 0 0
 bin/printenv m 555 0 0
-bin/printf m 555 0 0
 bin/ptx m 555 0 0
 bin/pwd m 555 0 0
 bin/readlink m 555 0 0
@@ -87,7 +84,6 @@ bin/sync m 555 0 0
 bin/tac m 555 0 0
 bin/tail m 555 0 0
 bin/tee m 555 0 0
-bin/test m 555 0 0
 bin/touch m 555 0 0
 bin/tr m 555 0 0
 bin/true m 555 0 0
