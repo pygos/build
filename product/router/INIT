@@ -1,1 +1,1 @@
-SERVICES="$SERVICES unbound dnsmasq"
+SERVICES="$SERVICES unbound dnsmasq sshd_keygen sshd"

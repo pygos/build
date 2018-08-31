@@ -28,6 +28,8 @@ deploy() {
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 	mkdir -p "$DEPLOY/var/lib/sshd"
 	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$DEPLOY/bin"
+
+	cat_file_override "sshd_config" > "$DEPLOY/etc/sshd_config"
 }
 
 check_update() {

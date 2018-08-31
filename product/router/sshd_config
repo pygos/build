@@ -1,0 +1,8 @@
+HostKey /etc/ssh/host_rsa_key
+HostKey /etc/ssh/host_ecdsa_key
+HostKey /etc/ssh/host_ed25519_key
+
+PermitRootLogin no
+AuthorizedKeysFile	.ssh/authorized_keys
+X11Forwarding yes
+Subsystem	sftp	/lib/libexec/sftp-server
