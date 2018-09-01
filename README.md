@@ -31,16 +31,18 @@ For an overview of the available documentation see [docs/index.md](docs/index.md
 By the way, before you ask: the default root password for the demo setup is
 *reindeerflotilla*.
 
+The wireless network is called *Pygos Demo Net* and the password
+is *righteous*.
+
 ## Target configuration
 
 The Pygos build system is driven by toolchain and package configurations
-that are divided into three categories:
+that are divided into two categories:
 
- - Common settings shared by all targets
-   - Contains things like a bare minimum default package set
  - Board specific settings
    - Mostly board specific cross toolchain and kernel configuration
-   - Can add additional packages required for that board
+   - Can specify a minimal set of packages required for minimal operation
+     of the board
  - Product specific settings
    - Specifies a list of boards for which the product can be built
    - Specifies and configures extra packages needed
@@ -55,14 +57,15 @@ following boards:
  - Raspberry Pi 3 (ARM, 32 bit)
  - pc-engines ALIX board (x86, 32 bit)
 
-The following demo products for those boards are planned, but currently
-still in development:
+The following demo product configurations exist:
 
- - "router" builds for all of the above boards. A DHCP server offers
-   addresses on two of the ALIX boards Ethernet ports or on the
-   Raspberry Pi 3 wireless interface. A DHCP client configures the
-   remaining interface, uses it as default route and does NAT routing.
-   DNS queries are resolved via a local root resolver.
+ - "router" builds on all boards. On the Raspberry Pi 3, a wireless network
+   is created. A DHPC server serves IP addresses and configures the board as
+   default gateway and DNS server. DNS queries are resolved using a local
+   unbound resolver. The ethernet interface is configured via DHCP and packets
+   are NAT translated and forwarded. On the ALIX board, the DHCP server serves
+   on two interfaces and the third interface is used for upstream forwarding.
+
 
 
 ## How to build the system
@@ -71,7 +74,7 @@ The system can be built by running the mk.sh script as follows:
 
     mk.sh <board> <product>
 
-This will start to download and builds the cross toolchain and system in the
+This will start to download and build the cross toolchain and system in the
 current working directory. The command can (and should) be run from somewhere
 outside the source tree.
 
@@ -105,4 +108,3 @@ The build system directory contains the following files and sub directories:
      The main build script that builds the entire system
  - README.md
      This file
-

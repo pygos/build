@@ -25,7 +25,7 @@ The `mk.sh` creates a `download` and a `src` directory. In the former it stores
 downloaded package tar balls, in the later it extracts the tar balls.
 
 For target specific files, a `<BOARD>-<PRODUCT>` directory is created.
-Throughout the build system, this directory is refereed to as *build root*.
+Throughout the build system, this directory is referred to as *build root*.
 
 Inside the build root a `deploy` directory is created. Build output for each
 package is deployed to a sub directory named after the package.
@@ -240,6 +240,9 @@ with 0.
 For each network interface, addresses, mtu, offloading, etc can be configured
 in a file `interfaces/<name>`, where *name* is the interface name *after*
 renaming.
+
+If the files `nftables.rules` or `sysctl.conf` are found, they are copied to
+the target system image and the coresponding services are enabled.
 
 For more details, please refer to the not yet existing network documentation.
 
