@@ -12,9 +12,8 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
-	./configure --prefix="" --host="$TARGET" --sbindir=/bin \
-		    --disable-documentation --disable-convert \
-		    --disable-zstd --disable-backtrace --disable-python
+	run_configure "." --disable-documentation --disable-convert \
+		      --disable-zstd --disable-backtrace --disable-python
 
 	make -j $NUMJOBS
 }

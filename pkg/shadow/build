@@ -13,8 +13,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --sbindir=/bin \
-		     --disable-man --without-libpam --without-selinux \
+	run_configure "$1" --disable-man --without-libpam --without-selinux \
 		     --with-sha-crypt --with-group-name-max-length=32
 
 	make -j $NUMJOBS

@@ -10,10 +10,10 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --disable-servers \
-		     --disable-dnsdomainname --disable-rcp --disable-rexec \
-		     --enable-hostname --disable-rlogin --disable-rsh \
-		     --disable-logger --disable-talk --disable-ifconfig
+	run_configure "$1" --disable-servers --disable-dnsdomainname \
+		      --disable-rcp --disable-rexec --enable-hostname \
+		      --disable-rlogin --disable-rsh --disable-logger \
+		      --disable-talk --disable-ifconfig
 
 	make -j $NUMJOBS
 }

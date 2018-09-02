@@ -10,9 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --sbindir=/bin \
-		     --disable-compat-symlinks --without-udev
-
+	run_configure "$1" --disable-compat-symlinks --without-udev
 	make -j $NUMJOBS
 }
 

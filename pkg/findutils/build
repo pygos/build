@@ -10,9 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --libexecdir=/lib/libexec \
-		     --localstatedir=/var/lib/locate
-
+	run_configure "$1" --localstatedir=/var/lib/locate
 	make -j $NUMJOBS
 }
 

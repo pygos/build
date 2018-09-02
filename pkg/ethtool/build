@@ -10,8 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --sbindir="/bin"
-
+	run_configure "$1"
 	make -j $NUMJOBS
 }
 

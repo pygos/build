@@ -10,8 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --disable-static --enable-cxx
-
+	run_configure "$1" --enable-cxx
 	make -j $NUMJOBS
 }
 

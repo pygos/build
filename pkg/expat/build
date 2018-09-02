@@ -10,9 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --disable-static \
-		     --without-xmlwf --with-libbsd
-
+	run_configure "$1" --without-xmlwf --with-libbsd
 	make -j $NUMJOBS
 }
 

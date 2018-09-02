@@ -10,9 +10,8 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --disable-static \
-		     --sysconfdir=/etc --with-pidfile=/run/unbound.pid \
-		     --sbindir=/bin --with-libexpat="$TCDIR/$TARGET" \
+	run_configure "$1" --with-pidfile=/run/unbound.pid \
+		     --with-libexpat="$TCDIR/$TARGET" \
 		     --with-ssl="$TCDIR/$TARGET"
 
 	make -j $NUMJOBS

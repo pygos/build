@@ -58,6 +58,7 @@ source "$SCRIPTDIR/util/pkgcmd.sh"
 source "$SCRIPTDIR/util/toolchain.sh"
 source "$SCRIPTDIR/util/misc.sh"
 source "$SCRIPTDIR/util/override.sh"
+source "$SCRIPTDIR/util/autotools.sh"
 
 ############################## toolchain config ##############################
 include_merge "TOOLCHAIN"

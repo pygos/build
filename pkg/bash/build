@@ -10,8 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --build="$HOSTTUPLE" --host="$TARGET" \
-		     --without-bash-malloc --with-installed-readline
+	run_configure "$1" --without-bash-malloc --with-installed-readline
 
 	make -j $NUMJOBS
 }

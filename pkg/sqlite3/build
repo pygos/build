@@ -10,8 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --disable-tcl
-
+	run_configure "$1" --disable-tcl
 	make -j $NUMJOBS
 }
 

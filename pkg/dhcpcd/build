@@ -15,10 +15,7 @@ build() {
 
 	cp -r $SOURCE/* $PKGBUILDDIR
 
-	./configure --prefix="" --host="$TARGET" --sbindir=/bin \
-		    --datadir=/share --libexecdir=/lib/libexec \
-		    --disable-static
-
+	run_configure "."
 	make -j $NUMJOBS
 }
 

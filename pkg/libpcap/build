@@ -13,10 +13,7 @@ build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 	sed -i "s#/usr/include/libnl3#$TCDIR/$TARGET/include/libnl3#g" configure
 
-	./configure --prefix="" --host="$TARGET" --sbindir=/bin \
-		    --libexecdir=/lib/libexec --with-pcap=linux \
-		    --enable-ipv6
-
+	run_configure "." --with-pcap=linux --enable-ipv6
 	make -j $NUMJOBS
 }
 

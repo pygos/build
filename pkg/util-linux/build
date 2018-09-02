@@ -10,18 +10,9 @@ prepare() {
 }
 
 build() {
-	$1/configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
-		     --prefix="" --host="$TARGET" --sbindir="/bin" \
-		     --with-bashcompletiondir="/share/bash-completion/completions" \
-		     --disable-pylibmount --disable-static --without-python \
+	ADJTIME_PATH=/var/lib/hwclock/adjtime \
+	run_configure "$1" --disable-pylibmount --without-python \
 		     --without-systemd --without-systemdsystemunitdir \
-		     --disable-cal --disable-chmem --disable-fdformat \
-		     --disable-fsck --disable-logger --disable-mesg \
-		     --disable-minix --disable-bfs --disable-more \
-		     --disable-nologin --disable-nsenter --disable-pivot_root \
-		     --disable-raw --disable-sulogin --disable-switch_root \
-		     --disable-ul --disable-unshare --disable-utmpdump \
-		     --disable-uuidd --disable-wall --disable-zramctl \
 		     --disable-makeinstall-chown \
 		     --disable-makeinstall-setuid \
 		     --enable-agetty

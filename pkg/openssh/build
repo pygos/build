@@ -10,9 +10,7 @@ prepare() {
 }
 
 build() {
-	$1/configure --prefix="" --host="$TARGET" --sbindir=/bin \
-		     --libexecdir=/lib/libexec \
-		     --with-pie --without-pam --without-stackprotect \
+	run_configure "$1" --with-pie --without-pam --without-stackprotect \
 		     --without-selinux --disable-strip \
 		     --with-sandbox=seccomp_filter \
 		     --with-privsep-path=/var/lib/sshd
