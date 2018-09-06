@@ -24,3 +24,4 @@ openssh
 ldns
 tcpdump
 ntp
+tzdata

@@ -1,0 +1,37 @@
+VERSION="2018e"
+SRCDIR="tzdb-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="631483305442e5dd1a2a21cefc9b7e4eda4af9c6f862ad3cad9dc14541213b51"
+DEPENDS="toolchain"
+
+prepare() {
+	sed -i 's/sbin/bin/g' Makefile
+}
+
+build() {
+	cp -r ${1}/* ${PKGBUILDDIR}
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	make USRDIR="" DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+
+	sed -i 's@/usr@@g' "$DEPLOY/bin/tzselect"
+	rm "$DEPLOY/bin/zdump"
+	rm "$DEPLOY/bin/zic"
+}
+
+check_update() {
+	local version=$(echo $VERSION | sed 's/\([[:lower:]]\)/.\1/g')
+	local url="https://data.iana.org/time-zones/releases"
+
+	curl --silent -L "$url" | grep -o "tzdb-[0-9a-z]*\.tar\.lz" | \
+	    sed 's/tzdb-//g' | sed 's/.tar.lz//g' | sort -u | \
+	    sed 's/\([[:lower:]]\)/.\1/g' | \
+	    verson_find_greatest "$version"
+}
