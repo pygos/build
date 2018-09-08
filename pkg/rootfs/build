@@ -9,7 +9,8 @@ copy_rootfs_files() {
 		if [ ! -e "./$fname" ]; then
 			dname=$(dirname $fname)
 
-			if [ -d "$pkgdir/$fname" ]; then
+			if [ -d "$pkgdir/$fname" ] && [ ! -L "$pkgdir/$fname" ]
+			then
 				mkdir -p "./$fname"
 			else
 				[ "$dname" == "." ] || mkdir -p "./$dname";
