@@ -1,12 +1,12 @@
 MAJOR="4"
 MINOR="14"
-RELEASE="67"
+RELEASE="68"
 
 VERSION="$MAJOR.$MINOR.$RELEASE"
 SRCDIR="linux-$VERSION"
 TARBALL="linux-$VERSION.tar.xz"
 URL="https://www.kernel.org/pub/linux/kernel/v$MAJOR.x"
-SHA256SUM="3f4b056dc27233a78f7a4a35ed6fdcfd0a9680ec40b611a898bb6c8b905070ba"
+SHA256SUM="791dbf1597033bf2b61e83307d78188ffc1ad4bdd1da3234876667edfdd28690"
 DEPENDS="initrd"
 
 prepare() {
