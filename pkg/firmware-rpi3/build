@@ -1,8 +1,8 @@
-VERSION="1.20180619"
+VERSION="1.20180817"
 SRCDIR="firmware-${VERSION}"
 TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/firmware/archive"
-SHA256SUM="e657478923220947321503ef980f3a6772d6f1e11b48c5c359bdb5e3d49355d9"
+SHA256SUM="632113ef047ed1bc5e7fb26c955cdfec3cc34f240cb6617a254019a0670f0b3f"
 DEPENDS=""
 
 prepare() {
