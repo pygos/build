@@ -8,9 +8,7 @@ bin/timeout m 555 0 0
 bin/split m 555 0 0
 bin/nice m 555 0 0
 bin/unlink m 555 0 0
-bin/who m 555 0 0
 bin/wc m 555 0 0
-bin/users m 555 0 0
 bin/whoami m 555 0 0
 bin/stty m 555 0 0
 bin/yes m 555 0 0

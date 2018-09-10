@@ -10,7 +10,6 @@ bin/pwdx m 555 0 0
 bin/tload m 555 0 0
 bin/uptime m 555 0 0
 bin/vmstat m 555 0 0
-bin/w m 555 0 0
 bin/pidof m 555 0 0
 bin/slabtop m 555 0 0
 bin/watch m 555 0 0
