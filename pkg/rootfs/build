@@ -67,7 +67,7 @@ build() {
 	# setup root home directory
 	cp -r "$PKGBUILDDIR/etc/skel" "$PKGBUILDDIR/usr/root"
 
-	echo "usr/root m 750 0 0" >> "$DEPLOY/pseudo"
+	echo "usr/root m 700 0 0" >> "$DEPLOY/pseudo"
 
 	find "./usr/root" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
 		sed 's#^./##g' | tail -n +2  >> "$DEPLOY/pseudo"
