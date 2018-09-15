@@ -1,4 +1,5 @@
 root:x:0:
+tty:x:5:
 sshd:x:50:
 dnsmasq:x:51:
 unbound:x:52:
