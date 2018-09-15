@@ -1,5 +1,5 @@
-lib/libunbound.so.2.5.11 m 555 0 0
-lib/libunbound.so.2 m 777 0 0
+lib/libunbound.so.8.0.0 m 555 0 0
+lib/libunbound.so.8 m 777 0 0
 lib/libunbound.so m 777 0 0
 bin/unbound m 555 0 0
 bin/unbound-checkconf m 555 0 0
