@@ -7,9 +7,6 @@ DEPENDS="toolchain"
 
 prepare() {
 	sed -i 's/groups$(EXEEXT) //' src/Makefile.in
-
-	sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
-		-e 's@/var/spool/mail@/var/mail@' etc/login.defs
 }
 
 build() {
@@ -25,8 +22,8 @@ deploy() {
 
 	make DESTDIR="$DEPLOY" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
-
-	sed -i -e 's@HOME=/home@HOME=/usr@g' $DEPLOY/etc/default/useradd
+	cp "$SCRIPTDIR/pkg/$PKGNAME/login.defs" "$DEPLOY/etc"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/useradd" "$DEPLOY/etc/default"
 
 	# *hrmpf*
 	if [ -e "$DEPLOY/sbin" ]; then
