@@ -1,8 +1,8 @@
-VERSION="0.6"
+VERSION="0.7"
 SRCDIR="init-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="0a47cdeaf72a71a7cbc7440c42ff7db719ed92b4d39e99abe5af828a4d9fb664"
+SHA256SUM="68759e2096dbf20e795e8c16c5e8b55ec6935c1020b12896a22abf6325b14370"
 DEPENDS="toolchain"
 
 prepare() {
@@ -33,12 +33,21 @@ deploy() {
 
 		ln -s "/share/init/swclocksave" "$DEPLOY/etc/init.d/swclocksave@shutdown"
 		ln -s "/share/init/swclocksave" "$DEPLOY/etc/init.d/swclocksave@reboot"
+		ln -s "/share/init/swclocksave.gcron" "$DEPLOY/etc/gcron.d/swclocksave"
 		echo "etc/init.d/swclocksave@shutdown m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
 		echo "etc/init.d/swclocksave@reboot m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "etc/gcron.d/swclocksave m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
 
 		mkdir -p "$DEPLOY/var/lib"
 		date --utc +%m%d%H%M%Y.%S > "$DEPLOY/var/lib/swclock"
 		echo "var/lib/swclock m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+
+		if [ -z "$DHCP_PORTS" ]; then
+			ln -s "/share/init/ntpsetdate.gcron" "$DEPLOY/etc/gcron.d/ntpsetdate"
+			echo "etc/gcron.d/ntpsetdate m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+		else
+			echo "lib/libexec/dhcpcd-hooks/40-ntpsetdate m 555 0 0" >> "$DEPLOY/rootfs_files.txt"
+		fi
 	fi
 
 	svc=$(file_path_override "ifrename")

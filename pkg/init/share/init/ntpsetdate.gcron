@@ -1,0 +1,7 @@
+hour */4
+minute 5
+dayofmonth *
+dayofweek *
+month *
+tty /dev/null
+exec "/lib/libexec/init/setntpdate.sh"

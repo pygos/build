@@ -5,6 +5,7 @@ bin/shutdown m 555 0 0
 bin/init m 555 0 0
 bin/usyslogd m 555 0 0
 bin/klogd m 555 0 0
+bin/gcrond m 555 0 0
 lib/libexec/init m 555 0 0
 lib/libexec/init/killall5 m 555 0 0
 lib/libexec/init/runsvc m 555 0 0
@@ -15,6 +16,7 @@ lib/libexec/init/ifcfg.sh m 555 0 0
 lib/libexec/init/ifdown.sh m 555 0 0
 lib/libexec/init/modules_load.sh m 555 0 0
 lib/libexec/init/overlay.sh m 555 0 0
+lib/libexec/init/setntpdate.sh m 555 0 0
 share/init m 555 0 0
 share/init/agetty m 444 0 0
 share/init/hostname m 444 0 0
@@ -50,10 +52,15 @@ share/init/swclocksave m 444 0 0
 share/init/nft m 444 0 0
 share/init/sshd m 444 0 0
 share/init/sshd_keygen m 444 0 0
+share/init/gcrond m 444 0 0
+share/init/consolefont m 444 0 0
+share/init/ntpsetdate.gcron m 444 0 0
+share/init/swclocksave.gcron m 444 0 0
 etc/netcfg m 755 0 0
 etc/modules m 644 0 0
 etc/initd.env m 644 0 0
 etc/init.d m 755 0 0
+etc/init.d/gcrond m 777 0 0
 etc/init.d/loopback m 777 0 0
 etc/init.d/hostname m 777 0 0
 etc/init.d/sysctl m 777 0 0
@@ -78,3 +85,4 @@ etc/init.d/modules m 777 0 0
 etc/init.d/network m 777 0 0
 etc/init.d/ifdown@shutdown m 777 0 0
 etc/init.d/ifdown@reboot m 777 0 0
+etc/gcron.d m 755 0 0
