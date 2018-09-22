@@ -10,7 +10,7 @@ prepare() {
 }
 
 build() {
-	run_configure "$1"
+	run_configure "$1" --enable-single-binary=symlinks
 	make -j $NUMJOBS
 }
 
