@@ -1,3 +1,4 @@
+RELEASEPKG="release-alix"
 TARGET="i686-linux-musl"
 GCC_CPU="i686"
 MUSL_CPU="i386"

@@ -2,49 +2,33 @@
 
 set -e
 
-if [ ! $# -eq 2 ]; then
-	echo "usage: $0 <board> <product>"
+if [ ! $# -eq 1 ]; then
+	echo "usage: $0 <product>"
 	exit 1
 fi
 
-BOARD="$1"
-PRODUCT="$2"
+PRODUCT="$1"
 
 ################################ basic setup ################################
 BUILDROOT=$(pwd)
 SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 NUMJOBS=$(grep -e "^processor" /proc/cpuinfo | wc -l)
-HOSTTUPLE=$($SCRIPTDIR/util/config.guess)
 
-if [ ! -d "$SCRIPTDIR/product/$PRODUCT" ]; then
-	echo "No configuration for this product: $PRODUCT"
+LAYERCONF="$SCRIPTDIR/product/${PRODUCT}.layers"
+
+if [ ! -f "$LAYERCONF" ]; then
+	echo "Cannot find layer configuration for $PRODUCT"
 	exit 1
 fi
 
-if [ ! -d "$SCRIPTDIR/board/$BOARD" ]; then
-	echo "No configuration for this board: $BOARD"
-	exit 1
-fi
-
-if [ -e "$SCRIPTDIR/product/$PRODUCT/BOARDS" ]; then
-	if ! grep -q "$BOARD" "$SCRIPTDIR/product/$PRODUCT/BOARDS"; then
-		echo "Error, $PRODUCT cannot be built for $BOARD"
-		exit 1
-	fi
-fi
-
-TCDIR="$BUILDROOT/${BOARD}-${PRODUCT}/toolchain"
-PKGBUILDDIR="$BUILDROOT/${BOARD}-${PRODUCT}/build"
 PKGSRCDIR="$BUILDROOT/src"
-PKGDEPLOYDIR="$BUILDROOT/${BOARD}-${PRODUCT}/deploy"
-PKGLOGDIR="$BUILDROOT/${BOARD}-${PRODUCT}/log"
 PKGDOWNLOADDIR="$BUILDROOT/download"
-PACKAGELIST="$BUILDROOT/${BOARD}-${PRODUCT}/pkglist"
+PKGBUILDDIR="$BUILDROOT/$PRODUCT/build"
+PKGDEPLOYDIR="$BUILDROOT/$PRODUCT/deploy"
+PKGLOGDIR="$BUILDROOT/$PRODUCT/log"
+PACKAGELIST="$BUILDROOT/$PRODUCT/pkglist"
 
-mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
-mkdir -p "$PKGDEPLOYDIR" "$TCDIR/bin"
-
-export PATH="$TCDIR/bin:$PATH"
+mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR" "$PKGDEPLOYDIR"
 
 pushd "$SCRIPTDIR" > /dev/null
 OS_NAME="Pygos"
@@ -63,14 +47,19 @@ source "$SCRIPTDIR/util/autotools.sh"
 ############################## toolchain config ##############################
 include_merge "TOOLCHAIN"
 
-mkdir -p "$TCDIR/$TARGET"
+HOSTTUPLE=$($SCRIPTDIR/util/config.guess)
+TCDIR="$BUILDROOT/$PRODUCT/toolchain"
+
+export PATH="$TCDIR/bin:$PATH"
+
+mkdir -p "$TCDIR/$TARGET" "$TCDIR/bin"
 
 CMAKETCFILE="$TCDIR/toolchain.cmake"
 
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-include_pkg "release-${BOARD}"
+include_pkg "$RELEASEPKG"
 dependencies | tsort | tac > "$PACKAGELIST"
 cat "$PACKAGELIST"
 

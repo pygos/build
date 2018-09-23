@@ -1,16 +1,12 @@
 file_path_override() {
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1" ]; then
-		echo "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1"
-		return
-	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$1" ]; then
-		echo "$SCRIPTDIR/product/$PRODUCT/$1"
-		return
-	fi
-	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
-		echo "$SCRIPTDIR/board/$BOARD/$1"
-		return
-	fi
+	local layer
+
+	tac "$LAYERCONF" | while read layer; do
+		if [ -e "$SCRIPTDIR/layer/$layer/$1" ]; then
+			echo "$SCRIPTDIR/layer/$layer/$1"
+			return
+		fi
+	done
 }
 
 cat_file_override() {
@@ -22,15 +18,13 @@ cat_file_override() {
 }
 
 cat_file_merge() {
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1" ]; then
-		cat "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1"
-	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$1" ]; then
-		cat "$SCRIPTDIR/product/$PRODUCT/$1"
-	fi
-	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
-		cat "$SCRIPTDIR/board/$BOARD/$1"
-	fi
+	local layer
+
+	while read layer; do
+		if [ -e "$SCRIPTDIR/layer/$layer/$1" ]; then
+			cat "$SCRIPTDIR/layer/$layer/$1"
+		fi
+	done < "$LAYERCONF"
 }
 
 include_override() {
@@ -42,13 +36,11 @@ include_override() {
 }
 
 include_merge() {
-	if [ -e "$SCRIPTDIR/board/$BOARD/$1" ]; then
-		source "$SCRIPTDIR/board/$BOARD/$1"
-	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$1" ]; then
-		source "$SCRIPTDIR/product/$PRODUCT/$1"
-	fi
-	if [ -e "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1" ]; then
-		source "$SCRIPTDIR/product/$PRODUCT/$BOARD/$1"
-	fi
+	local layer
+
+	while read layer; do
+		if [ -e "$SCRIPTDIR/layer/$layer/$1" ]; then
+			source "$SCRIPTDIR/layer/$layer/$1"
+		fi
+	done < "$LAYERCONF"
 }
