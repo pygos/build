@@ -1,10 +1,4 @@
 kmod
-inetutils
-ethtool
-iproute2
-iana-etc
 btrfs-progs
 dosfstools
-nftables
-dhcpcd
 linux

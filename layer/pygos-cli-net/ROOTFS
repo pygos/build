@@ -1,0 +1,8 @@
+ldns
+ntp
+iana-etc
+inetutils
+ethtool
+iproute2
+nftables
+dhcpcd
