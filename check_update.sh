@@ -6,6 +6,7 @@ SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 # dummy toolchain variables
 export LINUXPKG="linux"
+export LAYERCONF=""
 
 # utilities
 source "$SCRIPTDIR/util/depends.sh"

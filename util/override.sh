@@ -1,6 +1,10 @@
 file_path_override() {
 	local layer
 
+	if [ -z "$LAYERCONF" ]; then
+		return
+	fi
+
 	tac "$LAYERCONF" | while read layer; do
 		if [ -e "$SCRIPTDIR/layer/$layer/$1" ]; then
 			echo "$SCRIPTDIR/layer/$layer/$1"
@@ -20,6 +24,10 @@ cat_file_override() {
 cat_file_merge() {
 	local layer
 
+	if [ -z "$LAYERCONF" ]; then
+		return
+	fi
+
 	while read layer; do
 		if [ -e "$SCRIPTDIR/layer/$layer/$1" ]; then
 			cat "$SCRIPTDIR/layer/$layer/$1"
@@ -37,6 +45,10 @@ include_override() {
 
 include_merge() {
 	local layer
+
+	if [ -z "$LAYERCONF" ]; then
+		return
+	fi
 
 	while read layer; do
 		if [ -e "$SCRIPTDIR/layer/$layer/$1" ]; then
