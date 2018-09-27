@@ -1,0 +1,11 @@
+RELEASEPKG="release-qemu"
+TARGET="x86_64-linux-musl"
+GCC_CPU="x86-64"
+MUSL_CPU="x86_64"
+
+GCC_EXTRACFG=""
+
+LINUXPKG="linux"
+LINUX_CPU="x86_64"
+LINUX_TGT="bzImage"
+OPENSSL_TARGET="linux-x86_64"

@@ -1,0 +1,46 @@
+DEPENDS="rootfs"
+
+build() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	mkdir -p "$PKGBUILDDIR/$OS_RELEASE"
+
+	# copy output of immediate dependencies
+	for pkgname in $DEPENDS; do
+		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
+			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* \
+				"$PKGBUILDDIR/$OS_RELEASE"
+		fi
+	done
+
+	# copy helper scripts
+	local linux_image="vmlinuz"
+	local rootfs_image="rootfs.img"
+
+	for script in runqemu.sh cmdline.txt kernel.txt; do
+		cp "$SCRIPTDIR/pkg/$PKGNAME/$script" "$PKGBUILDDIR"
+
+		sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$PKGBUILDDIR/$script"
+		sed -i 's#KERNELFILE#'$linux_image'#g' "$PKGBUILDDIR/$script"
+		sed -i 's#VERSIONDIR#'$OS_RELEASE'#g' "$PKGBUILDDIR/$script"
+	done
+
+	# boot partition
+	mkdir "$PKGBUILDDIR/bootfs"
+	mv "$PKGBUILDDIR/$OS_RELEASE" "$PKGBUILDDIR/bootfs"
+	mv "$PKGBUILDDIR/cmdline.txt" "$PKGBUILDDIR/bootfs"
+	mv "$PKGBUILDDIR/kernel.txt" "$PKGBUILDDIR/bootfs"
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
+}
+
+check_update() {
+	return
+}
+

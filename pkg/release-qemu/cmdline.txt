@@ -1,0 +1,1 @@
+root=/dev/vda1 root_sfs=VERSIONDIR/ROOTFSFILE overlay_dev=overlay overlay_type=qemu
