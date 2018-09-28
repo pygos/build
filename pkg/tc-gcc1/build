@@ -6,6 +6,18 @@ SHA256SUM="196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080"
 DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr linux_headers"
 
 prepare() {
+	#
+	# XXX: if you ever add support for another 64 bit processor,
+	#      you need to patch this.
+	#
+	# Fixup multilib configuration to install libraries
+	# into /lib instead of /lib64
+	#
+	for subdir in "i386/t-linux64" "aarch64/t-aarch64-linux"; do
+		sed -e '/m64=/s/lib64/lib/' \
+		    -i "$PKGSRCDIR/$SRCDIR/gcc/config/$subdir"
+	done
+
 	for child in cloog gmp isl mpc mpfr; do
 		include_pkg "tc-$child"
 
