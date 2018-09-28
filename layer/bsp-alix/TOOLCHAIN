@@ -7,5 +7,5 @@ GCC_EXTRACFG="--disable-libmpx --disable-libssp"
 
 LINUXPKG="linux"
 LINUX_CPU="x86"
-LINUX_TGT="bzImage"
+LINUX_TGT="bzImage modules"
 OPENSSL_TARGET="linux-generic32 386"
