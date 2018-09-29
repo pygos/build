@@ -10,7 +10,9 @@ busybox mount -t devtmpfs none /dev
 
 root_sfs=""
 root=""
+root_type=""
 overlay_dev=""
+overlay_type=""
 singleuser=0
 
 for param in `cat /proc/cmdline`; do
@@ -18,11 +20,17 @@ for param in `cat /proc/cmdline`; do
 	root=*)
 		root="${param##root=}"
 		;;
+	root_type=*)
+		root_type="${param##root_type=}"
+		;;
 	root_sfs=*)
 		root_sfs="${param##root_sfs=}"
 		;;
 	overlay_dev=*)
 		overlay_dev="${param##overlay_dev=}"
+		;;
+	overlay_type=*)
+		overlay_type="${param##overlay_type=}"
 		;;
 	single*)
 		singleuser=1
@@ -35,49 +43,60 @@ if [ -z "${root}" ]; then
 	exec /bin/busybox sh
 fi
 
-if [ -z "${root_sfs}" ]; then
-	echo "No squashfs image specified!"
-	exec /bin/busybox sh
-fi
-
-while [ ! -e ${root} ]; do
-	echo "Waiting for root"
-	busybox sleep 1
-done
-
 # file system setup
-mount ${root} /images
+mount_device() {
+	local device="$1"
+	local mountpoint="$2"
+	local type="$3"
 
-if [ ! -e /images/${root_sfs} ]; then
-	echo "${root_sfs} not found!"
-	exec /bin/busybox sh
-	exit 1
+	case $type in
+	qemu)
+		mount -t 9p -o trans=virtio -oversion=9p2000.L $device $mountpoint
+		;;
+	*)
+		while [ ! -e $device ]; do
+			echo "Waiting for device $device"
+			busybox sleep 1
+		done
+
+		mount $device $mountpoint
+		;;
+	esac
+}
+
+if [ ! -z "$root_sfs" ]; then
+	mount_device "$root" "/images" "$root_type"
+
+	if [ ! -e /images/${root_sfs} ]; then
+		echo "${root_sfs} not found!"
+		exec /bin/busybox sh
+		exit 1
+	fi
+
+	mount -t squashfs /images/${root_sfs} /newroot
+	umount -l /images
+else
+	mount_device "$root" "/newroot" "$root_type"
 fi
-
-mount -t squashfs /images/${root_sfs} /newroot
 
 if [ ! -z "$overlay_dev" ]; then
-	while [ ! -e ${overlay_dev} ]; do
-		echo "Waiting for overlay device"
-		busybox sleep 1
-	done
+	mount_device "$overlay_dev" "/newroot/cfg/overlay" "$overlay_type"
 
-	mount ${overlay_dev} /newroot/cfg/overlay
 	chroot /newroot mount -n -t overlay overlay -olowerdir=/cfg/preserve/etc,upperdir=/cfg/overlay/etc,workdir=/cfg/overlay/etc_work /etc
-else
-	chroot /newroot mount -n --bind /cfg/preserve/etc /etc
 fi
 
 # cleanup mounts
-umount -l /images
 umount -l /dev
 umount /sys
 umount /proc
 
+# switch_root
+unset -v overlay_dev root root_sfs overlay_type root_type
+
 if [ "$singleuser" == "1" ]; then
-	unset -v singleuser overlay_dev root root_sfs
+	unset -v singleuser
 	exec /bin/busybox switch_root /newroot /bin/bash
 fi
 
-unset -v singleuser overlay_dev root root_sfs
+unset -v singleuser
 exec /bin/busybox switch_root /newroot /bin/init
