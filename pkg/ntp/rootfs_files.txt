@@ -1,10 +1,6 @@
-bin/calc_tickadj m 555 0 0
 bin/ntpd m 555 0 0
 bin/ntpdate m 555 0 0
 bin/ntpdc m 555 0 0
 bin/ntp-keygen m 555 0 0
 bin/ntpq m 555 0 0
-bin/ntptrace m 555 0 0
-bin/ntp-wait m 555 0 0
 bin/tickadj m 555 0 0
-bin/update-leap m 555 0 0
