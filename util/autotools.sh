@@ -10,5 +10,6 @@ run_configure() {
 		--datadir="/share" --sharedstatedir="/share" \
 		--with-bashcompletiondir="/share/bash-completion/completions" \
 		--includedir="/include" \
+		--libdir="/lib" \
 		--enable-shared --disable-static $@
 }
