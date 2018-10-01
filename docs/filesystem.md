@@ -90,23 +90,21 @@ and if something should break, allows for a simple revert to the last known
 good state.
 
 
-Of course, if the overlay setup is not needed, it can be completely disabled in
-which case bind mounts to `/cfg/preserve` are made during system boot instead
-of overlay mounts. The filesystem then becomes completely read only, except for
-the tmpfs mounts which are not persisted across reboots.
+The overlay setup can also be disabled (resulting in bind mounts to
+`/cfg/preserve`) or configured to use a tmpfs as backing store.
 
 
 ## Multiarch Directories
 
 Some processors support executing op codes for slightly different architectures.
-For instance, 64 bit x86 processors can be set into 32 bit mode and run
-programs built for 32 bit x86. Such programs then require libraries also built
-for 32 bit x86, creating the necessity for having two different versions of the
-`/lib` directory. Shared libraries may have to be duplicated because some
-32 bit programs need a 32 bit version and 64 bit programs need their version.
+For instance, many 64 bit processors can be set into 32 bit mode and run 32 bit
+programs. Such programs then require additional 32 bit versions of shared
+libraries, already built for the 64 bit system, creating the necessity for
+having two different versions of the `/lib` directory.
 
 
 For the time being, it has been decided to not include multiarch support.
 All packages are built for a single target architecture. This simplifies both
 the build process and the final system as well as reducing the memory footprint
-of the system image.
+of the system image. A proposal exists for creating a separate `/system32` sub
+hierarchy on 64 bit targets that require 32 bit binaries.

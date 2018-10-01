@@ -29,7 +29,8 @@ see [docs/build.md](docs/build.md).
 For an overview of the available documentation see [docs/index.md](docs/index.md).
 
 By the way, before you ask: the default root password for the demo setup is
-*reindeerflotilla*.
+*reindeerflotilla*. The baud rate on the ALIX board is set to *38400* and on
+all other boards to *115200*.
 
 The wireless network is called *Pygos Demo Net* and the password
 is *righteous*.
@@ -37,42 +38,48 @@ is *righteous*.
 ## Target configuration
 
 The Pygos build system is driven by toolchain and package configurations
-that are divided into two categories:
+that are split across multiple *layers*.
 
- - Board specific settings
-   - Mostly board specific cross toolchain and kernel configuration
-   - Can specify a minimal set of packages required for minimal operation
-     of the board
- - Product specific settings
-   - Specifies a list of boards for which the product can be built
-   - Specifies and configures extra packages needed
-   - Can override board settings and provide configuration files
-     specific to *that* product running on *that* board
+From the product name, a layer configuration file in the `product` sub
+directory is read, specifying what configuration layers to use and in
+whate order (later layers can override earlier layers).
+
+The actual configuration for the build system is in the coresponding sub
+directories in `layer/<name>`.
+
+For details on the configuration layers see [docs/layers.md](docs/layers.md).
+
 
 ### Demo configuration
 
-The system currently contains configurations that allows it to run on the
-following boards:
+The system currently contains configurations for the following products:
 
- - Raspberry Pi 3 (ARM, 32 bit)
- - pc-engines ALIX board (x86, 32 bit)
+ - `qemu-test` - A simple target for testing with Qemu (64 bit x86). The boot
+   partition is a directory that is exposed as VFAT formated virtio drive.
+   The overlay partition is a local directory mounted via 9PFS via virtio.
 
-The following demo product configurations exist:
+ - `router-alix` - A pc-engines ALIX board based router (32 bit x86). A DHCP
+   server serves IP addresses on the first two interfaces and configures the
+   board as default gateway and DNS server. DNS queries are resulved using
+   a local unbound resolver. The remaining interface is configured via DHCP
+   and packets from the first two are NAT translated and forwarded. The two
+   ports have different IP subnets and are not allowed to talk to each other.
+   A local SSH server can be reached via the first two ports. A user has to
+   be added first, since root login is disabled.
 
- - "router" builds on all boards. On the Raspberry Pi 3, a wireless network
-   is created. A DHPC server serves IP addresses and configures the board as
-   default gateway and DNS server. DNS queries are resolved using a local
-   unbound resolver. The ethernet interface is configured via DHCP and packets
-   are NAT translated and forwarded. On the ALIX board, the DHCP server serves
-   on two interfaces and the third interface is used for upstream forwarding.
-
+ - `router-rpi3` - A Raspberry Pi 3 based wireless access point (32 bit ARM).
+   A DHPC server serves IP addresses and configures the board as default
+   gateway and DNS server. DNS queries are resolved using a local unbound
+   resolver. The ethernet interface is configured via DHCP and packets
+   are NAT translated and forwarded. A local SSH server can be reached on the
+   WLAN interface. A user has to be added first, since root login is disabled.
 
 
 ## How to build the system
 
 The system can be built by running the mk.sh script as follows:
 
-    mk.sh <board> <product>
+    mk.sh <product>
 
 This will start to download and build the cross toolchain and system in the
 current working directory. The command can (and should) be run from somewhere
@@ -81,25 +88,25 @@ outside the source tree.
 Once the script is done, the final release package is stored in the following
 location (relative to the build directory):
 
-    deploy/release-<board>/release-<board>.tar.gz
+    <product>/deploy/release-<board>/release-<board>.tar.gz
 
 ## Directory overview
 
 The build system directory contains the following files and sub directories:
 
- - board/
-     Contains the board specific configuration files. E.g. board/alix/ holds
-     files specific for the ALIX board.
  - docs/
      Contains further documentation that goes into more detailed aspects of
      the build system and the final Pygos installation itself.
+ - layer/
+     Contains the layer specific configuration files. E.g. layer/bsp-alix/
+	 contains a base configuration for building images for the ALIX board.
  - pkg/
      Contains package build scripts. Each package occupies a sub directory
      with a script named "build" that is used to download, compile and
      install the package.
  - product/
-     Contains product specific configuration files. E.g. product/router/ holds
-     files for the "router" product.
+     Contains product configurations. E.g. product/router-alix.layers holds
+     the list of layers to apply to build the `router-alix` product.
  - util/
      Contains utility scripts used by mk.sh
  - LICENSE
