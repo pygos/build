@@ -53,6 +53,10 @@ kernel and squasfs image in order to apply updates, the later for other
 temporary mounts.
 
 
+For details on how the system boots and configures the filesystem from kernel
+command line arguments, see [boot.md](boot.md).
+
+
 ## Persistent Configuration Changes
 
 A directory `/cfg` was added to implement an overlay mount setup. The directory
