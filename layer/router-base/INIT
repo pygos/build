@@ -1,1 +1,1 @@
-SERVICES="$SERVICES unbound dnsmasq sshd_keygen sshd"
+SERVICES="$SERVICES unbound dnsmasq sshd_keygen sshd nginx"
