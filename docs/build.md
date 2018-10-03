@@ -210,6 +210,8 @@ Currently, the following variables are used:
 * `LINUX_TGT` contains the space seperated make targets for the generic,
   main line, LTS kernel package.
 * `OPENSSL_TARGET` contains the target architecture for the OpenSSL package.
+* `CPU_IS_64BIT` is set to `yes` for 64 bit CPUs. This is needed for some
+  packages like nginx that need a little help for cross compiling.
 
 
 ### Init System Configuration
@@ -259,3 +261,4 @@ The following files are currently used (with default override behavior):
 * `dnsmasq.conf` is installed to `/etc` by the dnsmasq package.
 * `unbound.conf` is installed to `/etc` by the unbound package.
 * `dhcpcd.conf` is installed to `/etc` by the dhcpcd package.
+* `nginx.conf` is installed to `/etc/nginx` by the nginx package.

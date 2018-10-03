@@ -42,7 +42,7 @@ that are split across multiple *layers*.
 
 From the product name, a layer configuration file in the `product` sub
 directory is read, specifying what configuration layers to use and in
-whate order (later layers can override earlier layers).
+what order (later layers can override earlier layers).
 
 The actual configuration for the build system is in the coresponding sub
 directories in `layer/<name>`.
@@ -65,7 +65,9 @@ The system currently contains configurations for the following products:
    and packets from the first two are NAT translated and forwarded. The two
    ports have different IP subnets and are not allowed to talk to each other.
    A local SSH server can be reached via the first two ports. A user has to
-   be added first, since root login is disabled.
+   be added first, since root login is disabled. A local Nginx web server
+   can be reached via the first two ports that serves a simple demo landing
+   page.
 
  - `router-rpi3` - A Raspberry Pi 3 based wireless access point (32 bit ARM).
    A DHPC server serves IP addresses and configures the board as default
@@ -73,6 +75,8 @@ The system currently contains configurations for the following products:
    resolver. The ethernet interface is configured via DHCP and packets
    are NAT translated and forwarded. A local SSH server can be reached on the
    WLAN interface. A user has to be added first, since root login is disabled.
+   A local Nginx web server can be reached on the WLAN interface that serves
+   a simple demo landing page.
 
 
 ## How to build the system

@@ -69,9 +69,9 @@ layers.
 ### Product Specific Layers
 
  - `router-base` contains basic configuration for the router class of products.
-   It adds `unbound`, `dnsmasq`, `openssh` and `tcpdump`. The kernel parameters
-   are configured to enable IP forwarding, `resolv.conf` is set to resolve
-   names through the local DNS resolver.
+   It adds `unbound`, `dnsmasq`, `openssh`, `nginx` and `tcpdump`. The kernel
+   parameters are configured to enable IP forwarding, `resolv.conf` is set to
+   resolve names through the local DNS resolver.
 
  - `router-alix` extends `router-base` with interface configuration for the
    ALIX board and appropriate nftable rules.
