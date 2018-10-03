@@ -1,0 +1,9 @@
+lib/libpcre.so m 777 0 0
+lib/libpcre.so.1 m 777 0 0
+lib/libpcre.so.1.2.10 m 555 0 0
+lib/libpcrecpp.so m 777 0 0
+lib/libpcrecpp.so.0 m 777 0 0
+lib/libpcrecpp.so.0.0.1 m 555 0 0
+lib/libpcreposix.so m 777 0 0
+lib/libpcreposix.so.0 m 777 0 0
+lib/libpcreposix.so.0.0.6 m 555 0 0

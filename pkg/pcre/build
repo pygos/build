@@ -1,0 +1,29 @@
+VERSION="8.42"
+SRCDIR="pcre-${VERSION}"
+TARBALL="${SRCDIR}.tar.bz2"
+URL="https://ftp.pcre.org/pub/pcre"
+SHA256SUM="2cd04b7c887808be030254e8d77de11d3fe9d4505c39d4b15d2664ffe8bf9301"
+DEPENDS="toolchain"
+
+prepare() {
+	return
+}
+
+build() {
+	run_configure "$1"
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+}
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">pcre-[0-9.]*tar.bz2<" | \
+	    sed 's/>pcre-//g' | sed 's/.tar.bz2<//g' | \
+	    verson_find_greatest "$VERSION"
+}
