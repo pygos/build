@@ -3,6 +3,8 @@ TARGET="arm-linux-musleabihf"
 GCC_CPU="armv6"
 MUSL_CPU="arm"
 
+CPU_IS_64BIT="no"
+
 GCC_EXTRACFG="--with-float=hard --with-fpu=neon-vfpv3"
 
 LINUXPKG="linux-rpi3"

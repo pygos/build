@@ -1,0 +1,91 @@
+VERSION="1.15.5"
+SRCDIR="nginx-${VERSION}"
+TARBALL="${SRCDIR}.tar.gz"
+URL="https://nginx.org/download"
+SHA256SUM="1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f"
+DEPENDS="zlib openssl pcre"
+
+prepare() {
+	apply_patches
+}
+
+build() {
+	cp -r ${1}/* ${PKGBUILDDIR}
+
+	./configure --prefix="" --sbin-path=/bin/nginx \
+		    --modules-path=/lib/nginx \
+		    --conf-path=/etc/nginx/nginx.conf \
+		    --error-log-path=stderr \
+		    --http-log-path=/dev/null \
+		    --pid-path=/run/nginx.pid \
+		    --lock-path=/run/nginx.lock \
+		    --user=nobody --group=nogroup \
+		    --crossbuild=${TARGET} \
+		    --with-cc=${TCDIR}/bin/${TARGET}-gcc \
+		    --with-cpp=${TCDIR}/bin/${TARGET}-cpp \
+		    --with-poll_module --without-select_module \
+		    --with-threads --with-http_ssl_module \
+		    --with-http_sub_module --with-http_gunzip_module \
+		    --with-http_gzip_static_module --with-http_slice_module
+
+	if [ "x$CPU_IS_64BIT" == "xyes" ]; then
+		cat <<_EOF >> objs/ngx_auto_config.h
+#define NGX_PTR_SIZE (8)
+#define NGX_SIZE_T_SIZE (8)
+
+#define NGX_SIZE_T_LEN (sizeof("-9223372036854775807") - 1)
+#define NGX_MAX_SIZE_T_VALUE ULONG_MAX
+_EOF
+	else
+		cat <<_EOF >> objs/ngx_auto_config.h
+#define NGX_PTR_SIZE (4)
+#define NGX_SIZE_T_SIZE (4)
+
+#define NGX_SIZE_T_LEN (sizeof("-2147483647") - 1)
+#define NGX_MAX_SIZE_T_VALUE UINT_MAX
+_EOF
+	fi
+
+	cat <<_EOF >> objs/ngx_auto_config.h
+#define NGX_SIG_ATOMIC_T_SIZE (4)
+
+#define NGX_TIME_T_SIZE (8)
+#define NGX_TIME_T_LEN (sizeof("-9223372036854775807") - 1)
+#define NGX_MAX_TIME_T_VALUE LONG_MAX
+
+#define NGX_OFF_T_LEN (sizeof("-9223372036854775807") - 1)
+#define NGX_MAX_OFF_T_VALUE LONG_MAX
+_EOF
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	local wwwroot=$(file_path_override "wwwroot")
+
+	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+
+	if [ ! -z "$wwwroot" ] && [ -d "$wwwroot" ]; then
+		mkdir -p "$DEPLOY/srv"
+		cp -r "$wwwroot" "$DEPLOY/srv/www"
+
+		echo "srv m 555 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "srv/www m 555 0 0" >> "$DEPLOY/rootfs_files.txt"
+
+		find "$DEPLOY/srv/www" -exec stat {} \
+			--printf="%n m %a 0 0\\n" \; | tail -n +2 | \
+			sed "s#^$DEPLOY/##g" >> "$DEPLOY/rootfs_files.txt"
+	fi
+
+	cat_file_override "nginx.conf" > "$DEPLOY/etc/nginx/nginx.conf"
+}
+
+check_update() {
+	curl --silent -L "$URL" | grep -o ">nginx-[0-9.]*tar.gz<" | \
+	    sed 's/>nginx-//g' | sed 's/.tar.gz<//g' | \
+	    verson_find_greatest "$VERSION"
+}
