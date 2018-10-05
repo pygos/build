@@ -18,6 +18,7 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
+	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
