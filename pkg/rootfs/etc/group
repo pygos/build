@@ -4,4 +4,5 @@ sshd:x:50:
 dnsmasq:x:51:
 unbound:x:52:
 syslogd:x:53:
+nginx:x:54:
 nogroup:x:99:

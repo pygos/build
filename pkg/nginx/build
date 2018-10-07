@@ -19,7 +19,7 @@ build() {
 		    --http-log-path=/dev/null \
 		    --pid-path=/run/nginx.pid \
 		    --lock-path=/run/nginx.lock \
-		    --user=nobody --group=nogroup \
+		    --user=nginx --group=nginx \
 		    --crossbuild=${TARGET} \
 		    --with-cc=${TCDIR}/bin/${TARGET}-gcc \
 		    --with-cpp=${TCDIR}/bin/${TARGET}-cpp \

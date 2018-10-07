@@ -8,6 +8,7 @@ exec {
 	mkdir /var/spool -m 0755
 	mkdir /var/lib -m 0755
 	mkdir /var/tmp -m 0755
+	mkdir /var/nginx -m 0755
 	touch /var/log/lastlog
 	touch /var/log/faillog
 	touch /var/log/sulog
