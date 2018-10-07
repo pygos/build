@@ -2,7 +2,7 @@ VERSION="0.7"
 SRCDIR="init-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="68759e2096dbf20e795e8c16c5e8b55ec6935c1020b12896a22abf6325b14370"
+SHA256SUM="ba0b59dd3d07e7d9e711d09b6c25110d47b8fc3e482b51db7dc3d8cf7334d00e"
 DEPENDS="toolchain"
 
 prepare() {

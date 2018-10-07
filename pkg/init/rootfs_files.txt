@@ -54,6 +54,7 @@ share/init/sshd m 444 0 0
 share/init/sshd_keygen m 444 0 0
 share/init/gcrond m 444 0 0
 share/init/consolefont m 444 0 0
+share/init/nginx m 444 0 0
 share/init/ntpsetdate.gcron m 444 0 0
 share/init/swclocksave.gcron m 444 0 0
 etc/netcfg m 755 0 0
