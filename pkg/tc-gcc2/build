@@ -8,9 +8,10 @@ build() {
 		     --with-sysroot="$TCDIR/$TARGET" \
 		     --disable-nls --enable-languages=c,c++ \
 		     --enable-c99 --enable-long-long \
-		     --disable-libmudflap --disable-multilib \
-		     --disable-libmpx --disable-libssp \
+		     --enable-libmudflap --disable-multilib \
+		     --enable-libssp \
 		     --disable-libsanitizer \
+		     --enable-default-pie --enable-default-ssp \
 		     --with-arch="$GCC_CPU" $GCC_EXTRACFG \
 		     --with-native-system-header-dir="/include"
 

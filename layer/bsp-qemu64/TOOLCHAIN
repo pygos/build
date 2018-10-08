@@ -5,7 +5,7 @@ MUSL_CPU="x86_64"
 
 CPU_IS_64BIT="yes"
 
-GCC_EXTRACFG=""
+GCC_EXTRACFG="--enable-libmpx"
 
 LINUXPKG="linux"
 LINUX_CPU="x86_64"
