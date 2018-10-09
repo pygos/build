@@ -52,16 +52,6 @@ cp -r VERSIONDIR /tmp/mnt.$$/
 umount /tmp/mnt.$$
 MOUNTED=0
 
-mount -t btrfs ${DEVICE}2 /tmp/mnt.$$
-MOUNTED=1
-mkdir /tmp/mnt.$$/etc /tmp/mnt.$$/etc_work
-mkdir /tmp/mnt.$$/var_lib /tmp/mnt.$$/var_lib_work
-mkdir -p /tmp/mnt.$$/usr/root /tmp/mnt.$$/usr_work
-chmod 700 /tmp/mnt.$$/usr/root /tmp/mnt.$$/usr_work
-chown 0:0 /tmp/mnt.$$/usr/root
-umount /tmp/mnt.$$
-MOUNTED=0
-
 rmdir /tmp/mnt.$$
 
 dd if=mbr.bin of=$DEVICE

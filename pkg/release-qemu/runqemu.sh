@@ -11,7 +11,7 @@ CMDLINE=$(cat "$BOOT/cmdline.txt")
 RAM="256M"
 MAC0="52:54:00:12:34:56"
 
-mkdir -p ${OVERLAY}/{etc,etc_work,usr,usr_work,var_lib,var_lib_work}
+mkdir -p ${OVERLAY}
 
 qemu-system-x86_64 \
 	-drive "file=fat:rw:$BOOT,readonly=off,format=raw,if=virtio" \
