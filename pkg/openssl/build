@@ -10,9 +10,13 @@ prepare() {
 }
 
 build() {
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
 	$1/Configure --prefix=/ --cross-compile-prefix="${TARGET}-" \
 		     --openssldir=/etc/ssl --libdir=/lib \
-		     -DOPENSSL_NO_HEARTBEATS \
+		     CFLAGS="-DOPENSSL_NO_HEARTBEATS $cflags" \
+		     LDFLAGS="$ldflags" \
 		     threads shared zlib-dynamic no-async $OPENSSL_TARGET
 
 	make -j 1

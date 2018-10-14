@@ -12,6 +12,11 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
+	CFLAGS="-O2 $cflags" \
+	LDFLAGS="$ldflags" \
 	make CC=${TARGET}-gcc PREFIX="/" BINDIR="/bin" -j $NUMJOBS
 }
 

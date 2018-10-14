@@ -12,7 +12,12 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
-	make CC=${TARGET}-gcc AR=${TARGET}-ar RANLIB=${TARGET}-ranlib -j $NUMJOBS libbz2.a bzip2 bzip2recover
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
+	make CFLAGS="-Wall -Winline -O2 -D_FILE_OFFSET_BITS=64 $cflags" \
+	     LDFLAGS="$ldflags" CC=${TARGET}-gcc AR=${TARGET}-ar \
+	     RANLIB=${TARGET}-ranlib -j $NUMJOBS libbz2.a bzip2 bzip2recover
 }
 
 deploy() {

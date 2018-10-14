@@ -10,6 +10,10 @@ prepare() {
 }
 
 build() {
+	local cflags="-fPIE -fPIC -fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
+	CFLAGS="$cflags" LDFLAGS="$ldflags" \
 	CROSS_COMPILE="${TARGET}-" $1/configure --prefix=/ --target="$TARGET"
 	CROSS_COMPILE="${TARGET}-" make -j $NUMJOBS
 }

@@ -10,6 +10,10 @@ prepare() {
 }
 
 build() {
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
+	CFLAGS="$cflags" LDFLAGS="$ldflags" \
 	cmake -DCMAKE_TOOLCHAIN_FILE="$CMAKETCFILE" \
 		-DCMAKE_INSTALL_PREFIX="" "$1"
 

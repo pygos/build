@@ -12,6 +12,9 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
 	./configure --prefix="" --sbin-path=/bin/nginx \
 		    --modules-path=/lib/nginx \
 		    --conf-path=/etc/nginx/nginx.conf \
@@ -23,6 +26,7 @@ build() {
 		    --crossbuild=${TARGET} \
 		    --with-cc=${TCDIR}/bin/${TARGET}-gcc \
 		    --with-cpp=${TCDIR}/bin/${TARGET}-cpp \
+		    --with-cc-opt="$cflags" --with-ld-opt="$ldflags" \
 		    --with-poll_module --without-select_module \
 		    --with-threads --with-http_ssl_module \
 		    --with-http_sub_module --with-http_gunzip_module \

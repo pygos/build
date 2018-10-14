@@ -12,7 +12,12 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
-	make HOSTCC="gcc" AR="${TARGET}-ar" LD="${TARGET}-ld" CC="${TARGET}-gcc" SYSROOT="$TCDIR/$TARGET"
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
+	make CCOPTS="-O2 $cflags" LDFLAGS="$ldflags" \
+	     HOSTCC="gcc" AR="${TARGET}-ar" LD="${TARGET}-ld" \
+	     CC="${TARGET}-gcc" SYSROOT="$TCDIR/$TARGET"
 }
 
 deploy() {

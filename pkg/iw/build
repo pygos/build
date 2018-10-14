@@ -12,7 +12,12 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
-	export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
+	local cflags="-fstack-protector-all"
+	local ldflags="-z noexecstack -z relro -z now"
+
+	CFLAGS="-O2 $cflags" \
+	LDFLAGS="$ldflags" \
+	PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET" \
 	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
 	     SBINDIR=/bin DESTDIR="$2" -j $NUMJOBS
 }
