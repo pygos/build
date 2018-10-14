@@ -41,9 +41,10 @@ build() {
 		     --disable-nls --disable-shared --without-headers \
 		     --disable-multilib --disable-decimal-float \
 		     --disable-libgomp --disable-libmudflap \
-		     --disable-libssp --disable-libatomic \
+		     --enable-libssp --disable-libatomic \
 		     --disable-libquadmath --disable-threads \
 		     --enable-languages=c --with-newlib \
+		     --enable-default-pie --enable-default-ssp \
 		     --with-arch="$GCC_CPU" $GCC_EXTRACFG
 
 	make -j $NUMJOBS all-gcc all-target-libgcc
