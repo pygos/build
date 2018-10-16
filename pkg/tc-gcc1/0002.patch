@@ -1,0 +1,14 @@
+diff --git a/gcc/c-family/c-cppbuiltin.c b/gcc/c-family/c-cppbuiltin.c
+index 3fc4fa9..2c502be 100644
+--- a/gcc/c-family/c-cppbuiltin.c
++++ b/gcc/c-family/c-cppbuiltin.c
+@@ -1342,6 +1342,9 @@ c_cpp_builtins (cpp_reader *pfile)
+   builtin_define_with_value ("__REGISTER_PREFIX__", REGISTER_PREFIX, 0);
+   builtin_define_with_value ("__USER_LABEL_PREFIX__", user_label_prefix, 0);
+ 
++  /* Fortify Source enabled by default w/optimization.  */
++  cpp_define (pfile, "_FORTIFY_SOURCE=((defined __OPTIMIZE__ && __OPTIMIZE__ > 0) ? 2 : 0)");
++
+   /* Misc.  */
+   if (flag_gnu89_inline)
+     cpp_define (pfile, "__GNUC_GNU_INLINE__");

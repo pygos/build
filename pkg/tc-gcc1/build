@@ -3,9 +3,11 @@ SRCDIR="gcc-$VERSION"
 TARBALL="gcc-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
 SHA256SUM="196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080"
-DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr linux_headers"
+DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr linux_headers fortify-headers"
 
 prepare() {
+	apply_patches
+
 	#
 	# XXX: if you ever add support for another 64 bit processor,
 	#      you need to patch this.

@@ -1,0 +1,24 @@
+VERSION="1.0"
+SRCDIR="fortify-headers-$VERSION"
+TARBALL="$SRCDIR.tar.xz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="992af871941317b75b5520485111da14dd1b785dcb45de86244b1f6476182696"
+DEPENDS="linux_headers"
+
+prepare() {
+	return
+}
+
+build() {
+	return
+}
+
+deploy() {
+	make -C "$1" PREFIX="" DESTDIR="$2" install
+}
+
+check_update() {
+	curl --silent -L "http://git.2f30.org/fortify-headers/refs.html" | \
+		grep -o "<td>[0-9.]\+</td>" | grep -o "[0-9.]*" | \
+		verson_find_greatest "$VERSION"
+}
