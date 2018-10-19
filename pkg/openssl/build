@@ -10,6 +10,7 @@ prepare() {
 }
 
 build() {
+	local OPENSSL_TARGET=""
 	local cflags=""
 	local ldflags=""
 
@@ -17,6 +18,22 @@ build() {
 		cflags="-fstack-protector-all"
 		ldflags="-z noexecstack -z relro -z now"
 	fi
+
+	case "$TARGET" in
+	i*86-*)
+		OPENSSL_TARGET="linux-generic32 386"
+		;;
+	x86_64-*)
+		OPENSSL_TARGET="linux-x86_64"
+		;;
+	arm-*)
+		OPENSSL_TARGET="linux-generic32"
+		;;
+	*)
+		echo "don't know how to map $TARGET to OpenSSL arch"
+		exit 1
+		;;
+	esac
 
 	$1/Configure --prefix=/ --cross-compile-prefix="${TARGET}-" \
 		     --openssldir=/etc/ssl --libdir=/lib \
