@@ -1,7 +1,6 @@
 RELEASEPKG="release-qemu"
 TARGET="x86_64-linux-musl"
 GCC_CPU="x86-64"
-MUSL_CPU="x86_64"
 
 CPU_IS_64BIT="yes"
 

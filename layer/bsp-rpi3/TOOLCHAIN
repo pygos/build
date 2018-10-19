@@ -1,7 +1,6 @@
 RELEASEPKG="release-rpi3"
 TARGET="arm-linux-musleabihf"
 GCC_CPU="armv6"
-MUSL_CPU="arm"
 
 CPU_IS_64BIT="no"
 
