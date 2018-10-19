@@ -7,7 +7,6 @@ CPU_IS_64BIT="no"
 GCC_EXTRACFG="--enable-libmpx"
 
 LINUXPKG="linux"
-LINUX_CPU="x86"
 LINUX_TGT="bzImage modules"
 
 TC_HARDENING="no"

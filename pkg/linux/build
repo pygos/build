@@ -9,12 +9,31 @@ URL="https://www.kernel.org/pub/linux/kernel/v$MAJOR.x"
 SHA256SUM="70e69189fd7b2f96fa33833735c7bcf3281dc0172c3734e2c5819e9d57015c72"
 DEPENDS="initrd"
 
+get_linux_cpu() {
+	case "$TARGET" in
+	i*86-*)
+		echo "x86"
+		;;
+	x86_64-*)
+		echo "x86_64"
+		;;
+	arm-*)
+		echo "arm"
+		;;
+	*)
+		echo "don't know how to map $TARGET to Linux arch" >&2
+		exit 1
+		;;
+	esac
+}
+
 prepare() {
 	return
 }
 
 build() {
 	local INITRDLIST="$PKGDEPLOYDIR/initrd/initrd.list"
+	local LINUX_CPU=$(get_linux_cpu)
 
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 
@@ -30,6 +49,7 @@ build() {
 deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
+	local LINUX_CPU=$(get_linux_cpu)
 
 	mkdir -p "$DEPLOY/boot" "$DEPLOY/lib/modules"
 	cp arch/${LINUX_CPU}/boot/*Image "$DEPLOY/boot/vmlinuz"
