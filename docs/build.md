@@ -204,14 +204,13 @@ Currently, the following variables are used:
 * `GCC_CPU` specifies the target processor for GCC.
 * `GCC_EXTRACFG` extra configure arguments passed to GCC. For instance, this
   may contain FPU configuration for ARM targets.
-* `MUSL_CPU` contains the target CPU architecture for the Musl C library.
-* `LINUX_CPU` contains the value of the `ARCH` variable passed to the kernel
-  build system. Used by the generic main line kernel package.
 * `LINUX_TGT` contains the space seperated make targets for the generic,
   main line, LTS kernel package.
-* `OPENSSL_TARGET` contains the target architecture for the OpenSSL package.
 * `CPU_IS_64BIT` is set to `yes` for 64 bit CPUs. This is needed for some
   packages like nginx that need a little help for cross compiling.
+* `TC_HARDENING` is set to `yes` to build user space binaries position
+  independent, with read only relocation, immediate binding and with GCCs
+  stack protector enabled for all functions.
 
 
 ### Init System Configuration
