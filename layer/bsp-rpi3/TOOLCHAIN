@@ -11,3 +11,5 @@ LINUXPKG="linux-rpi3"
 LINUX_CPU="arm"
 LINUX_TGT="zImage"
 OPENSSL_TARGET="linux-generic32"
+
+TC_HARDENING="no"

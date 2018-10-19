@@ -37,17 +37,25 @@ prepare() {
 }
 
 build() {
+	local extra=""
+
+	if [ "x$TC_HARDENING" = "xyes" ]; then
+		extra="--enable-libssp --enable-default-pie"
+		extra="$extra --enable-default-ssp"
+	else
+		extra="--disable-libssp"
+	fi
+
 	$1/configure --prefix="$TCDIR" --target="$TARGET" \
 		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
 		     --with-sysroot="$TCDIR/$TARGET" \
 		     --disable-nls --disable-shared --without-headers \
 		     --disable-multilib --disable-decimal-float \
 		     --disable-libgomp --disable-libmudflap \
-		     --enable-libssp --disable-libatomic \
+		     --disable-libatomic \
 		     --disable-libquadmath --disable-threads \
 		     --enable-languages=c --with-newlib \
-		     --enable-default-pie --enable-default-ssp \
-		     --with-arch="$GCC_CPU" $GCC_EXTRACFG
+		     --with-arch="$GCC_CPU" $extra $GCC_EXTRACFG
 
 	make -j $NUMJOBS all-gcc all-target-libgcc
 }

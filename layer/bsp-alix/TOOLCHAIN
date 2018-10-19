@@ -11,3 +11,5 @@ LINUXPKG="linux"
 LINUX_CPU="x86"
 LINUX_TGT="bzImage modules"
 OPENSSL_TARGET="linux-generic32 386"
+
+TC_HARDENING="no"

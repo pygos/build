@@ -2,8 +2,13 @@ run_configure() {
 	local srcdir="$1"
 	shift
 
-	local cflags="-fstack-protector-all"
-	local ldflags="-z noexecstack -z relro -z now"
+	local cflags=""
+	local ldflags=""
+
+	if [ "x$TC_HARDENING" = "xyes" ]; then
+		cflags="-fstack-protector-all"
+		ldflags="-z noexecstack -z relro -z now"
+	fi
 
 	ac_cv_func_malloc_0_nonnull=yes \
 	ac_cv_func_realloc_0_nonnull=yes \

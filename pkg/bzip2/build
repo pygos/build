@@ -12,8 +12,13 @@ prepare() {
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
-	local cflags="-fstack-protector-all"
-	local ldflags="-z noexecstack -z relro -z now"
+	local cflags=""
+	local ldflags=""
+
+	if [ "x$TC_HARDENING" = "xyes" ]; then
+		cflags="-fstack-protector-all"
+		ldflags="-z noexecstack -z relro -z now"
+	fi
 
 	make CFLAGS="-Wall -Winline -O2 -D_FILE_OFFSET_BITS=64 $cflags" \
 	     LDFLAGS="$ldflags" CC=${TARGET}-gcc AR=${TARGET}-ar \

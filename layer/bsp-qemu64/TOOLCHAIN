@@ -11,3 +11,5 @@ LINUXPKG="linux"
 LINUX_CPU="x86_64"
 LINUX_TGT="bzImage"
 OPENSSL_TARGET="linux-x86_64"
+
+TC_HARDENING="no"
