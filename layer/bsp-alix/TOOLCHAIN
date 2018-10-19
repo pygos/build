@@ -4,7 +4,7 @@ GCC_CPU="i686"
 
 CPU_IS_64BIT="no"
 
-GCC_EXTRACFG="--enable-libmpx"
+GCC_EXTRACFG="--disable-libmpx"
 
 LINUXPKG="linux"
 LINUX_TGT="bzImage modules"
