@@ -13,12 +13,12 @@ build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 	cp "$SCRIPTDIR/pkg/$PKGNAME/config" "$PKGBUILDDIR/hostapd/.config"
 
-	local cflags=""
+	local cflags="-O2 -Os"
 	local ldflags=""
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
-		cflags="-fstack-protector-all"
-		ldflags="-z noexecstack -z relro -z now"
+		cflags="$cflags -fstack-protector-all"
+		ldflags="$ldflags -z noexecstack -z relro -z now"
 	fi
 
 	PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET" \

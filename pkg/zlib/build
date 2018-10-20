@@ -10,12 +10,12 @@ prepare() {
 }
 
 build() {
-	local cflags=""
+	local cflags="-O2 -Os"
 	local ldflags=""
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
-		cflags="-fstack-protector-all"
-		ldflags="-z noexecstack -z relro -z now"
+		cflags="$cflags -fstack-protector-all"
+		ldflags="$ldflags -z noexecstack -z relro -z now"
 	fi
 
 	CFLAGS="$cflags" LDFLAGS="$ldflags" \
