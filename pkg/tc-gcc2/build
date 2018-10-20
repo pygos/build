@@ -16,7 +16,7 @@ build() {
 		     --disable-nls --enable-languages=c,c++ \
 		     --enable-c99 --enable-long-long \
 		     --enable-libmudflap --disable-multilib \
-		     --disable-libsanitizer \
+		     --disable-libsanitizer --disable-libquadmath \
 		     --with-arch="$GCC_CPU" $extra $GCC_EXTRACFG \
 		     --with-native-system-header-dir="/include"
 
