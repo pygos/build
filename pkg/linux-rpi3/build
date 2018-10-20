@@ -1,11 +1,11 @@
 # inherit functions from generic kernel package
 source "$SCRIPTDIR/pkg/linux/build"
 
-VERSION="1.20180919-1"
+VERSION="1.20180924-1"
 SRCDIR="linux-raspberrypi-kernel_${VERSION}"
 TARBALL="raspberrypi-kernel_${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/linux/archive"
-SHA256SUM="b58a7a786b94957674ce3f64307ea7e7883ae2d1d871ea6ed5a5ce1b6846bdf4"
+SHA256SUM="ee6c769c97d794f11eb098fab4b1c4b3b3af0e406aa0bbc3bf202234eac95347"
 DEPENDS="initrd"
 
 check_update() {
