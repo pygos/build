@@ -1,12 +1,12 @@
 MAJOR="4"
 MINOR="14"
-RELEASE="74"
+RELEASE="78"
 
 VERSION="$MAJOR.$MINOR.$RELEASE"
 SRCDIR="linux-$VERSION"
 TARBALL="linux-$VERSION.tar.xz"
 URL="https://www.kernel.org/pub/linux/kernel/v$MAJOR.x"
-SHA256SUM="70e69189fd7b2f96fa33833735c7bcf3281dc0172c3734e2c5819e9d57015c72"
+SHA256SUM="f4da4dc0f079e420e1c1b8c71312eaa5415b08be847aa224a61d8af6a6e74c6c"
 DEPENDS="initrd"
 
 get_linux_cpu() {
