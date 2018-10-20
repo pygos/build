@@ -3,13 +3,11 @@ source "$SCRIPTDIR/pkg/tc-gcc1/build"
 DEPENDS="tc-gcc1 musl linux_headers"
 
 build() {
-	local extra=""
+	local extra="--disable-libssp"
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
-		extra="--enable-libssp --enable-default-pie"
+		extra="$extra --enable-default-pie"
 		extra="$extra --enable-default-ssp"
-	else
-		extra="--disable-libssp"
 	fi
 
 	$1/configure --prefix="$TCDIR" --target="$TARGET" \
@@ -53,12 +51,4 @@ deploy() {
 	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
 	rm ${DEPLOY}/lib/*.la
 	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
-
-	if [ "x$TC_HARDENING" = "xyes" ]; then
-		cat >> "$DEPLOY/rootfs_files.txt" <<_EOF
-lib/libssp.so m 777 0 0
-lib/libssp.so.0 m 777 0 0
-lib/libssp.so.0.0.0 m 555 0 0
-_EOF
-	fi
 }

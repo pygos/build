@@ -37,13 +37,11 @@ prepare() {
 }
 
 build() {
-	local extra=""
+	local extra="--disable-libssp"
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
-		extra="--enable-libssp --enable-default-pie"
+		extra="$extra --enable-default-pie"
 		extra="$extra --enable-default-ssp"
-	else
-		extra="--disable-libssp"
 	fi
 
 	$1/configure --prefix="$TCDIR" --target="$TARGET" \
