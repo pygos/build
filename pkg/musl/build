@@ -16,10 +16,10 @@ build() {
 	if [ "x$TC_HARDENING" = "xyes" ]; then
 		cflags="$cflags -fPIE -fPIC -fstack-protector-all"
 		ldflags="$ldflags -z noexecstack -z relro -z now"
-
-		${TARGET}-gcc -c "$SCRIPTDIR/pkg/$PKGNAME/__stack_chk_fail_local.c" -o __stack_chk_fail_local.o
-		${TARGET}-ar r libssp_nonshared.a __stack_chk_fail_local.o
 	fi
+
+	${TARGET}-gcc -c "$SCRIPTDIR/pkg/$PKGNAME/__stack_chk_fail_local.c" -o __stack_chk_fail_local.o
+	${TARGET}-ar r libssp_nonshared.a __stack_chk_fail_local.o
 
 	CFLAGS="$cflags" LDFLAGS="$ldflags" \
 	CROSS_COMPILE="${TARGET}-" $1/configure --prefix=/ --target="$TARGET"
@@ -61,9 +61,7 @@ deploy() {
 	find "$DEPLOY/etc" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
 		sed "s#^$DEPLOY/##g" | tail -n +2 >> "$DEPLOY/rootfs_files.txt"
 
-	if [ "x$TC_HARDENING" = "xyes" ]; then
-		cp libssp_nonshared.a "$DEPLOY/lib"
-	fi
+	cp libssp_nonshared.a "$DEPLOY/lib"
 }
 
 check_update() {
