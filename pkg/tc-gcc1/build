@@ -16,7 +16,7 @@ prepare() {
 	# into /lib instead of /lib64
 	#
 	for subdir in "i386/t-linux64" "aarch64/t-aarch64-linux"; do
-		sed -e '/m64=/s/lib64/lib/' \
+		sed -e 's/lib64/lib/g' \
 		    -i "$PKGSRCDIR/$SRCDIR/gcc/config/$subdir"
 	done
 
