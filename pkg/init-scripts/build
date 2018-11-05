@@ -1,0 +1,111 @@
+VERSION="1"
+SRCDIR="init-scripts-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="2536e6520fb33058750cb741709177b166eac3025a63592cf59ea097bd42c4f7"
+DEPENDS="toolchain"
+
+prepare() {
+	return
+}
+
+build() {
+	run_configure "$1"
+}
+
+deploy() {
+	local SOURCE="$1"
+	local DEPLOY="$2"
+	local svc
+
+	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+
+	mkdir -p "$DEPLOY/lib/libexec/dhcpcd-hooks"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/40-ntpsetdate" "$DEPLOY/lib/libexec/dhcpcd-hooks"
+
+	include_merge "INIT"
+
+	if [ "x$HWCLOCK" == "xyes" ]; then
+		SERVICES="$SERVICES hwclock"
+	else
+		SERVICES="$SERVICES swclock"
+		ln -s "/share/init/swclocksave" "$DEPLOY/etc/init.d/swclocksave@shutdown"
+		ln -s "/share/init/swclocksave" "$DEPLOY/etc/init.d/swclocksave@reboot"
+		ln -s "/share/init/swclocksave.gcron" "$DEPLOY/etc/gcron.d/swclocksave"
+
+		mkdir -p "$DEPLOY/var/lib"
+		date --utc +%m%d%H%M%Y.%S > "$DEPLOY/var/lib/swclock"
+
+		echo "etc/init.d/swclocksave@shutdown m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "etc/init.d/swclocksave@reboot m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "etc/gcron.d/swclocksave m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "var/lib/swclock m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+
+		if [ -z "$DHCP_PORTS" ]; then
+			ln -s "/share/init/ntpsetdate.gcron" "$DEPLOY/etc/gcron.d/ntpsetdate"
+			echo "etc/gcron.d/ntpsetdate m 755 0 0" >> "$DEPLOY/rootfs_files.txt"
+		else
+			echo "lib/libexec/dhcpcd-hooks/40-ntpsetdate m 555 0 0" >> "$DEPLOY/rootfs_files.txt"
+		fi
+	fi
+
+	svc=$(file_path_override "ifrename")
+	if [ ! -z "$svc" ]; then
+		cp "$svc" "$DEPLOY/etc/netcfg/ifrename"
+		SERVICES="$SERVICES ifrename"
+	fi
+
+	svc=$(file_path_override "nftables.rules")
+	if [ ! -z "$svc" ]; then
+		cp "$svc" "$DEPLOY/etc/nftables.rules"
+		echo "etc/nftables.rules m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+		SERVICES="$SERVICES nft"
+	fi
+
+	svc=$(file_path_override "sysctl.conf")
+	if [ ! -z "$svc" ]; then
+		cp "$svc" "$DEPLOY/etc/sysctl.conf"
+		echo "etc/sysctl.conf m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+	fi
+
+	svc=$(file_path_override "interfaces")
+	if [ ! -z "$svc" ]; then
+		for svc in $svc/*; do
+			[ -f "$svc" ] || continue
+			cp "$svc" "$DEPLOY/etc/netcfg/"
+			svc=$(basename $svc)
+			echo "etc/netcfg/$svc m 644 0 0" >> "$DEPLOY/rootfs_files.txt"
+		done
+	fi
+
+	for svc in $GETTY_TTY; do
+		ln -s "/share/init/agetty" "$DEPLOY/etc/init.d/agetty@$svc"
+		echo "etc/init.d/agetty@$svc m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+	done
+
+	if [ ! -z "$DHCP_PORTS" ]; then
+		SERVICES="$SERVICES dhcpcdmaster"
+
+		for svc in $DHCP_PORTS; do
+			ln -s "/share/init/dhcpcd" "$DEPLOY/etc/init.d/dhcpcd@$svc"
+			echo "etc/init.d/dhcpcd@$svc m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+		done
+	fi
+
+	for svc in $SERVICES; do
+		ln -s "/share/init/$svc" "$DEPLOY/etc/init.d/$svc"
+		echo "etc/init.d/$svc m 777 0 0" >> "$DEPLOY/rootfs_files.txt"
+	done
+
+	touch "$DEPLOY/etc/modules"
+	for svc in $MODULES; do
+		echo "$svc" >> "$DEPLOY/etc/modules"
+	done
+
+	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS SERVICES MODULES
+}
+
+check_update() {
+	return
+}
