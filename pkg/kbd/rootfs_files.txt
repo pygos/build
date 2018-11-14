@@ -19,15 +19,6 @@ bin/kbdinfo m 555 0 0
 bin/setvtrgb m 555 0 0
 bin/getkeycodes m 555 0 0
 bin/setkeycodes m 555 0 0
-bin/setlogcons m 555 0 0
-bin/setvesablank m 555 0 0
-bin/getunimap m 555 0 0
-bin/clrunimap m 555 0 0
-bin/outpsfheader m 555 0 0
-bin/setpalette m 555 0 0
-bin/screendump m 555 0 0
-bin/spawn_console m 555 0 0
-bin/spawn_login m 555 0 0
 bin/unicode_start m 555 0 0
 bin/unicode_stop m 555 0 0
 bin/psfaddtable m 777 0 0
