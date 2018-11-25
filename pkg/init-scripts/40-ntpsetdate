@@ -1,7 +1,0 @@
-case "$reason" in
-BOUND*)
-	/lib/libexec/init/setntpdate.sh
-	;;
-*)
-	;;
-esac

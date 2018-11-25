@@ -1,4 +1,3 @@
-etc/gcron.d m 755 0 0
 etc/init.d m 755 0 0
 etc/init.d/devfs m 777 0 0
 etc/init.d/gcrond m 777 0 0
@@ -43,8 +42,6 @@ share/init m 555 0 0
 share/init/agetty m 444 0 0
 share/init/consolefont m 444 0 0
 share/init/devfs m 444 0 0
-share/init/dhcpcd m 444 0 0
-share/init/dhcpcdmaster m 444 0 0
 share/init/dnsmasq m 444 0 0
 share/init/gcrond m 444 0 0
 share/init/hostapd m 444 0 0
@@ -60,15 +57,11 @@ share/init/mountusr m 444 0 0
 share/init/network m 444 0 0
 share/init/nft m 444 0 0
 share/init/nginx m 444 0 0
-share/init/ntpsetdate.gcron m 444 0 0
 share/init/procfs m 444 0 0
 share/init/sigkill m 444 0 0
 share/init/sigterm m 444 0 0
 share/init/sshd m 444 0 0
 share/init/sshd_keygen m 444 0 0
-share/init/swclock m 444 0 0
-share/init/swclocksave m 444 0 0
-share/init/swclocksave.gcron m 444 0 0
 share/init/sync m 444 0 0
 share/init/sysctl m 444 0 0
 share/init/sysfs m 444 0 0
