@@ -1,9 +1,9 @@
-VERSION="0.8"
+VERSION="0.9"
 SRCDIR="init-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="1adfe2534d7657c9f7dcc12ea6acf3780b6f009bfb3f32c8c78e893431c6a2db"
-DEPENDS="init-scripts usyslog"
+SHA256SUM="ede42eab34fc339af9e640b2ad0fbf509d567c900611b5866325ad48a44a5159"
+DEPENDS="init-scripts gcron usyslog"
 
 prepare() {
 	return
