@@ -1,8 +1,8 @@
-VERSION="4.17.1"
+VERSION="4.19"
 SRCDIR="btrfs-progs-v${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs"
-SHA256SUM="bf0b34f1538c0b6e88f959937b0419678cadbf2ba7044336dcbfb2bcdc28cd74"
+SHA256SUM="d591fbe586cf83741fcf9df51859f8e9058ef5187c002b50d6fe84309e5ea349"
 DEPENDS="util-linux zlib lzo"
 
 prepare() {
