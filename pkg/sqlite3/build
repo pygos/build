@@ -1,8 +1,8 @@
-VERSION="3240000"
+VERSION="3250300"
 SRCDIR="sqlite-autoconf-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://sqlite.org/2018/"
-SHA256SUM="d9d14e88c6fb6d68de9ca0d1f9797477d82fc3aed613558f87ffbdbbc5ceb74a"
+SHA256SUM="00ebf97be13928941940cc71de3d67e9f852698233cd98ce2d178fd08092f3dd"
 DEPENDS="readline"
 
 prepare() {
@@ -19,6 +19,7 @@ deploy() {
 	local DEPLOY="$2"
 
 	make DESTDIR="$DEPLOY" install
+	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
 }
 
 check_update() {

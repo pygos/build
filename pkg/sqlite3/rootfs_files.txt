@@ -1,0 +1,4 @@
+bin/sqlite3 m 555 0 0
+lib/libsqlite3.so.0.8.6 m 555 0 0
+lib/libsqlite3.so.0 m 777 0 0
+lib/libsqlite3.so m 777 0 0
