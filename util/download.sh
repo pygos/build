@@ -10,11 +10,7 @@ fetch_package() {
 		     -L "$URL/$TARBALL"
 	fi
 
-	pushd "$PKGDOWNLOADDIR" > /dev/null
-	echo "$SHA256SUM  ${TARBALL}" > "${TARBALL}.sha256"
-	sha256sum -c --quiet "${TARBALL}.sha256"
-	rm "${TARBALL}.sha256"
-	popd > /dev/null
+	echo "$SHA256SUM  $PKGDOWNLOADDIR/${TARBALL}" | sha256sum -c --quiet "-"
 
 	if [ ! -e "$PKGSRCDIR/$SRCDIR" ]; then
 		local LOGFILE="$PKGLOGDIR/${PKGNAME}-prepare.log"
