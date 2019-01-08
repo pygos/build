@@ -16,8 +16,8 @@ build() {
 	local ldflags=""
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
-		cflags="$cflags -fstack-protector-all"
-		ldflags="$ldflags -z noexecstack -z relro -z now"
+		cflags="$cflags -fstack-protector-all -fPIE -fPIC"
+		ldflags="$ldflags -z noexecstack -z relro -z now -fPIE -fPIC"
 	fi
 
 	make CFLAGS="-Wall -Winline -O2 -D_FILE_OFFSET_BITS=64 $cflags" \
