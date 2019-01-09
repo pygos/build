@@ -1,8 +1,8 @@
-VERSION="2018g"
+VERSION="2018i"
 SRCDIR="tzdb-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="8a3eac919550af5146439c6416a2eff9ccc466351ca63a6741b1384cd606a757"
+SHA256SUM="d7cf8a0edd7b0d9c926e4fb9b5d7adb3ca951df244806a99a7430be4e6d2a899"
 DEPENDS="toolchain"
 
 prepare() {
