@@ -1,4 +1,4 @@
-lib/libunbound.so.8.0.1 m 555 0 0
+lib/libunbound.so.8.0.3 m 555 0 0
 lib/libunbound.so.8 m 777 0 0
 lib/libunbound.so m 777 0 0
 bin/unbound m 555 0 0
