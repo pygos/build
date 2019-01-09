@@ -7,7 +7,7 @@ bin/btrfstune m 555 0 0
 bin/btrfs-select-super m 555 0 0
 bin/btrfsck m 777 0 0
 lib/libbtrfs.so.0.1 m 555 0 0
-lib/libbtrfsutil.so.1.0.0 m 555 0 0
+lib/libbtrfsutil.so.1.1.0 m 555 0 0
 lib/libbtrfs.so.0 m 777 0 0
 lib/libbtrfs.so m 777 0 0
 lib/libbtrfsutil.so.1 m 777 0 0
