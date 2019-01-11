@@ -6,7 +6,7 @@ table inet filter {
 
     ip protocol icmp accept
 
-    ct state {established, related} accept
+    ct state established, related accept
     ct state invalid drop
 
     iifname lo accept
