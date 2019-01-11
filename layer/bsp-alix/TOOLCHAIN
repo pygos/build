@@ -1,11 +1,11 @@
 RELEASEPKG="release-alix"
-TARGET="i686-linux-musl"
-GCC_CPU="i686"
+TARGET="i586-linux-musl"
+GCC_CPU="geode"
 
 CPU_IS_64BIT="no"
 
-GCC_EXTRACFG="--disable-libmpx"
-BINUTILS_EXTRACFG=""
+GCC_EXTRACFG="--disable-libmpx --disable-cet"
+BINUTILS_EXTRACFG="--disable-cet"
 
 LINUXPKG="linux"
 LINUX_TGT="bzImage modules"
