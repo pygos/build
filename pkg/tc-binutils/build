@@ -10,7 +10,7 @@ prepare() {
 }
 
 build() {
-	local extra=""
+	local extra="$BINUTILS_EXTRACFG"
 
 	$1/configure --prefix="$TCDIR" --target="$TARGET" --disable-nls \
 		     --with-sysroot="$TCDIR/$TARGET" --disable-multilib \

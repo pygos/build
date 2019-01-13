@@ -204,6 +204,7 @@ Currently, the following variables are used:
 * `GCC_CPU` specifies the target processor for GCC.
 * `GCC_EXTRACFG` extra configure arguments passed to GCC. For instance, this
   may contain FPU configuration for ARM targets.
+* `BINUTILS_EXTRACFG` extra configure arguments passed to binutils.
 * `LINUX_TGT` contains the space seperated make targets for the generic,
   main line, LTS kernel package.
 * `CPU_IS_64BIT` is set to `yes` for 64 bit CPUs. This is needed for some

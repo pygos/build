@@ -5,6 +5,7 @@ GCC_CPU="x86-64"
 CPU_IS_64BIT="yes"
 
 GCC_EXTRACFG="--enable-libmpx"
+BINUTILS_EXTRACFG=""
 
 LINUXPKG="linux"
 LINUX_TGT="bzImage"

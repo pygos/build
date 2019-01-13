@@ -5,6 +5,7 @@ GCC_CPU="armv6"
 CPU_IS_64BIT="no"
 
 GCC_EXTRACFG="--with-float=hard --with-fpu=neon-vfpv3"
+BINUTILS_EXTRACFG=""
 
 LINUXPKG="linux-rpi3"
 LINUX_TGT="zImage dtbs modules"
