@@ -14,7 +14,7 @@ build() {
 	local cflags="-O2 -Os"
 	local ldflags=""
 
-	if [ "x$TC_HARDENING" = "yes" ]; then
+	if [ "x$TC_HARDENING" = "xyes" ]; then
 		cflags="$cflags -fstack-protector-all"
 		ldflags="$ldflags -z noexecstack -z relro -z now"
 	fi
