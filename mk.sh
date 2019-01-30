@@ -27,8 +27,10 @@ PKGBUILDDIR="$BUILDROOT/$PRODUCT/build"
 PKGDEPLOYDIR="$BUILDROOT/$PRODUCT/deploy"
 PKGLOGDIR="$BUILDROOT/$PRODUCT/log"
 PACKAGELIST="$BUILDROOT/$PRODUCT/pkglist"
+REPODIR="$BUILDROOT/$PRODUCT/repo"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR" "$PKGDEPLOYDIR"
+mkdir -p "$REPODIR"
 
 pushd "$SCRIPTDIR" > /dev/null
 OS_NAME="Pygos"
@@ -81,6 +83,16 @@ while read pkg; do
 		deploy_dev_cleanup "$PKGDEPLOYDIR/$PKGNAME"
 		strip_files ${PKGDEPLOYDIR}/${PKGNAME}/{bin,lib}
 		restore_toolchain
+
+		if [ -d "$PKGDEPLOYDIR/$PKGNAME" ]; then
+			for f in $PKGDEPLOYDIR/$PKGNAME/*.desc; do
+				if [ ! -f "$f" ]; then
+					continue
+				fi
+
+				pkg pack -r "$REPODIR" -d "$f" -l $PKGDEPLOYDIR/$PKGNAME/$(basename "$f" .desc).files
+			done
+		fi
 
 		rm -rf "$PKGBUILDDIR"
 		touch "$PKGLOGDIR/.$pkg"
