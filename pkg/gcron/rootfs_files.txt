@@ -1,2 +1,0 @@
-etc/crontab.d m 755 0 0
-bin/gcrond m 555 0 0

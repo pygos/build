@@ -1,0 +1,4 @@
+file lib/libnftables.so.0.0.0 0755 0 0
+slink lib/libnftables.so.0 0777 0 0 libnftables.so.0.0.0
+slink lib/libnftables.so 0777 0 0 libnftables.so.0.0.0
+file bin/nft 0755 0 0

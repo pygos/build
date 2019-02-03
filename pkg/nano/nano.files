@@ -1,0 +1,2 @@
+file bin/nano 0755 0 0
+slink bin/rnano 0777 0 0 nano

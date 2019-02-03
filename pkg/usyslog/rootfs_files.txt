@@ -1,3 +1,0 @@
-bin/syslog m 555 0 0
-bin/klogd m 555 0 0
-bin/usyslogd m 555 0 0

@@ -1,0 +1,3 @@
+file bin/grep 0755 0 0
+file bin/egrep 0755 0 0
+file bin/fgrep 0755 0 0

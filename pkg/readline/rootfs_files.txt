@@ -1,6 +1,0 @@
-lib/libhistory.so.8.0 m 555 0 0
-lib/libhistory.so.8 m 777 0 0
-lib/libhistory.so m 777 0 0
-lib/libreadline.so.8.0 m 555 0 0
-lib/libreadline.so.8 m 777 0 0
-lib/libreadline.so m 777 0 0

@@ -1,7 +1,0 @@
-lib/firmware m 555 0 0
-lib/firmware/brcm m 555 0 0
-lib/firmware/brcm/brcmfmac43430-sdio.bin m 444 0 0
-lib/firmware/brcm/brcmfmac43430-sdio.txt m 444 0 0
-lib/firmware/brcm/brcmfmac43455-sdio.bin m 444 0 0
-lib/firmware/brcm/brcmfmac43455-sdio.clm_blob m 444 0 0
-lib/firmware/brcm/brcmfmac43455-sdio.txt m 444 0 0

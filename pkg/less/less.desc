@@ -1,0 +1,2 @@
+name less
+requires ncurses libc

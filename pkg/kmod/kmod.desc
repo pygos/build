@@ -1,0 +1,2 @@
+name kmod
+requires zlib xz libc

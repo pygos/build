@@ -58,18 +58,25 @@ deploy() {
 		case $target in
 		*Image)
 			cp "arch/$LINUX_CPU/boot/$target" "$DEPLOY/boot/vmlinuz"
-			echo "boot/vmlinuz m 555 0 0" > "$DEPLOY/rootfs_files.txt"
+			echo "file boot/vmlinuz 0755 0 0" >> "$DEPLOY/linux.files"
 			;;
 		modules)
 			export KBUILD_OUTPUT="$PKGBUILDDIR"
 			make -C "$SOURCE" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" INSTALL_MOD_PATH="$DEPLOY" modules_install
 
-			find "$DEPLOY/lib" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
-				sed "s#^$DEPLOY/##g" | sed "s/644/444/g" | \
-				sed "s/755/555/g" >> "$DEPLOY/rootfs_files.txt"
+			find -H "$DEPLOY/lib" -type d -printf "dir %p 0%m 0 0\\n" |\
+				tail -n +2 | sed "s#^$DEPLOY/##g" >> "$DEPLOY/linux.files"
+
+			find -H "$DEPLOY/lib" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
+				sed "s#^$DEPLOY/##g" >> "$DEPLOY/linux.files"
+
+			find -H "$DEPLOY/lib" -type f -printf "file %p 0%m 0 0\\n" |\
+				sed "s#^$DEPLOY/##g" >> "$DEPLOY/linux.files"
 			;;
 		esac
 	done
+
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.desc "$DEPLOY"
 }
 
 check_update() {

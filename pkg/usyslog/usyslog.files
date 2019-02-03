@@ -1,0 +1,3 @@
+file bin/syslog 0755 0 0
+file bin/klogd 0755 0 0
+file bin/usyslogd 0755 0 0

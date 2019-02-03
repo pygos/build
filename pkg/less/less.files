@@ -1,0 +1,3 @@
+file bin/less 0755 0 0
+file bin/lesskey 0755 0 0
+file bin/lessecho 0755 0 0

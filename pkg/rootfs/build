@@ -1,25 +1,5 @@
 DEPENDS=$(cat_file_merge "ROOTFS" | sort -u)
 
-copy_rootfs_files() {
-	local pkgdir="$1"
-	local fname
-	local dname
-
-	cut -d' ' -f1 "$pkgdir/rootfs_files.txt" | while read fname; do
-		if [ ! -e "./$fname" ]; then
-			dname=$(dirname $fname)
-
-			if [ -d "$pkgdir/$fname" ] && [ ! -L "$pkgdir/$fname" ]
-			then
-				mkdir -p "./$fname"
-			else
-				[ "$dname" == "." ] || mkdir -p "./$dname";
-				cp -d "$pkgdir/$fname" "./$fname"
-			fi
-		fi
-	done
-}
-
 build() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
@@ -51,18 +31,12 @@ build() {
 	fi
 
 	# gather rootfs dependencies
-	dependencies | tsort | tac | \
-		grep -v "$PKGNAME" > "$PKGBUILDDIR/etc/packages"
+	cat_file_merge "ROOTFS" | sort -u | \
+		xargs pkg install -om -R "$REPODIR" -r "$PKGBUILDDIR"
 
-	echo "etc/packages m 644 0 0" >> "$DEPLOY/pseudo"
-
-	while read pkgname; do
-		fname="$PKGDEPLOYDIR/$pkgname/rootfs_files.txt"
-		[ -e "$fname" ] || continue;
-
-		copy_rootfs_files "$PKGDEPLOYDIR/$pkgname"
-		cat "$fname" >> "$DEPLOY/pseudo"
-	done < "$PKGBUILDDIR/etc/packages"
+	cat_file_merge "ROOTFS" | sort -u | \
+		xargs pkg install -R "$REPODIR" \
+		      -r "$PKGBUILDDIR" -F sqfs -l >> "$DEPLOY/pseudo"
 
 	# setup root home directory
 	cp -r "$PKGBUILDDIR/etc/skel" "$PKGBUILDDIR/usr/root"

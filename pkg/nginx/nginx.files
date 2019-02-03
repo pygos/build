@@ -1,0 +1,11 @@
+file bin/nginx 0755 0 0
+dir etc/nginx 0755 0 0
+file etc/nginx/fastcgi.conf 0644 0 0
+file etc/nginx/fastcgi_params 0644 0 0
+file etc/nginx/koi-utf 0644 0 0
+file etc/nginx/koi-win 0644 0 0
+file etc/nginx/mime.types 0644 0 0
+file etc/nginx/nginx.conf 0644 0 0
+file etc/nginx/scgi_params 0644 0 0
+file etc/nginx/uwsgi_params 0644 0 0
+file etc/nginx/win-utf 0644 0 0

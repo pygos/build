@@ -1,4 +1,0 @@
-bin/cmp m 555 0 0
-bin/diff m 555 0 0
-bin/diff3 m 555 0 0
-bin/sdiff m 555 0 0

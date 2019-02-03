@@ -1,0 +1,2 @@
+name hostapd
+requires libnl3 openssl libc

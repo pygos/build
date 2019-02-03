@@ -1,0 +1,7 @@
+file bin/service 0755 0 0
+file bin/shutdown 0755 0 0
+file bin/init 0755 0 0
+slink bin/reboot 0777 0 0 shutdown
+dir lib/libexec/init 0755 0 0
+file lib/libexec/init/killall5 0755 0 0
+file lib/libexec/init/runsvc 0755 0 0

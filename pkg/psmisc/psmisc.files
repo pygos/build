@@ -1,0 +1,4 @@
+file bin/killall 0755 0 0
+file bin/prtstat 0755 0 0
+file bin/pstree 0755 0 0
+file bin/fuser 0755 0 0

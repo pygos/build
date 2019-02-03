@@ -1,3 +1,0 @@
-bin/grep m 555 0 0
-bin/egrep m 555 0 0
-bin/fgrep m 555 0 0

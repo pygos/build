@@ -1,0 +1,82 @@
+dir share/tabset 0755 0 0
+file share/tabset/std 0644 0 0
+file share/tabset/stdcrt 0644 0 0
+file share/tabset/vt100 0644 0 0
+file share/tabset/vt300 0644 0 0
+dir share/terminfo 0755 0 0
+dir share/terminfo/a 0755 0 0
+file share/terminfo/a/ansi 0644 0 0
+dir share/terminfo/d 0755 0 0
+file share/terminfo/d/dumb 0644 0 0
+dir share/terminfo/g 0755 0 0
+file share/terminfo/g/gnome 0644 0 0
+file share/terminfo/g/gnome-fc5 0644 0 0
+file share/terminfo/g/gnome-rh72 0644 0 0
+file share/terminfo/g/gnome-rh80 0644 0 0
+file share/terminfo/g/gnome-rh90 0644 0 0
+file share/terminfo/g/gnome-256color 0644 0 0
+dir share/terminfo/k 0755 0 0
+file share/terminfo/k/klone+color 0644 0 0
+file share/terminfo/k/konsole 0644 0 0
+file share/terminfo/k/konsole-256color 0644 0 0
+file share/terminfo/k/kvt 0644 0 0
+dir share/terminfo/l 0755 0 0
+file share/terminfo/l/linux 0644 0 0
+file share/terminfo/l/linux-m 0644 0 0
+file share/terminfo/l/linux-nic 0644 0 0
+dir share/terminfo/m 0755 0 0
+file share/terminfo/m/mlterm 0644 0 0
+dir share/terminfo/n 0755 0 0
+file share/terminfo/n/nxterm 0644 0 0
+dir share/terminfo/r 0755 0 0
+file share/terminfo/r/rxvt 0644 0 0
+file share/terminfo/r/rxvt-256color 0644 0 0
+file share/terminfo/r/rxvt-basic 0644 0 0
+file share/terminfo/r/rxvt-color 0644 0 0
+dir share/terminfo/s 0755 0 0
+file share/terminfo/s/screen 0644 0 0
+file share/terminfo/s/screen-256color 0644 0 0
+file share/terminfo/s/screen-w 0644 0 0
+dir share/terminfo/u 0755 0 0
+file share/terminfo/u/unknown 0644 0 0
+dir share/terminfo/v 0755 0 0
+file share/terminfo/v/vt100 0644 0 0
+file share/terminfo/v/vt102 0644 0 0
+file share/terminfo/v/vt220 0644 0 0
+file share/terminfo/v/vt220-8 0644 0 0
+file share/terminfo/v/vt220-8bit 0644 0 0
+file share/terminfo/v/vt320 0644 0 0
+file share/terminfo/v/vt52 0644 0 0
+file share/terminfo/v/vte 0644 0 0
+dir share/terminfo/x 0755 0 0
+file share/terminfo/x/xterm 0644 0 0
+file share/terminfo/x/xterm-256color 0644 0 0
+file share/terminfo/x/xterm-basic 0644 0 0
+file share/terminfo/x/xterm-color 0644 0 0
+file share/terminfo/x/xterm-nic 0644 0 0
+file share/terminfo/x/xterm-r6 0644 0 0
+file lib/libncursesw.so.6.1 0755 0 0
+slink lib/libncursesw.so.6 0777 0 0 libncursesw.so.6.1
+slink lib/libncursesw.so 0777 0 0 libncursesw.so.6.1
+file lib/libpanelw.so.6.1 0755 0 0
+slink lib/libpanelw.so.6 0777 0 0 libpanelw.so.6.1
+slink lib/libpanelw.so 0777 0 0 libpanelw.so.6.1
+file lib/libmenuw.so.6.1 0755 0 0
+slink lib/libmenuw.so.6 0777 0 0 libmenuw.so.6.1
+slink lib/libmenuw.so 0777 0 0 libmenuw.so.6.1
+file lib/libformw.so.6.1 0755 0 0
+slink lib/libformw.so.6 0777 0 0 libformw.so.6.1
+slink lib/libformw.so 0777 0 0 libformw.so.6.1
+slink lib/terminfo 0777 0 0 /share/terminfo
+slink lib/libtinfo.so 0777 0 0 libncursesw.so.6.1
+slink lib/libtinfo.so.6.1 0777 0 0 libncursesw.so.6.1
+file bin/tic 0755 0 0
+file bin/toe 0755 0 0
+slink bin/infotocap 0777 0 0 tic
+slink bin/captoinfo 0777 0 0 tic
+file bin/infocmp 0755 0 0
+file bin/clear 0755 0 0
+file bin/tabs 0755 0 0
+file bin/tput 0755 0 0
+file bin/tset 0755 0 0
+slink bin/reset 0777 0 0 tset

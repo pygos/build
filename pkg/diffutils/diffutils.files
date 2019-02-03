@@ -1,0 +1,4 @@
+file bin/cmp 0755 0 0
+file bin/diff 0755 0 0
+file bin/diff3 0755 0 0
+file bin/sdiff 0755 0 0

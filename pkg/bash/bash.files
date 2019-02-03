@@ -1,0 +1,6 @@
+file bin/bash 0755 0 0
+file etc/bashrc 0644 0 0
+file etc/profile 0644 0 0
+file etc/skel/.bashrc 0644 0 0
+file etc/skel/.bash_profile 0644 0 0
+slink bin/sh 0777 0 0 bash

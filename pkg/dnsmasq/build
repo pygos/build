@@ -32,7 +32,7 @@ deploy() {
 	make CC=${TARGET}-gcc PREFIX="/" BINDIR="/bin" DESTDIR="$DEPLOY" install
 	mkdir -p "$DEPLOY/etc"
 	cat_file_override "dnsmasq.conf" > "$DEPLOY/etc/dnsmasq.conf"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 check_update() {

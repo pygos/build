@@ -1,0 +1,17 @@
+file lib/libprocps.so.7.1.0 0755 0 0
+slink lib/libprocps.so.7 0777 0 0 libprocps.so.7.1.0
+slink lib/libprocps.so 0777 0 0 libprocps.so.7.1.0
+file bin/ps 0755 0 0
+file bin/free 0755 0 0
+file bin/pgrep 0755 0 0
+file bin/pkill 0755 0 0
+file bin/pmap 0755 0 0
+file bin/pwdx 0755 0 0
+file bin/tload 0755 0 0
+file bin/uptime 0755 0 0
+file bin/vmstat 0755 0 0
+file bin/pidof 0755 0 0
+file bin/slabtop 0755 0 0
+file bin/watch 0755 0 0
+file bin/top 0755 0 0
+file bin/sysctl 0755 0 0

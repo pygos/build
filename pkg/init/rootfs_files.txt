@@ -1,7 +1,0 @@
-bin/service m 555 0 0
-bin/reboot m 777 0 0
-bin/shutdown m 555 0 0
-bin/init m 555 0 0
-lib/libexec/init m 555 0 0
-lib/libexec/init/killall5 m 555 0 0
-lib/libexec/init/runsvc m 555 0 0

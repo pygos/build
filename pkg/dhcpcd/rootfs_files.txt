@@ -1,9 +1,0 @@
-bin/dhcpcd m 555 0 0
-etc/dhcpcd.conf m 444 0 0
-lib/libexec/dhcpcd-run-hooks m 555 0 0
-lib/libexec/dhcpcd-hooks m 555 0 0
-lib/libexec/dhcpcd-hooks/20-resolv.conf m 444 0 0
-lib/libexec/dhcpcd-hooks/30-hostname m 444 0 0
-share/dhcpcd m 555 0 0
-share/dhcpcd/hooks m 555 0 0
-share/dhcpcd/hooks/10-wpa_supplicant m 444 0 0

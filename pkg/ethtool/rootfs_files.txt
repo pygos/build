@@ -1,1 +1,0 @@
-bin/ethtool m 555 0 0

@@ -3,7 +3,7 @@ SRCDIR="musl-$VERSION"
 TARBALL="$SRCDIR.tar.gz"
 URL="https://www.musl-libc.org/releases"
 SHA256SUM="44be8771d0e6c6b5f82dd15662eb2957c9a3173a19a8b49966ac0542bbd40d61"
-DEPENDS="tc-gcc1 linux_headers fortify-headers"
+DEPENDS="tc-gcc1 linux_headers fortify-headers tc-pkgtool"
 
 prepare() {
 	return
@@ -50,18 +50,16 @@ deploy() {
 	DESTDIR="$DEPLOY" make install-headers
 	DESTDIR="$DEPLOY" make install-libs
 
-	mkdir -p "$DEPLOY/etc"
-
-	cat_file_merge "LDPATH" > "$DEPLOY/etc/ld-musl-${MUSL_CPU}.path"
-
-	find ${DEPLOY}/lib/*.so* -exec stat {} --printf="%n m %a 0 0\\n" \; | \
-		sed "s#^$DEPLOY/##g" | sed "s/644/444/g" | \
-		sed "s/755/555/g" > "$DEPLOY/rootfs_files.txt"
-
-	find "$DEPLOY/etc" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
-		sed "s#^$DEPLOY/##g" | tail -n +2 >> "$DEPLOY/rootfs_files.txt"
-
+	cat_file_merge "LDPATH" > "$DEPLOY/LDPATH"
 	cp libssp_nonshared.a "$DEPLOY/lib"
+
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.desc "$DEPLOY"
+
+cat > "$DEPLOY/libc.files" <<_EOF
+file lib/libc.so 0755 0 0 $DEPLOY/lib/libc.so
+slink lib/ld-musl-${MUSL_CPU}.so.1 0777 0 0 libc.so
+file etc/ld-musl-${MUSL_CPU}.path 0644 0 0 $DEPLOY/LDPATH
+_EOF
 }
 
 check_update() {

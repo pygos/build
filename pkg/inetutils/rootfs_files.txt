@@ -1,8 +1,0 @@
-bin/hostname m 555 0 0
-bin/tftp m 555 0 0
-bin/traceroute m 555 0 0
-bin/telnet m 555 0 0
-bin/ftp m 555 0 0
-bin/whois m 555 0 0
-bin/ping m 555 0 0
-bin/ping6 m 555 0 0

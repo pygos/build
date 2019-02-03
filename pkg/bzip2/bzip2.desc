@@ -1,0 +1,2 @@
+name bzip2
+requires libc

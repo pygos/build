@@ -1,6 +1,6 @@
 # inherit package details from first stage GCC
 source "$SCRIPTDIR/pkg/tc-gcc1/build"
-DEPENDS="tc-gcc1 musl linux_headers"
+DEPENDS="tc-gcc1 musl linux_headers tc-pkgtool"
 
 build() {
 	local extra="--disable-libssp"
@@ -50,5 +50,5 @@ deploy() {
 	mkdir -p "$DEPLOY/lib"
 	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
 	rm ${DEPLOY}/lib/*.la
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }

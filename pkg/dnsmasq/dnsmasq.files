@@ -1,0 +1,2 @@
+file bin/dnsmasq 0755 0 0
+file etc/dnsmasq.conf 0644 0 0

@@ -1,0 +1,2 @@
+name libc
+requires libgcc

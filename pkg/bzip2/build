@@ -37,7 +37,7 @@ deploy() {
 	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzfgrep"
 	ln -s "/bin/bzmore" "$DEPLOY/bin/bzless"
 	ln -s "/bin/bzdiff" "$DEPLOY/bin/bzcmp"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 check_update() {

@@ -15,7 +15,7 @@ build() {
 
 deploy() {
 	make DESTDIR="$2" install
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$2"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$2"
 }
 
 check_update() {

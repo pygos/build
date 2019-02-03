@@ -1,0 +1,26 @@
+file lib/liblzma.so.5.2.4 0755 0 0
+slink lib/liblzma.so.5 0777 0 0 liblzma.so.5.2.4
+slink lib/liblzma.so 0777 0 0 liblzma.so.5.2.4
+file bin/xzdec 0755 0 0
+file bin/lzmadec 0755 0 0
+file bin/xz 0755 0 0
+slink bin/unxz 0777 0 0 xz
+slink bin/xzcat 0777 0 0 xz
+slink bin/lzma 0777 0 0 xz
+slink bin/unlzma 0777 0 0 xz
+slink bin/lzcat 0777 0 0 xz
+file bin/lzmainfo 0755 0 0
+file bin/xzdiff 0755 0 0
+file bin/xzgrep 0755 0 0
+file bin/xzmore 0755 0 0
+file bin/xzless 0755 0 0
+slink bin/xzcmp 0777 0 0 xzdiff
+slink bin/xzegrep 0777 0 0 xzgrep
+slink bin/xzfgrep 0777 0 0 xzgrep
+slink bin/lzdiff 0777 0 0 xzdiff
+slink bin/lzcmp 0777 0 0 xzdiff
+slink bin/lzgrep 0777 0 0 xzgrep
+slink bin/lzegrep 0777 0 0 xzgrep
+slink bin/lzfgrep 0777 0 0 xzgrep
+slink bin/lzmore 0777 0 0 xzmore
+slink bin/lzless 0777 0 0 xzless

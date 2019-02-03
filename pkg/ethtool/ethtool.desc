@@ -1,0 +1,2 @@
+name ethtool
+requires libc

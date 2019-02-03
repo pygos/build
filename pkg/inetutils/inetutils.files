@@ -1,0 +1,8 @@
+file bin/hostname 0755 0 0
+file bin/tftp 0755 0 0
+file bin/traceroute 0755 0 0
+file bin/telnet 0755 0 0
+file bin/ftp 0755 0 0
+file bin/whois 0755 0 0
+file bin/ping 0755 0 0
+file bin/ping6 0755 0 0

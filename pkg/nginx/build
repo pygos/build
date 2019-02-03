@@ -76,18 +76,23 @@ deploy() {
 	local wwwroot=$(file_path_override "wwwroot")
 
 	make DESTDIR="$DEPLOY" install
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 
 	if [ ! -z "$wwwroot" ] && [ -d "$wwwroot" ]; then
 		mkdir -p "$DEPLOY/srv"
 		cp -r "$wwwroot" "$DEPLOY/srv/www"
 
-		echo "srv m 555 0 0" >> "$DEPLOY/rootfs_files.txt"
-		echo "srv/www m 555 0 0" >> "$DEPLOY/rootfs_files.txt"
+		echo "dir srv 0755 0 0" >> "$DEPLOY/nginx.files"
+		echo "dir srv/www 0755 0 0" >> "$DEPLOY/nginx.files"
 
-		find "$DEPLOY/srv/www" -exec stat {} \
-			--printf="%n m %a 0 0\\n" \; | tail -n +2 | \
-			sed "s#^$DEPLOY/##g" >> "$DEPLOY/rootfs_files.txt"
+		find -H "$DEPLOY/srv/www" -type d -printf "dir %p 0%m 0 0\\n" |\
+			tail -n +2 | sed "s#^$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+
+		find -H "$DEPLOY/srv/www" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
+			sed "s#^$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+
+		find -H "$DEPLOY/srv/www" -type f -printf "file %p 0%m 0 0\\n" |\
+			sed "s#^$DEPLOY/##g" >> "$DEPLOY/nginx.files"
 	fi
 
 	cat_file_override "nginx.conf" > "$DEPLOY/etc/nginx/nginx.conf"

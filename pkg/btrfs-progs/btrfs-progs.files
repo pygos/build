@@ -1,0 +1,14 @@
+file bin/btrfs 0755 0 0
+file bin/mkfs.btrfs 0755 0 0
+file bin/btrfs-map-logical 0755 0 0
+file bin/btrfs-image 0755 0 0
+file bin/btrfs-find-root 0755 0 0
+file bin/btrfstune 0755 0 0
+file bin/btrfs-select-super 0755 0 0
+slink bin/btrfsck 777 0 0 btrfs
+file lib/libbtrfs.so.0.1 0755 0 0
+file lib/libbtrfsutil.so.1.1.0 0755 0 0
+slink lib/libbtrfs.so.0 0777 0 0 libbtrfs.so.0.1
+slink lib/libbtrfs.so 0777 0 0 libbtrfs.so.0.1
+slink lib/libbtrfsutil.so.1 0777 0 0 libbtrfsutil.so.1.1.0
+slink lib/libbtrfsutil.so 0777 0 0 libbtrfsutil.so.1.1.0

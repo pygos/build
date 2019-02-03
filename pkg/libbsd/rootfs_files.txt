@@ -1,3 +1,0 @@
-lib/libbsd.so.0.9.1 m 555 0 0
-lib/libbsd.so.0 m 777 0 0
-lib/libbsd.so m 777 0 0

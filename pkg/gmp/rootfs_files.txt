@@ -1,6 +1,0 @@
-lib/libgmp.so.10.3.2 m 555 0 0
-lib/libgmp.so.10 m 777 0 0
-lib/libgmp.so m 777 0 0
-lib/libgmpxx.so.4.5.2 m 555 0 0
-lib/libgmpxx.so.4 m 777 0 0
-lib/libgmpxx.so m 777 0 0

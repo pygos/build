@@ -19,7 +19,7 @@ deploy() {
 	local DEPLOY="$2"
 
 	make SHLIB_LIBS="-lncursesw" DESTDIR="$DEPLOY" install
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 	chmod 755 ${DEPLOY}/lib/*
 }
 

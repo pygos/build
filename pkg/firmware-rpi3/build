@@ -18,7 +18,7 @@ deploy() {
 	local DEPLOY="$2"
 
 	cp -r "$SOURCE/hardfp/opt" "$DEPLOY"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 
 	strip_files ${DEPLOY}/opt/vc/{bin,sbin}/*
 	strip_files ${DEPLOY}/opt/vc/lib/*.so

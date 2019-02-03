@@ -1,0 +1,7 @@
+dir lib/firmware 0755 0 0
+dir lib/firmware/brcm 0755 0 0
+file lib/firmware/brcm/brcmfmac43430-sdio.bin 0644 0 0
+file lib/firmware/brcm/brcmfmac43430-sdio.txt 0644 0 0
+file lib/firmware/brcm/brcmfmac43455-sdio.bin 0644 0 0
+file lib/firmware/brcm/brcmfmac43455-sdio.clm_blob 0644 0 0
+file lib/firmware/brcm/brcmfmac43455-sdio.txt 0644 0 0

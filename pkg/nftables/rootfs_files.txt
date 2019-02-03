@@ -1,4 +1,0 @@
-lib/libnftables.so.0.0.0 m 555 0 0
-lib/libnftables.so.0 m 777 0 0
-lib/libnftables.so m 777 0 0
-bin/nft m 555 0 0

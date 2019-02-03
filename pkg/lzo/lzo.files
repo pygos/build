@@ -1,0 +1,3 @@
+file lib/liblzo2.so.2.0.0 0755 0 0
+slink lib/liblzo2.so.2 0777 0 0 liblzo2.so.2.0.0
+slink lib/liblzo2.so 0777 0 0 liblzo2.so.2.0.0

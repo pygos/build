@@ -1,0 +1,3 @@
+file bin/fsck.fat 0755 0 0
+file bin/mkfs.fat 0755 0 0
+file bin/fatlabel 0755 0 0

@@ -1,3 +1,0 @@
-bin/fsck.fat m 555 0 0
-bin/mkfs.fat m 555 0 0
-bin/fatlabel m 555 0 0

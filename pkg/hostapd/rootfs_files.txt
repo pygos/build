@@ -1,3 +1,0 @@
-bin/hostapd m 555 0 0
-bin/hostapd_cli m 555 0 0
-etc/hostapd.conf m 600 0 0

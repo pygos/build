@@ -29,6 +29,7 @@ deploy() {
 
 	mkdir -p "$DEPLOY/bin"
 	cp "$PKGBUILDDIR/busybox" "$DEPLOY/bin"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 check_update() {

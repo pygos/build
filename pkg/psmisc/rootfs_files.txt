@@ -1,4 +1,0 @@
-bin/killall m 555 0 0
-bin/prtstat m 555 0 0
-bin/pstree m 555 0 0
-bin/fuser m 555 0 0

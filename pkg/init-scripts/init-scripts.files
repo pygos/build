@@ -1,0 +1,74 @@
+dir etc/init.d 0755 0 0
+dir etc/netcfg 0755 0 0
+dir lib/libexec/init 0755 0 0
+dir share/init 0755 0 0
+slink etc/init.d/devfs 0777 0 0 /share/init/devfs
+slink etc/init.d/gcrond 0777 0 0 /share/init/gcrond
+slink etc/init.d/hostname 0777 0 0 /share/init/hostname
+slink etc/init.d/ifcfg 0777 0 0 /share/init/ifcfg
+slink etc/init.d/ifdown@reboot 0777 0 0 /share/init/ifdown
+slink etc/init.d/ifdown@shutdown 0777 0 0 /share/init/ifdown
+slink etc/init.d/klogd 0777 0 0 /share/init/klogd
+slink etc/init.d/loopback 0777 0 0 /share/init/loopback
+slink etc/init.d/modules 0777 0 0 /share/init/modules
+slink etc/init.d/mountusr 0777 0 0 /share/init/mountusr
+slink etc/init.d/network 0777 0 0 /share/init/network
+slink etc/init.d/procfs 0777 0 0 /share/init/procfs
+slink etc/init.d/sigkill@reboot 0777 0 0 /share/init/sigkill
+slink etc/init.d/sigkill@shutdown 0777 0 0 /share/init/sigkill
+slink etc/init.d/sigterm@reboot 0777 0 0 /share/init/sigterm
+slink etc/init.d/sigterm@shutdown 0777 0 0 /share/init/sigterm
+slink etc/init.d/sync@reboot 0777 0 0 /share/init/sync
+slink etc/init.d/sync@shutdown 0777 0 0 /share/init/sync
+slink etc/init.d/sysctl 0777 0 0 /share/init/sysctl
+slink etc/init.d/sysfs 0777 0 0 /share/init/sysfs
+slink etc/init.d/sysinit 0777 0 0 /share/init/sysinit
+slink etc/init.d/tmpfs 0777 0 0 /share/init/tmpfs
+slink etc/init.d/tmpfsrun 0777 0 0 /share/init/tmpfsrun
+slink etc/init.d/tmpfsvar 0777 0 0 /share/init/tmpfsvar
+slink etc/init.d/usyslogd 0777 0 0 /share/init/usyslogd
+slink etc/init.d/vfs 0777 0 0 /share/init/vfs
+file etc/netcfg/ifrename 0644 0 0
+file etc/initd.env 0644 0 0
+file etc/modules 0644 0 0
+file lib/libexec/init/devfs.sh 0755 0 0
+file lib/libexec/init/ifcfg.sh 0755 0 0
+file lib/libexec/init/ifdown.sh 0755 0 0
+file lib/libexec/init/ifrename.sh 0755 0 0
+file lib/libexec/init/modules_load.sh 0755 0 0
+file lib/libexec/init/overlay.sh 0755 0 0
+file lib/libexec/init/setntpdate.sh 0755 0 0
+file lib/libexec/init/trymount.sh 0755 0 0
+file share/init/agetty 0644 0 0
+file share/init/consolefont 0644 0 0
+file share/init/devfs 0644 0 0
+file share/init/dnsmasq 0644 0 0
+file share/init/gcrond 0644 0 0
+file share/init/hostapd 0644 0 0
+file share/init/hostname 0644 0 0
+file share/init/hwclock 0644 0 0
+file share/init/ifcfg 0644 0 0
+file share/init/ifdown 0644 0 0
+file share/init/ifrename 0644 0 0
+file share/init/klogd 0644 0 0
+file share/init/loopback 0644 0 0
+file share/init/modules 0644 0 0
+file share/init/mountusr 0644 0 0
+file share/init/network 0644 0 0
+file share/init/nft 0644 0 0
+file share/init/nginx 0644 0 0
+file share/init/procfs 0644 0 0
+file share/init/sigkill 0644 0 0
+file share/init/sigterm 0644 0 0
+file share/init/sshd 0644 0 0
+file share/init/sshd_keygen 0644 0 0
+file share/init/sync 0644 0 0
+file share/init/sysctl 0644 0 0
+file share/init/sysfs 0644 0 0
+file share/init/sysinit 0644 0 0
+file share/init/tmpfs 0644 0 0
+file share/init/tmpfsrun 0644 0 0
+file share/init/tmpfsvar 0644 0 0
+file share/init/unbound 0644 0 0
+file share/init/usyslogd 0644 0 0
+file share/init/vfs 0644 0 0

@@ -20,7 +20,7 @@ deploy() {
 	local target
 
 	make DESTDIR="$DEPLOY" install
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 
 	for target in depmod insmod lsmod modinfo modprobe rmmod; do
 		ln -sf kmod $DEPLOY/bin/$target

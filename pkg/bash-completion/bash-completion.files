@@ -1,0 +1,616 @@
+dir share/bash-completion 0755 0 0
+dir share/bash-completion/helpers 0755 0 0
+dir share/bash-completion/completions 0755 0 0
+slink share/bash-completion/completions/ldapdelete 0777 0 0 ldapsearch
+slink share/bash-completion/completions/rfcomm 0777 0 0 hcitool
+slink share/bash-completion/completions/rlog 0777 0 0 rcs
+slink share/bash-completion/completions/vgremove 0777 0 0 lvm
+slink share/bash-completion/completions/repquota 0777 0 0 quota
+slink share/bash-completion/completions/btdownloadcurses.py 0777 0 0 btdownloadheadless.py
+slink share/bash-completion/completions/sparc-koji 0777 0 0 koji
+slink share/bash-completion/completions/micropython 0777 0 0 python
+slink share/bash-completion/completions/ldapmodify 0777 0 0 ldapsearch
+slink share/bash-completion/completions/lvextend 0777 0 0 lvm
+slink share/bash-completion/completions/lvs 0777 0 0 lvm
+slink share/bash-completion/completions/l2ping 0777 0 0 hcitool
+slink share/bash-completion/completions/freeciv-sdl 0777 0 0 freeciv-gtk2
+slink share/bash-completion/completions/ciptool 0777 0 0 hcitool
+slink share/bash-completion/completions/stream 0777 0 0 convert
+slink share/bash-completion/completions/ldapwhoami 0777 0 0 ldapsearch
+slink share/bash-completion/completions/dropdb 0777 0 0 psql
+slink share/bash-completion/completions/vgexport 0777 0 0 lvm
+slink share/bash-completion/completions/smbtar 0777 0 0 smbclient
+slink share/bash-completion/completions/python2 0777 0 0 python
+slink share/bash-completion/completions/hping3 0777 0 0 hping2
+slink share/bash-completion/completions/conjure 0777 0 0 convert
+slink share/bash-completion/completions/rdict 0777 0 0 dict
+slink share/bash-completion/completions/dfutool 0777 0 0 hcitool
+slink share/bash-completion/completions/autossh 0777 0 0 ssh
+slink share/bash-completion/completions/perldoc 0777 0 0 perl
+slink share/bash-completion/completions/quotaon 0777 0 0 quota
+slink share/bash-completion/completions/vgreduce 0777 0 0 lvm
+slink share/bash-completion/completions/xpovray 0777 0 0 povray
+slink share/bash-completion/completions/vgextend 0777 0 0 lvm
+slink share/bash-completion/completions/vgsplit 0777 0 0 lvm
+slink share/bash-completion/completions/lz4c 0777 0 0 lz4
+slink share/bash-completion/completions/pydoc3 0777 0 0 pydoc
+slink share/bash-completion/completions/cowthink 0777 0 0 cowsay
+slink share/bash-completion/completions/spovray 0777 0 0 povray
+slink share/bash-completion/completions/pyvenv-3.4 0777 0 0 pyvenv
+slink share/bash-completion/completions/co 0777 0 0 rcs
+slink share/bash-completion/completions/tightvncviewer 0777 0 0 vncviewer
+slink share/bash-completion/completions/alpine 0777 0 0 pine
+slink share/bash-completion/completions/display 0777 0 0 convert
+slink share/bash-completion/completions/rpmbuild-md5 0777 0 0 rpm
+slink share/bash-completion/completions/pinfo 0777 0 0 info
+slink share/bash-completion/completions/vgcfgrestore 0777 0 0 lvm
+slink share/bash-completion/completions/whatis 0777 0 0 man
+slink share/bash-completion/completions/ifstatus 0777 0 0 ifup
+slink share/bash-completion/completions/hping 0777 0 0 hping2
+slink share/bash-completion/completions/tracepath6 0777 0 0 tracepath
+slink share/bash-completion/completions/pxz 0777 0 0 xz
+slink share/bash-completion/completions/montage 0777 0 0 convert
+slink share/bash-completion/completions/javadoc 0777 0 0 java
+slink share/bash-completion/completions/lvchange 0777 0 0 lvm
+slink share/bash-completion/completions/createuser 0777 0 0 psql
+slink share/bash-completion/completions/lvcreate 0777 0 0 lvm
+slink share/bash-completion/completions/autoupdate 0777 0 0 autoscan
+slink share/bash-completion/completions/composite 0777 0 0 convert
+slink share/bash-completion/completions/hd 0777 0 0 _hexdump
+slink share/bash-completion/completions/gfortran 0777 0 0 gcc
+slink share/bash-completion/completions/puppetqd 0777 0 0 puppet
+slink share/bash-completion/completions/alternatives 0777 0 0 update-alternatives
+slink share/bash-completion/completions/sdptool 0777 0 0 hcitool
+slink share/bash-completion/completions/qemu-system-x86_64 0777 0 0 qemu
+slink share/bash-completion/completions/qemu-system-i386 0777 0 0 qemu
+slink share/bash-completion/completions/vgconvert 0777 0 0 lvm
+slink share/bash-completion/completions/clzip 0777 0 0 lzip
+slink share/bash-completion/completions/ldappasswd 0777 0 0 ldapsearch
+slink share/bash-completion/completions/plzip 0777 0 0 lzip
+slink share/bash-completion/completions/lvresize 0777 0 0 lvm
+slink share/bash-completion/completions/identify 0777 0 0 convert
+slink share/bash-completion/completions/cc 0777 0 0 gcc
+slink share/bash-completion/completions/pvremove 0777 0 0 lvm
+slink share/bash-completion/completions/f95 0777 0 0 gcc
+slink share/bash-completion/completions/ldapcompare 0777 0 0 ldapsearch
+slink share/bash-completion/completions/vgcfgbackup 0777 0 0 lvm
+slink share/bash-completion/completions/pm-suspend 0777 0 0 pm-hibernate
+slink share/bash-completion/completions/pm-suspend-hybrid 0777 0 0 pm-hibernate
+slink share/bash-completion/completions/dropuser 0777 0 0 psql
+slink share/bash-completion/completions/filebucket 0777 0 0 puppet
+slink share/bash-completion/completions/vgcreate 0777 0 0 lvm
+slink share/bash-completion/completions/ldapadd 0777 0 0 ldapsearch
+slink share/bash-completion/completions/quotacheck 0777 0 0 quota
+slink share/bash-completion/completions/puppetrun 0777 0 0 puppet
+slink share/bash-completion/completions/smbcquotas 0777 0 0 smbclient
+slink share/bash-completion/completions/sbcl-mt 0777 0 0 sbcl
+slink share/bash-completion/completions/dcop 0777 0 0 qdbus
+slink share/bash-completion/completions/mkisofs 0777 0 0 genisoimage
+slink share/bash-completion/completions/autoheader 0777 0 0 autoreconf
+slink share/bash-completion/completions/animate 0777 0 0 convert
+slink share/bash-completion/completions/puppetca 0777 0 0 puppet
+slink share/bash-completion/completions/postalias 0777 0 0 postmap
+slink share/bash-completion/completions/vigr 0777 0 0 vipw
+slink share/bash-completion/completions/gkrellm2 0777 0 0 gkrellm
+slink share/bash-completion/completions/createdb 0777 0 0 psql
+slink share/bash-completion/completions/pvscan 0777 0 0 lvm
+slink share/bash-completion/completions/pigz 0777 0 0 gzip
+slink share/bash-completion/completions/smbtree 0777 0 0 smbclient
+slink share/bash-completion/completions/msgsnarf 0777 0 0 filesnarf
+slink share/bash-completion/completions/lvmdiskscan 0777 0 0 lvm
+slink share/bash-completion/completions/f77 0777 0 0 gcc
+slink share/bash-completion/completions/colormake 0777 0 0 make
+slink share/bash-completion/completions/ypcat 0777 0 0 ypmatch
+slink share/bash-completion/completions/xvnc4viewer 0777 0 0 vncviewer
+slink share/bash-completion/completions/gpc 0777 0 0 gcc
+slink share/bash-completion/completions/muttng 0777 0 0 mutt
+slink share/bash-completion/completions/gmplayer 0777 0 0 mplayer
+slink share/bash-completion/completions/btdownloadgui.py 0777 0 0 btdownloadheadless.py
+slink share/bash-completion/completions/civclient 0777 0 0 freeciv-gtk2
+slink share/bash-completion/completions/insmod.static 0777 0 0 insmod
+slink share/bash-completion/completions/cdrecord 0777 0 0 wodim
+slink share/bash-completion/completions/scp 0777 0 0 ssh
+slink share/bash-completion/completions/gnumake 0777 0 0 make
+slink share/bash-completion/completions/s390-koji 0777 0 0 koji
+slink share/bash-completion/completions/sudoedit 0777 0 0 sudo
+slink share/bash-completion/completions/pdlzip 0777 0 0 lzip
+slink share/bash-completion/completions/ralsh 0777 0 0 puppet
+slink share/bash-completion/completions/freeciv-xaw 0777 0 0 freeciv-gtk2
+slink share/bash-completion/completions/smbpasswd 0777 0 0 smbclient
+slink share/bash-completion/completions/pylint-2 0777 0 0 pylint
+slink share/bash-completion/completions/vgmerge 0777 0 0 lvm
+slink share/bash-completion/completions/civserver 0777 0 0 freeciv-server
+slink share/bash-completion/completions/pypy3 0777 0 0 python
+slink share/bash-completion/completions/ping6 0777 0 0 ping
+slink share/bash-completion/completions/python3 0777 0 0 python
+slink share/bash-completion/completions/vgrename 0777 0 0 lvm
+slink share/bash-completion/completions/setquota 0777 0 0 quota
+slink share/bash-completion/completions/ldapmodrdn 0777 0 0 ldapsearch
+slink share/bash-completion/completions/phing 0777 0 0 ant
+slink share/bash-completion/completions/aclocal-1.10 0777 0 0 aclocal
+slink share/bash-completion/completions/aclocal-1.11 0777 0 0 aclocal
+slink share/bash-completion/completions/aclocal-1.12 0777 0 0 aclocal
+slink share/bash-completion/completions/aclocal-1.13 0777 0 0 aclocal
+slink share/bash-completion/completions/aclocal-1.14 0777 0 0 aclocal
+slink share/bash-completion/completions/aclocal-1.15 0777 0 0 aclocal
+slink share/bash-completion/completions/mailsnarf 0777 0 0 filesnarf
+slink share/bash-completion/completions/pyvenv-3.5 0777 0 0 pyvenv
+slink share/bash-completion/completions/pypy 0777 0 0 python
+slink share/bash-completion/completions/lvremove 0777 0 0 lvm
+slink share/bash-completion/completions/pvchange 0777 0 0 lvm
+slink share/bash-completion/completions/compare 0777 0 0 convert
+slink share/bash-completion/completions/smbcacls 0777 0 0 smbclient
+slink share/bash-completion/completions/gmake 0777 0 0 make
+slink share/bash-completion/completions/automake-1.10 0777 0 0 automake
+slink share/bash-completion/completions/automake-1.11 0777 0 0 automake
+slink share/bash-completion/completions/automake-1.12 0777 0 0 automake
+slink share/bash-completion/completions/automake-1.13 0777 0 0 automake
+slink share/bash-completion/completions/automake-1.15 0777 0 0 automake
+slink share/bash-completion/completions/automake-1.14 0777 0 0 automake
+slink share/bash-completion/completions/rcsdiff 0777 0 0 rcs
+slink share/bash-completion/completions/puppetmasterd 0777 0 0 puppet
+slink share/bash-completion/completions/g95 0777 0 0 gcc
+slink share/bash-completion/completions/apropos 0777 0 0 man
+slink share/bash-completion/completions/declare 0777 0 0 function
+slink share/bash-completion/completions/g++ 0777 0 0 gcc
+slink share/bash-completion/completions/lvrename 0777 0 0 lvm
+slink share/bash-completion/completions/host 0777 0 0 nslookup
+slink share/bash-completion/completions/pylint-3 0777 0 0 pylint
+slink share/bash-completion/completions/vgs 0777 0 0 lvm
+slink share/bash-completion/completions/vgscan 0777 0 0 lvm
+slink share/bash-completion/completions/py.test-3 0777 0 0 py.test
+slink share/bash-completion/completions/compgen 0777 0 0 complete
+slink share/bash-completion/completions/import 0777 0 0 convert
+slink share/bash-completion/completions/mdecrypt 0777 0 0 mcrypt
+slink share/bash-completion/completions/qemu-kvm 0777 0 0 qemu
+slink share/bash-completion/completions/quotaoff 0777 0 0 quota
+slink share/bash-completion/completions/sftp 0777 0 0 ssh
+slink share/bash-completion/completions/smbget 0777 0 0 smbclient
+slink share/bash-completion/completions/mplayer2 0777 0 0 mplayer
+slink share/bash-completion/completions/sidedoor 0777 0 0 ssh
+slink share/bash-completion/completions/mencoder 0777 0 0 mplayer
+slink share/bash-completion/completions/asciidoc.py 0777 0 0 asciidoc
+slink share/bash-completion/completions/vgck 0777 0 0 lvm
+slink share/bash-completion/completions/vgdisplay 0777 0 0 lvm
+slink share/bash-completion/completions/vgchange 0777 0 0 lvm
+slink share/bash-completion/completions/geoiplookup6 0777 0 0 geoiplookup
+slink share/bash-completion/completions/lvreduce 0777 0 0 lvm
+slink share/bash-completion/completions/mogrify 0777 0 0 convert
+slink share/bash-completion/completions/ifdown 0777 0 0 ifup
+slink share/bash-completion/completions/pmake 0777 0 0 make
+slink share/bash-completion/completions/vgimport 0777 0 0 lvm
+slink share/bash-completion/completions/pkill 0777 0 0 pgrep
+slink share/bash-completion/completions/kplayer 0777 0 0 mplayer
+slink share/bash-completion/completions/arm-koji 0777 0 0 koji
+slink share/bash-completion/completions/pvs 0777 0 0 lvm
+slink share/bash-completion/completions/c++ 0777 0 0 gcc
+slink share/bash-completion/completions/puppetdoc 0777 0 0 puppet
+slink share/bash-completion/completions/pbzip2 0777 0 0 bzip2
+slink share/bash-completion/completions/lvscan 0777 0 0 lvm
+slink share/bash-completion/completions/vgmknodes 0777 0 0 lvm
+slink share/bash-completion/completions/edquota 0777 0 0 quota
+slink share/bash-completion/completions/lusermod 0777 0 0 luseradd
+slink share/bash-completion/completions/javac 0777 0 0 java
+slink share/bash-completion/completions/pvmove 0777 0 0 lvm
+slink share/bash-completion/completions/pccardctl 0777 0 0 cardctl
+slink share/bash-completion/completions/puppetd 0777 0 0 puppet
+slink share/bash-completion/completions/7za 0777 0 0 7z
+slink share/bash-completion/completions/pvcreate 0777 0 0 lvm
+slink share/bash-completion/completions/ppc-koji 0777 0 0 koji
+slink share/bash-completion/completions/hciattach 0777 0 0 hcitool
+slink share/bash-completion/completions/slogin 0777 0 0 ssh
+slink share/bash-completion/completions/py.test-2 0777 0 0 py.test
+slink share/bash-completion/completions/ci 0777 0 0 rcs
+slink share/bash-completion/completions/gcj 0777 0 0 gcc
+slink share/bash-completion/completions/pvdisplay 0777 0 0 lvm
+slink share/bash-completion/completions/ncal 0777 0 0 _cal
+slink share/bash-completion/completions/g4 0777 0 0 p4
+slink share/bash-completion/completions/lvdisplay 0777 0 0 lvm
+slink share/bash-completion/completions/g77 0777 0 0 gcc
+slink share/bash-completion/completions/lbzip2 0777 0 0 bzip2
+slink share/bash-completion/completions/typeset 0777 0 0 function
+slink share/bash-completion/completions/hciconfig 0777 0 0 hcitool
+file etc/profile.d/bash_completion.sh 0644 0 0
+file share/bash-completion/helpers/python 0644 0 0
+file share/bash-completion/helpers/perl 0644 0 0
+file share/bash-completion/bash_completion 0644 0 0
+file share/bash-completion/completions/ntpdate 0644 0 0
+file share/bash-completion/completions/gpg 0644 0 0
+file share/bash-completion/completions/gpg2 0644 0 0
+file share/bash-completion/completions/mplayer 0644 0 0
+file share/bash-completion/completions/gnome-mplayer 0644 0 0
+file share/bash-completion/completions/querybts 0644 0 0
+file share/bash-completion/completions/wtf 0644 0 0
+file share/bash-completion/completions/modinfo 0644 0 0
+file share/bash-completion/completions/e2freefrag 0644 0 0
+file share/bash-completion/completions/list_members 0644 0 0
+file share/bash-completion/completions/larch 0644 0 0
+file share/bash-completion/completions/arch 0644 0 0
+file share/bash-completion/completions/badblocks 0644 0 0
+file share/bash-completion/completions/route 0644 0 0
+file share/bash-completion/completions/rmmod 0644 0 0
+file share/bash-completion/completions/lftpget 0644 0 0
+file share/bash-completion/completions/desktop-file-validate 0644 0 0
+file share/bash-completion/completions/smbclient 0644 0 0
+file share/bash-completion/completions/lzip 0644 0 0
+file share/bash-completion/completions/webmitm 0644 0 0
+file share/bash-completion/completions/lastlog 0644 0 0
+file share/bash-completion/completions/fusermount 0644 0 0
+file share/bash-completion/completions/luac 0644 0 0
+file share/bash-completion/completions/bk 0644 0 0
+file share/bash-completion/completions/ether-wake 0644 0 0
+file share/bash-completion/completions/medusa 0644 0 0
+file share/bash-completion/completions/ssh 0644 0 0
+file share/bash-completion/completions/tcpkill 0644 0 0
+file share/bash-completion/completions/lftp 0644 0 0
+file share/bash-completion/completions/make 0644 0 0
+file share/bash-completion/completions/lsof 0644 0 0
+file share/bash-completion/completions/qemu 0644 0 0
+file share/bash-completion/completions/arpspoof 0644 0 0
+file share/bash-completion/completions/plague-client 0644 0 0
+file share/bash-completion/completions/luserdel 0644 0 0
+file share/bash-completion/completions/snownews 0644 0 0
+file share/bash-completion/completions/mdadm 0644 0 0
+file share/bash-completion/completions/java 0644 0 0
+file share/bash-completion/completions/sudo 0644 0 0
+file share/bash-completion/completions/genaliases 0644 0 0
+file share/bash-completion/completions/perltidy 0644 0 0
+file share/bash-completion/completions/portupgrade 0644 0 0
+file share/bash-completion/completions/strace 0644 0 0
+file share/bash-completion/completions/find_member 0644 0 0
+file share/bash-completion/completions/chkconfig 0644 0 0
+file share/bash-completion/completions/cardctl 0644 0 0
+file share/bash-completion/completions/autoscan 0644 0 0
+file share/bash-completion/completions/mussh 0644 0 0
+file share/bash-completion/completions/wvdial 0644 0 0
+file share/bash-completion/completions/pyflakes 0644 0 0
+file share/bash-completion/completions/sysctl 0644 0 0
+file share/bash-completion/completions/strings 0644 0 0
+file share/bash-completion/completions/munindoc 0644 0 0
+file share/bash-completion/completions/newlist 0644 0 0
+file share/bash-completion/completions/withlist 0644 0 0
+file share/bash-completion/completions/mii-tool 0644 0 0
+file share/bash-completion/completions/unace 0644 0 0
+file share/bash-completion/completions/freeciv-gtk2 0644 0 0
+file share/bash-completion/completions/geoiplookup 0644 0 0
+file share/bash-completion/completions/pm-powersave 0644 0 0
+file share/bash-completion/completions/vpnc 0644 0 0
+file share/bash-completion/completions/chage 0644 0 0
+file share/bash-completion/completions/sysbench 0644 0 0
+file share/bash-completion/completions/postmap 0644 0 0
+file share/bash-completion/completions/qrunner 0644 0 0
+file share/bash-completion/completions/unshunt 0644 0 0
+file share/bash-completion/completions/arping 0644 0 0
+file share/bash-completion/completions/iscsiadm 0644 0 0
+file share/bash-completion/completions/vipw 0644 0 0
+file share/bash-completion/completions/ss 0644 0 0
+file share/bash-completion/completions/patch 0644 0 0
+file share/bash-completion/completions/pm-is-supported 0644 0 0
+file share/bash-completion/completions/gzip 0644 0 0
+file share/bash-completion/completions/gprof 0644 0 0
+file share/bash-completion/completions/gnokii 0644 0 0
+file share/bash-completion/completions/lpr 0644 0 0
+file share/bash-completion/completions/chgrp 0644 0 0
+file share/bash-completion/completions/file-roller 0644 0 0
+file share/bash-completion/completions/mysql 0644 0 0
+file share/bash-completion/completions/mysqladmin 0644 0 0
+file share/bash-completion/completions/rsync 0644 0 0
+file share/bash-completion/completions/info 0644 0 0
+file share/bash-completion/completions/_modules 0644 0 0
+file share/bash-completion/completions/growisofs 0644 0 0
+file share/bash-completion/completions/kcov 0644 0 0
+file share/bash-completion/completions/appdata-validate 0644 0 0
+file share/bash-completion/completions/minicom 0644 0 0
+file share/bash-completion/completions/_svnadmin 0644 0 0
+file share/bash-completion/completions/zopflipng 0644 0 0
+file share/bash-completion/completions/cvs 0644 0 0
+file share/bash-completion/completions/cvsps 0644 0 0
+file share/bash-completion/completions/pwck 0644 0 0
+file share/bash-completion/completions/add_members 0644 0 0
+file share/bash-completion/completions/unpack200 0644 0 0
+file share/bash-completion/completions/newusers 0644 0 0
+file share/bash-completion/completions/hostname 0644 0 0
+file share/bash-completion/completions/sync_members 0644 0 0
+file share/bash-completion/completions/autoreconf 0644 0 0
+file share/bash-completion/completions/_hwclock 0644 0 0
+file share/bash-completion/completions/kldload 0644 0 0
+file share/bash-completion/completions/_runuser 0644 0 0
+file share/bash-completion/completions/_udevadm 0644 0 0
+file share/bash-completion/completions/groupmems 0644 0 0
+file share/bash-completion/completions/protoc 0644 0 0
+file share/bash-completion/completions/mkinitrd 0644 0 0
+file share/bash-completion/completions/sbcl 0644 0 0
+file share/bash-completion/completions/openssl 0644 0 0
+file share/bash-completion/completions/vmstat 0644 0 0
+file share/bash-completion/completions/dumpdb 0644 0 0
+file share/bash-completion/completions/find 0644 0 0
+file share/bash-completion/completions/rpcdebug 0644 0 0
+file share/bash-completion/completions/xhost 0644 0 0
+file share/bash-completion/completions/wol 0644 0 0
+file share/bash-completion/completions/wine 0644 0 0
+file share/bash-completion/completions/gendiff 0644 0 0
+file share/bash-completion/completions/_nmcli 0644 0 0
+file share/bash-completion/completions/xsltproc 0644 0 0
+file share/bash-completion/completions/xrdb 0644 0 0
+file share/bash-completion/completions/cppcheck 0644 0 0
+file share/bash-completion/completions/pwdx 0644 0 0
+file share/bash-completion/completions/pack200 0644 0 0
+file share/bash-completion/completions/cksfv 0644 0 0
+file share/bash-completion/completions/xz 0644 0 0
+file share/bash-completion/completions/xzdec 0644 0 0
+file share/bash-completion/completions/lvm 0644 0 0
+file share/bash-completion/completions/wget 0644 0 0
+file share/bash-completion/completions/faillog 0644 0 0
+file share/bash-completion/completions/pwgen 0644 0 0
+file share/bash-completion/completions/pyvenv 0644 0 0
+file share/bash-completion/completions/vncviewer 0644 0 0
+file share/bash-completion/completions/file 0644 0 0
+file share/bash-completion/completions/zopfli 0644 0 0
+file share/bash-completion/completions/xmms 0644 0 0
+file share/bash-completion/completions/ncftp 0644 0 0
+file share/bash-completion/completions/getent 0644 0 0
+file share/bash-completion/completions/nproc 0644 0 0
+file share/bash-completion/completions/pkg-config 0644 0 0
+file share/bash-completion/completions/export 0644 0 0
+file share/bash-completion/completions/inject 0644 0 0
+file share/bash-completion/completions/gkrellm 0644 0 0
+file share/bash-completion/completions/htop 0644 0 0
+file share/bash-completion/completions/links 0644 0 0
+file share/bash-completion/completions/xdg-mime 0644 0 0
+file share/bash-completion/completions/xmodmap 0644 0 0
+file share/bash-completion/completions/pidof 0644 0 0
+file share/bash-completion/completions/pngfix 0644 0 0
+file share/bash-completion/completions/mcrypt 0644 0 0
+file share/bash-completion/completions/e2label 0644 0 0
+file share/bash-completion/completions/prelink 0644 0 0
+file share/bash-completion/completions/_dmesg 0644 0 0
+file share/bash-completion/completions/lzop 0644 0 0
+file share/bash-completion/completions/ssh-add 0644 0 0
+file share/bash-completion/completions/chpasswd 0644 0 0
+file share/bash-completion/completions/_su 0644 0 0
+file share/bash-completion/completions/deja-dup 0644 0 0
+file share/bash-completion/completions/iftop 0644 0 0
+file share/bash-completion/completions/dot 0644 0 0
+file share/bash-completion/completions/tcpnice 0644 0 0
+file share/bash-completion/completions/mtx 0644 0 0
+file share/bash-completion/completions/mmsitepass 0644 0 0
+file share/bash-completion/completions/lz4 0644 0 0
+file share/bash-completion/completions/opera 0644 0 0
+file share/bash-completion/completions/evince 0644 0 0
+file share/bash-completion/completions/lsusb 0644 0 0
+file share/bash-completion/completions/check_db 0644 0 0
+file share/bash-completion/completions/pylint 0644 0 0
+file share/bash-completion/completions/perl 0644 0 0
+file share/bash-completion/completions/p4 0644 0 0
+file share/bash-completion/completions/qdbus 0644 0 0
+file share/bash-completion/completions/quota 0644 0 0
+file share/bash-completion/completions/xgamma 0644 0 0
+file share/bash-completion/completions/btdownloadheadless.py 0644 0 0
+file share/bash-completion/completions/valgrind 0644 0 0
+file share/bash-completion/completions/jshint 0644 0 0
+file share/bash-completion/completions/_rfkill 0644 0 0
+file share/bash-completion/completions/list_owners 0644 0 0
+file share/bash-completion/completions/cleanarch 0644 0 0
+file share/bash-completion/completions/xfreerdp 0644 0 0
+file share/bash-completion/completions/adb 0644 0 0
+file share/bash-completion/completions/xrandr 0644 0 0
+file share/bash-completion/completions/timeout 0644 0 0
+file share/bash-completion/completions/sitecopy 0644 0 0
+file share/bash-completion/completions/groupmod 0644 0 0
+file share/bash-completion/completions/idn 0644 0 0
+file share/bash-completion/completions/iptables 0644 0 0
+file share/bash-completion/completions/nmap 0644 0 0
+file share/bash-completion/completions/tshark 0644 0 0
+file share/bash-completion/completions/chown 0644 0 0
+file share/bash-completion/completions/portinstall 0644 0 0
+file share/bash-completion/completions/bind 0644 0 0
+file share/bash-completion/completions/xm 0644 0 0
+file share/bash-completion/completions/xmllint 0644 0 0
+file share/bash-completion/completions/xmlwf 0644 0 0
+file share/bash-completion/completions/gcc 0644 0 0
+file share/bash-completion/completions/koji 0644 0 0
+file share/bash-completion/completions/unrar 0644 0 0
+file share/bash-completion/completions/htpasswd 0644 0 0
+file share/bash-completion/completions/postcat 0644 0 0
+file share/bash-completion/completions/rmlist 0644 0 0
+file share/bash-completion/completions/id 0644 0 0
+file share/bash-completion/completions/mailmanctl 0644 0 0
+file share/bash-completion/completions/dumpe2fs 0644 0 0
+file share/bash-completion/completions/_rtcwake 0644 0 0
+file share/bash-completion/completions/insmod 0644 0 0
+file share/bash-completion/completions/list_lists 0644 0 0
+file share/bash-completion/completions/smartctl 0644 0 0
+file share/bash-completion/completions/_write 0644 0 0
+file share/bash-completion/completions/jpegoptim 0644 0 0
+file share/bash-completion/completions/postconf 0644 0 0
+file share/bash-completion/completions/screen 0644 0 0
+file share/bash-completion/completions/jarsigner 0644 0 0
+file share/bash-completion/completions/pm-hibernate 0644 0 0
+file share/bash-completion/completions/isql 0644 0 0
+file share/bash-completion/completions/munin-node-configure 0644 0 0
+file share/bash-completion/completions/_newgrp 0644 0 0
+file share/bash-completion/completions/eog 0644 0 0
+file share/bash-completion/completions/reportbug 0644 0 0
+file share/bash-completion/completions/iconv 0644 0 0
+file share/bash-completion/completions/_chsh 0644 0 0
+file share/bash-completion/completions/xxd 0644 0 0
+file share/bash-completion/completions/feh 0644 0 0
+file share/bash-completion/completions/acpi 0644 0 0
+file share/bash-completion/completions/alias 0644 0 0
+file share/bash-completion/completions/nethogs 0644 0 0
+file share/bash-completion/completions/pine 0644 0 0
+file share/bash-completion/completions/fbi 0644 0 0
+file share/bash-completion/completions/bzip2 0644 0 0
+file share/bash-completion/completions/munin-run 0644 0 0
+file share/bash-completion/completions/_svn 0644 0 0
+file share/bash-completion/completions/_svnlook 0644 0 0
+file share/bash-completion/completions/jps 0644 0 0
+file share/bash-completion/completions/iwspy 0644 0 0
+file share/bash-completion/completions/configure 0644 0 0
+file share/bash-completion/completions/pdftotext 0644 0 0
+file share/bash-completion/completions/automake 0644 0 0
+file share/bash-completion/completions/fbgs 0644 0 0
+file share/bash-completion/completions/ssh-keygen 0644 0 0
+file share/bash-completion/completions/pgrep 0644 0 0
+file share/bash-completion/completions/ant 0644 0 0
+file share/bash-completion/completions/dsniff 0644 0 0
+file share/bash-completion/completions/tune2fs 0644 0 0
+file share/bash-completion/completions/brctl 0644 0 0
+file share/bash-completion/completions/ssh-copy-id 0644 0 0
+file share/bash-completion/completions/dd 0644 0 0
+file share/bash-completion/completions/dhclient 0644 0 0
+file share/bash-completion/completions/ping 0644 0 0
+file share/bash-completion/completions/grpck 0644 0 0
+file share/bash-completion/completions/monodevelop 0644 0 0
+file share/bash-completion/completions/avctrl 0644 0 0
+file share/bash-completion/completions/rrdtool 0644 0 0
+file share/bash-completion/completions/_ionice 0644 0 0
+file share/bash-completion/completions/lpq 0644 0 0
+file share/bash-completion/completions/autoconf 0644 0 0
+file share/bash-completion/completions/freeciv-server 0644 0 0
+file share/bash-completion/completions/chrpath 0644 0 0
+file share/bash-completion/completions/hddtemp 0644 0 0
+file share/bash-completion/completions/tipc 0644 0 0
+file share/bash-completion/completions/tracepath 0644 0 0
+file share/bash-completion/completions/passwd 0644 0 0
+file share/bash-completion/completions/gpasswd 0644 0 0
+file share/bash-completion/completions/resolvconf 0644 0 0
+file share/bash-completion/completions/lua 0644 0 0
+file share/bash-completion/completions/remove_members 0644 0 0
+file share/bash-completion/completions/xdg-settings 0644 0 0
+file share/bash-completion/completions/_reptyr 0644 0 0
+file share/bash-completion/completions/cpan2dist 0644 0 0
+file share/bash-completion/completions/cfrun 0644 0 0
+file share/bash-completion/completions/javaws 0644 0 0
+file share/bash-completion/completions/function 0644 0 0
+file share/bash-completion/completions/cpio 0644 0 0
+file share/bash-completion/completions/ipsec 0644 0 0
+file share/bash-completion/completions/psql 0644 0 0
+file share/bash-completion/completions/lrzip 0644 0 0
+file share/bash-completion/completions/dict 0644 0 0
+file share/bash-completion/completions/ldapvi 0644 0 0
+file share/bash-completion/completions/ipv6calc 0644 0 0
+file share/bash-completion/completions/cfagent 0644 0 0
+file share/bash-completion/completions/crontab 0644 0 0
+file share/bash-completion/completions/_hexdump 0644 0 0
+file share/bash-completion/completions/iwconfig 0644 0 0
+file share/bash-completion/completions/ccze 0644 0 0
+file share/bash-completion/completions/sh 0644 0 0
+file share/bash-completion/completions/aclocal 0644 0 0
+file share/bash-completion/completions/pycodestyle 0644 0 0
+file share/bash-completion/completions/groupadd 0644 0 0
+file share/bash-completion/completions/tox 0644 0 0
+file share/bash-completion/completions/kill 0644 0 0
+file share/bash-completion/completions/killall 0644 0 0
+file share/bash-completion/completions/python 0644 0 0
+file share/bash-completion/completions/ypmatch 0644 0 0
+file share/bash-completion/completions/watch 0644 0 0
+file share/bash-completion/completions/svk 0644 0 0
+file share/bash-completion/completions/sshfs 0644 0 0
+file share/bash-completion/completions/cryptsetup 0644 0 0
+file share/bash-completion/completions/lzma 0644 0 0
+file share/bash-completion/completions/convert 0644 0 0
+file share/bash-completion/completions/postfix 0644 0 0
+file share/bash-completion/completions/2to3 0644 0 0
+file share/bash-completion/completions/abook 0644 0 0
+file share/bash-completion/completions/mc 0644 0 0
+file share/bash-completion/completions/msynctool 0644 0 0
+file share/bash-completion/completions/_chfn 0644 0 0
+file share/bash-completion/completions/iwpriv 0644 0 0
+file share/bash-completion/completions/dnsspoof 0644 0 0
+file share/bash-completion/completions/macof 0644 0 0
+file share/bash-completion/completions/7z 0644 0 0
+file share/bash-completion/completions/mdtool 0644 0 0
+file share/bash-completion/completions/curl 0644 0 0
+file share/bash-completion/completions/gcl 0644 0 0
+file share/bash-completion/completions/flake8 0644 0 0
+file share/bash-completion/completions/sshow 0644 0 0
+file share/bash-completion/completions/filesnarf 0644 0 0
+file share/bash-completion/completions/ktutil 0644 0 0
+file share/bash-completion/completions/aspell 0644 0 0
+file share/bash-completion/completions/userdel 0644 0 0
+file share/bash-completion/completions/luseradd 0644 0 0
+file share/bash-completion/completions/dselect 0644 0 0
+file share/bash-completion/completions/radvdump 0644 0 0
+file share/bash-completion/completions/man 0644 0 0
+file share/bash-completion/completions/mr 0644 0 0
+file share/bash-completion/completions/mktemp 0644 0 0
+file share/bash-completion/completions/filefrag 0644 0 0
+file share/bash-completion/completions/povray 0644 0 0
+file share/bash-completion/completions/lisp 0644 0 0
+file share/bash-completion/completions/clisp 0644 0 0
+file share/bash-completion/completions/_renice 0644 0 0
+file share/bash-completion/completions/hid2hci 0644 0 0
+file share/bash-completion/completions/mii-diag 0644 0 0
+file share/bash-completion/completions/svcadm 0644 0 0
+file share/bash-completion/completions/lilo 0644 0 0
+file share/bash-completion/completions/postsuper 0644 0 0
+file share/bash-completion/completions/gdb 0644 0 0
+file share/bash-completion/completions/clone_member 0644 0 0
+file share/bash-completion/completions/cancel 0644 0 0
+file share/bash-completion/completions/pwd 0644 0 0
+file share/bash-completion/completions/usermod 0644 0 0
+file share/bash-completion/completions/complete 0644 0 0
+file share/bash-completion/completions/groupdel 0644 0 0
+file share/bash-completion/completions/a2x 0644 0 0
+file share/bash-completion/completions/asciidoc 0644 0 0
+file share/bash-completion/completions/ngrep 0644 0 0
+file share/bash-completion/completions/_repomanage 0644 0 0
+file share/bash-completion/completions/update-alternatives 0644 0 0
+file share/bash-completion/completions/gnatmake 0644 0 0
+file share/bash-completion/completions/cowsay 0644 0 0
+file share/bash-completion/completions/apache2ctl 0644 0 0
+file share/bash-completion/completions/_eject 0644 0 0
+file share/bash-completion/completions/_mock 0644 0 0
+file share/bash-completion/completions/urlsnarf 0644 0 0
+file share/bash-completion/completions/ip 0644 0 0
+file share/bash-completion/completions/genisoimage 0644 0 0
+file share/bash-completion/completions/synclient 0644 0 0
+file share/bash-completion/completions/mutt 0644 0 0
+file share/bash-completion/completions/puppet 0644 0 0
+file share/bash-completion/completions/iwlist 0644 0 0
+file share/bash-completion/completions/chronyc 0644 0 0
+file share/bash-completion/completions/jar 0644 0 0
+file share/bash-completion/completions/_cal 0644 0 0
+file share/bash-completion/completions/nc 0644 0 0
+file share/bash-completion/completions/hcitool 0644 0 0
+file share/bash-completion/completions/kldunload 0644 0 0
+file share/bash-completion/completions/gphoto2 0644 0 0
+file share/bash-completion/completions/pydoc 0644 0 0
+file share/bash-completion/completions/useradd 0644 0 0
+file share/bash-completion/completions/gm 0644 0 0
+file share/bash-completion/completions/getconf 0644 0 0
+file share/bash-completion/completions/bts 0644 0 0
+file share/bash-completion/completions/ccache 0644 0 0
+file share/bash-completion/completions/nslookup 0644 0 0
+file share/bash-completion/completions/rcs 0644 0 0
+file share/bash-completion/completions/optipng 0644 0 0
+file share/bash-completion/completions/tar 0644 0 0
+file share/bash-completion/completions/rdesktop 0644 0 0
+file share/bash-completion/completions/ifup 0644 0 0
+file share/bash-completion/completions/checksec 0644 0 0
+file share/bash-completion/completions/wodim 0644 0 0
+file share/bash-completion/completions/ipmitool 0644 0 0
+file share/bash-completion/completions/oggdec 0644 0 0
+file share/bash-completion/completions/tcpdump 0644 0 0
+file share/bash-completion/completions/hping2 0644 0 0
+file share/bash-completion/completions/sqlite3 0644 0 0
+file share/bash-completion/completions/portsnap 0644 0 0
+file share/bash-completion/completions/lsscsi 0644 0 0
+file share/bash-completion/completions/pv 0644 0 0
+file share/bash-completion/completions/change_pw 0644 0 0
+file share/bash-completion/completions/ri 0644 0 0
+file share/bash-completion/completions/wsimport 0644 0 0
+file share/bash-completion/completions/ldapsearch 0644 0 0
+file share/bash-completion/completions/modprobe 0644 0 0
+file share/bash-completion/completions/iperf 0644 0 0
+file share/bash-completion/completions/k3b 0644 0 0
+file share/bash-completion/completions/check_perms 0644 0 0
+file share/bash-completion/completions/interdiff 0644 0 0
+file share/bash-completion/completions/sshmitm 0644 0 0
+file share/bash-completion/completions/list_admins 0644 0 0
+file share/bash-completion/completions/ebtables 0644 0 0
+file share/bash-completion/completions/config_list 0644 0 0
+file share/bash-completion/completions/py.test 0644 0 0
+file share/bash-completion/completions/munin-update 0644 0 0
+file share/bash-completion/completions/_look 0644 0 0

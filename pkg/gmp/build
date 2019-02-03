@@ -20,7 +20,7 @@ deploy() {
 
 	unfuck_libtool
 	make DESTDIR="$DEPLOY" install
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 

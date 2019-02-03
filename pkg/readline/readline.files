@@ -1,0 +1,6 @@
+file lib/libhistory.so.8.0 0755 0 0
+slink lib/libhistory.so.8 0777 0 0 libhistory.so.8.0
+slink lib/libhistory.so 0777 0 0 libhistory.so.8.0
+file lib/libreadline.so.8.0 0755 0 0
+slink lib/libreadline.so.8 0777 0 0 libreadline.so.8.0
+slink lib/libreadline.so 0777 0 0 libreadline.so.8.0

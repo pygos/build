@@ -1,0 +1,6 @@
+file bin/ntpd 0755 0 0
+file bin/ntpdate 0755 0 0
+file bin/ntpdc 0755 0 0
+file bin/ntp-keygen 0755 0 0
+file bin/ntpq 0755 0 0
+file bin/tickadj 0755 0 0

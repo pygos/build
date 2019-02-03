@@ -1,0 +1,8 @@
+file bin/find 0755 0 0
+file bin/xargs 0755 0 0
+file bin/locate 0755 0 0
+file bin/updatedb 0755 0 0
+file lib/libexec/bigram 0755 0 0
+file lib/libexec/code 0755 0 0
+file lib/libexec/frcode 0755 0 0
+dir var/lib/locate 0755 0 0

@@ -1,0 +1,117 @@
+dir var/lib/hwclock 0755 0 0
+file bin/dmesg 0755 0 0
+file bin/mount 0755 0 0
+file bin/umount 0755 0 0
+file bin/wdctl 0755 0 0
+file bin/mountpoint 0755 0 0
+file bin/lsblk 0755 0 0
+file bin/findmnt 0755 0 0
+file bin/agetty 0755 0 0
+file bin/fstrim 0755 0 0
+file bin/fsfreeze 0755 0 0
+file bin/blkdiscard 0755 0 0
+file bin/blkzone 0755 0 0
+file bin/losetup 0755 0 0
+file bin/hwclock 0755 0 0
+file bin/blkid 0755 0 0
+file bin/findfs 0755 0 0
+file bin/wipefs 0755 0 0
+file bin/blockdev 0755 0 0
+file bin/fdisk 0755 0 0
+file bin/sfdisk 0755 0 0
+file bin/cfdisk 0755 0 0
+file bin/ionice 0755 0 0
+file bin/taskset 0755 0 0
+file bin/hexdump 0755 0 0
+file bin/setterm 0755 0 0
+file bin/lsmem 0755 0 0
+file bin/flock 0755 0 0
+file bin/ipcmk 0755 0 0
+file bin/ipcrm 0755 0 0
+file bin/ipcs 0755 0 0
+file bin/lsipc 0755 0 0
+file bin/renice 0755 0 0
+file bin/eject 0755 0 0
+file bin/prlimit 0755 0 0
+file bin/lscpu 0755 0 0
+file bin/fallocate 0755 0 0
+file bin/namei 0755 0 0
+file bin/lslocks 0755 0 0
+file bin/uuidgen 0755 0 0
+file bin/uuidparse 0755 0 0
+file bin/rename 0755 0 0
+file bin/getopt 0755 0 0
+file bin/fincore 0755 0 0
+file bin/addpart 0755 0 0
+file bin/delpart 0755 0 0
+file bin/ldattach 0755 0 0
+file bin/partx 0755 0 0
+file bin/resizepart 0755 0 0
+file bin/rfkill 0755 0 0
+file bin/rtcwake 0755 0 0
+file lib/libuuid.so.1.3.0 0755 0 0
+slink lib/libuuid.so.1 0777 0 0 libuuid.so.1.3.0
+slink lib/libuuid.so 0777 0 0 libuuid.so.1.3.0
+file lib/libblkid.so.1.1.0 0755 0 0
+slink lib/libblkid.so.1 0777 0 0 libblkid.so.1.1.0
+slink lib/libblkid.so 0777 0 0 libblkid.so.1.1.0
+file lib/libmount.so.1.1.0 0755 0 0
+slink lib/libmount.so.1 0777 0 0 libmount.so.1.1.0
+slink lib/libmount.so 0777 0 0 libmount.so.1.1.0
+file lib/libsmartcols.so.1.1.0 0755 0 0
+slink lib/libsmartcols.so.1 0777 0 0 libsmartcols.so.1.1.0
+slink lib/libsmartcols.so 0777 0 0 libsmartcols.so.1.1.0
+file lib/libfdisk.so.1.1.0 0755 0 0
+slink lib/libfdisk.so.1 0777 0 0 libfdisk.so.1.1.0
+slink lib/libfdisk.so 0777 0 0 libfdisk.so.1.1.0
+dir share/bash-completion 0755 0 0
+dir share/bash-completion/completions 0755 0 0
+file share/bash-completion/completions/blkid 0644 0 0
+file share/bash-completion/completions/fincore 0644 0 0
+file share/bash-completion/completions/findfs 0644 0 0
+file share/bash-completion/completions/findmnt 0644 0 0
+file share/bash-completion/completions/flock 0644 0 0
+file share/bash-completion/completions/getopt 0644 0 0
+file share/bash-completion/completions/hexdump 0644 0 0
+file share/bash-completion/completions/ipcmk 0644 0 0
+file share/bash-completion/completions/ipcrm 0644 0 0
+file share/bash-completion/completions/ipcs 0644 0 0
+file share/bash-completion/completions/lsipc 0644 0 0
+file share/bash-completion/completions/namei 0644 0 0
+file share/bash-completion/completions/prlimit 0644 0 0
+file share/bash-completion/completions/renice 0644 0 0
+file share/bash-completion/completions/wipefs 0644 0 0
+file share/bash-completion/completions/addpart 0644 0 0
+file share/bash-completion/completions/delpart 0644 0 0
+file share/bash-completion/completions/resizepart 0644 0 0
+file share/bash-completion/completions/partx 0644 0 0
+file share/bash-completion/completions/blockdev 0644 0 0
+file share/bash-completion/completions/fdisk 0644 0 0
+file share/bash-completion/completions/sfdisk 0644 0 0
+file share/bash-completion/completions/cfdisk 0644 0 0
+file share/bash-completion/completions/uuidgen 0644 0 0
+file share/bash-completion/completions/uuidparse 0644 0 0
+file share/bash-completion/completions/lsblk 0644 0 0
+file share/bash-completion/completions/lslocks 0644 0 0
+file share/bash-completion/completions/rename 0644 0 0
+file share/bash-completion/completions/ionice 0644 0 0
+file share/bash-completion/completions/taskset 0644 0 0
+file share/bash-completion/completions/eject 0644 0 0
+file share/bash-completion/completions/fallocate 0644 0 0
+file share/bash-completion/completions/hwclock 0644 0 0
+file share/bash-completion/completions/lscpu 0644 0 0
+file share/bash-completion/completions/lsmem 0644 0 0
+file share/bash-completion/completions/losetup 0644 0 0
+file share/bash-completion/completions/mount 0644 0 0
+file share/bash-completion/completions/umount 0644 0 0
+file share/bash-completion/completions/mountpoint 0644 0 0
+file share/bash-completion/completions/wdctl 0644 0 0
+file share/bash-completion/completions/blkdiscard 0644 0 0
+file share/bash-completion/completions/blkzone 0644 0 0
+file share/bash-completion/completions/dmesg 0644 0 0
+file share/bash-completion/completions/fsfreeze 0644 0 0
+file share/bash-completion/completions/fstrim 0644 0 0
+file share/bash-completion/completions/ldattach 0644 0 0
+file share/bash-completion/completions/rfkill 0644 0 0
+file share/bash-completion/completions/rtcwake 0644 0 0
+file share/bash-completion/completions/setterm 0644 0 0

@@ -1,0 +1,14 @@
+file bin/gzip 0755 0 0
+file bin/gunzip 0755 0 0
+file bin/gzexe 0755 0 0
+file bin/zcat 0755 0 0
+file bin/zcmp 0755 0 0
+file bin/zdiff 0755 0 0
+file bin/zegrep 0755 0 0
+file bin/zfgrep 0755 0 0
+file bin/zforce 0755 0 0
+file bin/zgrep 0755 0 0
+file bin/zless 0755 0 0
+file bin/zmore 0755 0 0
+file bin/znew 0755 0 0
+file bin/uncompress 0755 0 0

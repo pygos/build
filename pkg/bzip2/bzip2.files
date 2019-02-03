@@ -1,0 +1,11 @@
+file bin/bzip2 0755 0 0
+file bin/bunzip2 0755 0 0
+file bin/bzcat 0755 0 0
+file bin/bzip2recover 0755 0 0
+file bin/bzgrep 0755 0 0
+file bin/bzmore 0755 0 0
+file bin/bzdiff 0755 0 0
+slink bin/bzegrep 777 0 0 bzgrep
+slink bin/bzfgrep 777 0 0 bzgrep
+slink bin/bzless 777 0 0 bzmore
+slink bin/bzcmp 777 0 0 bzdiff

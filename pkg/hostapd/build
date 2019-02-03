@@ -35,7 +35,7 @@ deploy() {
 	cat_file_override "hostapd.conf" > "$DEPLOY/etc/hostapd.conf"
 
 	make -C hostapd BINDIR=/bin DESTDIR="$DEPLOY" install
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 check_update() {

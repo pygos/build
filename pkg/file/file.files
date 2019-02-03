@@ -1,0 +1,6 @@
+file lib/libmagic.so.1.0.0 0755 0 0
+slink lib/libmagic.so.1 0777 0 0 libmagic.so.1.0.0
+slink lib/libmagic.so 0777 0 0 libmagic.so.1.0.0
+file bin/file 0755 0 0
+dir share/misc 0755 0 0
+file share/misc/magic.mgc 0644 0 0
