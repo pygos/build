@@ -1,35 +1,25 @@
 DEPENDS="bbstatic"
 
 build() {
-	return
+	local INPUT="$1"
+	local DEPLOY="$2"
+
+	mkdir -p ./{dev,lib,bin,sys,proc,newroot,images}
+
+	pkg install -omLD -r "$PKGBUILDDIR" -R "$REPODIR" $DEPENDS
 }
 
 deploy() {
 	local INPUT="$1"
 	local DEPLOY="$2"
 
-	cp "$SCRIPTDIR/pkg/initrd/initrd.skel" "$DEPLOY/init"
-	chmod +x "$DEPLOY/init"
+	cp $SCRIPTDIR/pkg/initrd/*.{desc,files} "$DEPLOY"
 
-	mkdir -p $DEPLOY/{dev,lib,bin,sys,proc,newroot,images}
+	pkg install -R "$REPODIR" -r "$PKGBUILDDIR" -l -F pkg $DEPENDS \
+	    >> "$DEPLOY/initrd.files"
 
-cat > "$DEPLOY/initrd.list" <<_EOF
-dir /dev 0755 0 0
-dir /lib 0775 0 0
-dir /bin 0775 0 0
-dir /sys 0775 0 0
-dir /proc 0775 0 0
-dir /newroot 0775 0 0
-dir /images 0775 0 0
-slink /sbin /bin 0777 0 0
-nod /dev/console 600 0 0 c 5 1
-file /init $DEPLOY/init 0775 0 0
-_EOF
-
-	pkg install -om -R "$REPODIR" -r "$DEPLOY" $DEPENDS
-
-	pkg install -R "$REPODIR" -r "$DEPLOY" -l \
-	    -F initrd $DEPENDS >> "$DEPLOY/initrd.list"
+	echo "file init 0775 0 0 $SCRIPTDIR/pkg/$PKGNAME/initrd.skel" \
+	     >> "$DEPLOY/initrd.files"
 }
 
 check_update() {

@@ -32,8 +32,15 @@ prepare() {
 }
 
 build() {
-	local INITRDLIST="$PKGDEPLOYDIR/initrd/initrd.list"
+	local SOURCE="$1"
+	local DEPLOY="$2"
+
+	local INITRDDIR="$DEPLOY/initrd"
+	local INITRDLIST="$INITRDDIR/initrd.list"
 	local LINUX_CPU=$(get_linux_cpu)
+
+	pkg install -omLD -R "$REPODIR" -r "$INITRDDIR" initrd
+	pkg install -R "$REPODIR" -r "$INITRDDIR" -l -F initrd initrd > "$INITRDLIST"
 
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 
@@ -44,6 +51,8 @@ build() {
 	sed -i "$PKGBUILDDIR/.config" -e 's,^CONFIG_LOCALVERSION=.*,CONFIG_LOCALVERSION="-'${OS_NAME}-${OS_RELEASE}'",'
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" oldconfig
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" -j $NUMJOBS $LINUX_TGT
+
+	rm -rf "$INITRDDIR"
 }
 
 deploy() {
