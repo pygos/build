@@ -1,0 +1,18 @@
+dir include 0755 0 0
+dir include/proc 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+file include/proc/alloc.h
+file include/proc/devname.h
+file include/proc/escape.h
+file include/proc/numa.h
+file include/proc/procps.h
+file include/proc/pwcache.h
+file include/proc/readproc.h
+file include/proc/sig.h
+file include/proc/slab.h
+file include/proc/sysinfo.h
+file include/proc/version.h
+file include/proc/wchan.h
+file include/proc/whattime.h
+file lib/pkgconfig/libprocps.pc

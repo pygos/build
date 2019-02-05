@@ -1,0 +1,2 @@
+name libmnl-dev
+requires libmnl libc-dev

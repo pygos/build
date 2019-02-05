@@ -1,0 +1,2 @@
+name bash-completion-dev
+requires bash-completion bash-dev

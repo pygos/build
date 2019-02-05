@@ -1,0 +1,20 @@
+dir include 0755 0 0
+dir include/lzma 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+file include/lzma.h 0644 0 0
+file include/lzma/base.h 0644 0 0
+file include/lzma/bcj.h 0644 0 0
+file include/lzma/block.h 0644 0 0
+file include/lzma/check.h 0644 0 0
+file include/lzma/container.h 0644 0 0
+file include/lzma/delta.h 0644 0 0
+file include/lzma/filter.h 0644 0 0
+file include/lzma/hardware.h 0644 0 0
+file include/lzma/index.h 0644 0 0
+file include/lzma/index_hash.h 0644 0 0
+file include/lzma/lzma12.h 0644 0 0
+file include/lzma/stream_flags.h 0644 0 0
+file include/lzma/version.h 0644 0 0
+file include/lzma/vli.h 0644 0 0
+file lib/pkgconfig/liblzma.pc

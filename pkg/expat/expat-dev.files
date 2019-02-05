@@ -1,0 +1,7 @@
+dir include 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+file lib/pkgconfig/expat.pc 0644 0 0
+file include/expat.h 0644 0 0
+file include/expat_config.h 0644 0 0
+file include/expat_external.h 0644 0 0

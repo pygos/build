@@ -1,0 +1,75 @@
+dir include 0775 0 0
+dir include/ncurses 0775 0 0
+dir include/ncursesw 0775 0 0
+dir lib 0775 0 0
+dir lib/pkgconfig 0775 0 0
+slink include/ncurses/etip.h 0777 0 0 ../etip.h
+slink include/ncurses/ncurses_dll.h 0777 0 0 ../ncurses_dll.h
+slink include/ncurses/cursslk.h 0777 0 0 ../cursslk.h
+slink include/ncurses/cursesm.h 0777 0 0 ../cursesm.h
+slink include/ncurses/curses.h 0777 0 0 ../curses.h
+slink include/ncurses/cursesp.h 0777 0 0 ../cursesp.h
+slink include/ncurses/term_entry.h 0777 0 0 ../term_entry.h
+slink include/ncurses/unctrl.h 0777 0 0 ../unctrl.h
+slink include/ncurses/cursesf.h 0777 0 0 ../cursesf.h
+slink include/ncurses/tic.h 0777 0 0 ../tic.h
+slink include/ncurses/cursesapp.h 0777 0 0 ../cursesapp.h
+slink include/ncurses/panel.h 0777 0 0 ../panel.h
+slink include/ncurses/term.h 0777 0 0 ../term.h
+slink include/ncurses/form.h 0777 0 0 ../form.h
+slink include/ncurses/menu.h 0777 0 0 ../menu.h
+slink include/ncurses/nc_tparm.h 0777 0 0 ../nc_tparm.h
+slink include/ncurses/ncurses.h 0777 0 0 ../ncurses.h
+slink include/ncurses/eti.h 0777 0 0 ../eti.h
+slink include/ncurses/cursesw.h 0777 0 0 ../cursesw.h
+slink include/ncurses/termcap.h 0777 0 0 ../termcap.h
+slink include/ncurses.h 0777 0 0 curses.h
+slink include/ncursesw/etip.h 0777 0 0 ../etip.h
+slink include/ncursesw/ncurses_dll.h 0777 0 0 ../ncurses_dll.h
+slink include/ncursesw/cursslk.h 0777 0 0 ../cursslk.h
+slink include/ncursesw/cursesm.h 0777 0 0 ../cursesm.h
+slink include/ncursesw/curses.h 0777 0 0 ../curses.h
+slink include/ncursesw/cursesp.h 0777 0 0 ../cursesp.h
+slink include/ncursesw/term_entry.h 0777 0 0 ../term_entry.h
+slink include/ncursesw/unctrl.h 0777 0 0 ../unctrl.h
+slink include/ncursesw/cursesf.h 0777 0 0 ../cursesf.h
+slink include/ncursesw/tic.h 0777 0 0 ../tic.h
+slink include/ncursesw/cursesapp.h 0777 0 0 ../cursesapp.h
+slink include/ncursesw/panel.h 0777 0 0 ../panel.h
+slink include/ncursesw/term.h 0777 0 0 ../term.h
+slink include/ncursesw/form.h 0777 0 0 ../form.h
+slink include/ncursesw/menu.h 0777 0 0 ../menu.h
+slink include/ncursesw/nc_tparm.h 0777 0 0 ../nc_tparm.h
+slink include/ncursesw/ncurses.h 0777 0 0 ../ncurses.h
+slink include/ncursesw/eti.h 0777 0 0 ../eti.h
+slink include/ncursesw/cursesw.h 0777 0 0 ../cursesw.h
+slink include/ncursesw/termcap.h 0777 0 0 ../termcap.h
+file lib/libmenuw.a 0644 0 0
+file lib/pkgconfig/formw.pc 0644 0 0
+file lib/pkgconfig/panelw.pc 0644 0 0
+file lib/pkgconfig/menuw.pc 0644 0 0
+file lib/pkgconfig/ncurses++w.pc 0644 0 0
+file lib/pkgconfig/ncursesw.pc 0644 0 0
+file lib/libpanelw.a 0644 0 0
+file lib/libncurses++w.a 0644 0 0
+file lib/libncursesw.a 0644 0 0
+file lib/libformw.a 0644 0 0
+file include/etip.h 0644 0 0
+file include/ncurses_dll.h 0644 0 0
+file include/cursslk.h 0644 0 0
+file include/cursesm.h 0644 0 0
+file include/curses.h 0644 0 0
+file include/cursesp.h 0644 0 0
+file include/term_entry.h 0644 0 0
+file include/unctrl.h 0644 0 0
+file include/cursesf.h 0644 0 0
+file include/tic.h 0644 0 0
+file include/cursesapp.h 0644 0 0
+file include/panel.h 0644 0 0
+file include/term.h 0644 0 0
+file include/form.h 0644 0 0
+file include/menu.h 0644 0 0
+file include/nc_tparm.h 0644 0 0
+file include/eti.h 0644 0 0
+file include/cursesw.h 0644 0 0
+file include/termcap.h 0644 0 0

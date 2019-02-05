@@ -1,0 +1,13 @@
+dir include 0755 0 0
+dir include/fortify 0755 0 0
+dir include/fortify/sys 0755 0 0
+file include/fortify/fortify-headers.h 0644 0 0
+file include/fortify/poll.h 0644 0 0
+file include/fortify/stdio.h 0644 0 0
+file include/fortify/stdlib.h 0644 0 0
+file include/fortify/string.h 0644 0 0
+file include/fortify/strings.h 0644 0 0
+file include/fortify/unistd.h 0644 0 0
+file include/fortify/wchar.h 0644 0 0
+file include/fortify/sys/select.h 0644 0 0
+file include/fortify/sys/socket.h 0644 0 0

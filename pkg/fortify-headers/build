@@ -15,6 +15,7 @@ build() {
 
 deploy() {
 	make -C "$1" PREFIX="" DESTDIR="$2" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 check_update() {

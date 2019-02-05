@@ -1,0 +1,2 @@
+name gawk-dev
+requires gawk libc-dev

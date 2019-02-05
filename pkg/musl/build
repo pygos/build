@@ -53,7 +53,7 @@ deploy() {
 	cat_file_merge "LDPATH" > "$DEPLOY/LDPATH"
 	cp libssp_nonshared.a "$DEPLOY/lib"
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.desc "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{desc,files} "$DEPLOY"
 
 cat > "$DEPLOY/libc.files" <<_EOF
 file lib/libc.so 0755 0 0 $DEPLOY/lib/libc.so

@@ -1,0 +1,2 @@
+dir include 0755 0 0
+file include/magic.h 0755 0 0

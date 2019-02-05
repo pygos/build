@@ -1,0 +1,13 @@
+dir include 0755 0 0
+dir include/readline 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+file include/readline/chardefs.h 0644 0 0
+file include/readline/history.h 0644 0 0
+file include/readline/keymaps.h 0644 0 0
+file include/readline/readline.h 0644 0 0
+file include/readline/rlconf.h 0644 0 0
+file include/readline/rlstdc.h 0644 0 0
+file include/readline/rltypedefs.h 0644 0 0
+file include/readline/tilde.h 0644 0 0
+file lib/pkgconfig/readline.pc 0644 0 0

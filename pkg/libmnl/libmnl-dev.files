@@ -1,0 +1,6 @@
+dir include 0755 0 0
+dir include/libmnl 0755 0 0
+file include/libmnl/libmnl.h 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+file lib/pkgconfig/libmnl.pc 0644 0 0

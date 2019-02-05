@@ -1,0 +1,2 @@
+name pcre-dev
+requires pcre libc-dev

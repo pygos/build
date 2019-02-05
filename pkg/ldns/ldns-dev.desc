@@ -1,0 +1,2 @@
+name ldns-dev
+requires ldns openssl-dev

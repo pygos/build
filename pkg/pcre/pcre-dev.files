@@ -1,0 +1,12 @@
+dir include 0775 0 0
+dir lib 0775 0 0
+dir lib/pkgconfig 0775 0 0
+file include/pcrecpp.h 0644 0 0
+file include/pcre.h 0644 0 0
+file include/pcreposix.h 0644 0 0
+file include/pcre_stringpiece.h 0644 0 0
+file include/pcre_scanner.h 0644 0 0
+file include/pcrecpparg.h 0644 0 0
+file lib/pkgconfig/libpcreposix.pc 0644 0 0
+file lib/pkgconfig/libpcrecpp.pc 0644 0 0
+file lib/pkgconfig/libpcre.pc 0644 0 0

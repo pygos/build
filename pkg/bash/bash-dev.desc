@@ -1,0 +1,2 @@
+name bash-dev
+requires bash libc-dev ncurses-dev readline-dev
