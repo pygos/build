@@ -60,6 +60,11 @@ build() {
 
 deploy() {
 	make install-gcc install-target-libgcc
+
+	touch "$2/$PKGNAME.files"
+	cat > "$2/$PKGNAME.desc" <<_EOF
+name $PKGNAME
+_EOF
 }
 
 check_update() {

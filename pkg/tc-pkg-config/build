@@ -26,6 +26,11 @@ deploy() {
 	make install
 
 	ln -s pkg-config "$TCDIR/bin/$TARGET-pkg-config"
+
+	touch "$2/$PKGNAME.files"
+	cat > "$2/$PKGNAME.desc" <<_EOF
+name $PKGNAME
+_EOF
 }
 
 check_update() {

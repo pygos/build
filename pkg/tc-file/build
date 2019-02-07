@@ -14,4 +14,9 @@ build() {
 
 deploy() {
 	make install
+
+	touch "$2/$PKGNAME.files"
+	cat > "$2/$PKGNAME.desc" <<_EOF
+name $PKGNAME
+_EOF
 }
