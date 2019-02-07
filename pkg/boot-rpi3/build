@@ -17,4 +17,5 @@ deploy() {
 	rm $DEPLOY/COPYING.linux
 
 	cp "$SCRIPTDIR/pkg/boot-rpi3/config.txt" "$DEPLOY/config.txt"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }

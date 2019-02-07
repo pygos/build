@@ -74,6 +74,7 @@ deploy() {
 		-no-progress -no-xattrs -pf "$DEPLOY/pseudo"
 
 	rm "$DEPLOY/pseudo"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 }
 
 check_update() {

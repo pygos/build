@@ -4,15 +4,7 @@ build() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	mkdir -p "$PKGBUILDDIR/$OS_RELEASE"
-
-	# copy output of immediate dependencies
-	for pkgname in $DEPENDS; do
-		if [ -e "$PKGDEPLOYDIR/$pkgname" ]; then
-			cp -ru ${PKGDEPLOYDIR}/${pkgname}/* \
-				"$PKGBUILDDIR/$OS_RELEASE"
-		fi
-	done
+	pkg install -om -r "$PKGDEPLOYDIR/$OS_RELEASE" -R "$REPODIR" $DEPENDS
 
 	# copy additional files from this package, subsitute filenames
 	local linux_image="$OS_RELEASE/vmlinuz"
