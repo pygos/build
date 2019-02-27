@@ -4,7 +4,7 @@ build() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	pkg install -om -r "$PKGDEPLOYDIR/$OS_RELEASE" -R "$REPODIR" $DEPENDS
+	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" -R "$REPODIR" $DEPENDS
 
 	# copy helper scripts
 	local linux_image="vmlinuz"
@@ -30,6 +30,11 @@ deploy() {
 	local DEPLOY="$2"
 
 	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
+
+	touch "$2/$PKGNAME.files"
+	cat > "$2/$PKGNAME.desc" <<_EOF
+name $PKGNAME
+_EOF
 }
 
 check_update() {

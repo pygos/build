@@ -1,6 +1,7 @@
 # inherit package details from target GMP package
 source "$SCRIPTDIR/pkg/gmp/build"
-DEPENDS=""
+DEPENDS="tc-pkgtool"
+SUBPKG="tc-gmp"
 
 prepare() {
 	return

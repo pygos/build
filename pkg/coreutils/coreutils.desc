@@ -1,2 +1,2 @@
 name coreutils
-requires libc
+requires crt

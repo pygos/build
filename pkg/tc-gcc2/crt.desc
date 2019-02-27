@@ -1,0 +1,2 @@
+name crt
+requires libgcc libc

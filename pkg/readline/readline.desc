@@ -1,2 +1,2 @@
 name readline
-requires ncurses libc
+requires ncurses crt

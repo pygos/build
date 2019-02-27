@@ -1,2 +1,2 @@
 name iw
-requires libnl3 libc
+requires libnl3 crt

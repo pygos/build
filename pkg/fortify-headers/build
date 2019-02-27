@@ -3,7 +3,7 @@ SRCDIR="fortify-headers-$VERSION"
 TARBALL="$SRCDIR.tar.xz"
 URL="http://infraroot.at/pygos"
 SHA256SUM="992af871941317b75b5520485111da14dd1b785dcb45de86244b1f6476182696"
-DEPENDS="linux_headers"
+DEPENDS="linux-dev"
 
 prepare() {
 	return
@@ -15,7 +15,7 @@ build() {
 
 deploy() {
 	make -C "$1" PREFIX="" DESTDIR="$2" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$2"
 }
 
 check_update() {

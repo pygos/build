@@ -3,7 +3,8 @@ SRCDIR="libexpat-${VERSION}/expat"
 TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/libexpat/libexpat/archive"
 SHA256SUM="574499cba22a599393e28d99ecfa1e7fc85be7d6651d543045244d5b561cb7ff"
-DEPENDS="libbsd"
+DEPENDS="libbsd-dev crt-dev"
+SUBPKG="expat expat-dev"
 
 prepare() {
 	autoreconf --force --install --symlink

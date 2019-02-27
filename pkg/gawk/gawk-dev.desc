@@ -1,2 +1,2 @@
 name gawk-dev
-requires gawk libc-dev
+requires gawk crt-dev

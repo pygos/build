@@ -3,7 +3,7 @@ SRCDIR="inetutils-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/inetutils/"
 SHA256SUM="849d96f136effdef69548a940e3e0ec0624fc0c81265296987986a0dd36ded37"
-DEPENDS="ncurses readline"
+DEPENDS="ncurses-dev readline-dev crt-dev"
 
 prepare() {
 	return

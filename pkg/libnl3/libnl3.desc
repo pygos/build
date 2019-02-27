@@ -1,2 +1,2 @@
 name libnl3
-requires libc
+requires crt

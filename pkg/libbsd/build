@@ -4,6 +4,7 @@ TARBALL="${SRCDIR}.tar.xz"
 URL="https://libbsd.freedesktop.org/releases"
 SHA256SUM="56d835742327d69faccd16955a60b6dcf30684a8da518c4eca0ac713b9e0a7a4"
 DEPENDS="toolchain"
+SUBPKG="libbsd libbsd-dev"
 
 prepare() {
 	apply_patches

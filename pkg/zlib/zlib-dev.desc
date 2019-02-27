@@ -1,2 +1,2 @@
 name zlib-dev
-requires libc-dev
+requires zlib crt-dev

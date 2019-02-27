@@ -3,7 +3,8 @@ SRCDIR="procps-ng-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://sourceforge.net/projects/procps-ng/files/Production"
 SHA256SUM="10bd744ffcb3de2d591d2f6acf1a54a7ba070fdcc432a855931a5057149f0465"
-DEPENDS="ncurses"
+DEPENDS="ncurses-dev crt-dev"
+SUBPKG="procps-ng procps-ng-dev"
 
 prepare() {
 	apply_patches

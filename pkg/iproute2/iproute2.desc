@@ -1,2 +1,2 @@
 name iproute2
-requires libmnl libc
+requires libmnl crt

@@ -3,7 +3,7 @@ SRCDIR="init-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
 SHA256SUM="ede42eab34fc339af9e640b2ad0fbf509d567c900611b5866325ad48a44a5159"
-DEPENDS="init-scripts gcron usyslog"
+DEPENDS="toolchain"
 
 prepare() {
 	return

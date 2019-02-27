@@ -1,2 +1,2 @@
 name libnftnl
-requires libmnl
+requires libmnl crt

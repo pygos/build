@@ -18,4 +18,7 @@ procps-ng
 psmisc
 file
 init
+init-scripts
+gcron
+usyslog
 tzdata

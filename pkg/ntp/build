@@ -3,7 +3,7 @@ SRCDIR="ntp-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2"
 SHA256SUM="709b222b5013d77d26bfff532b5ea470a8039497ef29d09363931c036cb30454"
-DEPENDS="openssl zlib readline"
+DEPENDS="openssl-dev zlib-dev readline-dev crt-dev"
 
 prepare() {
 	return

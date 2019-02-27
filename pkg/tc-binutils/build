@@ -3,7 +3,7 @@ SRCDIR="binutils-$VERSION"
 TARBALL="binutils-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/binutils"
 SHA256SUM="5d20086ecf5752cc7d9134246e9588fa201740d540f7eb84d795b1f7a93bca86"
-DEPENDS=""
+DEPENDS="tc-pkgtool"
 
 prepare() {
 	apply_patches

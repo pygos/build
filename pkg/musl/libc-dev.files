@@ -222,14 +222,13 @@ file include/err.h 0644 0 0
 file include/glob.h 0644 0 0
 file include/ctype.h 0644 0 0
 file include/nl_types.h 0644 0 0
-dir lib 0755
+dir lib 0755 0 0
 file lib/crt1.o 0644 0 0
 file lib/libm.a 0644 0 0
 file lib/libc.a 0644 0 0
 file lib/libpthread.a 0644 0 0
 file lib/librt.a 0644 0 0
 file lib/libssp_nonshared.a 0664 0 0
-file lib/libc.so 0755 0 0
 file lib/rcrt1.o 0644 0 0
 file lib/libresolv.a 0644 0 0
 file lib/crti.o 0644 0 0

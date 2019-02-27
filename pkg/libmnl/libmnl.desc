@@ -1,2 +1,2 @@
 name libmnl
-requires libc
+requires crt

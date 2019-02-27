@@ -1,2 +1,2 @@
 name sqlite3
-requires libc readline
+requires crt readline

@@ -1,6 +1,6 @@
 # inherit package details from kernel package
 source "$SCRIPTDIR/pkg/firmware-rpi3/build"
-DEPENDS=""
+DEPENDS="toolchain"
 
 build() {
 	return

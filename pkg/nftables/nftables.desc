@@ -1,2 +1,2 @@
 name nftables
-requires libmnl libnftnl gmp readline ncurses libc
+requires libmnl libnftnl gmp readline ncurses crt

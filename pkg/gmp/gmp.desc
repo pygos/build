@@ -1,2 +1,2 @@
 name gmp
-requires libc
+requires crt

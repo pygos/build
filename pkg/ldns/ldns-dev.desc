@@ -1,2 +1,2 @@
 name ldns-dev
-requires ldns openssl-dev
+requires ldns openssl-dev crt-dev

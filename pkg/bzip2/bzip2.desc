@@ -1,2 +1,2 @@
 name bzip2
-requires libc
+requires crt

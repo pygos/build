@@ -3,7 +3,7 @@ SRCDIR="mpc-$VERSION"
 TARBALL="mpc-$VERSION.tar.gz"
 URL="http://ftp.gnu.org/gnu/mpc"
 SHA256SUM="6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
-DEPENDS=""
+DEPENDS="tc-pkgtool"
 
 prepare() {
 	return

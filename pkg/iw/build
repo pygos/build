@@ -3,7 +3,7 @@ SRCDIR="iw-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://mirrors.edge.kernel.org/pub/software/network/iw"
 SHA256SUM="f01671c0074bfdec082a884057edba1b9efd35c89eda554638496f03b769ad89"
-DEPENDS="libnl3"
+DEPENDS="libnl3-dev crt-dev"
 
 prepare() {
 	return

@@ -28,6 +28,8 @@ PKGDEPLOYDIR="$BUILDROOT/$PRODUCT/deploy"
 PKGLOGDIR="$BUILDROOT/$PRODUCT/log"
 PACKAGELIST="$BUILDROOT/$PRODUCT/pkglist"
 REPODIR="$BUILDROOT/$PRODUCT/repo"
+DEPENDSLIST="$BUILDROOT/$PRODUCT/depends"
+PROVIDESLIST="$BUILDROOT/$PRODUCT/provides"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR" "$PKGDEPLOYDIR"
 mkdir -p "$REPODIR"
@@ -38,10 +40,8 @@ OS_RELEASE=$(git describe --always --tags --dirty)
 popd > /dev/null
 
 ############################# include utilities ##############################
-source "$SCRIPTDIR/util/depends.sh"
 source "$SCRIPTDIR/util/download.sh"
 source "$SCRIPTDIR/util/pkgcmd.sh"
-source "$SCRIPTDIR/util/toolchain.sh"
 source "$SCRIPTDIR/util/misc.sh"
 source "$SCRIPTDIR/util/override.sh"
 source "$SCRIPTDIR/util/autotools.sh"
@@ -61,8 +61,22 @@ CMAKETCFILE="$TCDIR/toolchain.cmake"
 ############################### build packages ###############################
 echo "--- resolving package dependencies ---"
 
-include_pkg "$RELEASEPKG"
-dependencies | tsort | tac > "$PACKAGELIST"
+g++ "$SCRIPTDIR/util/depgraph.cpp" -o "$TCDIR/bin/depgraph"
+
+truncate -s 0 $DEPENDSLIST $PROVIDESLIST
+
+for pkg in $SCRIPTDIR/pkg/*; do
+	include_pkg $(basename $pkg)
+
+	for DEP in $SUBPKG; do
+		echo "$PKGNAME,$DEP" >> "$PROVIDESLIST"
+	done
+	for DEP in $DEPENDS; do
+		echo "$PKGNAME,$DEP" >> "$DEPENDSLIST"
+	done
+done
+
+depgraph "$PROVIDESLIST" "$DEPENDSLIST" "$RELEASEPKG" > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading package files ---"
@@ -77,22 +91,24 @@ echo "--- building packages ---"
 while read pkg; do
 	if [ ! -e "$PKGLOGDIR/.$pkg" ]; then
 		include_pkg "$pkg"
-		install_build_deps
+
+		rm -rf "$TCDIR/$TARGET"
+		mkdir -p "$TCDIR/$TARGET"
+
+		if [ ! -z "$DEPENDS" ]; then
+			pkg install -omD -r "$TCDIR/$TARGET" -R "$REPODIR" $DEPENDS
+		fi
+
 		run_pkg_command "build"
 		run_pkg_command "deploy"
 		deploy_dev_cleanup "$PKGDEPLOYDIR/$PKGNAME"
 		strip_files ${PKGDEPLOYDIR}/${PKGNAME}/{bin,lib}
-		restore_toolchain
 
-		if [ -d "$PKGDEPLOYDIR/$PKGNAME" ]; then
-			for f in $PKGDEPLOYDIR/$PKGNAME/*.desc; do
-				if [ ! -f "$f" ]; then
-					continue
-				fi
-
-				pkg pack -r "$REPODIR" -d "$f" -l $PKGDEPLOYDIR/$PKGNAME/$(basename "$f" .desc).files
-			done
-		fi
+		for f in $SUBPKG; do
+			pkg pack -r "$REPODIR" \
+			    -d "$PKGDEPLOYDIR/$PKGNAME/${f}.desc" \
+			    -l "$PKGDEPLOYDIR/$PKGNAME/${f}.files"
+		done
 
 		rm -rf "$PKGBUILDDIR"
 		touch "$PKGLOGDIR/.$pkg"

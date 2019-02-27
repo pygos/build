@@ -1,2 +1,2 @@
 name lzo-dev
-requires libc
+requires lzo crt-dev

@@ -1,2 +1,2 @@
 name libbsd
-requires libc
+requires crt

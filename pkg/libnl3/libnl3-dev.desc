@@ -1,2 +1,2 @@
 name libnl3-dev
-requires libnl3 libc-dev
+requires libnl3 crt-dev

@@ -1,2 +1,2 @@
 name util-linux-dev
-requires bash-dev ncurses-dev zlib-dev
+requires util-linux bash-dev ncurses-dev zlib-dev crt-dev

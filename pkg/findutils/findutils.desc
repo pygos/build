@@ -1,2 +1,2 @@
 name findutils
-requires libc
+requires crt

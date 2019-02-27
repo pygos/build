@@ -1,2 +1,2 @@
 name psmisc
-requires ncurses libc
+requires ncurses crt

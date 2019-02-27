@@ -1,3 +1,6 @@
+dir bin 0755 0 0
+dir etc 0755 0 0
+dir etc/skel 0755 0 0
 file bin/bash 0755 0 0
 file etc/bashrc 0644 0 0
 file etc/profile 0644 0 0

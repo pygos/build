@@ -1,2 +1,2 @@
 name ldns
-requires openssl libc
+requires openssl crt

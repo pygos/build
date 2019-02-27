@@ -1,2 +1,2 @@
 name expat
-requires libbsd libc
+requires libbsd crt

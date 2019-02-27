@@ -1,2 +1,2 @@
 name tar
-requires xz gzip bzip2
+requires xz gzip bzip2 crt

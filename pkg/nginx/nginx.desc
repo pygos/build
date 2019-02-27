@@ -1,2 +1,2 @@
 name nginx
-requires zlib openssl pcre libc
+requires zlib openssl pcre crt

@@ -3,7 +3,7 @@ SRCDIR="firmware-${VERSION}"
 TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/firmware/archive"
 SHA256SUM="eccb3221fe5fbf9e44e7d1a79b2f401eb7527a41fb8ea7fe7231bc188a8ff50b"
-DEPENDS=""
+DEPENDS="toolchain"
 
 prepare() {
 	return

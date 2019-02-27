@@ -1,2 +1,2 @@
 name readline-dev
-requires ncurses-dev
+requires readline ncurses-dev crt-dev

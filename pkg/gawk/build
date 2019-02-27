@@ -4,6 +4,7 @@ TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/gawk/"
 SHA256SUM="d1119785e746d46a8209d28b2de404a57f983aa48670f4e225531d3bdc175551"
 DEPENDS="toolchain"
+SUBPKG="gawk gawk-dev"
 
 prepare() {
 	return

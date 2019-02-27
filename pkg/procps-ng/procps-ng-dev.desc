@@ -1,2 +1,2 @@
 name procps-ng-dev
-requires ncurses-dev
+requires procps-ng ncurses-dev crt-dev

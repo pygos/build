@@ -1,8 +1,14 @@
+dir lib 0755 0 0
 dir lib/gawk 0755 0 0
+dir share 0755 0 0
 dir share/awk 0755 0 0
+dir lib/libexec 0755 0 0
 dir lib/libexec/awk 0755 0 0
+dir bin 0755 0 0
 file bin/gawk 0755 0 0
 slink bin/awk 0777 0 0 gawk
+dir share 0755 0 0
+dir share/awk 0755 0 0
 file share/awk/passwd.awk 0644 0 0
 file share/awk/group.awk 0644 0 0
 file share/awk/assert.awk 0644 0 0
@@ -43,4 +49,6 @@ file lib/gawk/rwarray.so 0755 0 0
 file lib/gawk/time.so 0755 0 0
 file lib/libexec/awk/pwcat 0755 0 0
 file lib/libexec/awk/grcat 0755 0 0
+dir etc 0755 0 0
+dir etc/profile.d 0755 0 0
 file etc/profile.d/gawk.sh 0644 0 0

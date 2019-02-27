@@ -1,1 +1,2 @@
 name libgcc-dev
+requires libgcc

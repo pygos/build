@@ -1,3 +1,4 @@
+dir share 0755 0 0
 dir share/tabset 0755 0 0
 file share/tabset/std 0644 0 0
 file share/tabset/stdcrt 0644 0 0
@@ -70,6 +71,7 @@ slink lib/libformw.so 0777 0 0 libformw.so.6.1
 slink lib/terminfo 0777 0 0 /share/terminfo
 slink lib/libtinfo.so 0777 0 0 libncursesw.so.6.1
 slink lib/libtinfo.so.6.1 0777 0 0 libncursesw.so.6.1
+dir bin 0755 0 0
 file bin/tic 0755 0 0
 file bin/toe 0755 0 0
 slink bin/infotocap 0777 0 0 tic

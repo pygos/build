@@ -3,7 +3,7 @@ SRCDIR="psmisc-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://sourceforge.net/projects/psmisc/files/psmisc"
 SHA256SUM="4b7cbffdc9373474da49b85dc3457ae511c43dc7fa7d94513fe06f89dcb87880"
-DEPENDS="ncurses"
+DEPENDS="ncurses-dev crt-dev"
 
 prepare() {
 	return

@@ -1,2 +1,2 @@
 name pcre
-requires libc
+requires crt

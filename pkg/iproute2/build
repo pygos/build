@@ -3,7 +3,8 @@ SRCDIR="iproute2-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/net/iproute2/"
 SHA256SUM="c8adaa6a40f888476b23acb283cfa30c0dd55f07b5aa20663ed5ba2ef1f6fda8"
-DEPENDS="libmnl"
+DEPENDS="libmnl-dev crt-dev"
+SUBPKG="iproute2 iproute2-dev"
 
 prepare() {
 	apply_patches

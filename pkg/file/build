@@ -3,7 +3,8 @@ SRCDIR="file-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="ftp://ftp.astron.com/pub/file"
 SHA256SUM="30c45e817440779be7aac523a905b123cba2a6ed0bf4f5439e1e99ba940b5546"
-DEPENDS="zlib"
+DEPENDS="zlib-dev crt-dev"
+SUBPKG="file file-dev"
 
 prepare() {
 	return

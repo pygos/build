@@ -4,6 +4,7 @@ TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
 SHA256SUM="d7cf8a0edd7b0d9c926e4fb9b5d7adb3ca951df244806a99a7430be4e6d2a899"
 DEPENDS="toolchain"
+SUBPKG="tzdata tzdata-dev"
 
 prepare() {
 	sed -i 's/sbin/bin/g' Makefile

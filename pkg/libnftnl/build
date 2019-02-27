@@ -3,7 +3,8 @@ SRCDIR="libnftnl-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://netfilter.org/projects/libnftnl/files"
 SHA256SUM="a5c7b7a6c13c9c5898b13fcb1126fefce2015d5a96d7c354b19aaa40b6aece5d"
-DEPENDS="libmnl"
+DEPENDS="libmnl-dev crt-dev"
+SUBPKG="libnftnl libnftnl-dev"
 
 prepare() {
 	return

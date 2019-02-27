@@ -1,6 +1,7 @@
 # inherit package details from first stage GCC
 source "$SCRIPTDIR/pkg/tc-gcc1/build"
-DEPENDS="tc-gcc1 musl linux_headers tc-pkgtool"
+DEPENDS="tc-gcc1 libc-dev linux-dev"
+SUBPKG="crt libgcc libgcc-dev crt-dev"
 
 build() {
 	local extra="--disable-libssp"

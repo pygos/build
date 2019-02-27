@@ -1,6 +1,9 @@
 dir etc/init.d 0755 0 0
 dir etc/netcfg 0755 0 0
+dir lib 0755 0 0
+dir lib/libexec 0755 0 0
 dir lib/libexec/init 0755 0 0
+dir share 0755 0 0
 dir share/init 0755 0 0
 slink etc/init.d/devfs 0777 0 0 /share/init/devfs
 slink etc/init.d/gcrond 0777 0 0 /share/init/gcrond

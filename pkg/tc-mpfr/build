@@ -3,7 +3,7 @@ SRCDIR="mpfr-$VERSION"
 TARBALL="mpfr-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/mpfr"
 SHA256SUM="67874a60826303ee2fb6affc6dc0ddd3e749e9bfcb4c8655e3953d0458a6e16e"
-DEPENDS=""
+DEPENDS="tc-pkgtool"
 
 prepare() {
 	return

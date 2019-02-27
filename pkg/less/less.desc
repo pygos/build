@@ -1,2 +1,2 @@
 name less
-requires ncurses libc
+requires ncurses crt

@@ -1,2 +1,2 @@
 name inetutils
-requires libc ncurses readline
+requires crt ncurses readline

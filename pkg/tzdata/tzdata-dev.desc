@@ -1,2 +1,2 @@
 name tzdata-dev
-requires libc-dev
+requires tzdata crt-dev

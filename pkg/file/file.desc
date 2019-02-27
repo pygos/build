@@ -1,2 +1,2 @@
 name file
-requires zlib libc
+requires zlib crt

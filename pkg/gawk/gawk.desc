@@ -1,2 +1,2 @@
 name gawk
-requires libc
+requires crt

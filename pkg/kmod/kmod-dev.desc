@@ -1,2 +1,2 @@
 name kmod-dev
-requires kmod libc-dev zlib-dev xz-dev
+requires kmod crt-dev zlib-dev xz-dev

@@ -5,4 +5,6 @@ file bin/updatedb 0755 0 0
 file lib/libexec/bigram 0755 0 0
 file lib/libexec/code 0755 0 0
 file lib/libexec/frcode 0755 0 0
+dir var 0755 0 0
+dir var/lib 0755 0 0
 dir var/lib/locate 0755 0 0

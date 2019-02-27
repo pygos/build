@@ -3,7 +3,8 @@ SRCDIR="ldns-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.nlnetlabs.nl/downloads/ldns"
 SHA256SUM="c19f5b1b4fb374cfe34f4845ea11b1e0551ddc67803bd6ddd5d2a20f0997a6cc"
-DEPENDS="openssl"
+DEPENDS="openssl-dev crt-dev"
+SUBPKG="ldns ldns-dev"
 
 prepare() {
 	return

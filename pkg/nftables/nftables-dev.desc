@@ -1,2 +1,2 @@
 name nftables-dev
-requires libmnl-dev libnftnl-dev gmp-dev readline-dev ncurses-dev
+requires nftables libmnl-dev libnftnl-dev gmp-dev readline-dev ncurses-dev crt-dev

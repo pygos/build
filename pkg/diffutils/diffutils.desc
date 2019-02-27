@@ -1,2 +1,2 @@
 name diffutils
-requires libc
+requires crt

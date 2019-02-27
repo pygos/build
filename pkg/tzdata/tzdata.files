@@ -1,4 +1,6 @@
+dir bin 0755 0 0
 file bin/tzselect 0755 0 0
+dir share 0755 0 0
 slink share/zoneinfo-posix 0777 0 0 zoneinfo
 dir share/zoneinfo-leaps 0755 0 0
 dir share/zoneinfo-leaps/Indian 0755 0 0

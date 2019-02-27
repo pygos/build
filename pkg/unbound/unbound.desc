@@ -1,2 +1,2 @@
 name unbound
-requires openssl expat libbsd libc
+requires openssl expat libbsd crt

@@ -1,4 +1,4 @@
-DEPENDS="tc-gcc2 musl linux_headers tc-pkg-config tc-file tc-pkgtool"
+DEPENDS="crt-dev tc-pkg-config tc-file tc-pkgtool"
 
 build() {
 	return
@@ -21,11 +21,11 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 _EOF
-	save_toolchain
 
 	touch "$2/$PKGNAME.files"
 	cat > "$2/$PKGNAME.desc" <<_EOF
 name $PKGNAME
+requires $DEPENDS
 _EOF
 }
 

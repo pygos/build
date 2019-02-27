@@ -1,3 +1,5 @@
+dir var 0755 0 0
+dir var/lib 0755 0 0
 dir var/lib/hwclock 0755 0 0
 file bin/dmesg 0755 0 0
 file bin/mount 0755 0 0

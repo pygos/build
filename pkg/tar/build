@@ -3,7 +3,7 @@ SRCDIR="tar-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/tar/"
 SHA256SUM="37f3ef1ceebd8b7e1ebf5b8cc6c65bb8ebf002c7d049032bf456860f25ec2dc1"
-DEPENDS="xz gzip bzip2"
+DEPENDS="toolchain"
 
 prepare() {
 	return

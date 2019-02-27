@@ -3,7 +3,7 @@ SRCDIR="nginx-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://nginx.org/download"
 SHA256SUM="a8bdafbca87eb99813ae4fcac1ad0875bf725ce19eb265d28268c309b2b40787"
-DEPENDS="zlib openssl pcre"
+DEPENDS="zlib-dev openssl-dev pcre-dev crt-dev"
 
 prepare() {
 	apply_patches

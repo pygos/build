@@ -1,2 +1,2 @@
 name zlib
-requires libc
+requires crt

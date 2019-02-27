@@ -1,6 +1,7 @@
 # inherit package details from kernel package
 source "$SCRIPTDIR/pkg/$LINUXPKG/build"
-DEPENDS=""
+DEPENDS="tc-pkgtool"
+SUBPKG="linux-dev"
 
 build() {
 	local LINUX_CPU=$(get_linux_cpu)
@@ -14,4 +15,6 @@ deploy() {
 
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" INSTALL_HDR_PATH="$2" headers_install
+
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$2"
 }

@@ -1,5 +1,6 @@
 source "$SCRIPTDIR/pkg/file/build"
-DEPENDS=""
+DEPENDS="tc-pkgtool"
+SUBPKG="tc-file"
 
 prepare() {
 	return

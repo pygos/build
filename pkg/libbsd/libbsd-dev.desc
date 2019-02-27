@@ -1,2 +1,2 @@
 name libbsd-dev
-requires libbsd libc-dev
+requires libbsd crt-dev

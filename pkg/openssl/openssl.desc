@@ -1,2 +1,2 @@
 name openssl
-requires zlib libc
+requires zlib crt

@@ -1,2 +1,2 @@
 name util-linux
-requires bash ncurses zlib libc
+requires bash ncurses zlib crt

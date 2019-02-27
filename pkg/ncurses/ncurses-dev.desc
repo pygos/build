@@ -1,2 +1,2 @@
 name ncurses-dev
-requires libc-dev
+requires ncurses crt-dev

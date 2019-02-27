@@ -1,2 +1,3 @@
+dir bin 0755 0 0
 file bin/busybox 0755 0 0
 slink bin/sh 0777 0 0 /bin/busybox

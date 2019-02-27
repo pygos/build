@@ -3,7 +3,8 @@ SRCDIR="musl-$VERSION"
 TARBALL="$SRCDIR.tar.gz"
 URL="https://www.musl-libc.org/releases"
 SHA256SUM="44be8771d0e6c6b5f82dd15662eb2957c9a3173a19a8b49966ac0542bbd40d61"
-DEPENDS="tc-gcc1 linux_headers fortify-headers tc-pkgtool"
+DEPENDS="tc-gcc1 linux-dev fortify-headers tc-pkgtool"
+SUBPKG="libc libc-dev"
 
 prepare() {
 	return
@@ -56,6 +57,8 @@ deploy() {
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{desc,files} "$DEPLOY"
 
 cat > "$DEPLOY/libc.files" <<_EOF
+dir lib 0755 0 0
+dir etc 0755 0 0
 file lib/libc.so 0755 0 0 $DEPLOY/lib/libc.so
 slink lib/ld-musl-${MUSL_CPU}.so.1 0777 0 0 libc.so
 file etc/ld-musl-${MUSL_CPU}.path 0644 0 0 $DEPLOY/LDPATH

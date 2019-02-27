@@ -3,7 +3,8 @@ SRCDIR="bash-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/bash/"
 SHA256SUM="b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d"
-DEPENDS="ncurses readline"
+DEPENDS="ncurses-dev readline-dev crt-dev"
+SUBPKG="bash bash-dev"
 
 prepare() {
 	apply_patches

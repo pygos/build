@@ -1,2 +1,2 @@
 name xz-dev
-requires libc-dev
+requires xz crt-dev

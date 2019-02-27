@@ -1,2 +1,2 @@
 name dhcpcd
-requires libc
+requires crt

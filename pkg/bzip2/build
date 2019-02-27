@@ -4,6 +4,7 @@ TARBALL="bzip2_${VERSION}.orig.tar.bz2"
 URL="https://snapshot.debian.org/archive/debian/20111204T160411Z/pool/main/b/bzip2"
 SHA256SUM="d70a9ccd8bdf47e302d96c69fecd54925f45d9c7b966bb4ef5f56b770960afa7"
 DEPENDS="toolchain"
+SUBPKG="bzip2-dev bzip2"
 
 prepare() {
 	return

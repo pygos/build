@@ -3,7 +3,8 @@ SRCDIR="bash-completion-upstream-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://salsa.debian.org/debian/bash-completion/-/archive/upstream/${VERSION}/"
 SHA256SUM="50985e7f1a1adc8e05cbea56f0f9753b5600f6ea176b42583184f300b1eed5ea"
-DEPENDS="bash"
+DEPENDS="bash bash-dev"
+SUBPKG="bash-completion bash-completion-dev"
 
 prepare() {
 	autoreconf --force --install --symlink

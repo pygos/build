@@ -1,2 +1,2 @@
 name gzip
-requires libc
+requires crt

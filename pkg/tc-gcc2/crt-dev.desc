@@ -1,0 +1,2 @@
+name crt-dev
+requires crt libgcc-dev libc-dev

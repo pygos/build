@@ -1,2 +1,2 @@
 name iproute2-dev
-requires iproute2 libmnl-dev
+requires iproute2 libmnl-dev crt-dev

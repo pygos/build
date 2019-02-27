@@ -1,2 +1,2 @@
 name libc-dev
-requires libgcc-dev linux-dev fortify-headers-dev
+requires libc linux-dev fortify-headers
