@@ -1,2 +1,2 @@
 name btrfs-progs
-requires util-linux zlib lzo crt
+requires libuuid libblkid zlib lzo crt

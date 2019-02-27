@@ -1,2 +1,2 @@
 name util-linux
-requires bash ncurses zlib crt
+requires bash ncurses zlib crt libblkid libfdisk libmount libsmartcols libuuid

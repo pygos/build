@@ -1,0 +1,2 @@
+name libmount-dev
+requires libmount libblkid-dev libuuid-dev crt-dev

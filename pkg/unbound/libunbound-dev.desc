@@ -1,0 +1,2 @@
+name libunbound-dev
+requires libunbound openssl-dev expat-dev libbsd-dev crt-dev

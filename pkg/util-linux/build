@@ -4,7 +4,7 @@ TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/util-linux/v$VERSION/"
 SHA256SUM="f261b9d73c35bfeeea04d26941ac47ee1df937bd3b0583e748217c1ea423658a"
 DEPENDS="bash-dev ncurses-dev zlib-dev crt-dev"
-SUBPKG="util-linux util-linux-dev"
+SUBPKG="libblkid libblkid-dev libfdisk libfdisk-dev libmount libmount-dev libsmartcols libsmartcols-dev libuuid libuuid-dev util-linux"
 
 prepare() {
 	apply_patches

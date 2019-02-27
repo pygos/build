@@ -3,7 +3,7 @@ SRCDIR="btrfs-progs-v${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs"
 SHA256SUM="04d82af5cf479d139299a8f13ec0921f9578ca444e81ec0202f01a20d2bcefb8"
-DEPENDS="util-linux-dev zlib-dev lzo-dev crt-dev"
+DEPENDS="libuuid-dev libblkid-dev zlib-dev lzo-dev crt-dev"
 SUBPKG="btrfs-progs-dev btrfs-progs"
 
 prepare() {

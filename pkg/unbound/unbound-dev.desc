@@ -1,2 +1,0 @@
-name unbound-dev
-requires unbound openssl-dev expat-dev libbsd-dev crt-dev

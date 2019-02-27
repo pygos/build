@@ -1,2 +1,2 @@
 name btrfs-progs-dev
-requires btrfs-progs util-linux-dev zlib-dev lzo-dev crt-dev
+requires btrfs-progs libuuid-dev libblkid-dev zlib-dev lzo-dev crt-dev

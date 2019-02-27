@@ -1,0 +1,2 @@
+file lib/libsmartcols.so.1.1.0 0755 0 0
+slink lib/libsmartcols.so.1 0777 0 0 libsmartcols.so.1.1.0

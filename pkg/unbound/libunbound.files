@@ -1,0 +1,7 @@
+dir lib 0755 0 0
+file lib/libunbound.so.8.0.3 0755 0 0
+slink lib/libunbound.so.8 m 777 0 0 libunbound.so.8.0.3
+dir etc 0755 0 0
+dir etc/unbound 0755 52 52
+file etc/unbound/unbound.conf 0644 52 52
+file etc/unbound/root.key 0644 52 52

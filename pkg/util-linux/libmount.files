@@ -1,0 +1,2 @@
+file lib/libmount.so.1.1.0 0755 0 0
+slink lib/libmount.so.1 0777 0 0 libmount.so.1.1.0

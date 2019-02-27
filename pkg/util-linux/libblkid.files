@@ -1,0 +1,2 @@
+file lib/libblkid.so.1.1.0 0755 0 0
+slink lib/libblkid.so.1 0777 0 0 libblkid.so.1.1.0

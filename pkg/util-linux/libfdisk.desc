@@ -1,0 +1,2 @@
+name libfdisk
+requires crt libuuid libblkid

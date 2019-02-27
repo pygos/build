@@ -1,0 +1,2 @@
+name libfdisk-dev
+requires libfdisk crt-dev libuuid-dev libblkid-dev
