@@ -1,3 +1,2 @@
 slink lib/libpcap.so.1 0777 0 0 libpcap.so.1.9.0
-slink lib/libpcap.so 0777 0 0 libpcap.so.1.9.0
 file lib/libpcap.so.1.9.0 0755 0 0

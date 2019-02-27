@@ -58,18 +58,13 @@ file share/terminfo/x/xterm-nic 0644 0 0
 file share/terminfo/x/xterm-r6 0644 0 0
 file lib/libncursesw.so.6.1 0755 0 0
 slink lib/libncursesw.so.6 0777 0 0 libncursesw.so.6.1
-slink lib/libncursesw.so 0777 0 0 libncursesw.so.6.1
 file lib/libpanelw.so.6.1 0755 0 0
 slink lib/libpanelw.so.6 0777 0 0 libpanelw.so.6.1
-slink lib/libpanelw.so 0777 0 0 libpanelw.so.6.1
 file lib/libmenuw.so.6.1 0755 0 0
 slink lib/libmenuw.so.6 0777 0 0 libmenuw.so.6.1
-slink lib/libmenuw.so 0777 0 0 libmenuw.so.6.1
 file lib/libformw.so.6.1 0755 0 0
 slink lib/libformw.so.6 0777 0 0 libformw.so.6.1
-slink lib/libformw.so 0777 0 0 libformw.so.6.1
 slink lib/terminfo 0777 0 0 /share/terminfo
-slink lib/libtinfo.so 0777 0 0 libncursesw.so.6.1
 slink lib/libtinfo.so.6.1 0777 0 0 libncursesw.so.6.1
 dir bin 0755 0 0
 file bin/tic 0755 0 0

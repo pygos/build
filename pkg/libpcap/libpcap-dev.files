@@ -20,3 +20,4 @@ file include/pcap/can_socketcan.h 0644 0 0
 file include/pcap/namedb.h 0644 0 0
 file include/pcap-namedb.h 0644 0 0
 file lib/pkgconfig/libpcap.pc 0644 0 0
+slink lib/libpcap.so 0777 0 0 libpcap.so.1.9.0

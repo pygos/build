@@ -1,18 +1,13 @@
 dir etc/libnl 0755 0 0
 file etc/libnl/classid 0644 0 0
 file etc/libnl/pktloc 0644 0 0
-slink lib/libnl-3.so 0777 0 0 libnl-3.so.200.20.0
 slink lib/libnl-3.so.200 0777 0 0 libnl-3.so.200.20.0
 file lib/libnl-3.so.200.20.0 0755 0 0
-slink lib/libnl-idiag-3.so 0777 0 0 libnl-idiag-3.so.200.20.0
 slink lib/libnl-idiag-3.so.200 0777 0 0 libnl-idiag-3.so.200.20.0
 file lib/libnl-idiag-3.so.200.20.0 0755 0 0
-slink lib/libnl-route-3.so 0777 0 0 libnl-route-3.so.200.20.0
 slink lib/libnl-route-3.so.200 0777 0 0 libnl-route-3.so.200.20.0
 file lib/libnl-route-3.so.200.20.0 0755 0 0
-slink lib/libnl-genl-3.so 0777 0 0 libnl-genl-3.so.200.20.0
 slink lib/libnl-genl-3.so.200 0777 0 0 libnl-genl-3.so.200.20.0
 file lib/libnl-genl-3.so.200.20.0 0755 0 0
-slink lib/libnl-nf-3.so 0777 0 0 libnl-nf-3.so.200.20.0
 slink lib/libnl-nf-3.so.200 0777 0 0 libnl-nf-3.so.200.20.0
 file lib/libnl-nf-3.so.200.20.0 0755 0 0

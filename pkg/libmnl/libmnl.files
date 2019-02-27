@@ -1,3 +1,2 @@
 file lib/libmnl.so.0.2.0 0755 0 0
 slink lib/libmnl.so.0 0777 0 0 libmnl.so.0.2.0
-slink lib/libmnl.so 0777 0 0 libmnl.so.0.2.0

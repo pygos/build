@@ -1,6 +1,5 @@
 file lib/libunbound.so.8.0.3 0755 0 0
 slink lib/libunbound.so.8 m 777 0 0 libunbound.so.8.0.3
-slink lib/libunbound.so m 777 0 0 libunbound.so.8.0.3
 file bin/unbound 0755 0 0
 file bin/unbound-checkconf 0755 0 0
 file bin/unbound-control 0755 0 0

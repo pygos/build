@@ -111,3 +111,5 @@ file lib/libssl.a 0644 0 0
 file lib/pkgconfig/libcrypto.pc 0644 0 0
 file lib/pkgconfig/libssl.pc 0644 0 0
 file lib/pkgconfig/openssl.pc 0644 0 0
+slink lib/libcrypto.so 0777 0 0 libcrypto.so.1.1
+slink lib/libssl.so 0777 0 0 libssl.so.1.1

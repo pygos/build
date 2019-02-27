@@ -34,3 +34,4 @@ file include/ldns/update.h 0644 0 0
 file include/ldns/util.h 0644 0 0
 file include/ldns/wire2host.h 0644 0 0
 file include/ldns/zone.h 0644 0 0
+slink lib/libldns.so 0777 0 0 libldns.so.2.0.0

@@ -1,6 +1,5 @@
 file lib/libprocps.so.7.1.0 0755 0 0
 slink lib/libprocps.so.7 0777 0 0 libprocps.so.7.1.0
-slink lib/libprocps.so 0777 0 0 libprocps.so.7.1.0
 file bin/ps 0755 0 0
 file bin/free 0755 0 0
 file bin/pgrep 0755 0 0

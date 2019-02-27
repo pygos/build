@@ -5,3 +5,4 @@ file include/zconf.h 0644 0 0
 file include/zlib.h 0644 0 0
 file lib/libz.a 0644 0 0
 file lib/pkgconfig/zlib.pc 0644 0 0
+slink lib/libz.so 0777 0 0 libz.so.1.2.11

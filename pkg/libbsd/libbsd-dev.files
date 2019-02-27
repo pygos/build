@@ -31,3 +31,4 @@ file include/bsd/getopt.h 0644 0 0
 file include/bsd/err.h 0644 0 0
 file lib/pkgconfig/libbsd-overlay.pc 0644 0 0
 file lib/pkgconfig/libbsd.pc 0644 0 0
+slink lib/libbsd.so 0777 0 0 libbsd.so.0.9.1

@@ -4,3 +4,4 @@ file lib/pkgconfig/libnftables.pc 0644 0 0
 dir include 0755 0 0
 dir include/nftables 0755 0 0
 file include/nftables/libnftables.h 0644 0 0
+slink lib/libnftables.so 0777 0 0 libnftables.so.0.0.0

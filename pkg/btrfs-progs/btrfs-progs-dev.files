@@ -18,3 +18,5 @@ file include/btrfs/send-utils.h 0644 0 0
 file include/btrfs/sizes.h 0644 0 0
 file include/btrfs/version.h 0644 0 0
 file include/btrfsutil.h 0644 0 0
+slink lib/libbtrfs.so 0777 0 0 libbtrfs.so.0.1
+slink lib/libbtrfsutil.so 0777 0 0 libbtrfsutil.so.1.1.0

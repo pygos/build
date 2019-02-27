@@ -18,3 +18,4 @@ file include/lzma/stream_flags.h 0644 0 0
 file include/lzma/version.h 0644 0 0
 file include/lzma/vli.h 0644 0 0
 file lib/pkgconfig/liblzma.pc 0644 0 0
+slink lib/liblzma.so 0777 0 0 liblzma.so.5.2.4

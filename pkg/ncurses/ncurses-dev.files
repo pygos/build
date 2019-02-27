@@ -73,3 +73,8 @@ file include/nc_tparm.h 0644 0 0
 file include/eti.h 0644 0 0
 file include/cursesw.h 0644 0 0
 file include/termcap.h 0644 0 0
+slink lib/libtinfo.so 0777 0 0 libncursesw.so.6.1
+slink lib/libformw.so 0777 0 0 libformw.so.6.1
+slink lib/libmenuw.so 0777 0 0 libmenuw.so.6.1
+slink lib/libpanelw.so 0777 0 0 libpanelw.so.6.1
+slink lib/libncursesw.so 0777 0 0 libncursesw.so.6.1

@@ -16,3 +16,4 @@ file include/lzo/lzo2a.h 0644 0 0
 file include/lzo/lzo_asm.h 0644 0 0
 file include/lzo/lzo1c.h 0644 0 0
 file lib/pkgconfig/lzo2.pc 0644 0 0
+slink lib/liblzo2.so 0777 0 0 liblzo2.so.2.0.0

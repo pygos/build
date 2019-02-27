@@ -1,8 +1,6 @@
 dir lib 0755 0 0
 file lib/libcrypto.so.1.1 0755 0 0
-slink lib/libcrypto.so 0777 0 0 libcrypto.so.1.1
 file lib/libssl.so.1.1 0755 0 0
-slink lib/libssl.so 0777 0 0 libssl.so.1.1
 dir lib/engines-1.1 0755 0 0
 file lib/engines-1.1/capi.so 0755 0 0
 file lib/engines-1.1/padlock.so 0755 0 0

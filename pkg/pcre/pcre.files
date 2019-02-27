@@ -1,9 +1,6 @@
-slink lib/libpcre.so 0777 0 0 libpcre.so.1.2.10
 slink lib/libpcre.so.1 0777 0 0 libpcre.so.1.2.10
 file lib/libpcre.so.1.2.10 0755 0 0
-slink lib/libpcrecpp.so 0777 0 0 libpcrecpp.so.0.0.1
 slink lib/libpcrecpp.so.0 0777 0 0 libpcrecpp.so.0.0.1
 file lib/libpcrecpp.so.0.0.1 0755 0 0
-slink lib/libpcreposix.so 0777 0 0 libpcreposix.so.0.0.6
 slink lib/libpcreposix.so.0 0777 0 0 libpcreposix.so.0.0.6
 file lib/libpcreposix.so.0.0.6 0755 0 0

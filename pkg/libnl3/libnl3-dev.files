@@ -108,3 +108,8 @@ file lib/pkgconfig/libnl-genl-3.0.pc 0644 0 0
 file lib/pkgconfig/libnl-3.0.pc 0644 0 0
 file lib/pkgconfig/libnl-route-3.0.pc 0644 0 0
 file lib/pkgconfig/libnl-nf-3.0.pc 0644 0 0
+slink lib/libnl-idiag-3.so 0777 0 0 libnl-idiag-3.so.200.20.0
+slink lib/libnl-3.so 0777 0 0 libnl-3.so.200.20.0
+slink lib/libnl-nf-3.so 0777 0 0 libnl-nf-3.so.200.20.0
+slink lib/libnl-genl-3.so 0777 0 0 libnl-genl-3.so.200.20.0
+slink lib/libnl-route-3.so 0777 0 0 libnl-route-3.so.200.20.0

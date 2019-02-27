@@ -1,6 +1,4 @@
 file lib/libgmp.so.10.3.2 0755 0 0
 file lib/libgmpxx.so.4.5.2 0755 0 0
 slink lib/libgmp.so.10 0777 0 0 libgmp.so.10.3.2
-slink lib/libgmp.so 0777 0 0 libgmp.so.10.3.2
 slink lib/libgmpxx.so.4 0777 0 0 libgmpxx.so.4.5.2
-slink lib/libgmpxx.so 0777 0 0 libgmpxx.so.4.5.2
