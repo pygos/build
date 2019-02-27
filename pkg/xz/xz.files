@@ -1,3 +1,5 @@
+dir lib 0755 0 0
+dir bin 0755 0 0
 file lib/liblzma.so.5.2.4 0755 0 0
 slink lib/liblzma.so.5 0777 0 0 liblzma.so.5.2.4
 file bin/xzdec 0755 0 0

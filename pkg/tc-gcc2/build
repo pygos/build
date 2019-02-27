@@ -52,4 +52,40 @@ deploy() {
 	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
 	rm ${DEPLOY}/lib/*.la
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+
+	cat >> "$DEPLOY/libgcc-dev.files" <<_EOF
+dir include/c++/8.2.0/$TARGET 0775 0 0
+dir include/c++/8.2.0/$TARGET/bits 0775 0 0
+dir include/c++/8.2.0/$TARGET/ext 0775 0 0
+file include/c++/8.2.0/$TARGET/bits/stdtr1c++.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/gthr-single.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/ctype_inline.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/gthr-posix.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/ctype_base.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/c++io.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/gthr.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/c++locale.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/cpu_defines.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/c++config.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/atomic_word.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/os_defines.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/time_members.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/basic_file.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/gthr-default.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/cxxabi_tweaks.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/opt_random.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/extc++.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/stdc++.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/c++allocator.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/error_constants.h 0644 0 0
+file include/c++/8.2.0/$TARGET/bits/messages_members.h 0644 0 0
+file include/c++/8.2.0/$TARGET/ext/opt_random.h 0644 0 0
+_EOF
+
+	if [ -f "$DEPLOY/lib/libmpx.a" ]; then
+		cat >> "$DEPLOY/libgcc-dev.files" <<_EOF
+file lib/libmpx.a 0644 0 0
+file lib/libmpxwrappers.a 0644 0 0
+_EOF
+	fi
 }

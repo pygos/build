@@ -86,13 +86,13 @@ deploy() {
 		echo "dir srv/www 0755 0 0" >> "$DEPLOY/nginx.files"
 
 		find -H "$DEPLOY/srv/www" -type d -printf "dir %p 0%m 0 0\\n" |\
-			tail -n +2 | sed "s#^$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+			tail -n +2 | sed "s#$DEPLOY/##g" >> "$DEPLOY/nginx.files"
 
 		find -H "$DEPLOY/srv/www" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
-			sed "s#^$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+			sed "s#$DEPLOY/##g" >> "$DEPLOY/nginx.files"
 
 		find -H "$DEPLOY/srv/www" -type f -printf "file %p 0%m 0 0\\n" |\
-			sed "s#^$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+			sed "s#$DEPLOY/##g" >> "$DEPLOY/nginx.files"
 	fi
 
 	cat_file_override "nginx.conf" > "$DEPLOY/etc/nginx/nginx.conf"
