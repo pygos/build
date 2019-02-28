@@ -3,8 +3,8 @@ SRCDIR="gmp-$VERSION"
 TARBALL="gmp-$VERSION.tar.bz2"
 URL="http://ftp.gnu.org/gnu/gmp"
 SHA256SUM="5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2"
-DEPENDS="toolchain"
-SUBPKG="gmp gmp-dev"
+DEPENDS="toolchain libstdc++-dev"
+SUBPKG="gmp gmp-dev gmp++ gmp++-dev"
 
 prepare() {
 	return

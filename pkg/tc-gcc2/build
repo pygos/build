@@ -1,7 +1,7 @@
 # inherit package details from first stage GCC
 source "$SCRIPTDIR/pkg/tc-gcc1/build"
 DEPENDS="tc-gcc1 libc-dev linux-dev"
-SUBPKG="crt libgcc libgcc-dev crt-dev"
+SUBPKG="crt libstdc++ libstdc++-dev libgcc libgcc-dev crt-dev"
 
 build() {
 	local extra="--disable-libssp"
@@ -53,7 +53,10 @@ deploy() {
 	rm ${DEPLOY}/lib/*.la
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 
-	cat >> "$DEPLOY/libgcc-dev.files" <<_EOF
+	cat >> "$DEPLOY/libstdc++-dev.files" <<_EOF
+dir include 0755 0 0
+dir include/c++ 0755 0 0
+dir include/c++/8.2.0 0755 0 0
 dir include/c++/8.2.0/$TARGET 0775 0 0
 dir include/c++/8.2.0/$TARGET/bits 0775 0 0
 dir include/c++/8.2.0/$TARGET/ext 0775 0 0

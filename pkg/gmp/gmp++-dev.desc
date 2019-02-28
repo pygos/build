@@ -1,0 +1,2 @@
+name gmp++-dev
+requires gmp gmp++ crt-dev libstdc++-dev

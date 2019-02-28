@@ -48,10 +48,8 @@ file lib/libmenuw.a 0644 0 0
 file lib/pkgconfig/formw.pc 0644 0 0
 file lib/pkgconfig/panelw.pc 0644 0 0
 file lib/pkgconfig/menuw.pc 0644 0 0
-file lib/pkgconfig/ncurses++w.pc 0644 0 0
 file lib/pkgconfig/ncursesw.pc 0644 0 0
 file lib/libpanelw.a 0644 0 0
-file lib/libncurses++w.a 0644 0 0
 file lib/libncursesw.a 0644 0 0
 file lib/libformw.a 0644 0 0
 file include/etip.h 0644 0 0

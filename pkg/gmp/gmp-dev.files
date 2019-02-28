@@ -1,5 +1,4 @@
 dir include 0755 0 0
+dir lib 0755 0 0
 file include/gmp.h 0755 0 0
-file include/gmpxx.h 0755 0 0
 slink lib/libgmp.so 0777 0 0 libgmp.so.10.3.2
-slink lib/libgmpxx.so 0777 0 0 libgmpxx.so.4.5.2

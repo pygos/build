@@ -1,0 +1,2 @@
+name ncurses++-dev
+requires ncurses ncurses-dev crt-dev libstdc++-dev
