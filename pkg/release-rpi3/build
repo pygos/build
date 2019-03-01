@@ -4,7 +4,7 @@ build() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	pkg install -om -r "$PKGDEPLOYDIR/boot" -R "$REPODIR" $DEPENDS
+	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" $DEPENDS
 
 	# copy files from this package
 	cp "$SCRIPTDIR/pkg/$PKGNAME/cmdline.txt" "$PKGBUILDDIR/boot"
@@ -28,6 +28,11 @@ deploy() {
 	local DEPLOY="$2"
 
 	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
+
+	touch "$2/$PKGNAME.files"
+	cat > "$2/$PKGNAME.desc" <<_EOF
+name $PKGNAME
+_EOF
 }
 
 check_update() {

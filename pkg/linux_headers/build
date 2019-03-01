@@ -16,5 +16,16 @@ deploy() {
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 	make -C "$1" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" INSTALL_HDR_PATH="$2" headers_install
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$2"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/linux-dev.desc" "$2"
+
+	echo "dir include 0755 0 0" > "$2/linux-dev.files"
+
+	find -H "$2/include" -type d -printf "dir %p 0%m 0 0\\n" |\
+		tail -n +2 | sed "s#$2/##g" >> "$2/linux-dev.files"
+
+	find -H "$2/include" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
+		sed "s#$2/##g" >> "$2/linux-dev.files"
+
+	find -H "$2/include" -type f -printf "file %p 0%m 0 0\\n" |\
+		sed "s#$2/##g" >> "$2/linux-dev.files"
 }
