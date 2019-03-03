@@ -18,6 +18,8 @@ build() {
 		     --enable-c99 --enable-long-long \
 		     --enable-libmudflap --disable-multilib \
 		     --disable-libsanitizer --disable-libquadmath \
+		     --with-as="$TCDIR/bin/$TARGET-as" \
+		     --with-ld="$TCDIR/bin/$TARGET-ld" \
 		     --with-arch="$GCC_CPU" $extra $GCC_EXTRACFG \
 		     --with-native-system-header-dir="/include"
 

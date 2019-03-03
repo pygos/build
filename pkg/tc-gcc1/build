@@ -53,6 +53,8 @@ build() {
 		     --disable-libatomic \
 		     --disable-libquadmath --disable-threads \
 		     --enable-languages=c --with-newlib \
+		     --with-as="$TCDIR/bin/$TARGET-as" \
+		     --with-ld="$TCDIR/bin/$TARGET-ld" \
 		     --with-arch="$GCC_CPU" $extra $GCC_EXTRACFG
 
 	make -j $NUMJOBS all-gcc all-target-libgcc
