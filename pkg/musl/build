@@ -39,6 +39,9 @@ deploy() {
 	x86_64-*)
 		MUSL_CPU="x86_64"
 		;;
+	arm-*-*hf)
+		MUSL_CPU="armhf"
+		;;
 	arm-*)
 		MUSL_CPU="arm"
 		;;
