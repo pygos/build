@@ -31,7 +31,7 @@ REPODIR="$BUILDROOT/$PRODUCT/repo"
 DEPENDSLIST="$BUILDROOT/$PRODUCT/depends"
 PROVIDESLIST="$BUILDROOT/$PRODUCT/provides"
 
-mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR" "$PKGDEPLOYDIR"
+mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
 mkdir -p "$REPODIR"
 
 pushd "$SCRIPTDIR" > /dev/null
@@ -101,16 +101,16 @@ while read pkg; do
 
 		run_pkg_command "build"
 		run_pkg_command "deploy"
-		deploy_dev_cleanup "$PKGDEPLOYDIR/$PKGNAME"
-		strip_files ${PKGDEPLOYDIR}/${PKGNAME}/{bin,lib}
+		deploy_dev_cleanup "$PKGDEPLOYDIR"
+		strip_files ${PKGDEPLOYDIR}/{bin,lib}
 
 		for f in $SUBPKG; do
 			pkg pack -r "$REPODIR" \
-			    -d "$PKGDEPLOYDIR/$PKGNAME/${f}.desc" \
-			    -l "$PKGDEPLOYDIR/$PKGNAME/${f}.files"
+			    -d "$PKGDEPLOYDIR/${f}.desc" \
+			    -l "$PKGDEPLOYDIR/${f}.files"
 		done
 
-		rm -rf "$PKGBUILDDIR"
+		rm -rf "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 		touch "$PKGLOGDIR/.$pkg"
 	fi
 done < "$PACKAGELIST"

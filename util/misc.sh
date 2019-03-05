@@ -41,7 +41,7 @@ deploy_dev_cleanup() {
 }
 
 unfuck_libtool() {
-	local libdir="$PKGDEPLOYDIR/$PKGNAME/lib"
+	local libdir="$PKGDEPLOYDIR/lib"
 	local f
 
 	for f in $(find $PKGBUILDDIR -type f -name '*.la' -o -name '*.lai'); do

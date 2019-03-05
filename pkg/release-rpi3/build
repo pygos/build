@@ -27,7 +27,7 @@ deploy() {
 	local SOURCE="$1"
 	local DEPLOY="$2"
 
-	tar czf "$DEPLOY/$PKGNAME.tar.gz" *
+	tar czf "$BUILDROOT/$PRODUCT/$PKGNAME.tar.gz" *
 
 	touch "$2/$PKGNAME.files"
 	cat > "$2/$PKGNAME.desc" <<_EOF
