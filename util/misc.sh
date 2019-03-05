@@ -29,13 +29,13 @@ strip_files() {
 deploy_dev_cleanup() {
 	local f
 
-	if [ -d "$1/share/pkgconfig" ]; then
-		mkdir -p "$1/lib/pkgconfig"
-		mv $1/share/pkgconfig/* "$1/lib/pkgconfig"
-		rmdir "$1/share/pkgconfig"
+	if [ -d "$PKGDEPLOYDIR/share/pkgconfig" ]; then
+		mkdir -p "$PKGDEPLOYDIR/lib/pkgconfig"
+		mv $PKGDEPLOYDIR/share/pkgconfig/* "$PKGDEPLOYDIR/lib/pkgconfig"
+		rmdir "$PKGDEPLOYDIR/share/pkgconfig"
 	fi
 
-	for f in ${1}/lib/*.la; do
+	for f in $PKGDEPLOYDIR/lib/*.la; do
 		[ ! -e "$f" ] || rm "$f"
 	done
 }

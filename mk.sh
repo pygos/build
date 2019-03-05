@@ -101,7 +101,7 @@ while read pkg; do
 
 		run_pkg_command "build"
 		run_pkg_command "deploy"
-		deploy_dev_cleanup "$PKGDEPLOYDIR"
+		deploy_dev_cleanup
 		strip_files ${PKGDEPLOYDIR}/{bin,lib}
 
 		for f in $SUBPKG; do

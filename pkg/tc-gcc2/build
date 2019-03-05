@@ -34,7 +34,6 @@ deploy() {
 
 	mkdir -p "$DEPLOY/lib"
 	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
-	deploy_dev_cleanup "$DEPLOY"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 
 	cat >> "$DEPLOY/libstdc++-dev.files" <<_EOF
