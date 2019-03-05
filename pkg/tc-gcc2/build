@@ -32,27 +32,9 @@ deploy() {
 
 	make install
 
-	local f dep
-
-	for f in $(ls ${TCDIR}/${TARGET}/include); do
-		for dep in $DEPENDS; do
-			if [ -e ${PKGDEPLOYDIR}/${dep}/include/$f ]; then
-				rm -rf "$TCDIR/$TARGET/include/$f"
-			fi
-		done
-	done
-
-	for f in $(ls ${TCDIR}/${TARGET}/lib); do
-		for dep in $DEPENDS; do
-			if [ -e ${PKGDEPLOYDIR}/${dep}/lib/$f ]; then
-				rm -rf "$TCDIR/$TARGET/lib/$f"
-			fi
-		done
-	done
-
 	mkdir -p "$DEPLOY/lib"
 	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
-	rm ${DEPLOY}/lib/*.la
+	deploy_dev_cleanup "$DEPLOY"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
 
 	cat >> "$DEPLOY/libstdc++-dev.files" <<_EOF
