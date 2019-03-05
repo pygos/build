@@ -22,4 +22,6 @@ run_pkg_command() {
 	pushd "$PKGBUILDDIR" > /dev/null
 	$FUNCTION "$SRC" "$PKGDEPLOYDIR" &>> "$LOGFILE" < /dev/null
 	popd > /dev/null
+
+	gzip "$LOGFILE"
 }
