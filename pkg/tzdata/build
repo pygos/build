@@ -20,8 +20,6 @@ deploy() {
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
 	sed -i 's@/usr@@g' "$PKGDEPLOYDIR/bin/tzselect"
-	rm "$PKGDEPLOYDIR/bin/zdump"
-	rm "$PKGDEPLOYDIR/bin/zic"
 }
 
 check_update() {

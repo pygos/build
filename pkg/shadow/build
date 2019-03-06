@@ -25,7 +25,6 @@ deploy() {
 	# *hrmpf*
 	if [ -e "$PKGDEPLOYDIR/sbin" ]; then
 		mv ${PKGDEPLOYDIR}/sbin/* "$PKGDEPLOYDIR/bin"
-		rmdir "$PKGDEPLOYDIR/sbin"
 	fi
 }
 

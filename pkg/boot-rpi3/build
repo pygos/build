@@ -11,9 +11,6 @@ deploy() {
 
 	cp -r ${SOURCE}/boot/* "$PKGDEPLOYDIR/"
 
-	rm "$PKGDEPLOYDIR/kernel7.img" "$PKGDEPLOYDIR/kernel.img"
-	rm "$PKGDEPLOYDIR/COPYING.linux"
-
 	cp "$SCRIPTDIR/pkg/boot-rpi3/config.txt" "$PKGDEPLOYDIR/config.txt"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }

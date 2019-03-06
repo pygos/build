@@ -23,8 +23,7 @@ deploy() {
 
 	make DESTDIR="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
-	mkdir -p "$PKGDEPLOYDIR/var/lib/sshd"
-	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$PKGDEPLOYDIR/bin"
+	cp "$SOURCE/contrib/ssh-copy-id" "$PKGDEPLOYDIR/bin"
 
 	cat_file_override "sshd_config" > "$PKGDEPLOYDIR/etc/sshd_config"
 }

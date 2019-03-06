@@ -21,21 +21,9 @@ build() {
 deploy() {
 	make DESTDIR="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
-	rm "$PKGDEPLOYDIR/bin/ncursesw6-config"
 	mkdir -p "$PKGDEPLOYDIR/include/ncurses"
 
-	for hdr in ${PKGDEPLOYDIR}/include/ncursesw/*.h; do
-		local fname=$(basename $hdr)
-		local target="../$fname"
-
-		mv "$hdr" "${PKGDEPLOYDIR}/include"
-		ln -s "$target" "${PKGDEPLOYDIR}/include/ncursesw/${fname}"
-		ln -s "$target" "${PKGDEPLOYDIR}/include/ncurses/${fname}"
-	done
-
-	ln -s "libncursesw.so.$VERSION" "$PKGDEPLOYDIR/lib/libtinfo.so"
-	ln -s "libncursesw.so.$VERSION" "$PKGDEPLOYDIR/lib/libtinfo.so.$VERSION"
-	ln -s "libncursesw.a" "$PKGDEPLOYDIR/lib/libtinfo.a"
+	mv ${PKGDEPLOYDIR}/include/ncursesw/*.h "$PKGDEPLOYDIR/include"
 }
 
 check_update() {

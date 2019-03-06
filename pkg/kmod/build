@@ -16,14 +16,8 @@ build() {
 }
 
 deploy() {
-	local target
-
 	make DESTDIR="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
-
-	for target in depmod insmod lsmod modinfo modprobe rmmod; do
-		ln -sf kmod $PKGDEPLOYDIR/bin/$target
-	done
 }
 
 check_update() {

@@ -28,13 +28,6 @@ build() {
 
 deploy() {
 	make PREFIX="$PKGDEPLOYDIR" install
-
-	rm ${PKGDEPLOYDIR}/bin/{bzegrep,bzfgrep,bzless,bzcmp}
-
-	ln -s "/bin/bzgrep" "$PKGDEPLOYDIR/bin/bzegrep"
-	ln -s "/bin/bzgrep" "$PKGDEPLOYDIR/bin/bzfgrep"
-	ln -s "/bin/bzmore" "$PKGDEPLOYDIR/bin/bzless"
-	ln -s "/bin/bzdiff" "$PKGDEPLOYDIR/bin/bzcmp"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 

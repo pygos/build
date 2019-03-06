@@ -18,7 +18,6 @@ build() {
 
 deploy() {
 	make DESTDIR="$PKGDEPLOYDIR" install
-	ln -sv bash "$PKGDEPLOYDIR/bin/sh"
 
 	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGDEPLOYDIR"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
