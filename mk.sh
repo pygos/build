@@ -92,8 +92,8 @@ while read pkg; do
 	if [ ! -e "$PKGLOGDIR/.$pkg" ]; then
 		include_pkg "$pkg"
 
-		rm -rf "$TCDIR/$TARGET"
-		mkdir -p "$TCDIR/$TARGET"
+		rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
+		mkdir -p "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 
 		if [ ! -z "$DEPENDS" ]; then
 			pkg install -omD -r "$TCDIR/$TARGET" -R "$REPODIR" $DEPENDS
@@ -110,7 +110,7 @@ while read pkg; do
 			    -l "$PKGDEPLOYDIR/${f}.files"
 		done
 
-		rm -rf "$PKGBUILDDIR" "$PKGDEPLOYDIR"
+		rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 		touch "$PKGLOGDIR/.$pkg"
 	fi
 done < "$PACKAGELIST"

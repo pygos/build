@@ -17,8 +17,6 @@ run_pkg_command() {
 
 	echo "$PKGNAME - $FUNCTION"
 
-	mkdir -p "$PKGBUILDDIR" "$PKGDEPLOYDIR"
-
 	pushd "$PKGBUILDDIR" > /dev/null
 	$FUNCTION "$SRC" &>> "$LOGFILE" < /dev/null
 	popd > /dev/null
