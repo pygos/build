@@ -10,7 +10,7 @@ fi
 PRODUCT="$1"
 
 ################################ basic setup ################################
-BUILDROOT=$(pwd)
+BUILDROOT="$(pwd)/$PRODUCT"
 SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 NUMJOBS=$(grep -e "^processor" /proc/cpuinfo | wc -l)
 
@@ -21,15 +21,15 @@ if [ ! -f "$LAYERCONF" ]; then
 	exit 1
 fi
 
-PKGSRCDIR="$BUILDROOT/src"
-PKGDOWNLOADDIR="$BUILDROOT/download"
-PKGBUILDDIR="$BUILDROOT/$PRODUCT/build"
-PKGDEPLOYDIR="$BUILDROOT/$PRODUCT/deploy"
-PKGLOGDIR="$BUILDROOT/$PRODUCT/log"
-PACKAGELIST="$BUILDROOT/$PRODUCT/pkglist"
-REPODIR="$BUILDROOT/$PRODUCT/repo"
-DEPENDSLIST="$BUILDROOT/$PRODUCT/depends"
-PROVIDESLIST="$BUILDROOT/$PRODUCT/provides"
+PKGSRCDIR="$(pwd)/src"
+PKGDOWNLOADDIR="$(pwd)/download"
+PKGBUILDDIR="$BUILDROOT/build"
+PKGDEPLOYDIR="$BUILDROOT/deploy"
+PKGLOGDIR="$BUILDROOT/log"
+PACKAGELIST="$BUILDROOT/pkglist"
+REPODIR="$BUILDROOT/repo"
+DEPENDSLIST="$BUILDROOT/depends"
+PROVIDESLIST="$BUILDROOT/provides"
 
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
 mkdir -p "$REPODIR"
@@ -50,7 +50,7 @@ source "$SCRIPTDIR/util/autotools.sh"
 include_merge "TOOLCHAIN"
 
 HOSTTUPLE=$($SCRIPTDIR/util/config.guess)
-TCDIR="$BUILDROOT/$PRODUCT/toolchain"
+TCDIR="$BUILDROOT/toolchain"
 
 export PATH="$TCDIR/bin:$PATH"
 

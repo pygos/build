@@ -21,7 +21,7 @@ build() {
 }
 
 deploy() {
-	tar czf "$BUILDROOT/$PRODUCT/$PKGNAME.tar.gz" *
+	tar czf "$BUILDROOT/$PKGNAME.tar.gz" *
 
 	touch "$PKGDEPLOYDIR/$PKGNAME.files"
 	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
