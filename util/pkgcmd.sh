@@ -21,5 +21,5 @@ run_pkg_command() {
 	$FUNCTION "$SRC" &>> "$LOGFILE" < /dev/null
 	popd > /dev/null
 
-	gzip "$LOGFILE"
+	gzip -f "$LOGFILE"
 }
