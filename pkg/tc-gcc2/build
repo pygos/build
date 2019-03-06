@@ -27,16 +27,13 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
 	make install
 
-	mkdir -p "$DEPLOY/lib"
-	mv ${TCDIR}/${TARGET}/{include,lib} "$DEPLOY"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	mkdir -p "$PKGDEPLOYDIR/lib"
+	mv ${TCDIR}/${TARGET}/{include,lib} "$PKGDEPLOYDIR"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
-	cat >> "$DEPLOY/libstdc++-dev.files" <<_EOF
+	cat >> "$PKGDEPLOYDIR/libstdc++-dev.files" <<_EOF
 dir include 0755 0 0
 dir include/c++ 0755 0 0
 dir include/c++/8.2.0 0755 0 0
@@ -68,8 +65,8 @@ file include/c++/8.2.0/$TARGET/bits/messages_members.h 0644 0 0
 file include/c++/8.2.0/$TARGET/ext/opt_random.h 0644 0 0
 _EOF
 
-	if [ -f "$DEPLOY/lib/libmpx.a" ]; then
-		cat >> "$DEPLOY/libgcc-dev.files" <<_EOF
+	if [ -f "$PKGDEPLOYDIR/lib/libmpx.a" ]; then
+		cat >> "$PKGDEPLOYDIR/libgcc-dev.files" <<_EOF
 file lib/libmpx.a 0644 0 0
 file lib/libmpxwrappers.a 0644 0 0
 _EOF

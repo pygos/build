@@ -27,11 +27,8 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
-	make DESTDIR="$DEPLOY" SYSROOT="$TCDIR/$TARGET" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	make DESTDIR="$PKGDEPLOYDIR" SYSROOT="$TCDIR/$TARGET" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

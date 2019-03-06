@@ -17,14 +17,11 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
+	make DESTDIR="$PKGDEPLOYDIR" install
+	ln -sv bash "$PKGDEPLOYDIR/bin/sh"
 
-	make DESTDIR="$DEPLOY" install
-	ln -sv bash "$DEPLOY/bin/sh"
-
-	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$DEPLOY"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGDEPLOYDIR"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

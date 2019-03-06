@@ -22,8 +22,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 _EOF
 
-	touch "$2/$PKGNAME.files"
-	cat > "$2/$PKGNAME.desc" <<_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.files"
+	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
 name $PKGNAME
 requires $DEPENDS
 _EOF

@@ -22,20 +22,16 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-	local UTIL
-
-	mkdir -p "$DEPLOY/var/lib/hwclock"
+	mkdir -p "$PKGDEPLOYDIR/var/lib/hwclock"
 
 	unfuck_libtool
-	make DESTDIR="$DEPLOY" install
+	make DESTDIR="$PKGDEPLOYDIR" install
 
-	if [ -e "$DEPLOY/sbin" ]; then
-		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
+	if [ -e "$PKGDEPLOYDIR/sbin" ]; then
+		mv ${PKGDEPLOYDIR}/sbin/* "$PKGDEPLOYDIR/bin"
 	fi
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

@@ -17,18 +17,15 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
-	make DESTDIR="$DEPLOY" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/login.defs" "$DEPLOY/etc"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/useradd" "$DEPLOY/etc/default"
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/login.defs" "$PKGDEPLOYDIR/etc"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/useradd" "$PKGDEPLOYDIR/etc/default"
 
 	# *hrmpf*
-	if [ -e "$DEPLOY/sbin" ]; then
-		mv ${DEPLOY}/sbin/* ${DEPLOY}/bin
-		rmdir ${DEPLOY}/sbin
+	if [ -e "$PKGDEPLOYDIR/sbin" ]; then
+		mv ${PKGDEPLOYDIR}/sbin/* "$PKGDEPLOYDIR/bin"
+		rmdir "$PKGDEPLOYDIR/sbin"
 	fi
 }
 

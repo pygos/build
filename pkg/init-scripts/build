@@ -10,17 +10,15 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
 	local extra_flags=""
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 	include_merge "INIT"
 
 	if [ "x$HWCLOCK" != "xyes" ]; then
 		extra_flags="$extra_flags --enable-swclock"
 
-		cat <<_EOF >> "$DEPLOY/$PKGNAME.files"
+		cat <<_EOF >> "$PKGDEPLOYDIR/$PKGNAME.files"
 dir etc 0755 0 0
 dir etc/crontab.d 0755 0 0
 file etc/crontab.d/swclock 0644 0 0
@@ -37,14 +35,14 @@ _EOF
 
 	if [ ! -z "$DHCP_PORTS" ]; then
 		extra_flags="$extra_flags --enable-dhcpclient"
-		cat <<_EOF >> "$DEPLOY/$PKGNAME.files"
+		cat <<_EOF >> "$PKGDEPLOYDIR/$PKGNAME.files"
 slink etc/init.d/dhcpcdmaster 0777 0 0 /share/init/dhcpcdmaster
 file share/init/dhcpcd 0644 0 0
 file share/init/dhcpcdmaster 0644 0 0
 _EOF
 
 		if [ "x$HWCLOCK" != "xyes" ]; then
-			cat <<_EOF >> "$DEPLOY/$PKGNAME.files"
+			cat <<_EOF >> "$PKGDEPLOYDIR/$PKGNAME.files"
 dir lib/libexec/dhcpcd-hooks 0755 0 0
 file lib/libexec/dhcpcd-hooks/40-ntpsetdate 0644 0 0
 _EOF
@@ -57,67 +55,65 @@ _EOF
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
 	local svc
 
-	make DESTDIR="$DEPLOY" install
+	make DESTDIR="$PKGDEPLOYDIR" install
 
 	include_merge "INIT"
 
 	if [ "x$HWCLOCK" == "xyes" ]; then
 		SERVICES="$SERVICES hwclock"
 	else
-		mkdir -p "$DEPLOY/var/lib"
-		date --utc +%m%d%H%M%Y.%S > "$DEPLOY/var/lib/swclock"
+		mkdir -p "$PKGDEPLOYDIR/var/lib"
+		date --utc +%m%d%H%M%Y.%S > "$PKGDEPLOYDIR/var/lib/swclock"
 	fi
 
 	svc=$(file_path_override "ifrename")
 	if [ ! -z "$svc" ]; then
-		cp "$svc" "$DEPLOY/etc/netcfg/ifrename"
+		cp "$svc" "$PKGDEPLOYDIR/etc/netcfg/ifrename"
 		SERVICES="$SERVICES ifrename"
 	fi
 
 	svc=$(file_path_override "nftables.rules")
 	if [ ! -z "$svc" ]; then
-		cp "$svc" "$DEPLOY/etc/nftables.rules"
-		echo "file etc/nftables.rules 0644 0 0" >> "$DEPLOY/$PKGNAME.files"
+		cp "$svc" "$PKGDEPLOYDIR/etc/nftables.rules"
+		echo "file etc/nftables.rules 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 		SERVICES="$SERVICES nft"
 	fi
 
 	svc=$(file_path_override "sysctl.conf")
 	if [ ! -z "$svc" ]; then
-		cp "$svc" "$DEPLOY/etc/sysctl.conf"
-		echo "file etc/sysctl.conf 0644 0 0" >> "$DEPLOY/$PKGNAME.files"
+		cp "$svc" "$PKGDEPLOYDIR/etc/sysctl.conf"
+		echo "file etc/sysctl.conf 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 	fi
 
 	svc=$(file_path_override "interfaces")
 	if [ ! -z "$svc" ]; then
 		for svc in $svc/*; do
 			[ -f "$svc" ] || continue
-			cp "$svc" "$DEPLOY/etc/netcfg/"
+			cp "$svc" "$PKGDEPLOYDIR/etc/netcfg/"
 			svc=$(basename $svc)
-			echo "file etc/netcfg/$svc 0644 0 0" >> "$DEPLOY/$PKGNAME.files"
+			echo "file etc/netcfg/$svc 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 		done
 	fi
 
 	for svc in $GETTY_TTY; do
-		echo "slink etc/init.d/agetty@$svc 0777 0 0 /share/init/agetty" >> "$DEPLOY/$PKGNAME.files"
+		echo "slink etc/init.d/agetty@$svc 0777 0 0 /share/init/agetty" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 	done
 
 	if [ ! -z "$DHCP_PORTS" ]; then
 		for svc in $DHCP_PORTS; do
-			echo "slink etc/init.d/dhcpcd@$svc 0777 0 0 /share/init/dhcpcd" >> "$DEPLOY/$PKGNAME.files"
+			echo "slink etc/init.d/dhcpcd@$svc 0777 0 0 /share/init/dhcpcd" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 		done
 	fi
 
 	for svc in $SERVICES; do
-		echo "slink etc/init.d/$svc 0777 0 0 /share/init/$svc" >> "$DEPLOY/$PKGNAME.files"
+		echo "slink etc/init.d/$svc 0777 0 0 /share/init/$svc" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 	done
 
-	touch "$DEPLOY/etc/modules"
+	touch "$PKGDEPLOYDIR/etc/modules"
 	for svc in $MODULES; do
-		echo "$svc" >> "$DEPLOY/etc/modules"
+		echo "$svc" >> "$PKGDEPLOYDIR/etc/modules"
 	done
 
 	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS SERVICES MODULES

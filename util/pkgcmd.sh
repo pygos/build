@@ -20,7 +20,7 @@ run_pkg_command() {
 	mkdir -p "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 
 	pushd "$PKGBUILDDIR" > /dev/null
-	$FUNCTION "$SRC" "$PKGDEPLOYDIR" &>> "$LOGFILE" < /dev/null
+	$FUNCTION "$SRC" &>> "$LOGFILE" < /dev/null
 	popd > /dev/null
 
 	gzip "$LOGFILE"

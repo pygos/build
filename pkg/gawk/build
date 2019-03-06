@@ -16,11 +16,8 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
-	make DESTDIR="$DEPLOY" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

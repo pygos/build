@@ -63,8 +63,8 @@ build() {
 deploy() {
 	make install-gcc install-target-libgcc
 
-	touch "$2/$PKGNAME.files"
-	cat > "$2/$PKGNAME.desc" <<_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.files"
+	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
 name $PKGNAME
 requires tc-binutils linux-dev fortify-headers
 _EOF

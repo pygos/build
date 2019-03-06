@@ -10,7 +10,6 @@ prepare() {
 }
 
 build() {
-
 	$1/configure --prefix="$TCDIR" --target="$TARGET" \
 		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
 		     --with-sysroot="$TCDIR/$TARGET" \
@@ -27,8 +26,8 @@ deploy() {
 
 	ln -s pkg-config "$TCDIR/bin/$TARGET-pkg-config"
 
-	touch "$2/$PKGNAME.files"
-	cat > "$2/$PKGNAME.desc" <<_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.files"
+	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
 name $PKGNAME
 _EOF
 }

@@ -20,14 +20,13 @@ build() {
 
 deploy() {
 	local SOURCE="$1"
-	local DEPLOY="$2"
 
-	make DESTDIR="$DEPLOY" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
-	mkdir -p "$DEPLOY/var/lib/sshd"
-	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$DEPLOY/bin"
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+	mkdir -p "$PKGDEPLOYDIR/var/lib/sshd"
+	install -v -m755 "$SOURCE/contrib/ssh-copy-id" "$PKGDEPLOYDIR/bin"
 
-	cat_file_override "sshd_config" > "$DEPLOY/etc/sshd_config"
+	cat_file_override "sshd_config" > "$PKGDEPLOYDIR/etc/sshd_config"
 }
 
 check_update() {

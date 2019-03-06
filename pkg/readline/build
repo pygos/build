@@ -16,12 +16,9 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
-	make SHLIB_LIBS="-lncursesw" DESTDIR="$DEPLOY" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
-	chmod 755 ${DEPLOY}/lib/*
+	make SHLIB_LIBS="-lncursesw" DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+	chmod 755 ${PKGDEPLOYDIR}/lib/*
 }
 
 check_update() {

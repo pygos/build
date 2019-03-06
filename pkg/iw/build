@@ -24,18 +24,15 @@ build() {
 	LDFLAGS="$ldflags" \
 	PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET" \
 	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
-	     SBINDIR=/bin DESTDIR="$2" -j $NUMJOBS
+	     SBINDIR=/bin DESTDIR="$PKGDEPLOYDIR" -j $NUMJOBS
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
 	export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
 	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
-	     SBINDIR=/bin DESTDIR="$DEPLOY" install
+	     SBINDIR=/bin DESTDIR="$PKGDEPLOYDIR" install
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

@@ -32,10 +32,7 @@ prepare() {
 }
 
 build() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
-	local INITRDDIR="$DEPLOY/initrd"
+	local INITRDDIR="$PKGDEPLOYDIR/initrd"
 	local INITRDLIST="$INITRDDIR/initrd.list"
 	local LINUX_CPU=$(get_linux_cpu)
 
@@ -57,39 +54,38 @@ build() {
 
 deploy() {
 	local SOURCE="$1"
-	local DEPLOY="$2"
 	local LINUX_CPU=$(get_linux_cpu)
 	local target
 
-	mkdir -p "$DEPLOY/boot" "$DEPLOY/lib/modules"
+	mkdir -p "$PKGDEPLOYDIR/boot" "$PKGDEPLOYDIR/lib/modules"
 
 	for target in $LINUX_TGT; do
 		case $target in
 		*Image)
-			cp "arch/$LINUX_CPU/boot/$target" "$DEPLOY/boot/vmlinuz"
-			echo "dir boot 0755 0 0" >> "$DEPLOY/$PKGNAME.files"
-			echo "file boot/vmlinuz 0755 0 0" >> "$DEPLOY/$PKGNAME.files"
+			cp "arch/$LINUX_CPU/boot/$target" "$PKGDEPLOYDIR/boot/vmlinuz"
+			echo "dir boot 0755 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
+			echo "file boot/vmlinuz 0755 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 			;;
 		modules)
 			export KBUILD_OUTPUT="$PKGBUILDDIR"
-			make -C "$SOURCE" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" INSTALL_MOD_PATH="$DEPLOY" modules_install
+			make -C "$SOURCE" O="$PKGBUILDDIR" ARCH="$LINUX_CPU" CROSS_COMPILE="${TARGET}-" INSTALL_MOD_PATH="$PKGDEPLOYDIR" modules_install
 
-			echo "dir lib 0755 0 0" >> "$DEPLOY/$PKGNAME.files"
-			echo "dir lib/modules 0755 0 0" >> "$DEPLOY/$PKGNAME.files"
+			echo "dir lib 0755 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
+			echo "dir lib/modules 0755 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 
-			find -H "$DEPLOY/lib" -type d -printf "dir %p 0%m 0 0\\n" |\
-				tail -n +2 | sed "s#$DEPLOY/##g" >> "$DEPLOY/$PKGNAME.files"
+			find -H "$PKGDEPLOYDIR/lib" -type d -printf "dir %p 0%m 0 0\\n" |\
+				tail -n +2 | sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 
-			find -H "$DEPLOY/lib" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
-				sed "s#$DEPLOY/##g" >> "$DEPLOY/$PKGNAME.files"
+			find -H "$PKGDEPLOYDIR/lib" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
+				sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 
-			find -H "$DEPLOY/lib" -type f -printf "file %p 0%m 0 0\\n" |\
-				sed "s#$DEPLOY/##g" >> "$DEPLOY/$PKGNAME.files"
+			find -H "$PKGDEPLOYDIR/lib" -type f -printf "file %p 0%m 0 0\\n" |\
+				sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 			;;
 		esac
 	done
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.desc "$DEPLOY"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.desc "$PKGDEPLOYDIR"
 }
 
 check_update() {

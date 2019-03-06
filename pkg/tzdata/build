@@ -16,15 +16,12 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
+	make USRDIR="" DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
-	make USRDIR="" DESTDIR="$DEPLOY" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
-
-	sed -i 's@/usr@@g' "$DEPLOY/bin/tzselect"
-	rm "$DEPLOY/bin/zdump"
-	rm "$DEPLOY/bin/zic"
+	sed -i 's@/usr@@g' "$PKGDEPLOYDIR/bin/tzselect"
+	rm "$PKGDEPLOYDIR/bin/zdump"
+	rm "$PKGDEPLOYDIR/bin/zic"
 }
 
 check_update() {

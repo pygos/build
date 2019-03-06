@@ -11,7 +11,6 @@ prepare() {
 
 build() {
 	local SOURCE="$1"
-	local DEPLOY="$2"
 
 	cp -r $SOURCE/* $PKGBUILDDIR
 
@@ -20,14 +19,11 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
+	make DESTDIR="$PKGDEPLOYDIR" install
 
-	make DESTDIR="$DEPLOY" install
-
-	chmod 755 $DEPLOY/bin/*
-	cat_file_override "dhcpcd.conf" > "$DEPLOY/etc/dhcpcd.conf"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	chmod 755 $PKGDEPLOYDIR/bin/*
+	cat_file_override "dhcpcd.conf" > "$PKGDEPLOYDIR/etc/dhcpcd.conf"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

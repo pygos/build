@@ -15,10 +15,7 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
-	make DESTDIR="$DEPLOY" install
+	make DESTDIR="$PKGDEPLOYDIR" install
 }
 
 check_update() {

@@ -1,9 +1,6 @@
 DEPENDS="rootfs boot-rpi3"
 
 build() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
 	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" $DEPENDS
 
 	# copy files from this package
@@ -24,13 +21,10 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
 	tar czf "$BUILDROOT/$PRODUCT/$PKGNAME.tar.gz" *
 
-	touch "$2/$PKGNAME.files"
-	cat > "$2/$PKGNAME.desc" <<_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.files"
+	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
 name $PKGNAME
 _EOF
 }

@@ -8,14 +8,12 @@ build() {
 
 deploy() {
 	local SOURCE="$1"
-	local DEPLOY="$2"
 
-	cp -r ${SOURCE}/boot/* "$DEPLOY/"
+	cp -r ${SOURCE}/boot/* "$PKGDEPLOYDIR/"
 
-	rm $DEPLOY/kernel7.img
-	rm $DEPLOY/kernel.img
-	rm $DEPLOY/COPYING.linux
+	rm "$PKGDEPLOYDIR/kernel7.img" "$PKGDEPLOYDIR/kernel.img"
+	rm "$PKGDEPLOYDIR/COPYING.linux"
 
-	cp "$SCRIPTDIR/pkg/boot-rpi3/config.txt" "$DEPLOY/config.txt"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp "$SCRIPTDIR/pkg/boot-rpi3/config.txt" "$PKGDEPLOYDIR/config.txt"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }

@@ -27,18 +27,15 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
+	make PREFIX="$PKGDEPLOYDIR" install
 
-	make PREFIX="$DEPLOY" install
+	rm ${PKGDEPLOYDIR}/bin/{bzegrep,bzfgrep,bzless,bzcmp}
 
-	rm ${DEPLOY}/bin/{bzegrep,bzfgrep,bzless,bzcmp}
-
-	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzegrep"
-	ln -s "/bin/bzgrep" "$DEPLOY/bin/bzfgrep"
-	ln -s "/bin/bzmore" "$DEPLOY/bin/bzless"
-	ln -s "/bin/bzdiff" "$DEPLOY/bin/bzcmp"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	ln -s "/bin/bzgrep" "$PKGDEPLOYDIR/bin/bzegrep"
+	ln -s "/bin/bzgrep" "$PKGDEPLOYDIR/bin/bzfgrep"
+	ln -s "/bin/bzmore" "$PKGDEPLOYDIR/bin/bzless"
+	ln -s "/bin/bzdiff" "$PKGDEPLOYDIR/bin/bzcmp"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

@@ -14,8 +14,8 @@ build() {
 }
 
 deploy() {
-	make DESTDIR="$2" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$2"
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
 check_update() {

@@ -15,14 +15,13 @@ build() {
 
 deploy() {
 	local SOURCE="$1"
-	local DEPLOY="$2"
 
-	cp -r "$SOURCE/hardfp/opt" "$DEPLOY"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	cp -r "$SOURCE/hardfp/opt" "$PKGDEPLOYDIR"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
-	strip_files ${DEPLOY}/opt/vc/{bin,sbin}/*
-	strip_files ${DEPLOY}/opt/vc/lib/*.so
-	strip_files ${DEPLOY}/opt/vc/lib/plugins/*.so
+	strip_files ${PKGDEPLOYDIR}/opt/vc/{bin,sbin}/*
+	strip_files ${PKGDEPLOYDIR}/opt/vc/lib/*.so
+	strip_files ${PKGDEPLOYDIR}/opt/vc/lib/plugins/*.so
 }
 
 check_update() {

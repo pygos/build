@@ -71,31 +71,33 @@ _EOF
 
 deploy() {
 	local SOURCE="$1"
-	local DEPLOY="$2"
 
 	local wwwroot=$(file_path_override "wwwroot")
 
-	make DESTDIR="$DEPLOY" install
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$DEPLOY"
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
 	if [ ! -z "$wwwroot" ] && [ -d "$wwwroot" ]; then
-		mkdir -p "$DEPLOY/srv"
-		cp -r "$wwwroot" "$DEPLOY/srv/www"
+		mkdir -p "$PKGDEPLOYDIR/srv"
+		cp -r "$wwwroot" "$PKGDEPLOYDIR/srv/www"
 
-		echo "dir srv 0755 0 0" >> "$DEPLOY/nginx.files"
-		echo "dir srv/www 0755 0 0" >> "$DEPLOY/nginx.files"
+		echo "dir srv 0755 0 0" >> "$PKGDEPLOYDIR/nginx.files"
+		echo "dir srv/www 0755 0 0" >> "$PKGDEPLOYDIR/nginx.files"
 
-		find -H "$DEPLOY/srv/www" -type d -printf "dir %p 0%m 0 0\\n" |\
-			tail -n +2 | sed "s#$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+		find -H "$PKGDEPLOYDIR/srv/www" -type d \
+		     -printf "dir %p 0%m 0 0\\n" | tail -n +2 |\
+		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
 
-		find -H "$DEPLOY/srv/www" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
-			sed "s#$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+		find -H "$PKGDEPLOYDIR/srv/www" -type l \
+		     -printf "slink %p 0%m 0 0 %l\\n" | \
+		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
 
-		find -H "$DEPLOY/srv/www" -type f -printf "file %p 0%m 0 0\\n" |\
-			sed "s#$DEPLOY/##g" >> "$DEPLOY/nginx.files"
+		find -H "$PKGDEPLOYDIR/srv/www" -type f \
+		     -printf "file %p 0%m 0 0\\n" |\
+		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
 	fi
 
-	cat_file_override "nginx.conf" > "$DEPLOY/etc/nginx/nginx.conf"
+	cat_file_override "nginx.conf" > "$PKGDEPLOYDIR/etc/nginx/nginx.conf"
 }
 
 check_update() {

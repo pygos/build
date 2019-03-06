@@ -23,12 +23,9 @@ build() {
 }
 
 deploy() {
-	local SOURCE="$1"
-	local DEPLOY="$2"
-
 	make install
 
-	cat > "$DEPLOY/$PKGNAME.files" <<_EOF
+	cat > "$PKGDEPLOYDIR/$PKGNAME.files" <<_EOF
 dir bin 0755 0 0
 dir lib 0755 0 0
 dir lib/ldscripts 0755 0 0
@@ -46,9 +43,9 @@ _EOF
 
 	find -H "$TCDIR/$TARGET/lib/ldscripts" -type f \
 	     -printf "file lib/ldscripts/%f 0%m 0 0 %p\\n" \
-	     >> "$DEPLOY/$PKGNAME.files"
+	     >> "$PKGDEPLOYDIR/$PKGNAME.files"
 
-	cat > "$DEPLOY/$PKGNAME.desc" <<_EOF
+	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
 name $PKGNAME
 _EOF
 }
