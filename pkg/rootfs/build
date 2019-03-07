@@ -1,62 +1,45 @@
 DEPENDS=$(cat_file_merge "ROOTFS" | sort -u)
 
 build() {
-	# setup skeleton
-	mkdir -pv ${PKGBUILDDIR}/{bin,dev,sys,proc,tmp,run,boot,usr,mnt,share}
-	mkdir -pv ${PKGBUILDDIR}/cfg/{preserve,overlay}
-	mkdir -pv ${PKGBUILDDIR}/etc/{profile.d,skel}
-	mkdir -pv ${PKGBUILDDIR}/var/lib
-	mkdir -pv ${PKGBUILDDIR}/lib/libexec
-
-	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGBUILDDIR"
-	cp -r "$SCRIPTDIR/pkg/$PKGNAME/lib" "$PKGBUILDDIR"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/rootfs_files.txt" "$PKGDEPLOYDIR/pseudo"
-
-	# version info
-	local fname=$(echo "${OS_NAME}-release" | tr '[:upper:]' '[:lower:]')
-
-	echo $OS_RELEASE > $PKGBUILDDIR/etc/$fname
-
-	echo "etc/$fname m 644 0 0" >> "$PKGDEPLOYDIR/pseudo"
-
-	# local config files
-	fname=$(file_path_override "resolv.conf")
-
-	if [ ! -z "$fname" ]; then
-		cp "$fname" "./etc/resolv.conf"
-		echo "etc/resolv.conf m 644 0 0" >> "$PKGDEPLOYDIR/pseudo"
-	fi
-
-	# gather rootfs dependencies
-	cat_file_merge "ROOTFS" | sort -u | \
-		xargs pkg install -om -R "$REPODIR" -r "$PKGBUILDDIR"
-
-	cat_file_merge "ROOTFS" | sort -u | \
-		xargs pkg install -R "$REPODIR" \
-		      -r "$PKGBUILDDIR" -F sqfs -l >> "$PKGDEPLOYDIR/pseudo"
+	# generate pseudo file listing for squashfs
+	pkg install -l -R "$REPODIR" -r "$TCDIR/$TARGET" \
+		    -F sqfs $DEPENDS | sort -u > "$PKGDEPLOYDIR/pseudo"
 
 	# setup root home directory
-	cp -r "$PKGBUILDDIR/etc/skel" "$PKGBUILDDIR/usr/root"
+	cp -r "$TCDIR/$TARGET/etc/skel" "$TCDIR/$TARGET/usr/root"
 
 	echo "usr/root m 700 0 0" >> "$PKGDEPLOYDIR/pseudo"
 
-	find "./usr/root" -exec stat {} --printf="%n m %a 0 0\\n" \; | \
-		sed 's#^./##g' | tail -n +2  >> "$PKGDEPLOYDIR/pseudo"
+	find "$TCDIR/$TARGET/usr/root" \
+	     -exec stat {} --printf="%n m %a 0 0\\n" \; | \
+	     sed 's#^$TCDIR/$TARGET/##g' | tail -n +2 >> "$PKGDEPLOYDIR/pseudo"
 
 	# move configuration to preserve directory
-	mv "$PKGBUILDDIR/etc" "$PKGBUILDDIR/cfg/preserve/etc"
-	mv "$PKGBUILDDIR/usr" "$PKGBUILDDIR/cfg/preserve/usr"
-	mv "$PKGBUILDDIR/var/lib" "$PKGBUILDDIR/cfg/preserve/var_lib"
-	rm -rf "$PKGBUILDDIR/var"
+	mkdir -pv "$TCDIR/$TARGET/cfg/preserve"
+	mkdir -pv "$TCDIR/$TARGET/cfg/overlay"
 
-	mkdir -p ${PKGBUILDDIR}/{etc,var,usr}
+	echo <<_EOF >> "$PKGDEPLOYDIR/pseudo"
+cfg m 755 0 0
+cfg/preserve m 755 0 0
+cfg/preserve/etc m 755 0 0
+cfg/preserve/usr m 755 0 0
+cfg/preserve/var_lib m 755 0 0
+cfg/overlay m 755 0 0
+_EOF
+
+	mv "$TCDIR/$TARGET/etc" "$TCDIR/$TARGET/cfg/preserve/etc"
+	mv "$TCDIR/$TARGET/usr" "$TCDIR/$TARGET/cfg/preserve/usr"
+	mv "$TCDIR/$TARGET/var/lib" "$TCDIR/$TARGET/cfg/preserve/var_lib"
+	rm -rf "$TCDIR/$TARGET/var"
+
+	mkdir -p $TCDIR/$TARGET/{etc,var,usr}
 
 	sed -i 's#etc/#cfg/preserve/etc/#g' "$PKGDEPLOYDIR/pseudo"
 	sed -i 's#var/lib/#cfg/preserve/var_lib/#g' "$PKGDEPLOYDIR/pseudo"
 	sed -i 's#usr/#cfg/preserve/usr/#g' "$PKGDEPLOYDIR/pseudo"
 
 	# don't add stuff for the boot partition to the squashfs image
-	mv ${PKGBUILDDIR}/boot/* "$PKGDEPLOYDIR"
+	mv $TCDIR/$TARGET/boot/* "$PKGDEPLOYDIR"
 
 	grep -v "^boot/" "$PKGDEPLOYDIR/pseudo" > "$PKGDEPLOYDIR/pseudo.temp"
 	mv "$PKGDEPLOYDIR/pseudo.temp" "$PKGDEPLOYDIR/pseudo"
@@ -64,7 +47,7 @@ build() {
 }
 
 deploy() {
-	mksquashfs "$PKGBUILDDIR" "$PKGDEPLOYDIR/rootfs.img" -comp xz \
+	mksquashfs "$TCDIR/$TARGET" "$PKGDEPLOYDIR/rootfs.img" -comp xz \
 		-no-progress -no-xattrs -pf "$PKGDEPLOYDIR/pseudo"
 
 	rm "$PKGDEPLOYDIR/pseudo"

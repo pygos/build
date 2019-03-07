@@ -1,0 +1,27 @@
+build() {
+	return
+}
+
+deploy() {
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/etc" "$PKGDEPLOYDIR"
+	cp -r "$SCRIPTDIR/pkg/$PKGNAME/lib" "$PKGDEPLOYDIR"
+
+	# version info
+	local fname=$(echo "${OS_NAME}-release" | tr '[:upper:]' '[:lower:]')
+	echo "$OS_RELEASE" > "$PKGDEPLOYDIR/etc/$fname"
+	echo "file etc/$fname 0644 0 0" >> "$PKGDEPLOYDIR/${PKGNAME}.files"
+
+	# local config files
+	fname=$(file_path_override "resolv.conf")
+
+	if [ ! -z "$fname" ]; then
+		cp "$fname" "$PKGDEPLOYDIR/etc/resolv.conf"
+		echo "file etc/resolv.conf 0644 0 0" \
+		     >> "$PKGDEPLOYDIR/${PKGNAME}.files"
+	fi
+}
+
+check_update() {
+	return
+}
