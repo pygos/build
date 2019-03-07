@@ -1,2 +1,2 @@
 name bash
-requires ncurses readline crt
+requires ncurses readline crt basefiles

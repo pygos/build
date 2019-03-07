@@ -5,18 +5,8 @@ build() {
 	pkg install -l -R "$REPODIR" -r "$TCDIR/$TARGET" \
 		    -F sqfs $DEPENDS | sort -u > "$PKGDEPLOYDIR/pseudo"
 
-	# setup root home directory
-	cp -r "$TCDIR/$TARGET/etc/skel" "$TCDIR/$TARGET/usr/root"
-
-	echo "usr/root m 700 0 0" >> "$PKGDEPLOYDIR/pseudo"
-
-	find "$TCDIR/$TARGET/usr/root" \
-	     -exec stat {} --printf="%n m %a 0 0\\n" \; | \
-	     sed 's#^$TCDIR/$TARGET/##g' | tail -n +2 >> "$PKGDEPLOYDIR/pseudo"
-
 	# move configuration to preserve directory
-	mkdir -pv "$TCDIR/$TARGET/cfg/preserve"
-	mkdir -pv "$TCDIR/$TARGET/cfg/overlay"
+	mkdir -pv "$TCDIR/$TARGET/cfg/preserve" "$TCDIR/$TARGET/cfg/overlay"
 
 	echo <<_EOF >> "$PKGDEPLOYDIR/pseudo"
 cfg m 755 0 0

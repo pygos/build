@@ -15,6 +15,7 @@ dir etc/profile.d 0755 0 0
 dir etc/skel 0755 0 0
 dir var/lib 0755 0 0
 dir lib/libexec 0755 0 0
+dir usr/root 0700 0 0
 slink etc/mtab 0777 0 0 /proc/self/mounts
 file etc/group 0644 0 0
 file etc/hostname 0644 0 0
