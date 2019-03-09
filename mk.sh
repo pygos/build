@@ -70,8 +70,6 @@ done
 
 echo "--- resolving package dependencies ---"
 
-g++ "$SCRIPTDIR/util/depgraph.cpp" -o "$TCDIR/bin/depgraph"
-
 truncate -s 0 $DEPENDSLIST $PROVIDESLIST
 
 for pkg in $SCRIPTDIR/pkg/*; do
@@ -85,7 +83,8 @@ for pkg in $SCRIPTDIR/pkg/*; do
 	done
 done
 
-depgraph "$PROVIDESLIST" "$DEPENDSLIST" "$RELEASEPKG" > "$PACKAGELIST"
+pkg buildstrategy -p "$PROVIDESLIST" -d "$DEPENDSLIST" "$RELEASEPKG" \
+    > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- downloading package files ---"
