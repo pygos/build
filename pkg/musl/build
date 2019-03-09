@@ -1,8 +1,8 @@
-VERSION="1.1.20"
+VERSION="1.1.21"
 SRCDIR="musl-$VERSION"
 TARBALL="$SRCDIR.tar.gz"
 URL="https://www.musl-libc.org/releases"
-SHA256SUM="44be8771d0e6c6b5f82dd15662eb2957c9a3173a19a8b49966ac0542bbd40d61"
+SHA256SUM="c742b66f6f49c9e5f52f64d8b79fecb5a0f6e0203fca176c70ca20f6be285f44"
 DEPENDS="tc-gcc1 linux-dev fortify-headers tc-pkgtool"
 SUBPKG="libc libc-dev"
 
