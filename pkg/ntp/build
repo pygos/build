@@ -1,8 +1,8 @@
-VERSION="4.2.8p12"
+VERSION="4.2.8p13"
 SRCDIR="ntp-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2"
-SHA256SUM="709b222b5013d77d26bfff532b5ea470a8039497ef29d09363931c036cb30454"
+SHA256SUM="288772cecfcd9a53694ffab108d1825a31ba77f3a8466b0401baeca3bc232a38"
 DEPENDS="openssl-dev zlib-dev readline-dev crt-dev"
 
 prepare() {
