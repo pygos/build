@@ -60,6 +60,14 @@ mkdir -p "$TCDIR/$TARGET" "$TCDIR/bin"
 CMAKETCFILE="$TCDIR/toolchain.cmake"
 
 ############################### build packages ###############################
+echo "--- boot strap phase ---"
+
+for pkg in tc-pkgtool; do
+	include_pkg "$pkg"
+	fetch_package
+	build_package
+done
+
 echo "--- resolving package dependencies ---"
 
 g++ "$SCRIPTDIR/util/depgraph.cpp" -o "$TCDIR/bin/depgraph"
