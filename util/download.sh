@@ -22,5 +22,7 @@ fetch_package() {
 		echo "$PKGNAME - prepare"
 		prepare "$SCRIPTDIR/pkg/$PKGNAME" &>> "$LOGFILE" < /dev/null
 		popd > /dev/null
+
+		gzip -f "$LOGFILE"
 	fi
 }
