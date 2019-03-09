@@ -9,7 +9,6 @@ export LINUXPKG="linux"
 export LAYERCONF=""
 
 # utilities
-source "$SCRIPTDIR/util/depends.sh"
 source "$SCRIPTDIR/util/version.sh"
 source "$SCRIPTDIR/util/override.sh"
 
