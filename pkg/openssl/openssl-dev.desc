@@ -1,2 +1,1 @@
-name openssl-dev
 requires openssl zlib-dev crt-dev

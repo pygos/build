@@ -1,2 +1,1 @@
-name readline
 requires ncurses crt

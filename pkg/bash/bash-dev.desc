@@ -1,2 +1,1 @@
-name bash-dev
 requires bash crt-dev ncurses-dev readline-dev

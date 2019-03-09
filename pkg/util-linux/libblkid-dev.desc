@@ -1,2 +1,1 @@
-name libblkid-dev
 requires libblkid libuuid-dev crt-dev

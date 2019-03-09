@@ -1,2 +1,1 @@
-name libnl3-dev
 requires libnl3 crt-dev

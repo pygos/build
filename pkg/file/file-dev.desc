@@ -1,2 +1,1 @@
-name file-dev
 requires file zlib-dev crt-dev

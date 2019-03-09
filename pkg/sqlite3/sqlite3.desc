@@ -1,2 +1,1 @@
-name sqlite3
 requires crt readline

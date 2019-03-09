@@ -2,8 +2,8 @@ DEPENDS=$(cat_file_merge "ROOTFS" | sort -u)
 
 build() {
 	# generate pseudo file listing for squashfs
-	pkg install -l -R "$REPODIR" -r "$TCDIR/$TARGET" \
-		    -F sqfs $DEPENDS | sort -u > "$PKGDEPLOYDIR/pseudo"
+	pkg install -l sqfs -R "$REPODIR" -r "$TCDIR/$TARGET" $DEPENDS |\
+		sort -u > "$PKGDEPLOYDIR/pseudo"
 
 	# move configuration to preserve directory
 	mkdir -pv "$TCDIR/$TARGET/cfg/preserve" "$TCDIR/$TARGET/cfg/overlay"

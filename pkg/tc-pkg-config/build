@@ -27,9 +27,7 @@ deploy() {
 	ln -s pkg-config "$TCDIR/bin/$TARGET-pkg-config"
 
 	touch "$PKGDEPLOYDIR/$PKGNAME.files"
-	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
-name $PKGNAME
-_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
 }
 
 check_update() {

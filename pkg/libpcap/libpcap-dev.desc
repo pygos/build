@@ -1,2 +1,1 @@
-name libpcap-dev
 requires libpcap libnl3-dev crt-dev

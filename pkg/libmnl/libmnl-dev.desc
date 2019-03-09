@@ -1,2 +1,1 @@
-name libmnl-dev
 requires libmnl crt-dev

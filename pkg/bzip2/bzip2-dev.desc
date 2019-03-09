@@ -1,2 +1,1 @@
-name bzip2-dev
 requires bzip2 crt-dev

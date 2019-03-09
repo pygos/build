@@ -1,2 +1,1 @@
-name nginx
 requires zlib openssl pcre crt

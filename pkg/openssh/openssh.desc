@@ -1,2 +1,1 @@
-name openssh
 requires openssl zlib crt

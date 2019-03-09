@@ -1,2 +1,1 @@
-name libpcap
 requires libnl3 crt

@@ -1,2 +1,1 @@
-name nftables
 requires libmnl libnftnl gmp readline ncurses crt

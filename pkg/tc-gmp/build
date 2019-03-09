@@ -13,7 +13,5 @@ build() {
 
 deploy() {
 	touch "$PKGDEPLOYDIR/$PKGNAME.files"
-	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
-name $PKGNAME
-_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
 }

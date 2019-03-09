@@ -1,2 +1,1 @@
-name btrfs-progs
 requires libuuid libblkid zlib lzo crt

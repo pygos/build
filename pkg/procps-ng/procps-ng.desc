@@ -1,2 +1,1 @@
-name procps-ng
 requires crt ncurses

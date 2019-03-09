@@ -1,2 +1,1 @@
-name lzo-dev
 requires lzo crt-dev

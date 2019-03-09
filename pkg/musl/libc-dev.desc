@@ -1,2 +1,1 @@
-name libc-dev
 requires libc linux-dev fortify-headers

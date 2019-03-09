@@ -1,2 +1,1 @@
-name inetutils
 requires crt ncurses readline

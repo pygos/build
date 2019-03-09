@@ -1,2 +1,1 @@
-name ncurses-dev
 requires ncurses crt-dev

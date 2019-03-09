@@ -9,7 +9,7 @@ build() {
 deploy() {
 	cp $SCRIPTDIR/pkg/initrd/*.{desc,files} "$PKGDEPLOYDIR"
 
-	pkg install -R "$REPODIR" -r "$PKGBUILDDIR" -l -F pkg $DEPENDS \
+	pkg install -R "$REPODIR" -r "$PKGBUILDDIR" -l pkg $DEPENDS \
 	    >> "$PKGDEPLOYDIR/initrd.files"
 
 	echo "file init 0775 0 0 $SCRIPTDIR/pkg/$PKGNAME/initrd.skel" \

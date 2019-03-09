@@ -1,2 +1,1 @@
-name kmod
 requires zlib xz crt

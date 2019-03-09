@@ -1,2 +1,1 @@
-name gmp-dev
 requires gmp crt-dev

@@ -1,2 +1,1 @@
-name ntp
 requires openssl zlib readline crt

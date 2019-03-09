@@ -65,7 +65,6 @@ deploy() {
 
 	touch "$PKGDEPLOYDIR/$PKGNAME.files"
 	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
-name $PKGNAME
 requires tc-binutils linux-dev fortify-headers
 _EOF
 }

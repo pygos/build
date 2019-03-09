@@ -1,2 +1,1 @@
-name iproute2
 requires libmnl crt

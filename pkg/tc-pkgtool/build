@@ -1,8 +1,8 @@
-VERSION="0.1"
+VERSION="0.2"
 SRCDIR="pkgtool-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="475ad195886e68e55d71164147b9d7f9a83952a7b2be5836dfd438d6edbb9340"
+SHA256SUM="51e1053e27df354a3f45ab99ff24137841582d4601d2174f97042392950ca1c7"
 DEPENDS=""
 
 prepare() {
@@ -20,9 +20,7 @@ deploy() {
 	make install
 
 	touch "$PKGDEPLOYDIR/$PKGNAME.files"
-	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
-name $PKGNAME
-_EOF
+	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
 }
 
 check_update() {

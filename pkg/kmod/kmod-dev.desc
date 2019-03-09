@@ -1,2 +1,1 @@
-name kmod-dev
 requires kmod crt-dev zlib-dev xz-dev
