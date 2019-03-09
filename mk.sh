@@ -45,6 +45,7 @@ source "$SCRIPTDIR/util/pkgcmd.sh"
 source "$SCRIPTDIR/util/misc.sh"
 source "$SCRIPTDIR/util/override.sh"
 source "$SCRIPTDIR/util/autotools.sh"
+source "$SCRIPTDIR/util/build_package.sh"
 
 ############################## toolchain config ##############################
 include_merge "TOOLCHAIN"
@@ -90,40 +91,7 @@ echo "--- building packages ---"
 
 while read pkg; do
 	include_pkg "$pkg"
-
-	found="yes"
-
-	for f in $SUBPKG; do
-		if [ ! -f "$REPODIR/${f}.pkg" ]; then
-			found="no"
-			break
-		fi
-	done
-
-	[ "x$found" == "xno" ] || continue;
-
-	for f in $SUBPKG; do
-		rm -f "$REPODIR/${f}.pkg"
-	done
-
-	rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
-	mkdir -p "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
-
-	if [ ! -z "$DEPENDS" ]; then
-		pkg install -omD -r "$TCDIR/$TARGET" -R "$REPODIR" $DEPENDS
-	fi
-
-	run_pkg_command "build"
-	run_pkg_command "deploy"
-	deploy_dev_cleanup
-	strip_files ${PKGDEPLOYDIR}/{bin,lib}
-
-	for f in $SUBPKG; do
-		pkg pack -r "$REPODIR" -d "$PKGDEPLOYDIR/${f}.desc" \
-			 -l "$PKGDEPLOYDIR/${f}.files"
-	done
-
-	rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
+	build_package
 done < "$PACKAGELIST"
 
 echo "--- done ---"
