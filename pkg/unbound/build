@@ -1,8 +1,8 @@
-VERSION="1.8.3"
+VERSION="1.9.0"
 SRCDIR="unbound-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.unbound.net/downloads"
-SHA256SUM="2b692b8311edfad41e7d0380aac34576060d4176add81dc5db419c79b2a4cecc"
+SHA256SUM="415af94b8392bc6b2c52e44ac8f17935cc6ddf2cc81edfb47c5be4ad205ab917"
 DEPENDS="openssl-dev expat-dev libbsd-dev crt-dev"
 SUBPKG="unbound libunbound libunbound-dev"
 
