@@ -21,7 +21,7 @@ strip_files() {
 		[ -f "$f" ] || continue;
 
 		if file -b $f | grep -q -i elf; then
-			${TARGET}-strip --discard-all "$f"
+			${TARGET}-strip --discard-all "$f" 2> /dev/null || true
 		fi
 	done
 }
