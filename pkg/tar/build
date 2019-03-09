@@ -1,8 +1,8 @@
-VERSION="1.31"
+VERSION="1.32"
 SRCDIR="tar-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/tar/"
-SHA256SUM="37f3ef1ceebd8b7e1ebf5b8cc6c65bb8ebf002c7d049032bf456860f25ec2dc1"
+SHA256SUM="d0d3ae07f103323be809bc3eac0dcc386d52c5262499fe05511ac4788af1fdd8"
 DEPENDS="toolchain"
 
 prepare() {
