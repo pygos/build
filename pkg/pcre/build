@@ -1,8 +1,8 @@
-VERSION="8.42"
+VERSION="8.43"
 SRCDIR="pcre-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://ftp.pcre.org/pub/pcre"
-SHA256SUM="2cd04b7c887808be030254e8d77de11d3fe9d4505c39d4b15d2664ffe8bf9301"
+SHA256SUM="91e762520003013834ac1adb4a938d53b22a216341c061b0cf05603b290faf6b"
 DEPENDS="toolchain libstdc++-dev"
 SUBPKG="pcre pcre-dev pcre++ pcre++-dev"
 
