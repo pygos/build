@@ -2,6 +2,6 @@ dir lib 0755 0 0
 file lib/libatomic.a 0644 0 0
 file lib/libgomp.a 0644 0 0
 file lib/libitm.a 0644 0 0
-slink lib/libitm.so 0777 0 0libitm.so.1.0.0
+slink lib/libitm.so 0777 0 0 libitm.so.1.0.0
 slink lib/libgomp.so 0777 0 0 libgomp.so.1.0.0
 slink lib/libatomic.so 0777 0 0 libatomic.so.1.2.0

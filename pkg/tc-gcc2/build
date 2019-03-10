@@ -33,37 +33,14 @@ deploy() {
 	mv ${TCDIR}/${TARGET}/{include,lib} "$PKGDEPLOYDIR"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
-	cat >> "$PKGDEPLOYDIR/libstdc++-dev.files" <<_EOF
-dir include 0755 0 0
-dir include/c++ 0755 0 0
-dir include/c++/8.2.0 0755 0 0
-dir include/c++/8.2.0/$TARGET 0775 0 0
-dir include/c++/8.2.0/$TARGET/bits 0775 0 0
-dir include/c++/8.2.0/$TARGET/ext 0775 0 0
-file include/c++/8.2.0/$TARGET/bits/stdtr1c++.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/gthr-single.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/ctype_inline.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/gthr-posix.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/ctype_base.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/c++io.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/gthr.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/c++locale.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/cpu_defines.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/c++config.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/atomic_word.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/os_defines.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/time_members.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/basic_file.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/gthr-default.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/cxxabi_tweaks.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/opt_random.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/extc++.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/stdc++.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/c++allocator.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/error_constants.h 0644 0 0
-file include/c++/8.2.0/$TARGET/bits/messages_members.h 0644 0 0
-file include/c++/8.2.0/$TARGET/ext/opt_random.h 0644 0 0
-_EOF
+	find -H "$PKGDEPLOYDIR/include/c++" -type d -printf "dir %p 0%m 0 0\\n" |\
+		tail -n +2 | sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
+
+	find -H "$PKGDEPLOYDIR/include/c++" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
+		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
+
+	find -H "$PKGDEPLOYDIR/include/c++" -type f -printf "file %p 0%m 0 0\\n" |\
+		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
 
 	if [ -f "$PKGDEPLOYDIR/lib/libmpx.a" ]; then
 		cat >> "$PKGDEPLOYDIR/libgcc-dev.files" <<_EOF
