@@ -64,7 +64,6 @@ echo "--- boot strap phase ---"
 
 for pkg in tc-pkgtool; do
 	include_pkg "$pkg"
-	fetch_package
 	build_package
 done
 
@@ -86,13 +85,6 @@ done
 pkg buildstrategy -p "$PROVIDESLIST" -d "$DEPENDSLIST" "$RELEASEPKG" \
     > "$PACKAGELIST"
 cat "$PACKAGELIST"
-
-echo "--- downloading package files ---"
-
-while read pkg; do
-	include_pkg "$pkg"
-	fetch_package
-done < "$PACKAGELIST"
 
 echo "--- building packages ---"
 

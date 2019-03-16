@@ -16,6 +16,8 @@ build_package() {
 		rm -f "$REPODIR/${f}.pkg"
 	done
 
+	fetch_package
+
 	rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 	mkdir -p "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 
