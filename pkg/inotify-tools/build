@@ -1,0 +1,26 @@
+VERSION="3.20.1"
+SRCDIR="inotify-tools-${VERSION}"
+TARBALL="${VERSION}.tar.gz"
+URL="https://github.com/rvoicilas/inotify-tools/archive"
+SHA256SUM="a433cc1dedba851078276db69b0e97f9fe41e4ba3336d2971adfca4b3a6242ac"
+DEPENDS="toolchain"
+
+prepare() {
+	./autogen.sh
+}
+
+build() {
+	run_configure "$1" --disable-doxygen
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+}
+
+check_update() {
+	curl --silent -L "https://github.com/rvoicilas/inotify-tools/releases" |\
+	    grep -o "tag/[0-9.]*" | sed 's#tag/##g' | \
+	    verson_find_greatest "$VERSION"
+}

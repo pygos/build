@@ -1,0 +1,6 @@
+dir bin 0755 0 0
+dir lib 0755 0 0
+file bin/inotifywait 0755 0 0
+file bin/inotifywatch 0755 0 0
+file lib/libinotifytools.so.0.4.1 0755 0 0
+slink lib/libinotifytools.so.0 0777 0 0 libinotifytools.so.0.4.1
