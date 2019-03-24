@@ -1,63 +1,87 @@
 # The Pygos Build System
 
-The Pygos system can be built by running the `mk.sh` shell script with
-the desired product configuration as argument.
+The Pygos build system creates a number of binary packages from a set of
+source packages using a cross toolchain, installs them to a compressed file
+system image and neatly packages it with an install script for the target
+board.
 
+The Pygos system can be built by running the `mk.sh` shell script in the root
+of the git tree, with the desired product configuration as argument.
 
 The shell script can be run from anywhere on the file system. All
 configuration files and scripts are accessed relative to the source location
 of the script and all generated files are accessed relative to the current
 working directory.
 
-Actually it is even strongly encouraged to run the build system from outside
-the git tree to have the generated files cleanly separated from the build
-system.
-
+It is strongly encouraged to run the build system from outside the git tree to
+have the generated files cleanly separated from the build system.
 
 A second script named `check_update.sh` is provided to automatically query
 all upstream package sources to check if newer versions are available.
 
-
 The `mk.sh` creates a `download` and a `src` directory. In the former it stores
-downloaded package tar balls, in the later it extracts the tar balls and
-applies patches.
+downloaded source tar balls, in the later it extracts the tar balls and applies
+patches.
 
 For all other files and directories, a sub directory named after the product
-configuration is created. Throughout the build system, this directory is
-referred to as *build root*.
+configuration is created, referred to as *build root*.
 
-Inside the build root a `deploy` directory is created. Build output for each
-package is deployed to a sub directory named after the package.
+Inside the build root the directories `log`, `repo` and `toolchain` are
+created. The compiled binary packages are stored in `repo`, the cross
+toolchain is stored in `toolchain`. Outputs and diagnostic messages of the
+build processes are stored in `log` and are each compressed after successfully
+building a package.
 
-The cross toolchain is stored in `<build root>/toolchain`.
 
-Outputs and diagnostic messages of the build processes are stored in
-`<build root>/toolchain/log/<package>-<stage>.log`.
+If you are in a real hurry in building the system, you may wish to store the
+input git tree and output build directory on an SSD and create the build root
+directory ahead of time with a tmpfs mounted to it.
+
+
+## Packages and Dependcies
+
+The build system distinguishes between binary packages and source packages.
+
+A binary package is an archive containing files and meta data, such as
+dependency information. Installing a binary package means extracting its
+contents (and recursively that of its dependencies) to a target location.
+
+A source package is at its minimum a shell script that is run by the build
+system to produce binary packages. A source package can produce more than one
+binary package (e.g. a program, its utility libraries and development headers
+for the libraries could all be packaged separately).
+
+Running a build script may require development headers and libraries of other
+packages to be installed to an intermediate staging sysroot used by the cross
+toolchain. Thus, a source package can itself depend on binary packages that
+have to be built first and are installed to the staging sysroot before
+the build process begins. The resulting binary packages can have a completely
+different set of dependencies (e.g. they don't need the library headers).
+
+For simplicity, the cross toolchain, rootfs image and packaging are also
+implemented as source packages and the build system takes care of building
+everything in the right order.
 
 
 ## Package Build Scripts
 
-The directory `pkg` contains a sub directory for each package. Each package
-directory is expected to contain a shell script named `build`.
+The directory `pkg` contains a sub directory for each source package. Each
+package directory is expected to contain a shell script named `build`.
 
 The build script is expected to set the following variables:
 
 * `VERSION` containing a package version number.
-* `URL` containig a URL from which to download a source tar ball.
+* `URL` containing a URL from which to download a source tar ball.
 * `TARBALL` containing the name of the source tar ball. This is appended to
   the URL to download the package.
 * `SHA256SUM` containing the SHA-256 check sum of the source tar ball.
 * `SRCDIR` containing the name of the source directory unpacked from the
   tar ball.
-* `DEPENDS` containing a space separated list of packages that the package
-  in question depends on. Those packages are built first. Their headers and
-  libraries are copied into the cross toolchain before building the current
-  package and removed after building it.
-
-
-Using the specified variables, the build system automatically downloads,
-verifies and unpacks the source tar balls (unless that has already been done)
-and determines the order in which to build the packages.
+* `DEPENDS` containing a space separated list of packages that have to be built
+  first and installed to the cross toolchains sysroot.
+* `SUBPKG` containing a space sperated list of binary packages produced. If
+  left empty, the build system assumes one binary package with the same name
+  as the source package.
 
 
 The `build` script is also expected to implement the following functions:
@@ -65,38 +89,52 @@ The `build` script is also expected to implement the following functions:
 * `prepare` is run after unpacking the source tar ball. The current working
   directory is set to the source directory. The path to the package directory
   is passed as first argument, so the function can easily access patch files
-  stored in the package directory. All output and error messages from the
-  script are stored in `<packagename>-prepare.log`.
+  stored in the package directory.
 * `build` is run to compile the package. The current working directory is a
   temporary directory inside the build root directory. The source directory
-  is passed as first argument. The second argument is a path to the *deploy*
-  directory where generated files are installed. All standard output and error
-  messages from the script are piped to `<packagename>-build.log`.
-* `deploy` is run after compilation to install the build output to the deploy
-  directory. Arguments and working directory are the same as for `build`. All
-  output and error messages from the script are piped to
-  `<packagename>-deploy.log`. The `deploy` function is also expected to
-  generate a file named `rootfs_files.txt` that contains a listing of all files
-  in the deploy directory that should be included in the root filesystem and
-  what permissions should be set on them. Once the function returns,
-  the `mk.sh` script strips everything installed to `bin` and `lib`, so the
-  implementation doesn't have to do that. In fact `install-strip` Makefile
-  targets should not be used since many implementations are broken for cross
-  compilation. Further common steps are executed for packages that
-  produce `libtool` archives and `pkg-config` files.
+  is passed as first argument.
+* `deploy` is run after compilation to install the build output to a staging
+  directory. Arguments and working directory are the same as for `build`.
+  The function is expected to generate a `*.files` and a `*.desc` file for
+  each sub package, so the build system can automatically package it.
 * `check_update` is only used by the `check_update.sh` script. It is supposed
   to find out if the package has a newer version available, and if so, echo it
   to stdout.
 
 
-### Environment Variables
+### Directory Variables
 
-The `mk.sh` sets a number of shell variables that package scripts can use.
+A number of directories exist that can be accessed through global variables
+from package build scripts.
+
+The following shell variables are globally visible and identify special
+directories that build scripts might be interested in:
+
+* `SCRIPTDIR` points to the git tree containging the build system.
+* `PKGDOWNLOADDIR` points to the directory to which source tar balls
+  are downloaded.
+* `PKGSRCDIR` points to the directory into which source tar balls are unpacked.
+* `BUILDROOT` points to the build root directory.
+* `PKGLOGDIR` points to the directory where log files are written to stored.
+* `REPODIR` points to the directory where binary packages are stored.
+* `TCDIR` points to the cross toolchain directory.
+
+While building a package, additional staging directories are temporarily
+created inside the build root directory:
+
+* `PKGBUILDDIR` points to a temporary directory inside the build root that is
+  used as working directory for the `build` and `deploy` functions.
+* `PKGDEPLOYDIR` points to another such temporary directory that the `deploy`
+  function is expected to install binaries to.
+
+
+### Additional Variables
 
 The following variables describe the target system and the build environment:
 
-* `BOARD` contains the target board specified on the command line
 * `PRODUCT` contains the product name specified on the command line
+* `LAYERCONF` contains path to the list of active configuration layers for the
+  target product
 * `TARGET` specifies the host triplet of the target board
 * `OS_NAME` is statically set to `Pygos`
 * `OS_RELEASE` holds a version string generated using `git-describe`
@@ -105,22 +143,8 @@ The following variables describe the target system and the build environment:
   is running on for compiling toolchain packages.
 * `CMAKETCFILE` contains the absolute path to a CMake toolchain file that can
   be used for compiling CMake based packages with the cross toolchain.
-
-
-And a number of variables containing special directories:
-
-* `BUILDROOT` contains the absolute path to the build root directory, i.e. the
-  output directory within the working directory of the `mk.sh` script.
-* `SCRIPTDIR` contains the absolute path to the script directory, i.e. the git
-  tree with the build system in it.
-* `TCDIR` contains the absolute path to the cross toolchain directory.
-* `PKGBUILDDIR` contains the absolute path of the temporary directory in which
-  the package is being built.
-* `PKGSRCDIR` contains the root directory of all unpacked package tar balls
-* `PKGDEPLOYDIR` contains the root directory of all package deploy directories
-* `PKGLOGDIR` holds the absolute path of the directory containing all log files
-* `PKGDOWNLOADDIR` holds the absolute path of the directory containing all
-  package tar balls
+* `PACKAGELIST`, `DEPENDSLIST`, `PROVIDESLIST` hold data used internally for
+  dependency management.
 
 The cross toolchain directory containing the executable prefixed with `$TARGET-`
 is also prepended to `PATH`.
@@ -134,14 +158,20 @@ Some utility functions are provided for common package build tasks:
 * `strip_files` takes a list of files as argument and runs the cross toolchain
   strip program on those that are valid ELF binaries. If a directory is
   encountered, the function recursively processes the sub directory. Usually
-  you don't need to use this. The `mk.sh` script uses this function to after
+  you don't need to use this. The `mk.sh` script uses this function after
   the deploy step to process the `bin` and `lib` directories.
+* `unfuck_libtool` may have to be used before running `make install` on
+  packages that build shared libraries with libtool. GNU libtool is an utter
+  piece of garbage from hell. This function removes the global `/lib` search
+  path from the `*.la` files, so libtool doesn't crap itself during its stupid
+  relink phase, trying to link against libraries from the host system, after
+  already successfully cross compiling the libraries.
 * `verson_find_greatest` can be used in `check_update` to find the largest
   version number from a list. The list of version numbers is read from stdin.
   Version numbers can have up to four dot separated numbers or characters.
 * `run_configure` can be used to run `autoconf` generated `configure` scripts
   with all the required options set for cross compilation. Extra options can
-  be to the options passed to `configure`.
+  be added to the options passed to `configure`.
 
 ## Configuration Files
 
