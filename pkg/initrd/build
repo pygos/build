@@ -1,15 +1,13 @@
 DEPENDS="bbstatic"
 
 build() {
-	mkdir -p ./{dev,lib,bin,sys,proc,newroot,images}
-
-	pkg install -omLD -r "$PKGBUILDDIR" -R "$REPODIR" $DEPENDS
+	return
 }
 
 deploy() {
 	cp $SCRIPTDIR/pkg/initrd/*.{desc,files} "$PKGDEPLOYDIR"
 
-	pkg install -R "$REPODIR" -r "$PKGBUILDDIR" -l pkg $DEPENDS \
+	pkg install -R "$REPODIR" -r "$TCDIR/$TARGET" -l pkg $DEPENDS \
 	    >> "$PKGDEPLOYDIR/initrd.files"
 
 	echo "file init 0775 0 0 $SCRIPTDIR/pkg/$PKGNAME/initrd.skel" \
