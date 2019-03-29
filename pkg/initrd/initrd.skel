@@ -85,14 +85,7 @@ fi
 if [ ! -z "$overlay_dev" ]; then
 	mount_device "$overlay_dev" "/newroot/cfg/overlay" "$overlay_type"
 
-	mkdir -p /newroot/cfg/overlay/etc
-	mkdir -p /newroot/cfg/overlay/etc_work
-	mkdir -p /newroot/cfg/overlay/var_lib
-	mkdir -p /newroot/cfg/overlay/var_lib_work
-	mkdir -p /newroot/cfg/overlay/usr
-	mkdir -p /newroot/cfg/overlay/usr_work
-
-	chroot /newroot mount -n -t overlay overlay -olowerdir=/cfg/preserve/etc,upperdir=/cfg/overlay/etc,workdir=/cfg/overlay/etc_work /etc
+	chroot /newroot /lib/libexec/init/overlay.sh etc /etc
 else
 	chroot /newroot mount --bind "/cfg/preserve/etc" "/etc"
 fi
