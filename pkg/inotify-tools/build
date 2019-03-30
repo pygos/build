@@ -21,6 +21,6 @@ deploy() {
 
 check_update() {
 	curl --silent -L "https://github.com/rvoicilas/inotify-tools/releases" |\
-	    grep -o "tag/[0-9.]*" | sed 's#tag/##g' | \
+	    grep -o "tag/[0-9.]*" | sed 's#tag/##g' | sed '/^$/d' |\
 	    verson_find_greatest "$VERSION"
 }
