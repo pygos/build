@@ -33,13 +33,7 @@ deploy() {
 	mv ${TCDIR}/${TARGET}/{include,lib} "$PKGDEPLOYDIR"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
-	find -H "$PKGDEPLOYDIR/include/c++" -type d -printf "dir %p 0%m 0 0\\n" |\
-		tail -n +2 | sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
-
-	find -H "$PKGDEPLOYDIR/include/c++" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
-
-	find -H "$PKGDEPLOYDIR/include/c++" -type f -printf "file %p 0%m 0 0\\n" |\
+	pkg_scan_dir "$PKGDEPLOYDIR/include/c++" |\
 		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
 
 	if [ -f "$PKGDEPLOYDIR/lib/libmpx.a" ]; then

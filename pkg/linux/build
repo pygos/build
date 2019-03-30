@@ -73,13 +73,7 @@ deploy() {
 			echo "dir lib 0755 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 			echo "dir lib/modules 0755 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 
-			find -H "$PKGDEPLOYDIR/lib" -type d -printf "dir %p 0%m 0 0\\n" |\
-				tail -n +2 | sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/$PKGNAME.files"
-
-			find -H "$PKGDEPLOYDIR/lib" -type l -printf "slink %p 0%m 0 0 %l\\n" |\
-				sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/$PKGNAME.files"
-
-			find -H "$PKGDEPLOYDIR/lib" -type f -printf "file %p 0%m 0 0\\n" |\
+			pkg_scan_dir "$PKGDEPLOYDIR/lib" |\
 				sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 			;;
 		esac

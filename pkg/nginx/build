@@ -84,16 +84,7 @@ deploy() {
 		echo "dir srv 0755 0 0" >> "$PKGDEPLOYDIR/nginx.files"
 		echo "dir srv/www 0755 0 0" >> "$PKGDEPLOYDIR/nginx.files"
 
-		find -H "$PKGDEPLOYDIR/srv/www" -type d \
-		     -printf "dir %p 0%m 0 0\\n" | tail -n +2 |\
-		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
-
-		find -H "$PKGDEPLOYDIR/srv/www" -type l \
-		     -printf "slink %p 0%m 0 0 %l\\n" | \
-		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
-
-		find -H "$PKGDEPLOYDIR/srv/www" -type f \
-		     -printf "file %p 0%m 0 0\\n" |\
+		pkg_scan_dir "$PKGDEPLOYDIR/srv/www" |\
 		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
 	fi
 

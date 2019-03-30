@@ -20,14 +20,6 @@ deploy() {
 
 	echo "dir include 0755 0 0" > "$PKGDEPLOYDIR/linux-dev.files"
 
-	find -H "$PKGDEPLOYDIR/include" -type d -printf "dir %p 0%m 0 0\\n" |\
-		tail -n +2 |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/linux-dev.files"
-
-	find -H "$PKGDEPLOYDIR/include" -type l \
-	     -printf "slink %p 0%m 0 0 %l\\n" |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/linux-dev.files"
-
-	find -H "$PKGDEPLOYDIR/include" -type f -printf "file %p 0%m 0 0\\n" |\
+	pkg_scan_dir "$PKGDEPLOYDIR/include" |\
 		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/linux-dev.files"
 }
