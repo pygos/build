@@ -19,7 +19,6 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L https://github.com/seccomp/libseccomp/releases | \
-	    grep -o "libseccomp-[0-9.]*tar.gz" | sed 's/libseccomp-//g' | \
-	    sed 's/.tar.gz//g' | verson_find_greatest "$VERSION"
+	check_update_simple "https://github.com/seccomp/libseccomp/releases" \
+			    "libseccomp-" "tar.gz"
 }

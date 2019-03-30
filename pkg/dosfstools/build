@@ -20,8 +20,7 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "https://github.com/dosfstools/dosfstools/releases" |\
-	    grep -o "dosfstools-[0-9.]*tar.xz" | \
-	    sed 's/dosfstools-//g' | sed 's/.tar.xz//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple \
+		"https://github.com/dosfstools/dosfstools/releases" \
+		"dosfstools-" "tar.xz"
 }

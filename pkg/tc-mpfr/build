@@ -19,7 +19,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">mpfr-[0-9.]*tar.xz<" | \
-	    sed 's/>mpfr-//g' | sed 's/.tar.xz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "mpfr-" "tar.xz"
 }

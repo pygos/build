@@ -30,8 +30,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | \
-	    grep -o ">busybox-[0-9.]*tar.bz2<" | \
-	    sed 's/>busybox-//g' | sed 's/.tar.bz2<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "busybox-" "tar.bz2"
 }

@@ -22,7 +22,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">libnl-[0-9.]*tar.gz<" | \
-	    sed 's/>libnl-//g' | sed 's/.tar.gz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "libnl-" "tar.gz"
 }

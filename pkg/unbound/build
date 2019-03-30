@@ -42,7 +42,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">unbound-[0-9.]*tar.gz<" | \
-	    sed 's/>unbound-//g' | sed 's/.tar.gz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "unbound-" "tar.gz"
 }

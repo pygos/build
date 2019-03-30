@@ -32,7 +32,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L $URL | grep -o "iproute2-[0-9.]*tar.xz" | \
-	    sed 's/iproute2-//g' | sed 's/.tar.xz//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "iproute2-" "tar.xz"
 }

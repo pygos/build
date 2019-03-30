@@ -22,7 +22,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">kbd-[0-9.]*tar.xz<" | \
-	    sed 's/>kbd-//g' | sed 's/.tar.xz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "kbd-" "tar.xz"
 }

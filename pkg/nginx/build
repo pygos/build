@@ -101,7 +101,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">nginx-[0-9.]*tar.gz<" | \
-	    sed 's/>nginx-//g' | sed 's/.tar.gz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "nginx-" "tar.gz"
 }

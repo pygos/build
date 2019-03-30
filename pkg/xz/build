@@ -21,7 +21,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o "xz-[0-9.]*tar.xz" | \
-	    sed 's/xz-//g' | sed 's/.tar.xz//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "xz-" "tar.xz"
 }

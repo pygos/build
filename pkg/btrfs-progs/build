@@ -25,8 +25,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | \
-	    grep -o ">btrfs-progs-v[0-9.]*tar.xz<" | \
-	    sed 's/>btrfs-progs-v//g' | sed 's/.tar.xz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "btrfs-progs-v" "tar.xz"
 }

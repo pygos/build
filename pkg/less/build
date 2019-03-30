@@ -20,7 +20,5 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">less-[0-9.]*tar.gz<" | \
-	    sed 's/>less-//g' | sed 's/.tar.gz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "less-" "tar.gz"
 }

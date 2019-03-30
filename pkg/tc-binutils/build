@@ -49,7 +49,5 @@ _EOF
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">binutils-[0-9.]*tar.xz<" | \
-	    sed 's/>binutils-//g' | sed 's/.tar.xz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "binutils-" "tar.xz"
 }

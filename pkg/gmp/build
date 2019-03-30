@@ -21,9 +21,6 @@ deploy() {
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 
-
 check_update() {
-	curl --silent -L "$URL" | grep -o ">gmp-[0-9.]*tar.bz2<" | \
-	    sed 's/>gmp-//g' | sed 's/.tar.bz2<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "gmp-" "tar.bz2"
 }

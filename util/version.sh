@@ -31,3 +31,13 @@ verson_find_greatest() {
 		echo "$found"
 	fi
 }
+
+check_update_simple() {
+	local url="$1"
+	local prefix="$2"
+	local suffix="$3"
+
+	curl --silent -L "$url" | grep -o ">$prefix-[0-9.]*$suffix<" | \
+	    sed 's/>$prefix-//g' | sed 's/.$suffix<//g' | \
+	    verson_find_greatest "$VERSION"
+}

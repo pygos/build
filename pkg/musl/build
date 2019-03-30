@@ -68,7 +68,5 @@ _EOF
 }
 
 check_update() {
-	curl --silent -L "$URL" | grep -o ">musl-[0-9.]*tar.gz<" | \
-	    sed 's/>musl-//g' | sed 's/.tar.gz<//g' | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "$URL" "musl-" "tar.gz"
 }
