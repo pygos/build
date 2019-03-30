@@ -3,7 +3,7 @@ SRCDIR="nftables-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://netfilter.org/projects/nftables/files"
 SHA256SUM="ad8181b5fcb9ca572f444bed54018749588522ee97e4c21922648bb78d7e7e91"
-DEPENDS="libmnl-dev libnftnl-dev gmp-dev readline-dev ncurses-dev crt-dev"
+DEPENDS="libmnl-dev libnftnl-dev gmp-dev readline-dev ncurses-dev toolchain"
 SUBPKG="nftables nftables-dev"
 
 prepare() {

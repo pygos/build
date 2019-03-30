@@ -3,7 +3,7 @@ SRCDIR="libpcap-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="http://www.tcpdump.org/release/"
 SHA256SUM="2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
-DEPENDS="libnl3-dev crt-dev"
+DEPENDS="libnl3-dev toolchain"
 SUBPKG="libpcap libpcap-dev"
 
 prepare() {

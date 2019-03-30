@@ -3,7 +3,7 @@ SRCDIR="unbound-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.unbound.net/downloads"
 SHA256SUM="415af94b8392bc6b2c52e44ac8f17935cc6ddf2cc81edfb47c5be4ad205ab917"
-DEPENDS="openssl-dev expat-dev libbsd-dev crt-dev"
+DEPENDS="openssl-dev expat-dev libbsd-dev toolchain"
 SUBPKG="unbound libunbound libunbound-dev"
 
 prepare() {

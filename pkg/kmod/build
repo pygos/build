@@ -3,7 +3,7 @@ SRCDIR="kmod-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/kernel/kmod/"
 SHA256SUM="57bb22c8bb56435991f6b0810a042b0a65e2f1e217551efa58235b7034cdbb9d"
-DEPENDS="zlib-dev xz-dev crt-dev"
+DEPENDS="zlib-dev xz-dev toolchain"
 SUBPKG="kmod kmod-dev"
 
 prepare() {

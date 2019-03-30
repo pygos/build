@@ -3,7 +3,7 @@ SRCDIR="openssl-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://www.openssl.org/source"
 SHA256SUM="5c557b023230413dfb0756f3137a13e6d726838ccd1430888ad15bfb2b43ea4b"
-DEPENDS="zlib-dev crt-dev"
+DEPENDS="zlib-dev toolchain"
 SUBPKG="openssl openssl-dev"
 
 prepare() {

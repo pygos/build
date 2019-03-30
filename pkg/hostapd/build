@@ -3,7 +3,7 @@ SRCDIR="hostapd-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://w1.fi/releases/"
 SHA256SUM="21b0dda3cc3abe75849437f6b9746da461f88f0ea49dd621216936f87440a141"
-DEPENDS="libnl3-dev openssl-dev crt-dev"
+DEPENDS="libnl3-dev openssl-dev toolchain"
 
 prepare() {
 	return

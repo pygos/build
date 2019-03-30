@@ -3,7 +3,7 @@ SRCDIR="pcre-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://ftp.pcre.org/pub/pcre"
 SHA256SUM="91e762520003013834ac1adb4a938d53b22a216341c061b0cf05603b290faf6b"
-DEPENDS="toolchain libstdc++-dev"
+DEPENDS="toolchain"
 SUBPKG="pcre pcre-dev pcre++ pcre++-dev"
 
 prepare() {
