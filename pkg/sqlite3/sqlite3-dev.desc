@@ -1,0 +1,1 @@
+requires crt-dev sqlite3 sqlite3-shell

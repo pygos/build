@@ -1,0 +1,2 @@
+dir bin 0755 0 0
+file bin/sqlite3 0755 0 0
