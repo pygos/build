@@ -1,5 +1,5 @@
 # inherit package details from kernel package
-source "$SCRIPTDIR/pkg/$LINUXPKG/build"
+source "$SCRIPTDIR/pkg/${PREFERED_PROVIDER[linux]}/build"
 DEPENDS="tc-pkgtool"
 SUBPKG="linux-dev"
 

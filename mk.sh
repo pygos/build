@@ -31,6 +31,8 @@ REPODIR="$BUILDROOT/repo"
 DEPENDSLIST="$BUILDROOT/depends"
 PROVIDESLIST="$BUILDROOT/provides"
 
+declare -A PREFERED_PROVIDER
+
 mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
 mkdir -p "$REPODIR"
 
@@ -82,8 +84,8 @@ for pkg in $SCRIPTDIR/pkg/*; do
 	done
 done
 
-pkg buildstrategy -p "$PROVIDESLIST" -d "$DEPENDSLIST" "$RELEASEPKG" \
-    > "$PACKAGELIST"
+pkg buildstrategy -p "$PROVIDESLIST" -d "$DEPENDSLIST" \
+    "${PREFERED_PROVIDER[release]}" > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- building packages ---"
