@@ -7,6 +7,7 @@ TARBALL="raspberrypi-kernel_${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/linux/archive"
 SHA256SUM="57ec23478db884eafe8fefd0bc1dbf557e93eda36fda1fe6a1db26e4b3f6fd12"
 DEPENDS="initrd"
+SUBPKG="linux linux-modules"
 
 check_update() {
 	local version=$(echo $VERSION | sed 's/-/./g')

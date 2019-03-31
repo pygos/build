@@ -7,6 +7,7 @@ GCC_EXTRACFG="--with-float=hard --with-fpu=neon-vfpv3"
 BINUTILS_EXTRACFG=""
 
 PREFERED_PROVIDER[linux]="linux-rpi3"
+PREFERED_PROVIDER[linux-modules]="linux-rpi3"
 PREFERED_PROVIDER[release]="release-rpi3"
 
 LINUX_TGT="zImage dtbs modules"

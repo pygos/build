@@ -1,4 +1,4 @@
-DEPENDS="rootfs boot-rpi3"
+DEPENDS="rootfs boot-rpi3 linux"
 SUBPKG="release"
 
 build() {

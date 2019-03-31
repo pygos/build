@@ -27,13 +27,6 @@ _EOF
 	sed -i 's#etc/#cfg/preserve/etc/#g' "$PKGDEPLOYDIR/pseudo"
 	sed -i 's#var/lib/#cfg/preserve/var_lib/#g' "$PKGDEPLOYDIR/pseudo"
 	sed -i 's#usr/#cfg/preserve/usr/#g' "$PKGDEPLOYDIR/pseudo"
-
-	# don't add stuff for the boot partition to the squashfs image
-	mv $TCDIR/$TARGET/boot/* "$PKGDEPLOYDIR"
-
-	grep -v "^boot/" "$PKGDEPLOYDIR/pseudo" > "$PKGDEPLOYDIR/pseudo.temp"
-	mv "$PKGDEPLOYDIR/pseudo.temp" "$PKGDEPLOYDIR/pseudo"
-	echo "boot m 750 0 0" >> "$PKGDEPLOYDIR/pseudo"
 }
 
 deploy() {

@@ -1,4 +1,4 @@
-DEPENDS="rootfs"
+DEPENDS="rootfs linux"
 SUBPKG="release"
 
 build() {
