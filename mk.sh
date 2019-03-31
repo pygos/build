@@ -30,6 +30,7 @@ PACKAGELIST="$BUILDROOT/pkglist"
 REPODIR="$BUILDROOT/repo"
 DEPENDSLIST="$BUILDROOT/depends"
 PROVIDESLIST="$BUILDROOT/provides"
+PREFERESLIST="$BUILDROOT/preferes"
 
 declare -A PREFERED_PROVIDER
 
@@ -71,7 +72,7 @@ done
 
 echo "--- resolving package dependencies ---"
 
-truncate -s 0 $DEPENDSLIST $PROVIDESLIST
+truncate -s 0 "$DEPENDSLIST" "$PROVIDESLIST" "$PREFERESLIST"
 
 for pkg in $SCRIPTDIR/pkg/*; do
 	include_pkg $(basename $pkg)
@@ -84,8 +85,12 @@ for pkg in $SCRIPTDIR/pkg/*; do
 	done
 done
 
-pkg buildstrategy -p "$PROVIDESLIST" -d "$DEPENDSLIST" \
-    "${PREFERED_PROVIDER[release]}" > "$PACKAGELIST"
+for pkg in "${!PREFERED_PROVIDER[@]}"; do
+	echo "$pkg,${PREFERED_PROVIDER[$pkg]}" >> "$PREFERESLIST"
+done
+
+pkg buildstrategy -p "$PROVIDESLIST" -d "$DEPENDSLIST" -P "$PREFERESLIST" \
+    "release" > "$PACKAGELIST"
 cat "$PACKAGELIST"
 
 echo "--- building packages ---"

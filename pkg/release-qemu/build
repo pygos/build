@@ -1,4 +1,5 @@
 DEPENDS="rootfs"
+SUBPKG="release"
 
 build() {
 	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" -R "$REPODIR" $DEPENDS
@@ -23,10 +24,8 @@ build() {
 }
 
 deploy() {
-	tar czf "$BUILDROOT/$PKGNAME.tar.gz" *
-
-	touch "$PKGDEPLOYDIR/$PKGNAME.files"
-	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
+	tar czf "$BUILDROOT/release.tar.gz" *
+	touch "$PKGDEPLOYDIR/release.files" "$PKGDEPLOYDIR/release.desc"
 }
 
 check_update() {
