@@ -6,7 +6,7 @@ CPU_IS_64BIT="no"
 GCC_EXTRACFG="--disable-libmpx --disable-cet"
 BINUTILS_EXTRACFG="--disable-cet"
 
-PREFERED_PROVIDER[linux]="linux"
+PREFERED_PROVIDER[linux]="linux-lts"
 PREFERED_PROVIDER[release]="release-alix"
 
 LINUX_TGT="bzImage modules"

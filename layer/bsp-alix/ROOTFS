@@ -1,4 +1,4 @@
 kmod
 btrfs-progs
 dosfstools
-linux
+linux-lts

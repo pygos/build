@@ -1,5 +1,5 @@
 # inherit functions from generic kernel package
-source "$SCRIPTDIR/pkg/linux/build"
+source "$SCRIPTDIR/pkg/linux-lts/build"
 
 VERSION="1.20190215-1"
 SRCDIR="linux-raspberrypi-kernel_${VERSION}"

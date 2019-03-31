@@ -6,7 +6,7 @@ CPU_IS_64BIT="yes"
 GCC_EXTRACFG="--enable-libmpx"
 BINUTILS_EXTRACFG=""
 
-PREFERED_PROVIDER[linux]="linux"
+PREFERED_PROVIDER[linux]="linux-lts"
 PREFERED_PROVIDER[release]="release-qemu"
 
 LINUX_TGT="bzImage"
