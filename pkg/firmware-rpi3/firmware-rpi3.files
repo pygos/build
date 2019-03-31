@@ -1,7 +1,6 @@
 dir opt 0755 0 0
 dir opt/vc 0755 0 0
 dir opt/vc/bin 0755 0 0
-dir opt/vc/sbin 0755 0 0
 dir opt/vc/lib 0755 0 0
 dir opt/vc/lib/plugins 0755 0 0
 slink opt/vc/lib/libGLESv1_CM.so 0777 0 0 libGLESv2.so
@@ -80,4 +79,3 @@ file opt/vc/bin/vcgencmd 0755 0 0
 file opt/vc/bin/vchiq_test 0755 0 0
 file opt/vc/bin/vcmailbox 0755 0 0
 file opt/vc/bin/vcsmem 0755 0 0
-file opt/vc/sbin/vcfiled 0755 0 0
