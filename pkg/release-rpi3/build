@@ -5,7 +5,6 @@ build() {
 	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" $DEPENDS
 
 	# copy files from this package
-	cp "$SCRIPTDIR/pkg/$PKGNAME/cmdline.txt" "$PKGBUILDDIR/boot"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/install.sh" "$PKGBUILDDIR"
 	cp "$SCRIPTDIR/pkg/$PKGNAME/genimage.sh" "$PKGBUILDDIR"
 
@@ -16,6 +15,9 @@ build() {
 
 	local rootfs_image="$OS_RELEASE/rootfs.img"
 	local kernel_image="$OS_RELEASE/vmlinuz"
+
+	cat_file_override "rpi_config.txt" > "$PKGBUILDDIR/boot/config.txt"
+	cat_file_override "rpi_cmdline.txt" > "$PKGBUILDDIR/boot/cmdline.txt"
 
 	sed -i 's#ROOTFSFILE#'$rootfs_image'#g' "$PKGBUILDDIR/boot/cmdline.txt"
 	sed -i 's#KERNELFILE#'$kernel_image'#g' "$PKGBUILDDIR/boot/config.txt"

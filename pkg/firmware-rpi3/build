@@ -19,7 +19,6 @@ deploy() {
 
 	cp -r "$SOURCE/hardfp/opt" "$PKGDEPLOYDIR"
 	cp -r ${SOURCE}/boot/* "$PKGDEPLOYDIR/"
-	cp "$SCRIPTDIR/pkg/$PKGNAME/config.txt" "$PKGDEPLOYDIR/config.txt"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
 	strip_files ${PKGDEPLOYDIR}/opt/vc/bin/*

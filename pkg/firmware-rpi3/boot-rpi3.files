@@ -5,5 +5,4 @@ file bootcode.bin 0664 0 0
 file fixup_x.dat 0664 0 0
 file start_cd.elf 0664 0 0
 file fixup.dat 0664 0 0
-file config.txt 0664 0 0
 file start_x.elf 0664 0 0
