@@ -4,7 +4,7 @@ TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/firmware/archive"
 SHA256SUM="6b6db5f15c400bc1224266fd44238dd9b2479fd09f8a55e36ccdac2120632f8f"
 DEPENDS="toolchain"
-SUBPKG="boot-rpi3 boot-rpi3-dtbo firmware-rpi3 firmware-rpi3-dev boot-rpi3-dtb"
+SUBPKG="boot-rpi boot-rpi-dtbo rpi-vc rpi-vc-dev boot-rpi-dtb"
 
 prepare() {
 	return
