@@ -2,6 +2,5 @@ kmod
 btrfs-progs
 dosfstools
 linux-modules
-rpi-vc
 linux-firmware-rpi3
 kbd
