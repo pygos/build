@@ -1,12 +1,12 @@
 MAJOR="4"
 MINOR="19"
-RELEASE="32"
+RELEASE="35"
 
 VERSION="$MAJOR.$MINOR.$RELEASE"
 SRCDIR="linux-$VERSION"
 TARBALL="linux-$VERSION.tar.xz"
 URL="https://www.kernel.org/pub/linux/kernel/v$MAJOR.x"
-SHA256SUM="a326d1154324aee3dd9a25ac44bc4ce7242ded097d4ca2e4c131e6f32918e7d9"
+SHA256SUM="2fa7e560f0e020104c6e09ffb6c2242a8f5c4b5c39e41ed2996fa7b8b42047e0"
 DEPENDS="initrd"
 SUBPKG="linux linux-modules"
 
