@@ -1,9 +1,9 @@
 dir dev 0755 0 0
-dir lib 0775 0 0
-dir bin 0775 0 0
-dir sys 0775 0 0
-dir proc 0775 0 0
-dir newroot 0775 0 0
-dir images 0775 0 0
+dir lib 0755 0 0
+dir bin 0755 0 0
+dir sys 0755 0 0
+dir proc 0755 0 0
+dir newroot 0755 0 0
+dir images 0755 0 0
 slink sbin 0777 0 0 bin
 nod dev/console 600 0 0 c 5 1
