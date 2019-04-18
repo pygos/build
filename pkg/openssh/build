@@ -1,8 +1,8 @@
-VERSION="7.9p1"
+VERSION="8.0p1"
 SRCDIR="openssh-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable"
-SHA256SUM="6b4b3ba2253d84ed3771c8050728d597c91cfce898713beb7b64a305b6f11aad"
+SHA256SUM="bd943879e69498e8031eb6b7f44d08cdc37d59a7ab689aa0b437320c3481fd68"
 DEPENDS="openssl-dev zlib-dev toolchain"
 
 prepare() {
