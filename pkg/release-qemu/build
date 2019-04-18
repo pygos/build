@@ -2,7 +2,8 @@ DEPENDS="rootfs linux"
 SUBPKG="release"
 
 build() {
-	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" -R "$REPODIR" $DEPENDS
+	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" -R "$REPODIR" linux
+	pkg2sqfs -c xz "$REPODIR/rootfs.pkg" "$OS_RELEASE/rootfs.img"
 
 	# copy helper scripts
 	local linux_image="vmlinuz"

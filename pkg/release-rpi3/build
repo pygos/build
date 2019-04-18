@@ -2,7 +2,9 @@ DEPENDS="rootfs boot-rpi boot-rpi-dtbo boot-rpi-dtb linux"
 SUBPKG="release"
 
 build() {
-	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" $DEPENDS
+	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" \
+	    boot-rpi boot-rpi-dtbo boot-rpi-dtb linux
+	pkg2sqfs -c xz "$REPODIR/rootfs.pkg" "boot/rootfs.img"
 
 	# copy files from this package
 	cp "$SCRIPTDIR/pkg/$PKGNAME/install.sh" "$PKGBUILDDIR"

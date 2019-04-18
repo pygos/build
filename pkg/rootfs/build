@@ -1,40 +1,45 @@
 DEPENDS=$(cat_file_merge "ROOTFS" | sort -u)
 
 build() {
-	# generate pseudo file listing for squashfs
-	pkg install -l sqfs -R "$REPODIR" -r "$TCDIR/$TARGET" $DEPENDS |\
-		sort -u > "$PKGDEPLOYDIR/pseudo"
+	local listing="$PKGDEPLOYDIR/$PKGNAME.files"
+	local desc="$PKGDEPLOYDIR/$PKGNAME.desc"
+
+	# generate package description and file listing
+	pkg install -l pkg -R "$REPODIR" -r "$TCDIR/$TARGET" $DEPENDS |\
+		sort -u > "$listing"
+
+	touch "$desc"
 
 	# move configuration to preserve directory
 	mkdir -pv "$TCDIR/$TARGET/cfg/preserve" "$TCDIR/$TARGET/cfg/overlay"
-
-	echo <<_EOF >> "$PKGDEPLOYDIR/pseudo"
-cfg m 755 0 0
-cfg/preserve m 755 0 0
-cfg/preserve/etc m 755 0 0
-cfg/preserve/usr m 755 0 0
-cfg/preserve/var_lib m 755 0 0
-cfg/overlay m 755 0 0
-_EOF
 
 	mv "$TCDIR/$TARGET/etc" "$TCDIR/$TARGET/cfg/preserve/etc"
 	mv "$TCDIR/$TARGET/usr" "$TCDIR/$TARGET/cfg/preserve/usr"
 	mv "$TCDIR/$TARGET/var/lib" "$TCDIR/$TARGET/cfg/preserve/var_lib"
 	rm -rf "$TCDIR/$TARGET/var"
 
-	mkdir -p $TCDIR/$TARGET/{etc,var,usr}
+	sed -i 's#etc/#cfg/preserve/etc/#g' "$listing"
+	sed -i 's#var/lib/#cfg/preserve/var_lib/#g' "$listing"
+	sed -i 's#usr/#cfg/preserve/usr/#g' "$listing"
 
-	sed -i 's#etc/#cfg/preserve/etc/#g' "$PKGDEPLOYDIR/pseudo"
-	sed -i 's#var/lib/#cfg/preserve/var_lib/#g' "$PKGDEPLOYDIR/pseudo"
-	sed -i 's#usr/#cfg/preserve/usr/#g' "$PKGDEPLOYDIR/pseudo"
+	egrep -v "^(dir|file|slink) (var|etc|usr)" "$listing" > "./temp"
+	mv "./temp" "$listing"
+
+	cat <<_EOF >> "$listing"
+dir etc 0755 0 0
+dir var 0755 0 0
+dir usr 0755 0 0
+dir cfg 0755 0 0
+dir cfg/preserve 0755 0 0
+dir cfg/preserve/etc 0755 0 0
+dir cfg/preserve/usr 0755 0 0
+dir cfg/preserve/var_lib 0755 0 0
+dir cfg/overlay 0755 0 0
+_EOF
 }
 
 deploy() {
-	mksquashfs "$TCDIR/$TARGET" "$PKGDEPLOYDIR/rootfs.img" -comp xz \
-		-no-progress -no-xattrs -pf "$PKGDEPLOYDIR/pseudo"
-
-	rm "$PKGDEPLOYDIR/pseudo"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+	return
 }
 
 check_update() {
