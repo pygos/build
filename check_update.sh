@@ -5,7 +5,7 @@ set -e
 SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 # dummy toolchain variables
-PREFERED_PROVIDER[linux]="linux"
+PREFERED_PROVIDER[linux]="linux-lts"
 export LAYERCONF=""
 
 # utilities
