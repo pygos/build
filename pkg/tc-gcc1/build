@@ -3,7 +3,7 @@ SRCDIR="gcc-$VERSION"
 TARBALL="gcc-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
 SHA256SUM="64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
-DEPENDS="tc-binutils tc-cloog tc-gmp tc-isl tc-mpc tc-mpfr linux-dev fortify-headers"
+DEPENDS="tc-binutils linux-dev fortify-headers"
 
 prepare() {
 	apply_patches
@@ -20,20 +20,7 @@ prepare() {
 		    -i "$PKGSRCDIR/$SRCDIR/gcc/config/$subdir"
 	done
 
-	for child in cloog gmp isl mpc mpfr; do
-		include_pkg "tc-$child"
-
-		if [ ! -e "$child" ]; then
-			echo "installing symlink to $child..."
-			ln -s "$PKGSRCDIR/$SRCDIR" "$child"
-		else
-			if [ ! -L "$child" ]; then
-				echo "ERROR: $child " \
-					"exists but is not a symlink!"
-				exit 1
-			fi
-		fi
-	done
+	./contrib/download_prerequisites --verify --sha512
 }
 
 build() {
