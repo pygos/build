@@ -1,0 +1,4 @@
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+slink lib/libpcre2-16.so 0777 0 0 libpcre2-16.so.0.8.0
+file lib/pkgconfig/libpcre2-16.pc 0644 0 0

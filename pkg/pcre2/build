@@ -1,0 +1,25 @@
+VERSION="10.33"
+SRCDIR="pcre2-${VERSION}"
+TARBALL="${SRCDIR}.tar.bz2"
+URL="https://ftp.pcre.org/pub/pcre"
+SHA256SUM="35514dff0ccdf02b55bd2e9fa586a1b9d01f62332c3356e379eabb75f789d8aa"
+DEPENDS="toolchain"
+SUBPKG="pcre2-16 pcre2-16-dev pcre2-32 pcre2-32-dev pcre2-posix pcre2-posix-dev"
+
+prepare() {
+	return
+}
+
+build() {
+	run_configure "$1" --enable-pcre2-16 --enable-pcre2-32
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make DESTDIR="$PKGDEPLOYDIR" install
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+}
+
+check_update() {
+	check_update_simple "$URL" "pcre2-" "tar.bz2"
+}
