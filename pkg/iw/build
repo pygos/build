@@ -22,14 +22,12 @@ build() {
 
 	CFLAGS="-O2 $cflags" \
 	LDFLAGS="$ldflags" \
-	PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET" \
-	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
+	make CC="${TARGET}-gcc" PREFIX= \
 	     SBINDIR=/bin DESTDIR="$PKGDEPLOYDIR" -j $NUMJOBS
 }
 
 deploy() {
-	export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
-	make CC="${TARGET}-gcc" PKG_CONFIG="${TARGET}-pkg-config" PREFIX= \
+	make CC="${TARGET}-gcc" PREFIX= \
 	     SBINDIR=/bin DESTDIR="$PKGDEPLOYDIR" install
 
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"

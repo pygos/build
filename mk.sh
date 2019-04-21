@@ -95,6 +95,10 @@ cat "$PACKAGELIST"
 
 echo "--- building packages ---"
 
+export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
+export PKG_CONFIG_LIBDIR="$TCDIR/$TARGET/lib/pkgconfig"
+export PKG_CONFIG_PATH="$TCDIR/$TARGET/lib/pkgconfig"
+
 while read pkg; do
 	include_pkg "$pkg"
 	build_package

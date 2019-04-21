@@ -21,7 +21,6 @@ build() {
 		ldflags="$ldflags -z noexecstack -z relro -z now"
 	fi
 
-	PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET" \
 	CFLAGS="-MMD -O2 $cflags" \
 	LDFLAGS="$ldflags" \
 	make CC=${TARGET}-gcc -C hostapd -j $NUMJOBS

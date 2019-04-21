@@ -1,4 +1,4 @@
-DEPENDS="tc-binutils crt-dev libstdc++-dev tc-pkg-config tc-file tc-pkgtool basefiles"
+DEPENDS="tc-binutils crt-dev libstdc++-dev tc-file tc-pkgtool basefiles"
 
 build() {
 	return
