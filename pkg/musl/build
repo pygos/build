@@ -56,7 +56,16 @@ deploy() {
 	cat_file_merge "LDPATH" > "$PKGDEPLOYDIR/LDPATH"
 	cp libssp_nonshared.a "$PKGDEPLOYDIR/lib"
 
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{desc,files} "$PKGDEPLOYDIR"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/libc-dev.files" "$PKGDEPLOYDIR"
+
+	if [ "x$TC_HARDENING" = "xyes" ]; then
+		echo "requires libc linux-dev fortify-headers" > \
+		     "$PKGDEPLOYDIR/libc-dev.desc"
+	else
+		echo "requires libc linux-dev" > "$PKGDEPLOYDIR/libc-dev.desc"
+	fi
+
+	touch "$PKGDEPLOYDIR/libc.desc"
 
 cat > "$PKGDEPLOYDIR/libc.files" <<_EOF
 dir lib 0755 0 0
