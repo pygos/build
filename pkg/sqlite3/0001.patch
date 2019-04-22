@@ -1,0 +1,12 @@
+diff --git a/sqlite3.c b/sqlite3.c.new
+index 4729f45..d09425e 100644
+--- a/sqlite3.c
++++ b/sqlite3.c
+@@ -17,6 +17,7 @@
+ ** language. The code for the "sqlite3" command-line shell is also in a
+ ** separate file. This file contains only code for the core SQLite library.
+ */
++#define SQLITE_ENABLE_COLUMN_METADATA 1
+ #define SQLITE_CORE 1
+ #define SQLITE_AMALGAMATION 1
+ #ifndef SQLITE_PRIVATE
