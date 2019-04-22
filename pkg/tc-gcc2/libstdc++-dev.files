@@ -1,5 +1,5 @@
 dir include 0755 0 0
-dir include/c++ 0775 0 0
+dir include/c++ 0755 0 0
 dir lib 0755 0 0
 file lib/libstdc++.a 0644 0 0
 file lib/libstdc++fs.a 0644 0 0

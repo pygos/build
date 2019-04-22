@@ -1,6 +1,6 @@
-dir include 0775 0 0
-dir lib 0775 0 0
-dir lib/pkgconfig 0775 0 0
+dir include 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
 file include/pcre.h 0644 0 0
 file include/pcreposix.h 0644 0 0
 file include/pcre_stringpiece.h 0644 0 0

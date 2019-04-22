@@ -10,7 +10,7 @@ deploy() {
 	pkg install -R "$REPODIR" -r "$TCDIR/$TARGET" -l pkg $DEPENDS \
 	    >> "$PKGDEPLOYDIR/initrd.files"
 
-	echo "file init 0775 0 0 $SCRIPTDIR/pkg/$PKGNAME/initrd.skel" \
+	echo "file init 0755 0 0 $SCRIPTDIR/pkg/$PKGNAME/initrd.skel" \
 	     >> "$PKGDEPLOYDIR/initrd.files"
 }
 

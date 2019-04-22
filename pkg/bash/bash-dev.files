@@ -1,10 +1,10 @@
-dir include 0775 0 0
-dir include/bash 0775 0 0
-dir include/bash/include 0775 0 0
-dir include/bash/builtins 0775 0 0
-dir lib 0775 0 0
-dir lib/pkgconfig 0775 0 0
-dir lib/bash 0775 0 0
+dir include 0755 0 0
+dir include/bash 0755 0 0
+dir include/bash/include 0755 0 0
+dir include/bash/builtins 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+dir lib/bash 0755 0 0
 file include/bash/alias.h 0644 0 0
 file include/bash/externs.h 0644 0 0
 file include/bash/hashlib.h 0644 0 0

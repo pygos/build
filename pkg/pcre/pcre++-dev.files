@@ -1,6 +1,6 @@
-dir include 0775 0 0
-dir lib 0775 0 0
-dir lib/pkgconfig 0775 0 0
+dir include 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
 file include/pcrecpp.h 0644 0 0
 file include/pcrecpparg.h 0644 0 0
 file lib/pkgconfig/libpcrecpp.pc 0644 0 0

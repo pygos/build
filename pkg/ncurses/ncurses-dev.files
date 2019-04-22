@@ -1,8 +1,8 @@
-dir include 0775 0 0
-dir include/ncurses 0775 0 0
-dir include/ncursesw 0775 0 0
-dir lib 0775 0 0
-dir lib/pkgconfig 0775 0 0
+dir include 0755 0 0
+dir include/ncurses 0755 0 0
+dir include/ncursesw 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
 slink include/ncurses/etip.h 0777 0 0 ../etip.h
 slink include/ncurses/ncurses_dll.h 0777 0 0 ../ncurses_dll.h
 slink include/ncurses/cursslk.h 0777 0 0 ../cursslk.h

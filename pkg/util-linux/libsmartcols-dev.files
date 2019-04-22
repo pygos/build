@@ -1,7 +1,7 @@
-dir include 0775 0 0
-dir include/libsmartcols 0775 0 0
-dir lib 0775 0 0
-dir lib/pkgconfig 0775 0 0
+dir include 0755 0 0
+dir include/libsmartcols 0755 0 0
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
 file include/libsmartcols/libsmartcols.h 0644 0 0
 file lib/pkgconfig/smartcols.pc 0644 0 0
 slink lib/libsmartcols.so 0777 0 0 libsmartcols.so.1.1.0
