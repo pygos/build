@@ -1,0 +1,44 @@
+VERSION="1"
+SRCDIR="rpi-userland-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="http://infraroot.at/pygos"
+SHA256SUM="4336d10e0ff93adfa2e93f3520e102a30c009ee0f823bb1d391edf9ab17b3f0f"
+DEPENDS="toolchain"
+SUBPKG="rpi-vc rpi-vc-dev gles2 gles2-dev"
+
+prepare() {
+	return
+}
+
+build() {
+	local cflags="-O2 -Os"
+	local ldflags=""
+
+	if [ "x$TC_HARDENING" = "xyes" ]; then
+		cflags="$cflags -fstack-protector-all"
+		ldflags="$ldflags -z noexecstack -z relro -z now"
+	fi
+
+	CFLAGS="$cflags" LDFLAGS="$ldflags" \
+	cmake -DCMAKE_TOOLCHAIN_FILE="$CMAKETCFILE" \
+		-DCMAKE_INSTALL_PREFIX="" "$1"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make DESTDIR="$PKGDEPLOYDIR" install
+
+	strip_files ${PKGDEPLOYDIR}/opt/vc/bin/*
+	strip_files ${PKGDEPLOYDIR}/opt/vc/lib/*.so
+	strip_files ${PKGDEPLOYDIR}/opt/vc/lib/plugins/*.so
+
+	mkdir -p "$PKGDEPLOYDIR/lib"
+	mv "$PKGDEPLOYDIR/opt/vc/lib/pkgconfig" "$PKGDEPLOYDIR/lib"
+
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+}
+
+check_update() {
+	return
+}

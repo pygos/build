@@ -1,33 +1,28 @@
 dir opt 0755 0 0
 dir opt/vc 0755 0 0
-dir opt/vc/bin 0755 0 0
 dir opt/vc/lib 0755 0 0
-dir opt/vc/lib/plugins 0755 0 0
-slink opt/vc/lib/libGLESv1_CM.so 0777 0 0 libGLESv2.so
-slink opt/vc/bin/dtparam 0777 0 0 dtoverlay
-file opt/vc/LICENCE 0644 0 0
+file opt/vc/lib/libbcm_host.so 0755 0 0
 file opt/vc/lib/libEGL.so 0755 0 0
 file opt/vc/lib/libGLESv2.so 0755 0 0
 file opt/vc/lib/libOpenVG.so 0755 0 0
-file opt/vc/lib/libWFC.so 0755 0 0
-file opt/vc/lib/libbcm_host.so 0755 0 0
 file opt/vc/lib/libbrcmEGL.so 0755 0 0
 file opt/vc/lib/libbrcmGLESv2.so 0755 0 0
 file opt/vc/lib/libbrcmOpenVG.so 0755 0 0
 file opt/vc/lib/libbrcmWFC.so 0755 0 0
+file opt/vc/lib/libopenmaxil.so 0755 0 0
 file opt/vc/lib/libcontainers.so 0755 0 0
 file opt/vc/lib/libdebug_sym.so 0755 0 0
 file opt/vc/lib/libdtovl.so 0755 0 0
-file opt/vc/lib/libelftoolchain.so 0755 0 0
+file opt/vc/lib/libvchiq_arm.so 0755 0 0
 file opt/vc/lib/libmmal.so 0755 0 0
 file opt/vc/lib/libmmal_components.so 0755 0 0
 file opt/vc/lib/libmmal_core.so 0755 0 0
 file opt/vc/lib/libmmal_util.so 0755 0 0
 file opt/vc/lib/libmmal_vc_client.so 0755 0 0
-file opt/vc/lib/libopenmaxil.so 0755 0 0
-file opt/vc/lib/libvchiq_arm.so 0755 0 0
 file opt/vc/lib/libvcos.so 0755 0 0
 file opt/vc/lib/libvcsm.so 0755 0 0
+file opt/vc/lib/libWFC.so 0755 0 0
+dir opt/vc/lib/plugins 0755 0 0
 file opt/vc/lib/plugins/reader_asf.so 0755 0 0
 file opt/vc/lib/plugins/reader_avi.so 0755 0 0
 file opt/vc/lib/plugins/reader_binary.so 0755 0 0
@@ -52,6 +47,8 @@ file opt/vc/lib/plugins/writer_dummy.so 0755 0 0
 file opt/vc/lib/plugins/writer_mp4.so 0755 0 0
 file opt/vc/lib/plugins/writer_raw_video.so 0755 0 0
 file opt/vc/lib/plugins/writer_simple.so 0755 0 0
+dir opt/vc/bin 0755 0 0
+slink opt/vc/bin/dtparam 0777 0 0 dtoverlay
 file opt/vc/bin/containers_check_frame_int 0755 0 0
 file opt/vc/bin/containers_datagram_receiver 0755 0 0
 file opt/vc/bin/containers_datagram_sender 0755 0 0
@@ -67,15 +64,15 @@ file opt/vc/bin/dtmerge 0755 0 0
 file opt/vc/bin/dtoverlay 0755 0 0
 file opt/vc/bin/dtoverlay-post 0755 0 0
 file opt/vc/bin/dtoverlay-pre 0755 0 0
-file opt/vc/bin/edidparser 0755 0 0
 file opt/vc/bin/mmal_vc_diag 0755 0 0
 file opt/vc/bin/raspistill 0755 0 0
 file opt/vc/bin/raspivid 0755 0 0
 file opt/vc/bin/raspividyuv 0755 0 0
 file opt/vc/bin/raspiyuv 0755 0 0
 file opt/vc/bin/tvservice 0755 0 0
-file opt/vc/bin/vcdbg 0755 0 0
 file opt/vc/bin/vcgencmd 0755 0 0
 file opt/vc/bin/vchiq_test 0755 0 0
 file opt/vc/bin/vcmailbox 0755 0 0
 file opt/vc/bin/vcsmem 0755 0 0
+dir opt/vc/sbin 0755 0 0
+file opt/vc/sbin/vcfiled 0755 0 0
