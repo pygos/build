@@ -4,6 +4,7 @@ TARBALL="${SRCDIR}.tar.gz"
 URL="https://sqlite.org/2019"
 SHA256SUM="50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e"
 DEPENDS="readline-dev zlib-dev toolchain"
+SUBPKG="sqlite3 sqlite3-dev sqlite3-shell"
 
 prepare() {
 	return
@@ -20,7 +21,6 @@ deploy() {
 }
 
 check_update() {
-	curl --silent -L https://sqlite.org/download.html | \
-	    grep -o sqlite-autoconf-[0-9]*.tar.gz | grep -o [0-9]* | \
-	    verson_find_greatest "$VERSION"
+	check_update_simple "https://sqlite.org/download.html" \
+			    "sqlite-autoconf" "tar.gz"
 }
