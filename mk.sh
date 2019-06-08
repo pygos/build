@@ -65,7 +65,7 @@ CMAKETCFILE="$TCDIR/toolchain.cmake"
 ############################### build packages ###############################
 echo "--- boot strap phase ---"
 
-for pkg in tc-pkgtool; do
+for pkg in tc-pkgtool tc-squashfs; do
 	include_pkg "$pkg"
 	build_package
 done

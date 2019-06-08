@@ -3,7 +3,12 @@ SUBPKG="release"
 
 build() {
 	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" -R "$REPODIR" linux
-	pkg2sqfs -c xz "$REPODIR/rootfs.pkg" "$OS_RELEASE/rootfs.img"
+
+	pkg dump -l pkg -r "$TCDIR/$TARGET" "$REPODIR/rootfs.pkg" \
+	    > "$PKGBUILDDIR/files.txt"
+
+	gensquashfs -F "$PKGBUILDDIR/files.txt" "$OS_RELEASE/rootfs.img"
+	rm "$PKGBUILDDIR/files.txt"
 
 	# copy helper scripts
 	local linux_image="vmlinuz"

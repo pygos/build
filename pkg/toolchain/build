@@ -1,4 +1,5 @@
 DEPENDS="tc-binutils crt-dev libstdc++-dev tc-file tc-pkgtool basefiles"
+DEPENDS="$DEPENDS tc-squashfs"
 
 build() {
 	return

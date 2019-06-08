@@ -4,7 +4,12 @@ SUBPKG="release"
 build() {
 	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" \
 	    boot-rpi boot-rpi-dtbo boot-rpi-dtb linux
-	pkg2sqfs -c xz "$REPODIR/rootfs.pkg" "boot/rootfs.img"
+
+	pkg dump -l pkg -r "$TCDIR/$TARGET" "$REPODIR/rootfs.pkg" \
+	    > "$PKGBUILDDIR/files.txt"
+
+	gensquashfs -F "$PKGBUILDDIR/files.txt" "boot/rootfs.img"
+	rm "$PKGBUILDDIR/files.txt"
 
 	# copy files from this package
 	cp "$SCRIPTDIR/pkg/$PKGNAME/install.sh" "$PKGBUILDDIR"

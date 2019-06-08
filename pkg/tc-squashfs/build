@@ -1,0 +1,28 @@
+VERSION="0.1"
+SRCDIR="squashfs-tools-ng-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://infraroot.at/pub/squashfs"
+SHA256SUM="d09b4632a7e2690810e5312a28906da9b8804b1901f20066aaeb5053020c8e40"
+DEPENDS=""
+
+prepare() {
+	return
+}
+
+build() {
+	$1/configure --prefix="$TCDIR" --disable-static \
+		     --build="$HOSTTUPLE" --host="$HOSTTUPLE"
+
+	make -j $NUMJOBS
+}
+
+deploy() {
+	make install
+
+	touch "$PKGDEPLOYDIR/$PKGNAME.files"
+	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
+}
+
+check_update() {
+	return
+}
