@@ -5,9 +5,7 @@ build() {
 	local desc="$PKGDEPLOYDIR/$PKGNAME.desc"
 
 	# generate package description and file listing
-	pkg install -l pkg -R "$REPODIR" -r "$TCDIR/$TARGET" $DEPENDS |\
-		sort -u > "$listing"
-
+	pkg install -l pkg -r "$TCDIR/$TARGET" $DEPENDS | sort -u > "$listing"
 	touch "$desc"
 
 	# move configuration to preserve directory

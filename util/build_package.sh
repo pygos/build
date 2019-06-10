@@ -22,7 +22,7 @@ build_package() {
 	mkdir -p "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 
 	if [ ! -z "$DEPENDS" ]; then
-		pkg install -omD -r "$TCDIR/$TARGET" -R "$REPODIR" $DEPENDS
+		pkg install -omD $DEPENDS
 	fi
 
 	run_pkg_command "build"
@@ -31,7 +31,7 @@ build_package() {
 	strip_files ${PKGDEPLOYDIR}/{bin,lib}
 
 	for f in $SUBPKG; do
-		pkg pack -r "$REPODIR" -d "$PKGDEPLOYDIR/${f}.desc" \
+		pkg pack -d "$PKGDEPLOYDIR/${f}.desc" \
 			 -l "$PKGDEPLOYDIR/${f}.files"
 	done
 

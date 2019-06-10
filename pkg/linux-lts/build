@@ -37,8 +37,8 @@ build() {
 	local INITRDLIST="$INITRDDIR/initrd.list"
 	local LINUX_CPU=$(get_linux_cpu)
 
-	pkg install -omLD -R "$REPODIR" -r "$INITRDDIR" initrd
-	pkg install -R "$REPODIR" -r "$INITRDDIR" -l initrd initrd > "$INITRDLIST"
+	pkg install -omLD -r "$INITRDDIR" initrd
+	pkg install -r "$INITRDDIR" -l initrd initrd > "$INITRDLIST"
 
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
 

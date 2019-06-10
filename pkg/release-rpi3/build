@@ -2,7 +2,7 @@ DEPENDS="rootfs boot-rpi boot-rpi-dtbo boot-rpi-dtb linux"
 SUBPKG="release"
 
 build() {
-	pkg install -om -r "$PKGBUILDDIR/boot" -R "$REPODIR" \
+	pkg install -om -r "$PKGBUILDDIR/boot" \
 	    boot-rpi boot-rpi-dtbo boot-rpi-dtb linux
 
 	pkg dump -l pkg -r "$TCDIR/$TARGET" "$REPODIR/rootfs.pkg" \

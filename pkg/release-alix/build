@@ -2,7 +2,7 @@ DEPENDS="rootfs linux"
 SUBPKG="release"
 
 build() {
-	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" -R "$REPODIR" linux
+	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" linux
 
 	pkg dump -l pkg -r "$TCDIR/$TARGET" "$REPODIR/rootfs.pkg" \
 	    > "$PKGBUILDDIR/files.txt"
