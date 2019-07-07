@@ -30,5 +30,5 @@ deploy() {
 
 check_update() {
 	check_update_simple "https://github.com/shadow-maint/shadow/releases" \
-			    "shadow-" "tar.xz"
+			    "shadow" "tar.xz"
 }

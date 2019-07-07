@@ -20,5 +20,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "grep-" "tar.xz"
+	check_update_simple "$URL" "grep" "tar.xz"
 }

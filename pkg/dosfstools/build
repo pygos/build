@@ -22,5 +22,5 @@ deploy() {
 check_update() {
 	check_update_simple \
 		"https://github.com/dosfstools/dosfstools/releases" \
-		"dosfstools-" "tar.xz"
+		"dosfstools" "tar.xz"
 }

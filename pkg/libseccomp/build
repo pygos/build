@@ -20,5 +20,5 @@ deploy() {
 
 check_update() {
 	check_update_simple "https://github.com/seccomp/libseccomp/releases" \
-			    "libseccomp-" "tar.gz"
+			    "libseccomp" "tar.gz"
 }

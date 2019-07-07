@@ -23,5 +23,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "ldns-" "tar.gz"
+	check_update_simple "$URL" "ldns" "tar.gz"
 }

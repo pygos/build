@@ -30,5 +30,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "busybox-" "tar.bz2"
+	check_update_simple "$URL" "busybox" "tar.bz2"
 }

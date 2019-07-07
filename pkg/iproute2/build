@@ -32,5 +32,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "iproute2-" "tar.xz"
+	check_update_simple "$URL" "iproute2" "tar.xz"
 }

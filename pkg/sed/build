@@ -20,5 +20,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "sed-" "tar.xz"
+	check_update_simple "$URL" "sed" "tar.xz"
 }

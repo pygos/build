@@ -23,5 +23,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "procps-ng-" "tar.xz"
+	check_update_simple "$URL" "procps-ng" "tar.xz"
 }

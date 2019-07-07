@@ -42,5 +42,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "unbound-" "tar.gz"
+	check_update_simple "$URL" "unbound" "tar.gz"
 }

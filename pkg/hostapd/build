@@ -35,5 +35,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "hostapd-" "tar.gz"
+	check_update_simple "$URL" "hostapd" "tar.gz"
 }

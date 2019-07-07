@@ -26,5 +26,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "bash-" "tar.gz"
+	check_update_simple "$URL" "bash" "tar.gz"
 }

@@ -92,5 +92,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "nginx-" "tar.gz"
+	check_update_simple "$URL" "nginx" "tar.gz"
 }

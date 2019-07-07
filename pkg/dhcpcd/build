@@ -27,5 +27,5 @@ deploy() {
 }
 
 check_update() {
-	check_update_simple "$URL" "dhcpcd-" "tar.xz"
+	check_update_simple "$URL" "dhcpcd" "tar.xz"
 }
