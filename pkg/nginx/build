@@ -1,8 +1,8 @@
-VERSION="1.15.9"
+VERSION="1.17.1"
 SRCDIR="nginx-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://nginx.org/download"
-SHA256SUM="e4cfba989bba614cd53f3f406ac6da9f05977d6b1296e5d20a299f10c2d7ae43"
+SHA256SUM="6f1825b4514e601579986035783769c456b888d3facbab78881ed9b58467e73e"
 DEPENDS="zlib-dev openssl-dev pcre-dev toolchain"
 
 prepare() {
