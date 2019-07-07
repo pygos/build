@@ -5,4 +5,4 @@ file lib/pkgconfig/expat.pc 0644 0 0
 file include/expat.h 0644 0 0
 file include/expat_config.h 0644 0 0
 file include/expat_external.h 0644 0 0
-slink lib/libexpat.so 0777 0 0 libexpat.so.1.6.8
+slink lib/libexpat.so 0777 0 0 libexpat.so.1.6.9
