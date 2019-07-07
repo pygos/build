@@ -1,3 +1,4 @@
+dir bin 0755 0 0
 file bin/coreutils 0755 0 0
 slink bin/[ 0777 0 0 coreutils
 slink bin/chcon 0777 0 0 coreutils
@@ -31,6 +32,7 @@ slink bin/b2sum 0777 0 0 coreutils
 slink bin/base64 0777 0 0 coreutils
 slink bin/base32 0777 0 0 coreutils
 slink bin/basename 0777 0 0 coreutils
+slink bin/basenc 0777 0 0 coreutils
 slink bin/cat 0777 0 0 coreutils
 slink bin/chgrp 0777 0 0 coreutils
 slink bin/chmod 0777 0 0 coreutils
@@ -103,5 +105,7 @@ slink bin/tsort 0777 0 0 coreutils
 slink bin/tty 0777 0 0 coreutils
 slink bin/uname 0777 0 0 coreutils
 slink bin/unexpand 0777 0 0 coreutils
+dir lib 0755 0 0
+dir lib/libexec 0755 0 0
 dir lib/libexec/coreutils 0755 0 0
 file lib/libexec/coreutils/libstdbuf.so 0755 0 0
