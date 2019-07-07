@@ -1,8 +1,8 @@
-VERSION="R_2_2_6"
+VERSION="R_2_2_7"
 SRCDIR="libexpat-${VERSION}/expat"
 TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/libexpat/libexpat/archive"
-SHA256SUM="574499cba22a599393e28d99ecfa1e7fc85be7d6651d543045244d5b561cb7ff"
+SHA256SUM="4efe89dfd8c2f9b971bf9089efa4cc163ac997a75da92c08be14d80a091474e6"
 DEPENDS="libbsd-dev toolchain"
 SUBPKG="expat expat-dev"
 
