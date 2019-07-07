@@ -1,12 +1,8 @@
-MAJOR="4"
-MINOR="19"
-RELEASE="49"
-
-VERSION="$MAJOR.$MINOR.$RELEASE"
+VERSION="4.19.57"
 SRCDIR="linux-$VERSION"
 TARBALL="linux-$VERSION.tar.xz"
-URL="https://www.kernel.org/pub/linux/kernel/v$MAJOR.x"
-SHA256SUM="92d920b3973c0dbca5516271afa405be6e5822a9b831df8c085f9c9eb838bbcd"
+URL="https://www.kernel.org/pub/linux/kernel/v4.x"
+SHA256SUM="327c5759d5888361d6c9d6adb0c8ad7e3c624eb05bb9e5869d9f3078dd0d3f87"
 DEPENDS="initrd"
 SUBPKG="linux linux-modules"
 
