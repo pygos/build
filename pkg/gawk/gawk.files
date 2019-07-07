@@ -1,9 +1,3 @@
-dir lib 0755 0 0
-dir lib/gawk 0755 0 0
-dir share 0755 0 0
-dir share/awk 0755 0 0
-dir lib/libexec 0755 0 0
-dir lib/libexec/awk 0755 0 0
 dir bin 0755 0 0
 file bin/gawk 0755 0 0
 slink bin/awk 0777 0 0 gawk
@@ -35,6 +29,11 @@ file share/awk/shellquote.awk 0644 0 0
 file share/awk/strtonum.awk 0644 0 0
 file share/awk/walkarray.awk 0644 0 0
 file share/awk/zerofile.awk 0644 0 0
+file share/awk/ns_passwd.awk 0644 0 0
+dir lib 0755 0 0
+dir lib/gawk 0755 0 0
+dir lib/libexec 0755 0 0
+dir lib/libexec/awk 0755 0 0
 file lib/gawk/filefuncs.so 0755 0 0
 file lib/gawk/fnmatch.so 0755 0 0
 file lib/gawk/fork.so 0755 0 0
