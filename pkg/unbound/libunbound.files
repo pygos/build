@@ -1,6 +1,6 @@
 dir lib 0755 0 0
-file lib/libunbound.so.8.1.0 0755 0 0
-slink lib/libunbound.so.8 0777 0 0 libunbound.so.8.1.0
+file lib/libunbound.so.8.1.2 0755 0 0
+slink lib/libunbound.so.8 0777 0 0 libunbound.so.8.1.2
 dir etc 0755 0 0
 dir etc/unbound 0755 52 52
 file etc/unbound/unbound.conf 0644 52 52
