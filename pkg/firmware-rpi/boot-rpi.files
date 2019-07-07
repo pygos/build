@@ -6,3 +6,9 @@ file fixup_x.dat 0664 0 0
 file start_cd.elf 0664 0 0
 file fixup.dat 0664 0 0
 file start_x.elf 0664 0 0
+file fixup4.dat 0664 0 0
+file fixup4cd.dat 0664 0 0
+file fixup4x.dat 0664 0 0
+file start4.elf 0664 0 0
+file start4cd.elf 0664 0 0
+file start4x.elf 0664 0 0
