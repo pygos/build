@@ -1,8 +1,8 @@
-VERSION="8.3.0"
+VERSION="9.1.0"
 SRCDIR="gcc-$VERSION"
 TARBALL="gcc-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/gcc/gcc-$VERSION"
-SHA256SUM="64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c"
+SHA256SUM="79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0"
 DEPENDS="tc-binutils linux-dev fortify-headers"
 
 prepare() {

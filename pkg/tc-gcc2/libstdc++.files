@@ -1,3 +1,3 @@
 dir lib 0755 0 0
-file lib/libstdc++.so.6.0.25 0755 0 0
-slink lib/libstdc++.so.6 0777 0 0 libstdc++.so.6.0.25
+file lib/libstdc++.so.6.0.26 0755 0 0
+slink lib/libstdc++.so.6 0777 0 0 libstdc++.so.6.0.26
