@@ -38,6 +38,6 @@ check_update_simple() {
 	local suffix="$3"
 
 	curl --silent -L "$url" | grep -o ">$prefix-[0-9.]*$suffix<" | \
-	    sed 's/>$prefix-//g' | sed 's/.$suffix<//g' | \
+	    sed "s/>$prefix-//g" | sed "s/.$suffix<//g" | \
 	    verson_find_greatest "$VERSION"
 }
