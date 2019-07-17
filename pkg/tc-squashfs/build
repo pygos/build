@@ -1,8 +1,8 @@
-VERSION="0.4.1"
+VERSION="0.4.2"
 SRCDIR="squashfs-tools-ng-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://infraroot.at/pub/squashfs"
-SHA256SUM="30d15497c4a413f3ee5fcd1b53f6d899b06d8c3b02a1fe13ace67694c41b20e0"
+SHA256SUM="762badcf85010607a56efac1546b96a69685df33bb7d126bdae617feded835fc"
 DEPENDS=""
 
 prepare() {
