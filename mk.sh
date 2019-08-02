@@ -40,6 +40,7 @@ mkdir -p "$REPODIR"
 pushd "$SCRIPTDIR" > /dev/null
 OS_NAME="Pygos"
 OS_RELEASE=$(git describe --always --tags --dirty)
+export SOURCE_DATE_EPOCH=$(git show -s --format=%ct)
 popd > /dev/null
 
 ############################# include utilities ##############################
