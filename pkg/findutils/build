@@ -6,7 +6,7 @@ SHA256SUM="ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d"
 DEPENDS="toolchain"
 
 prepare() {
-	return
+	apply_patches
 }
 
 build() {
