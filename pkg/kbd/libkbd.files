@@ -1,0 +1,5 @@
+dir lib 0755 0 0
+file lib/libkbdfile.so.1.0.0 0755 0 0
+file lib/libkeymap.so.1.0.0 0755 0 0
+slink lib/libkbdfile.so.1 0777 0 0 libkbdfile.so.1.0.0
+slink lib/libkeymap.so.1 0777 0 0 libkeymap.so.1.0.0

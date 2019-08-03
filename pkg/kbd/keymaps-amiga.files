@@ -1,0 +1,5 @@
+dir share 0755 0 0
+dir share/keymaps 0755 0 0
+dir share/keymaps/amiga 0755 0 0
+file share/keymaps/amiga/amiga-de.map.gz 0644 0 0
+file share/keymaps/amiga/amiga-us.map.gz 0644 0 0

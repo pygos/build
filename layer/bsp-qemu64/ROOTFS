@@ -1,1 +1,6 @@
 linux-modules
+kbd
+kbd-unicode
+keymaps-pc
+keymaps-mac
+consolefonts

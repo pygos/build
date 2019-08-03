@@ -1,0 +1,7 @@
+dir share 0755 0 0
+dir share/keymaps 0755 0 0
+dir share/keymaps/atari 0755 0 0
+file share/keymaps/atari/atari-de.map.gz 0644 0 0
+file share/keymaps/atari/atari-se.map.gz 0644 0 0
+file share/keymaps/atari/atari-uk-falcon.map.gz 0644 0 0
+file share/keymaps/atari/atari-us.map.gz 0644 0 0

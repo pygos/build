@@ -1,0 +1,11 @@
+dir share 0755 0 0
+dir share/keymaps 0755 0 0
+dir share/keymaps/include 0755 0 0
+file share/keymaps/include/compose.8859_7 0644 0 0
+file share/keymaps/include/compose.8859_8 0644 0 0
+file share/keymaps/include/compose.latin 0644 0 0
+file share/keymaps/include/compose.latin1 0644 0 0
+file share/keymaps/include/compose.latin2 0644 0 0
+file share/keymaps/include/compose.latin3 0644 0 0
+file share/keymaps/include/compose.latin4 0644 0 0
+file share/keymaps/include/vim-compose.latin1 0644 0 0

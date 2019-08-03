@@ -4,3 +4,7 @@ dosfstools
 linux-modules
 linux-firmware-rpi3
 kbd
+kbd-unicode
+keymaps-pc
+keymaps-mac
+consolefonts

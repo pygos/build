@@ -1,9 +1,11 @@
-VERSION="2.0.4"
+VERSION="2.2.0"
 SRCDIR="kbd-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://www.kernel.org/pub/linux/utils/kbd"
-SHA256SUM="5fd90af6beb225a9bb9b9fb414c090fba53c9a55793e172f508cd43652e59a88"
+SHA256SUM="21a1bc5f6fb3b18ce9fdd717e4533368060a3182a39c7155eaf7ec0f5f83e9f7"
 DEPENDS="toolchain"
+SUBPKG="consolefonts kbd kbd-unicode keymaps-amiga keymaps-atari keymaps-mac"
+SUBPKG="$SUBPKG keymaps-misc keymaps-pc keymaps-sun libkbd libkbd-dev"
 
 prepare() {
 	return

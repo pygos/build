@@ -1,0 +1,17 @@
+dir lib 0755 0 0
+dir lib/pkgconfig 0755 0 0
+slink lib/libkbdfile.so 0777 0 0 libkbdfile.so.1.0.0
+slink lib/libkeymap.so 0777 0 0 libkeymap.so.1.0.0
+file lib/pkgconfig/libkeymap.pc 0644 0 0
+dir include 0755 0 0
+dir include/keymap 0755 0 0
+file include/kbdfile.h 0644 0 0
+file include/keymap.h 0644 0 0
+file include/keymap/array.h 0644 0 0
+file include/keymap/charset.h 0644 0 0
+file include/keymap/common.h 0644 0 0
+file include/keymap/context.h 0644 0 0
+file include/keymap/dump.h 0644 0 0
+file include/keymap/kernel.h 0644 0 0
+file include/keymap/kmap.h 0644 0 0
+file include/keymap/logging.h 0644 0 0
