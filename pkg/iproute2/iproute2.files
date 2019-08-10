@@ -1,3 +1,4 @@
+dir bin 0755 0 0
 file bin/ip 0755 0 0
 file bin/rtmon 0755 0 0
 file bin/ifcfg 0755 0 0
@@ -17,6 +18,7 @@ file bin/genl 0755 0 0
 file bin/tipc 0755 0 0
 file bin/devlink 0755 0 0
 file bin/rdma 0755 0 0
+dir etc 0755 0 0
 dir etc/iproute2 0755 0 0
 file etc/iproute2/bpf_pinning 0644 0 0
 file etc/iproute2/ematch_map 0644 0 0
@@ -27,9 +29,11 @@ file etc/iproute2/rt_protos 0644 0 0
 file etc/iproute2/rt_realms 0644 0 0
 file etc/iproute2/rt_scopes 0644 0 0
 file etc/iproute2/rt_tables 0644 0 0
+dir share 0755 0 0
 dir share/bash-completion 0755 0 0
 dir share/bash-completion/completions 0755 0 0
 file share/bash-completion/completions/tc 0644 0 0
+dir lib 0755 0 0
 dir lib/tc 0755 0 0
 file lib/tc/normal.dist 0644 0 0
 file lib/tc/pareto.dist 0644 0 0

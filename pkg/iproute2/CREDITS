@@ -1,6 +1,0 @@
-Thanks a lot to Alpine Linux for the musl-fixes.patch on which 0002.patch
-is based.
-
-Original version:
-
-https://git.alpinelinux.org/cgit/aports/tree/main/iproute2/musl-fixes.patch
