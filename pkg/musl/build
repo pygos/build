@@ -53,6 +53,13 @@ deploy() {
 	DESTDIR="$PKGDEPLOYDIR" make install-headers
 	DESTDIR="$PKGDEPLOYDIR" make install-libs
 
+	cp "$SCRIPTDIR/pkg/$PKGNAME/sys-cdefs.h" \
+	   "$PKGDEPLOYDIR/include/sys/cdefs.h"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/sys-queue.h" \
+	   "$PKGDEPLOYDIR/include/sys/queue.h"
+	cp "$SCRIPTDIR/pkg/$PKGNAME/sys-tree.h" \
+	   "$PKGDEPLOYDIR/include/sys/tree.h"
+
 	cat_file_merge "LDPATH" > "$PKGDEPLOYDIR/LDPATH"
 	cp libssp_nonshared.a "$PKGDEPLOYDIR/lib"
 

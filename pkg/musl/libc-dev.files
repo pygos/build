@@ -76,6 +76,9 @@ file include/sys/klog.h 0644 0 0
 file include/sys/kd.h 0644 0 0
 file include/sys/stropts.h 0644 0 0
 file include/sys/un.h 0644 0 0
+file include/sys/tree.h 0644 0 0
+file include/sys/queue.h 0644 0 0
+file include/sys/cdefs.h 0644 0 0
 file include/tar.h 0644 0 0
 file include/stdc-predef.h 0644 0 0
 file include/memory.h 0644 0 0
