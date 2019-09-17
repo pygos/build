@@ -1,9 +1,14 @@
+dir bin 0755 0 0
 file bin/dhcpcd 0755 0 0
+dir etc 0755 0 0
 file etc/dhcpcd.conf 0644 0 0
+dir lib 0755 0 0
+dir lib/libexec 0755 0 0
 file lib/libexec/dhcpcd-run-hooks 0755 0 0
 dir lib/libexec/dhcpcd-hooks 0755 0 0
 file lib/libexec/dhcpcd-hooks/20-resolv.conf 0644 0 0
 file lib/libexec/dhcpcd-hooks/30-hostname 0644 0 0
+dir share 0755 0 0
 dir share/dhcpcd 0755 0 0
 dir share/dhcpcd/hooks 0755 0 0
 file share/dhcpcd/hooks/10-wpa_supplicant 0644 0 0
