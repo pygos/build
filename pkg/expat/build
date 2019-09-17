@@ -1,13 +1,13 @@
-VERSION="R_2_2_7"
-SRCDIR="libexpat-${VERSION}/expat"
-TARBALL="${VERSION}.tar.gz"
-URL="https://github.com/libexpat/libexpat/archive"
-SHA256SUM="4efe89dfd8c2f9b971bf9089efa4cc163ac997a75da92c08be14d80a091474e6"
+VERSION="2.2.8"
+SRCDIR="expat-${VERSION}"
+TARBALL="${SRCDIR}.tar.xz"
+URL="https://github.com/libexpat/libexpat/releases/download/R_2_2_8"
+SHA256SUM="61caa81a49d858afb2031c7b1a25c97174e7f2009aa1ec4e1ffad2316b91779b"
 DEPENDS="libbsd-dev toolchain"
 SUBPKG="expat expat-dev"
 
 prepare() {
-	autoreconf --force --install --symlink
+	return
 }
 
 build() {
