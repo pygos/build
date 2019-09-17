@@ -14,6 +14,7 @@ file include/bsd/sys/bitstring.h 0644 0 0
 file include/bsd/sys/queue.h 0644 0 0
 file include/bsd/sys/poll.h 0644 0 0
 file include/bsd/sys/cdefs.h 0644 0 0
+file include/bsd/sys/param.h 0644 0 0
 file include/bsd/stdio.h 0644 0 0
 file include/bsd/nlist.h 0644 0 0
 file include/bsd/readpassphrase.h 0644 0 0
@@ -31,4 +32,6 @@ file include/bsd/getopt.h 0644 0 0
 file include/bsd/err.h 0644 0 0
 file lib/pkgconfig/libbsd-overlay.pc 0644 0 0
 file lib/pkgconfig/libbsd.pc 0644 0 0
-slink lib/libbsd.so 0777 0 0 libbsd.so.0.9.1
+file lib/pkgconfig/libbsd-ctor.pc 0644 0 0
+file lib/libbsd-ctor.a 0644 0 0
+slink lib/libbsd.so 0777 0 0 libbsd.so.0.10.0
