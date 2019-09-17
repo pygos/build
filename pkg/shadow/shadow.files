@@ -1,3 +1,4 @@
+dir bin 0755 0 0
 file bin/login 0755 0 0
 file bin/su 04555 0 0
 file bin/passwd 04555 0 0
@@ -8,6 +9,7 @@ file bin/groupmod 0755 0 0
 file bin/useradd 0755 0 0
 file bin/userdel 0755 0 0
 file bin/usermod 0755 0 0
+dir etc 0755 0 0
 file etc/login.defs 0644 0 0
 dir etc/default 0755 0 0
 file etc/default/useradd 0644 0 0
