@@ -1,8 +1,8 @@
-VERSION="2.8"
+VERSION="2.9"
 SRCDIR="hostapd-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
-URL="https://w1.fi/releases/"
-SHA256SUM="929f522be6eeec38c53147e7bc084df028f65f148a3f7e4fa6c4c3f955cee4b0"
+URL="https://w1.fi/releases"
+SHA256SUM="881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7"
 DEPENDS="libnl3-dev openssl-dev toolchain"
 
 prepare() {

@@ -1,3 +1,5 @@
+dir bin 0755 0 0
+dir etc 0755 0 0
 file bin/hostapd 0755 0 0
 file bin/hostapd_cli 0755 0 0
 file etc/hostapd.conf 0600 0 0
