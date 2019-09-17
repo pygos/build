@@ -1,8 +1,8 @@
-VERSION="5.0.1"
+VERSION="5.3"
 SRCDIR="iw-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://mirrors.edge.kernel.org/pub/software/network/iw"
-SHA256SUM="1e38ea794a223525b2ea7fe78fd14f2a56121e62e21ba5f9dbe8c494b35b5c0d"
+SHA256SUM="04afe857bc8dea67e461946de30ae1b012954b6965839c5c3fda7d0ed15505d5"
 DEPENDS="libnl3-dev toolchain"
 
 prepare() {
