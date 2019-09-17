@@ -3,4 +3,4 @@ dir lib 0755 0 0
 dir lib/pkgconfig 0755 0 0
 file include/unbound.h 0664 0 0
 file lib/pkgconfig/libunbound.pc 0644 0 0
-slink lib/libunbound.so 0777 0 0 libunbound.so.8.1.2
+slink lib/libunbound.so 0777 0 0 libunbound.so.8.1.3
