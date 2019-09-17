@@ -1,8 +1,8 @@
-VERSION="2.8"
+VERSION="2.9"
 SRCDIR="bash-completion-upstream-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://salsa.debian.org/debian/bash-completion/-/archive/upstream/${VERSION}/"
-SHA256SUM="50985e7f1a1adc8e05cbea56f0f9753b5600f6ea176b42583184f300b1eed5ea"
+SHA256SUM="3b3a40a53e5c7f78b78339fc722e2ff5924ab1358e49deb5ca922e6c0f052948"
 DEPENDS="bash bash-dev"
 SUBPKG="bash-completion bash-completion-dev"
 
