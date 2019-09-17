@@ -1,8 +1,8 @@
-VERSION="3"
+VERSION="4"
 SRCDIR="init-scripts-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://infraroot.at/pygos"
-SHA256SUM="529f91c59cecda5bbe954e73bbddddaa22e80ac49e85b7bb785c3cee2397f070"
+SHA256SUM="dbfc67b01376d6607c69bc845c31e2f792f20773c829973ae6bfb57ac30699ae"
 DEPENDS="toolchain"
 
 prepare() {
@@ -87,14 +87,11 @@ deploy() {
 		echo "file etc/sysctl.conf 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 	fi
 
-	svc=$(file_path_override "interfaces")
+	svc=$(file_path_override "netcfg_static")
 	if [ ! -z "$svc" ]; then
-		for svc in $svc/*; do
-			[ -f "$svc" ] || continue
-			cp "$svc" "$PKGDEPLOYDIR/etc/netcfg/"
-			svc=$(basename $svc)
-			echo "file etc/netcfg/$svc 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
-		done
+		mkdir -p "$PKGDEPLOYDIR/netcfg"
+		cp "$svc" "$PKGDEPLOYDIR/netcfg/static"
+		echo "file etc/netcfg/static 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 	fi
 
 	for svc in $GETTY_TTY; do

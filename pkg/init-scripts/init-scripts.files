@@ -29,13 +29,13 @@ slink etc/init.d/sysinit 0777 0 0 /share/init/sysinit
 slink etc/init.d/tmpfs 0777 0 0 /share/init/tmpfs
 slink etc/init.d/tmpfsrun 0777 0 0 /share/init/tmpfsrun
 slink etc/init.d/tmpfsvar 0777 0 0 /share/init/tmpfsvar
+slink etc/init.d/unmount@reboot 0777 0 0 /share/init/unmount
+slink etc/init.d/unmount@shutdown 0777 0 0 /share/init/unmount
 slink etc/init.d/usyslogd 0777 0 0 /share/init/usyslogd
 slink etc/init.d/vfs 0777 0 0 /share/init/vfs
 file etc/netcfg/ifrename 0644 0 0
 file etc/initd.env 0644 0 0
 file etc/modules 0644 0 0
-file lib/libexec/init/devfs.sh 0755 0 0
-file lib/libexec/init/ifcfg.sh 0755 0 0
 file lib/libexec/init/ifdown.sh 0755 0 0
 file lib/libexec/init/ifrename.sh 0755 0 0
 file lib/libexec/init/modules_load.sh 0755 0 0
@@ -73,5 +73,6 @@ file share/init/tmpfs 0644 0 0
 file share/init/tmpfsrun 0644 0 0
 file share/init/tmpfsvar 0644 0 0
 file share/init/unbound 0644 0 0
+file share/init/unmount 0644 0 0
 file share/init/usyslogd 0644 0 0
 file share/init/vfs 0644 0 0
