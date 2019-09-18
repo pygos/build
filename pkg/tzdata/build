@@ -1,8 +1,8 @@
-VERSION="2019b"
+VERSION="2019c"
 SRCDIR="tzdb-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://infraroot.at/pygos"
-SHA256SUM="33dc25ddb936ad0ef098ff8ceecb2bbb7725fbdf720be0ebd8cc3bed5b418b59"
+SHA256SUM="bb2373338140c3de7251e548526f1f70cb742739a962aad3f10238343a2c674c"
 DEPENDS="toolchain"
 SUBPKG="tzdata tzdata-dev"
 
