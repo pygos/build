@@ -1,8 +1,8 @@
-VERSION="4.19.63"
+VERSION="5.4.25"
 SRCDIR="linux-$VERSION"
 TARBALL="linux-$VERSION.tar.xz"
-URL="https://www.kernel.org/pub/linux/kernel/v4.x"
-SHA256SUM="75988760b931864b46292dcfad1dd54b3f4da10168041f48ca6d7f6dd4e5d25d"
+URL="https://www.kernel.org/pub/linux/kernel/v5.x"
+SHA256SUM="c0ed974b088d84847aeca0ab99943918c472739db4480b263e75e8c19a025e25"
 DEPENDS="initrd"
 SUBPKG="linux linux-modules"
 
