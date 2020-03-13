@@ -1,8 +1,8 @@
-VERSION="2.32"
+VERSION="2.34"
 SRCDIR="binutils-$VERSION"
 TARBALL="binutils-$VERSION.tar.xz"
 URL="http://ftp.gnu.org/gnu/binutils"
-SHA256SUM="0ab6c55dd86a92ed561972ba15b9b70a8b9f75557f896446c82e8b36e473ee04"
+SHA256SUM="f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952"
 DEPENDS="tc-pkgtool"
 
 prepare() {
