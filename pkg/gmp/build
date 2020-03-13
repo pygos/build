@@ -1,8 +1,8 @@
-VERSION="6.1.2"
+VERSION="6.2.0"
 SRCDIR="gmp-$VERSION"
 TARBALL="gmp-$VERSION.tar.bz2"
 URL="http://ftp.gnu.org/gnu/gmp"
-SHA256SUM="5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2"
+SHA256SUM="f51c99cb114deb21a60075ffb494c1a210eb9d7cb729ed042ddb7de9534451ea"
 DEPENDS="toolchain"
 SUBPKG="gmp gmp-dev gmp++ gmp++-dev"
 
