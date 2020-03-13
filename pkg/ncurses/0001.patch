@@ -1,0 +1,13 @@
+diff --git a/misc/gen-pkgconfig.in b/misc/gen-pkgconfig.in
+index 8f00b82..2849b4d 100644
+--- a/misc/gen-pkgconfig.in
++++ b/misc/gen-pkgconfig.in
+@@ -190,7 +190,7 @@ Description: $desc
+ Version: \${version}
+ ${USEURL}URL: https://invisible-island.net/ncurses
+ Requires.private: $reqs
+-Libs: $lib_flags $LIBS
++Libs: $LIBS
+ Libs.private: @LIBS@ $main_libs
+ Cflags: $CFLAGS
+ EOF

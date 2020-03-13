@@ -7,7 +7,7 @@ DEPENDS="toolchain toolchain"
 SUBPKG="ncurses-dev ncurses++-dev ncurses"
 
 prepare() {
-	return
+	apply_patches
 }
 
 build() {
