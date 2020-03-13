@@ -1,5 +1,5 @@
-file lib/libkmod.so.2.3.4 0755 0 0
-slink lib/libkmod.so.2 0777 0 0 libkmod.so.2.3.4
+file lib/libkmod.so.2.3.5 0755 0 0
+slink lib/libkmod.so.2 0777 0 0 libkmod.so.2.3.5
 file bin/kmod 0755 0 0
 slink bin/depmod 0777 0 0 kmod
 slink bin/insmod 0777 0 0 kmod

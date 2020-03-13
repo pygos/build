@@ -3,4 +3,4 @@ dir lib 0755 0 0
 dir lib/pkgconfig 0755 0 0
 file include/libkmod.h 0644 0 0
 file lib/pkgconfig/libkmod.pc 0644 0 0
-slink lib/libkmod.so 0777 0 0 libkmod.so.2.3.4
+slink lib/libkmod.so 0777 0 0 libkmod.so.2.3.5
