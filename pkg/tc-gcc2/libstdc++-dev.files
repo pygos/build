@@ -4,4 +4,4 @@ dir lib 0755 0 0
 file lib/libstdc++.a 0644 0 0
 file lib/libstdc++fs.a 0644 0 0
 file lib/libsupc++.a 0644 0 0
-slink lib/libstdc++.so 0777 0 0 libstdc++.so.6.0.27
+slink lib/libstdc++.so 0777 0 0 libstdc++.so.6.0.28
