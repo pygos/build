@@ -89,8 +89,8 @@ deploy() {
 
 	svc=$(file_path_override "netcfg_static")
 	if [ ! -z "$svc" ]; then
-		mkdir -p "$PKGDEPLOYDIR/netcfg"
-		cp "$svc" "$PKGDEPLOYDIR/netcfg/static"
+		mkdir -p "$PKGDEPLOYDIR/etc/netcfg"
+		cp "$svc" "$PKGDEPLOYDIR/etc/netcfg/static"
 		echo "file etc/netcfg/static 0644 0 0" >> "$PKGDEPLOYDIR/$PKGNAME.files"
 	fi
 
