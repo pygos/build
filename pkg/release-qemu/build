@@ -4,7 +4,7 @@ SUBPKG="release"
 build() {
 	pkg install -om -r "$PKGBUILDDIR/$OS_RELEASE" linux
 
-	pkg dump -l pkg -r "$TCDIR/$TARGET" "$REPODIR/rootfs.pkg" \
+	pkg dump -l pkg -r "$SYSROOT" "$REPODIR/rootfs.pkg" \
 	    > "$PKGBUILDDIR/files.txt"
 
 	gensquashfs -F "$PKGBUILDDIR/files.txt" "$OS_RELEASE/rootfs.img"

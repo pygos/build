@@ -11,7 +11,7 @@ prepare() {
 
 build() {
 	run_configure "$1" --with-system-libpcap --with-cap-ng \
-		      --with-crypto="$TCDIR/$TARGET"
+		      --with-crypto="$SYSROOT"
 
 	make -j $NUMJOBS
 }

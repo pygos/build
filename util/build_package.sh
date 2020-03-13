@@ -18,8 +18,8 @@ build_package() {
 
 	fetch_package
 
-	rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
-	mkdir -p "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
+	rm -rf "$SYSROOT" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
+	mkdir -p "$SYSROOT" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 
 	if [ ! -z "$DEPENDS" ]; then
 		pkg install -omD $DEPENDS
@@ -35,5 +35,5 @@ build_package() {
 			 -l "$PKGDEPLOYDIR/${f}.files"
 	done
 
-	rm -rf "$TCDIR/$TARGET" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
+	rm -rf "$SYSROOT" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 }

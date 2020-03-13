@@ -24,14 +24,14 @@ build() {
 	make CCOPTS="-O2 $cflags" LDFLAGS="$ldflags" \
 	     HOSTCC="gcc" AR="${TARGET}-ar" LD="${TARGET}-ld" \
 	     CC="${TARGET}-gcc" PREFIX="" SBINDIR="/bin" \
-	     KERNEL_INCLUDE="$TCDIR/$TARGET/include" \
-	     DBM_INCLUDE="$TCDIR/$TARGET/include"
+	     KERNEL_INCLUDE="$SYSROOT/include" \
+	     DBM_INCLUDE="$SYSROOT/include"
 }
 
 deploy() {
 	make DESTDIR="$PKGDEPLOYDIR" PREFIX="" SBINDIR="/bin" \
-	     KERNEL_INCLUDE="$TCDIR/$TARGET/include" \
-	     DBM_INCLUDE="$TCDIR/$TARGET/include" install
+	     KERNEL_INCLUDE="$SYSROOT/include" \
+	     DBM_INCLUDE="$SYSROOT/include" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 }
 

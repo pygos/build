@@ -12,8 +12,7 @@ prepare() {
 
 build() {
 	run_configure "$1" --with-pidfile=/run/unbound.pid \
-		     --with-libexpat="$TCDIR/$TARGET" \
-		     --with-ssl="$TCDIR/$TARGET"
+		     --with-libexpat="$SYSROOT" --with-ssl="$SYSROOT"
 
 	make -j $NUMJOBS
 }

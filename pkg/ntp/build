@@ -11,8 +11,8 @@ prepare() {
 
 build() {
 	CFLAGS=-fno-stack-protector \
-	run_configure "$1" --with-openssl-libdir="$TCDIR/$TARGET/lib" \
-		      --with-openssl-incdir="$TCDIR/$TARGET/include" \
+	run_configure "$1" --with-openssl-libdir="$SYSROOT/lib" \
+		      --with-openssl-incdir="$SYSROOT/include" \
 		      --with-yielding-select=yes --enable-ipv6 \
 		      --with-lineeditlibs=readline --without-rpath \
 		      --without-sntp --with-ntpsnmpd

@@ -31,11 +31,11 @@ REPODIR="$BUILDROOT/repo"
 DEPENDSLIST="$BUILDROOT/depends"
 PROVIDESLIST="$BUILDROOT/provides"
 PREFERESLIST="$BUILDROOT/preferes"
+SYSROOT="$BUILDROOT/sysroot"
 
 declare -A PREFERED_PROVIDER
 
-mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR"
-mkdir -p "$REPODIR"
+mkdir -p "$PKGDOWNLOADDIR" "$PKGSRCDIR" "$PKGLOGDIR" "$REPODIR" "$SYSROOT"
 
 pushd "$SCRIPTDIR" > /dev/null
 OS_NAME="Pygos"
@@ -98,9 +98,9 @@ cat "$PACKAGELIST"
 
 echo "--- building packages ---"
 
-export PKG_CONFIG_SYSROOT_DIR="$TCDIR/$TARGET"
-export PKG_CONFIG_LIBDIR="$TCDIR/$TARGET/lib/pkgconfig"
-export PKG_CONFIG_PATH="$TCDIR/$TARGET/lib/pkgconfig"
+export PKG_CONFIG_SYSROOT_DIR="$SYSROOT"
+export PKG_CONFIG_LIBDIR="$SYSROOT/lib/pkgconfig"
+export PKG_CONFIG_PATH="$SYSROOT/lib/pkgconfig"
 
 while read pkg; do
 	include_pkg "$pkg"

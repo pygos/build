@@ -13,7 +13,7 @@ build() {
 
 	$1/configure --prefix="$TCDIR" --target="$TARGET" \
 		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
-		     --with-sysroot="$TCDIR/$TARGET" \
+		     --with-sysroot="$SYSROOT" \
 		     --disable-nls --enable-languages=c,c++ \
 		     --enable-c99 --enable-long-long \
 		     --enable-libmudflap --disable-multilib \
@@ -30,11 +30,11 @@ deploy() {
 	make install
 
 	mkdir -p "$PKGDEPLOYDIR/lib"
-	mv ${TCDIR}/${TARGET}/{include,lib} "$PKGDEPLOYDIR"
-	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+	mv "$TCDIR/$TARGET/lib" "$PKGDEPLOYDIR"
+	mkdir -p "$TCDIR/$TARGET/lib"
+	mv "$PKGDEPLOYDIR/lib/ldscripts" "$TCDIR/$TARGET/lib"
 
-	pkg_scan_dir "$PKGDEPLOYDIR/include/c++" |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libstdc++-dev.files"
+	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
 	if [ -f "$PKGDEPLOYDIR/lib/libmpx.a" ]; then
 		cat >> "$PKGDEPLOYDIR/libgcc-dev.files" <<_EOF

@@ -33,7 +33,7 @@ build() {
 
 	$1/configure --prefix="$TCDIR" --target="$TARGET" \
 		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
-		     --with-sysroot="$TCDIR/$TARGET" \
+		     --with-sysroot="$SYSROOT" \
 		     --disable-nls --disable-shared --without-headers \
 		     --disable-multilib --disable-decimal-float \
 		     --disable-libgomp --disable-libmudflap \

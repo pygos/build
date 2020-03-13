@@ -13,10 +13,10 @@ build() {
 	local extra="$BINUTILS_EXTRACFG"
 
 	$1/configure --prefix="$TCDIR" --target="$TARGET" --disable-nls \
-		     --with-sysroot="$TCDIR/$TARGET" --disable-multilib \
+		     --with-sysroot="$SYSROOT" --disable-multilib \
 		     --enable-shared --enable-plugins --enable-relro \
 		     --with-pic --enable-deterministic-archives \
-		     --with-lib-path="$TCDIR/$TARGET/lib" $extra
+		     --with-lib-path="$SYSROOT/lib" $extra
 
 	make configure-host
 	make -j $NUMJOBS
@@ -24,28 +24,7 @@ build() {
 
 deploy() {
 	make install
-
-	cat > "$PKGDEPLOYDIR/$PKGNAME.files" <<_EOF
-dir bin 0755 0 0
-dir lib 0755 0 0
-dir lib/ldscripts 0755 0 0
-file bin/ar 0755 0 0 $TCDIR/$TARGET/bin/ar
-file bin/as 0755 0 0 $TCDIR/$TARGET/bin/as
-file bin/ld 0755 0 0 $TCDIR/$TARGET/bin/ld
-file bin/ld.bfd 0755 0 0 $TCDIR/$TARGET/bin/ld.bfd
-file bin/nm 0755 0 0 $TCDIR/$TARGET/bin/nm
-file bin/objcopy 0755 0 0 $TCDIR/$TARGET/bin/objcopy
-file bin/objdump 0755 0 0 $TCDIR/$TARGET/bin/objdump
-file bin/ranlib 0755 0 0 $TCDIR/$TARGET/bin/ranlib
-file bin/readelf 0755 0 0 $TCDIR/$TARGET/bin/readelf
-file bin/strip 0755 0 0 $TCDIR/$TARGET/bin/strip
-_EOF
-
-	find -H "$TCDIR/$TARGET/lib/ldscripts" -type f \
-	     -printf "file lib/ldscripts/%f 0%m 0 0 %p\\n" \
-	     >> "$PKGDEPLOYDIR/$PKGNAME.files"
-
-	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
+	touch "$PKGDEPLOYDIR/$PKGNAME.desc" "$PKGDEPLOYDIR/$PKGNAME.files"
 }
 
 check_update() {

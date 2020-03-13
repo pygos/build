@@ -5,16 +5,16 @@ build() {
 	local desc="$PKGDEPLOYDIR/$PKGNAME.desc"
 
 	# generate package description and file listing
-	pkg install -l pkg -r "$TCDIR/$TARGET" $DEPENDS | sort -u > "$listing"
+	pkg install -l pkg -r "$SYSROOT" $DEPENDS | sort -u > "$listing"
 	touch "$desc"
 
 	# move configuration to preserve directory
-	mkdir -pv "$TCDIR/$TARGET/cfg/preserve" "$TCDIR/$TARGET/cfg/overlay"
+	mkdir -pv "$SYSROOT/cfg/preserve" "$SYSROOT/cfg/overlay"
 
-	mv "$TCDIR/$TARGET/etc" "$TCDIR/$TARGET/cfg/preserve/etc"
-	mv "$TCDIR/$TARGET/usr" "$TCDIR/$TARGET/cfg/preserve/usr"
-	mv "$TCDIR/$TARGET/var/lib" "$TCDIR/$TARGET/cfg/preserve/var_lib"
-	rm -rf "$TCDIR/$TARGET/var"
+	mv "$SYSROOT/etc" "$SYSROOT/cfg/preserve/etc"
+	mv "$SYSROOT/usr" "$SYSROOT/cfg/preserve/usr"
+	mv "$SYSROOT/var/lib" "$SYSROOT/cfg/preserve/var_lib"
+	rm -rf "$SYSROOT/var"
 
 	sed -i 's#etc/#cfg/preserve/etc/#g' "$listing"
 	sed -i 's#var/lib/#cfg/preserve/var_lib/#g' "$listing"

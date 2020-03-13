@@ -12,7 +12,7 @@ prepare() {
 
 build() {
 	run_configure "$1" --with-drill --without-pyldns --without-pyldnsx \
-		     --without-p5-dns-ldns --with-ssl="$TCDIR/$TARGET"
+		     --without-p5-dns-ldns --with-ssl="$SYSROOT"
 
 	make -j $NUMJOBS
 }

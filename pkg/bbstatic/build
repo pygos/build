@@ -10,8 +10,6 @@ prepare() {
 }
 
 build() {
-	local SYSROOT="$TCDIR/$TARGET"
-
 	cp "$SCRIPTDIR/pkg/$PKGNAME/bbstatic.config" "$PKGBUILDDIR/.config"
 
 	export KBUILD_OUTPUT="$PKGBUILDDIR"
