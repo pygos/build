@@ -1,8 +1,8 @@
-VERSION="6.1"
+VERSION="6.2"
 SRCDIR="ncurses-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="https://ftp.gnu.org/gnu/ncurses/"
-SHA256SUM="aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17"
+SHA256SUM="30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d"
 DEPENDS="toolchain toolchain"
 SUBPKG="ncurses-dev ncurses++-dev ncurses"
 
