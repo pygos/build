@@ -1,8 +1,8 @@
-VERSION="4.7"
+VERSION="4.8.1"
 SRCDIR="shadow-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://github.com/shadow-maint/shadow/releases/download/${VERSION}"
-SHA256SUM="e5e196a4a7e3b228c812f3163d368be3e932e6eaa4e616677a148d9ec921e16c"
+SHA256SUM="a3ad4630bdc41372f02a647278a8c3514844295d36eefe68ece6c3a641c1ae62"
 DEPENDS="toolchain"
 
 prepare() {
