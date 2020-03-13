@@ -1,8 +1,8 @@
-VERSION="5.37"
+VERSION="5.38"
 SRCDIR="file-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="ftp://ftp.astron.com/pub/file"
-SHA256SUM="e9c13967f7dd339a3c241b7710ba093560b9a33013491318e88e6b8b57bae07f"
+SHA256SUM="593c2ffc2ab349c5aea0f55fedfe4d681737b6b62376a9b3ad1e77b2cc19fa34"
 DEPENDS="zlib-dev toolchain"
 SUBPKG="file file-dev"
 
