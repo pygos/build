@@ -1,12 +1,12 @@
-VERSION="1.31.0"
+VERSION="1.31.1"
 SRCDIR="busybox-$VERSION"
 TARBALL="busybox-$VERSION.tar.bz2"
 URL="https://busybox.net/downloads"
-SHA256SUM="0e4925392fd9f3743cc517e031b68b012b24a63b0cf6c1ff03cce7bb3846cc99"
+SHA256SUM="d0f940a72f648943c1f2211e0e3117387c31d765137d92bd8284a3fb9752a998"
 DEPENDS="toolchain"
 
 prepare() {
-	return
+	apply_patches
 }
 
 build() {
