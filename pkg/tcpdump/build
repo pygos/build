@@ -1,8 +1,8 @@
-VERSION="4.9.2"
+VERSION="4.9.3"
 SRCDIR="tcpdump-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="http://www.tcpdump.org/release/"
-SHA256SUM="798b3536a29832ce0cbb07fafb1ce5097c95e308a6f592d14052e1ef1505fe79"
+SHA256SUM="2cd47cb3d460b6ff75f4a9940f594317ad456cfbf2bd2c8e5151e16559db6410"
 DEPENDS="libnl3-dev openssl-dev libpcap-dev toolchain"
 
 prepare() {
