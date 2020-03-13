@@ -43,7 +43,7 @@ OS_RELEASE=$(git describe --always --tags --dirty)
 export SOURCE_DATE_EPOCH=$(git show -s --format=%ct)
 popd > /dev/null
 
-export BUILD_PATH_PREFIX_MAP="src=$PKGSRCDIR:build=$BUILDROOT"
+export BUILD_PATH_PREFIX_MAP="$PKGSRCDIR=src:$BUILDROOT=build"
 
 ############################# include utilities ##############################
 source "$SCRIPTDIR/util/download.sh"
