@@ -18,6 +18,13 @@ build() {
 deploy() {
 	make DESTDIR="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+
+	if [ -e "$PKGDEPLOYDIR/lib/libbsd-ctor.a" ]; then
+		cat >> "$PKGDEPLOYDIR/libbsd-dev.files" <<_EOF
+file lib/pkgconfig/libbsd-ctor.pc 0644 0 0
+file lib/libbsd-ctor.a 0644 0 0
+_EOF
+	fi
 }
 
 check_update() {
