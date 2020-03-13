@@ -1,8 +1,8 @@
-VERSION="1.9.0"
+VERSION="1.9.1"
 SRCDIR="libpcap-${VERSION}"
 TARBALL="${SRCDIR}.tar.gz"
 URL="http://www.tcpdump.org/release/"
-SHA256SUM="2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
+SHA256SUM="635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094"
 DEPENDS="libnl3-dev toolchain"
 SUBPKG="libpcap libpcap-dev"
 
