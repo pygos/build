@@ -1,8 +1,8 @@
-VERSION="8.31"
+VERSION="8.32"
 SRCDIR="coreutils-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://ftp.gnu.org/gnu/coreutils/"
-SHA256SUM="ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd"
+SHA256SUM="4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa"
 DEPENDS="toolchain"
 
 prepare() {
