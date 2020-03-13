@@ -1,8 +1,8 @@
-VERSION="1.1.4"
+VERSION="1.1.5"
 SRCDIR="libnftnl-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://netfilter.org/projects/libnftnl/files"
-SHA256SUM="c8c7988347adf261efac5bba59f8e5f995ffb65f247a88cc144e69620573ed20"
+SHA256SUM="66de4d05227c0a1a731c369b193010d18a05b1185c2735211e0ecf658eeb14f3"
 DEPENDS="libmnl-dev toolchain"
 SUBPKG="libnftnl libnftnl-dev"
 
