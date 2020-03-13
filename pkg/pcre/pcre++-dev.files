@@ -4,4 +4,4 @@ dir lib/pkgconfig 0755 0 0
 file include/pcrecpp.h 0644 0 0
 file include/pcrecpparg.h 0644 0 0
 file lib/pkgconfig/libpcrecpp.pc 0644 0 0
-slink lib/libpcrecpp.so 0777 0 0 libpcrecpp.so.0.0.1
+slink lib/libpcrecpp.so 0777 0 0 libpcrecpp.so.0.0.2

@@ -7,5 +7,5 @@ file include/pcre_stringpiece.h 0644 0 0
 file include/pcre_scanner.h 0644 0 0
 file lib/pkgconfig/libpcreposix.pc 0644 0 0
 file lib/pkgconfig/libpcre.pc 0644 0 0
-slink lib/libpcreposix.so 0777 0 0 libpcreposix.so.0.0.6
-slink lib/libpcre.so 0777 0 0 libpcre.so.1.2.11
+slink lib/libpcreposix.so 0777 0 0 libpcreposix.so.0.0.7
+slink lib/libpcre.so 0777 0 0 libpcre.so.1.2.12
