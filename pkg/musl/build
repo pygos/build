@@ -1,8 +1,8 @@
-VERSION="1.1.23"
+VERSION="1.2.0"
 SRCDIR="musl-$VERSION"
 TARBALL="$SRCDIR.tar.gz"
 URL="https://www.musl-libc.org/releases"
-SHA256SUM="8a0feb41cef26c97dde382c014e68b9bb335c094bbc1356f6edaaf6b79bd14aa"
+SHA256SUM="c6de7b191139142d3f9a7b5b702c9cae1b5ee6e7f57e582da9328629408fd4e8"
 DEPENDS="tc-gcc1 linux-dev fortify-headers tc-pkgtool"
 SUBPKG="libc libc-dev"
 
@@ -64,6 +64,8 @@ deploy() {
 	cp libssp_nonshared.a "$PKGDEPLOYDIR/lib"
 
 	cp "$SCRIPTDIR/pkg/$PKGNAME/libc-dev.files" "$PKGDEPLOYDIR"
+	pkg_scan_dir "$PKGDEPLOYDIR/include" |\
+		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libc-dev.files"
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
 		echo "requires libc linux-dev fortify-headers" > \
