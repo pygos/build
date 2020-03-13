@@ -16,4 +16,4 @@ file include/proc/version.h 0644 0 0
 file include/proc/wchan.h 0644 0 0
 file include/proc/whattime.h 0644 0 0
 file lib/pkgconfig/libprocps.pc 0644 0 0
-slink lib/libprocps.so 0777 0 0 libprocps.so.7.1.0
+slink lib/libprocps.so 0777 0 0 libprocps.so.8.0.2

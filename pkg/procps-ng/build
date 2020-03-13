@@ -1,8 +1,8 @@
-VERSION="3.3.15"
+VERSION="3.3.16"
 SRCDIR="procps-ng-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://sourceforge.net/projects/procps-ng/files/Production"
-SHA256SUM="10bd744ffcb3de2d591d2f6acf1a54a7ba070fdcc432a855931a5057149f0465"
+SHA256SUM="925eacd65dedcf9c98eb94e8978bbfb63f5de37294cc1047d81462ed477a20af"
 DEPENDS="ncurses-dev toolchain"
 SUBPKG="procps-ng procps-ng-dev"
 
