@@ -1,8 +1,8 @@
-VERSION="2.34"
+VERSION="2.35.1"
 SRCDIR="util-linux-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
-URL="https://www.kernel.org/pub/linux/utils/util-linux/v${VERSION}"
-SHA256SUM="743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5"
+URL="https://www.kernel.org/pub/linux/utils/util-linux/v2.35"
+SHA256SUM="d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9"
 DEPENDS="bash-dev ncurses-dev zlib-dev toolchain"
 SUBPKG="libblkid libblkid-dev libfdisk libfdisk-dev libmount libmount-dev libsmartcols libsmartcols-dev libuuid libuuid-dev util-linux"
 
