@@ -12,7 +12,6 @@ file bin/loadunimap 0755 0 0
 file bin/mapscrn 0755 0 0
 file bin/openvt 0755 0 0
 file bin/psfxtable 0755 0 0
-file bin/resizecons 0755 0 0
 file bin/setfont 0755 0 0
 file bin/setkeycodes 0755 0 0
 file bin/setleds 0755 0 0

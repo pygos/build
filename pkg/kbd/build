@@ -21,6 +21,10 @@ build() {
 deploy() {
 	make DESTDIR="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
+
+	if [ -f "$PKGDEPLOYDIR/bin/resizecons" ]; then
+		echo "file bin/resizecons 0755 0 0" >> "$PKGDEPLOYDIR/kbd.files"
+	fi
 }
 
 check_update() {
