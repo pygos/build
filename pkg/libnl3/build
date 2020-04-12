@@ -6,10 +6,6 @@ SHA256SUM="8beb7590674957b931de6b7f81c530b85dc7c1ad8fbda015398bc1e8d1ce8ec5"
 DEPENDS="toolchain"
 SUBPKG="libnl3 libnl3-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --disable-cli
 	make -j $NUMJOBS

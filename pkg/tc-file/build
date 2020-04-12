@@ -2,10 +2,6 @@ source "$SCRIPTDIR/pkg/file/build"
 DEPENDS="tc-pkgtool"
 SUBPKG="tc-file"
 
-prepare() {
-	return
-}
-
 build() {
 	$1/configure --prefix="$TCDIR" --disable-static \
 		     --build="$HOSTTUPLE" --host="$HOSTTUPLE"

@@ -5,10 +5,6 @@ URL="https://www.kernel.org/pub/software/network/ethtool/"
 SHA256SUM="22f81e4927d6eb6a13a259d705248a96005fce2005e15257f639f5a1c8c52b6b"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

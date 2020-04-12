@@ -5,10 +5,6 @@ URL="https://ftp.gnu.org/gnu/findutils/"
 SHA256SUM="c5fefbdf9858f7e4feb86f036e1247a54c79fc2d8e4b7064d5aaa1f47dfa789a"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --localstatedir=/var/lib/locate
 	make -j $NUMJOBS

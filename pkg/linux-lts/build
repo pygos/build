@@ -24,10 +24,6 @@ get_linux_cpu() {
 	esac
 }
 
-prepare() {
-	return
-}
-
 build() {
 	local INITRDDIR="$PKGDEPLOYDIR/initrd"
 	local INITRDLIST="$INITRDDIR/initrd.list"

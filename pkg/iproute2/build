@@ -6,10 +6,6 @@ SHA256SUM="a5b95dec26353fc71dba9bb403e9343fad2a06bd69fb154a22a2aa2914f74da8"
 DEPENDS="toolchain libmnl-dev"
 SUBPKG="iproute2 iproute2-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 

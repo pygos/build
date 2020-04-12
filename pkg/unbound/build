@@ -6,10 +6,6 @@ SHA256SUM="152f486578242fe5c36e89995d0440b78d64c05123990aae16246b7f776ce955"
 DEPENDS="openssl-dev expat-dev libbsd-dev toolchain"
 SUBPKG="unbound libunbound libunbound-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --with-pidfile=/run/unbound.pid \
 		     --with-libexpat="$SYSROOT" --with-ssl="$SYSROOT"

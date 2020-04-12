@@ -5,10 +5,6 @@ URL="https://ftp.gnu.org/gnu/grep/"
 SHA256SUM="58e6751c41a7c25bfc6e9363a41786cff3ba5709cf11d5ad903cf7cce31cc3fb"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

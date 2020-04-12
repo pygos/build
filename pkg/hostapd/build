@@ -5,10 +5,6 @@ URL="https://w1.fi/releases"
 SHA256SUM="881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7"
 DEPENDS="libnl3-dev openssl-dev toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 	cp "$SCRIPTDIR/pkg/$PKGNAME/config" "$PKGBUILDDIR/hostapd/.config"

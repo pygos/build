@@ -6,10 +6,6 @@ SHA256SUM="c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072"
 DEPENDS="toolchain"
 SUBPKG="lzo lzo-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

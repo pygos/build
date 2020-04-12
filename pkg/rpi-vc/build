@@ -6,10 +6,6 @@ SHA256SUM="4336d10e0ff93adfa2e93f3520e102a30c009ee0f823bb1d391edf9ab17b3f0f"
 DEPENDS="toolchain"
 SUBPKG="rpi-vc rpi-vc-dev gles2 gles2-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	local cflags="-O2 -Os"
 	local ldflags=""
@@ -37,8 +33,4 @@ deploy() {
 	mv "$PKGDEPLOYDIR/opt/vc/lib/pkgconfig" "$PKGDEPLOYDIR/lib"
 
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
-}
-
-check_update() {
-	return
 }

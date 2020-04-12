@@ -6,10 +6,6 @@ SHA256SUM="186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35"
 DEPENDS="zlib-dev toolchain"
 SUBPKG="openssl openssl-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	local OPENSSL_TARGET=""
 	local cflags="-O2 -Os"

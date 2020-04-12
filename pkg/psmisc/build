@@ -5,10 +5,6 @@ URL="https://sourceforge.net/projects/psmisc/files/psmisc"
 SHA256SUM="41750e1a5abf7ed2647b094f58127c73dbce6876f77ba4e0a7e0995ae5c7279a"
 DEPENDS="ncurses-dev toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --disable-selinux
 	make -j $NUMJOBS

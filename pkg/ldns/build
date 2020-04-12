@@ -6,10 +6,6 @@ SHA256SUM="c19f5b1b4fb374cfe34f4845ea11b1e0551ddc67803bd6ddd5d2a20f0997a6cc"
 DEPENDS="openssl-dev toolchain"
 SUBPKG="ldns ldns-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --with-drill --without-pyldns --without-pyldnsx \
 		     --without-p5-dns-ldns --with-ssl="$SYSROOT"

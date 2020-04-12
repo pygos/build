@@ -6,10 +6,6 @@ SHA256SUM="8e4e86f04ed789648b66f757329743a0d6dfb5294c3b91b756a474f1ce05a794"
 DEPENDS="toolchain"
 SUBPKG="gawk gawk-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

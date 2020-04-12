@@ -5,10 +5,6 @@ URL="https://roy.marples.name/downloads/dhcpcd"
 SHA256SUM="6c2934a3e1e67a5cfd5bb15b1efa71f65c00314ac1ccb5c50da8eae3a0b8147f"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	local SOURCE="$1"
 

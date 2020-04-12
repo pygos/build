@@ -5,10 +5,6 @@ URL="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable"
 SHA256SUM="43925151e6cf6cee1450190c0e9af4dc36b41c12737619edff8bcebdff64e671"
 DEPENDS="openssl-dev zlib-dev toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --with-pie --without-pam --without-stackprotect \
 		     --without-selinux --disable-strip \

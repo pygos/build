@@ -1,10 +1,6 @@
 DEPENDS="tc-binutils crt-dev libstdc++-dev tc-file tc-pkgtool basefiles"
 DEPENDS="$DEPENDS tc-squashfs"
 
-build() {
-	return
-}
-
 deploy() {
 cat > "$CMAKETCFILE" << _EOF
 set(CMAKE_SYSTEM_NAME Linux)
@@ -27,8 +23,4 @@ _EOF
 	cat > "$PKGDEPLOYDIR/$PKGNAME.desc" <<_EOF
 requires $DEPENDS
 _EOF
-}
-
-check_update() {
-	return
 }

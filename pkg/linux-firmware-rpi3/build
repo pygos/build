@@ -5,10 +5,6 @@ URL="http://infraroot.at/pygos"
 SHA256SUM="66e5bc59017f1df8b0e25dd49d4df91fd8f841954f9bc1efc2b88095fdf75e12"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	cp -r $1/* "$PKGBUILDDIR"
 }
@@ -16,8 +12,4 @@ build() {
 deploy() {
 	make DESTDIR="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
-}
-
-check_update() {
-	return
 }

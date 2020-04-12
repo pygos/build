@@ -6,10 +6,6 @@ SHA256SUM="956b915ce2a7aeaff123e49006be7a0690a0964e96c062703181a36e2e5edb78"
 DEPENDS="libmnl-dev libnftnl-dev gmp-dev readline-dev ncurses-dev toolchain"
 SUBPKG="nftables nftables-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --disable-debug --disable-man-doc --without-mini-gmp
 	make -j $NUMJOBS

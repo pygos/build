@@ -6,14 +6,6 @@ SHA256SUM="7ff2cfb5ea19fbd1d770ebbbcdab791830ebbc6fd36b6da1dee9edf4088f69d6"
 DEPENDS="toolchain"
 SUBPKG="boot-rpi boot-rpi-dtbo boot-rpi-dtb"
 
-prepare() {
-	return
-}
-
-build() {
-	return
-}
-
 deploy() {
 	local SOURCE="$1"
 

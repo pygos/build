@@ -5,10 +5,6 @@ URL="https://ftp.gnu.org/gnu/nano"
 SHA256SUM="c348f61c68ab1d573b308398212a09cd68c60fbee20f01a5bd4b50071a258e63"
 DEPENDS="ncurses-dev toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --enable-utf8
 	make -j $NUMJOBS

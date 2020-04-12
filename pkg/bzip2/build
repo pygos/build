@@ -6,10 +6,6 @@ SHA256SUM="d70a9ccd8bdf47e302d96c69fecd54925f45d9c7b966bb4ef5f56b770960afa7"
 DEPENDS="toolchain"
 SUBPKG="bzip2-dev bzip2"
 
-prepare() {
-	return
-}
-
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 
@@ -29,8 +25,4 @@ build() {
 deploy() {
 	make PREFIX="$PKGDEPLOYDIR" install
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
-}
-
-check_update() {
-	return
 }

@@ -6,10 +6,6 @@ SHA256SUM="e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461"
 DEPENDS="ncurses-dev toolchain"
 SUBPKG="readline readline-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make SHLIB_LIBS="-lncursesw" -j $NUMJOBS

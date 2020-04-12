@@ -6,10 +6,6 @@ SHA256SUM="1ea6965b15c2106b6bbe883397271c80dfa0331cdf821b2c319591b55eadc0a4"
 DEPENDS="libbsd-dev toolchain"
 SUBPKG="expat expat-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --without-xmlwf --with-libbsd
 	make -j $NUMJOBS

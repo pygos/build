@@ -6,10 +6,6 @@ SHA256SUM="c6de7b191139142d3f9a7b5b702c9cae1b5ee6e7f57e582da9328629408fd4e8"
 DEPENDS="tc-gcc1 linux-dev fortify-headers tc-pkgtool"
 SUBPKG="libc libc-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	local cflags="-O2 -Os"
 	local ldflags=""

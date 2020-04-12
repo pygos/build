@@ -6,10 +6,6 @@ SHA256SUM="d61b5286f062adfce5125eaf544d495300656908e61fca143517afcc0a89b7c3"
 DEPENDS="readline-dev zlib-dev toolchain"
 SUBPKG="sqlite3 sqlite3-dev sqlite3-shell"
 
-prepare() {
-	apply_patches
-}
-
 build() {
 	run_configure "$1" --enable-readline --disable-static-shell
 	make -j $NUMJOBS

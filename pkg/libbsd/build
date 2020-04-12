@@ -6,10 +6,6 @@ SHA256SUM="34b8adc726883d0e85b3118fa13605e179a62b31ba51f676136ecb2d0bc1a887"
 DEPENDS="toolchain"
 SUBPKG="libbsd libbsd-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

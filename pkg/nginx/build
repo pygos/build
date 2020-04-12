@@ -5,10 +5,6 @@ URL="https://nginx.org/download"
 SHA256SUM="7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689"
 DEPENDS="zlib-dev openssl-dev pcre-dev toolchain"
 
-prepare() {
-	apply_patches
-}
-
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 

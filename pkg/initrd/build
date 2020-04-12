@@ -1,9 +1,5 @@
 DEPENDS="bbstatic"
 
-build() {
-	return
-}
-
 deploy() {
 	cp $SCRIPTDIR/pkg/initrd/*.{desc,files} "$PKGDEPLOYDIR"
 
@@ -12,8 +8,4 @@ deploy() {
 
 	echo "file init 0755 0 0 $SCRIPTDIR/pkg/$PKGNAME/initrd.skel" \
 	     >> "$PKGDEPLOYDIR/initrd.files"
-}
-
-check_update() {
-	return
 }

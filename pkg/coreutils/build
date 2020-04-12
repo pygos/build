@@ -5,10 +5,6 @@ URL="https://ftp.gnu.org/gnu/coreutils/"
 SHA256SUM="4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa"
 DEPENDS="toolchain"
 
-prepare() {
-	apply_patches
-}
-
 build() {
 	run_configure "$1" --enable-single-binary=symlinks
 	make -j $NUMJOBS

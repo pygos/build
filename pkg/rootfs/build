@@ -35,11 +35,3 @@ dir cfg/preserve/var_lib 0755 0 0
 dir cfg/overlay 0755 0 0
 _EOF
 }
-
-deploy() {
-	return
-}
-
-check_update() {
-	return
-}

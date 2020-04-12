@@ -6,10 +6,6 @@ SHA256SUM="d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9"
 DEPENDS="bash-dev ncurses-dev zlib-dev toolchain"
 SUBPKG="libblkid libblkid-dev libfdisk libfdisk-dev libmount libmount-dev libsmartcols libsmartcols-dev libuuid libuuid-dev util-linux"
 
-prepare() {
-	apply_patches
-}
-
 build() {
 	ADJTIME_PATH=/var/lib/hwclock/adjtime \
 	run_configure "$1" --disable-pylibmount --without-python \

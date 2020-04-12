@@ -6,10 +6,6 @@ SHA256SUM="c1d3fbf16ca24b95f334c1de1b46f17bbe5a10b0e81e72668bdc922ebffbbc0c"
 DEPENDS="zlib-dev xz-dev toolchain"
 SUBPKG="kmod kmod-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --with-xz --with-zlib
 	make -j $NUMJOBS

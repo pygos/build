@@ -5,10 +5,6 @@ URL="https://infraroot.at/pygos"
 SHA256SUM="845847e139bbb6e15ada8946032d1c114a8dde52cacb3d81f1b8370edab7ed9d"
 DEPENDS=""
 
-prepare() {
-	return
-}
-
 build() {
 	$1/configure --prefix="$TCDIR" --disable-static \
 		     --build="$HOSTTUPLE" --host="$HOSTTUPLE" \
@@ -23,8 +19,4 @@ deploy() {
 
 	touch "$PKGDEPLOYDIR/$PKGNAME.files"
 	touch "$PKGDEPLOYDIR/$PKGNAME.desc"
-}
-
-check_update() {
-	return
 }

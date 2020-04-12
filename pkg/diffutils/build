@@ -5,10 +5,6 @@ URL="https://ftp.gnu.org/gnu/diffutils/"
 SHA256SUM="b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

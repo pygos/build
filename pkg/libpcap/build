@@ -6,10 +6,6 @@ SHA256SUM="635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094"
 DEPENDS="libnl3-dev toolchain"
 SUBPKG="libpcap libpcap-dev"
 
-prepare() {
-	apply_patches
-}
-
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
 	sed -i "s#/usr/include/libnl3#$SYSROOT/include/libnl3#g" configure

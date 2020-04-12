@@ -5,10 +5,6 @@ URL="https://busybox.net/downloads"
 SHA256SUM="d0f940a72f648943c1f2211e0e3117387c31d765137d92bd8284a3fb9752a998"
 DEPENDS="toolchain"
 
-prepare() {
-	apply_patches
-}
-
 build() {
 	cp "$SCRIPTDIR/pkg/$PKGNAME/bbstatic.config" "$PKGBUILDDIR/.config"
 

@@ -7,10 +7,6 @@ DEPENDS="toolchain"
 SUBPKG="consolefonts kbd kbd-unicode keymaps-amiga keymaps-atari keymaps-mac"
 SUBPKG="$SUBPKG keymaps-misc keymaps-pc keymaps-sun libkbd libkbd-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --enable-optional-progs --disable-tests \
 		      --enable-libkeymap --disable-vlock

@@ -5,10 +5,6 @@ URL="http://infraroot.at/pygos"
 SHA256SUM="dbfc67b01376d6607c69bc845c31e2f792f20773c829973ae6bfb57ac30699ae"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	local extra_flags=""
 
@@ -114,8 +110,4 @@ deploy() {
 	done
 
 	unset -v i GETTY_TTY HWCLOCK DHCP_PORTS SERVICES MODULES
-}
-
-check_update() {
-	return
 }

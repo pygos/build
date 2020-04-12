@@ -33,8 +33,3 @@ deploy() {
 	tar czf "$BUILDROOT/release.tar.gz" *
 	touch "$PKGDEPLOYDIR/release.files" "$PKGDEPLOYDIR/release.desc"
 }
-
-check_update() {
-	return
-}
-

@@ -18,6 +18,7 @@ for pkg in $SCRIPTDIR/pkg/*; do
 
 	name=$(basename $pkg)
 	echo "-- checking $name"
+	source "$SCRIPTDIR/util/emptypkg.sh"
 	source "$pkg/build"
 
 	version=$(check_update)

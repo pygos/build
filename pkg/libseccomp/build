@@ -5,10 +5,6 @@ URL="https://github.com/seccomp/libseccomp/releases/download/v${VERSION}"
 SHA256SUM="1ca3735249af66a1b2f762fe6e710fcc294ad7185f1cc961e5bd83f9988006e8"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

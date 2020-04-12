@@ -6,10 +6,6 @@ SHA256SUM="593c2ffc2ab349c5aea0f55fedfe4d681737b6b62376a9b3ad1e77b2cc19fa34"
 DEPENDS="zlib-dev toolchain"
 SUBPKG="file file-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

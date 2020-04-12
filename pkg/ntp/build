@@ -5,10 +5,6 @@ URL="https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2"
 SHA256SUM="1960e4f081f6aafd108d721bc3ab15f9e8dfd08dc08339aa95bca9d2545e4eb7"
 DEPENDS="openssl-dev zlib-dev readline-dev toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	CFLAGS=-fno-stack-protector \
 	run_configure "$1" --with-openssl-libdir="$SYSROOT/lib" \

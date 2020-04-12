@@ -5,10 +5,6 @@ URL="https://ftp.gnu.org/gnu/tar/"
 SHA256SUM="d0d3ae07f103323be809bc3eac0dcc386d52c5262499fe05511ac4788af1fdd8"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS

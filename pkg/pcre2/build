@@ -6,10 +6,6 @@ SHA256SUM="74c473ffaba9e13db6951fd146e0143fe9887852ce73406a03277af1d9b798ca"
 DEPENDS="toolchain"
 SUBPKG="pcre2-16 pcre2-16-dev pcre2-32 pcre2-32-dev pcre2-posix pcre2-posix-dev"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1" --enable-pcre2-16 --enable-pcre2-32
 	make -j $NUMJOBS

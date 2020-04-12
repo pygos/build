@@ -5,10 +5,6 @@ URL="http://infraroot.at/pygos"
 SHA256SUM="c3a184b2bbc64b187797c335256d277cd8c0a871e09eef5d90161c4ad8267714"
 DEPENDS="toolchain"
 
-prepare() {
-	return
-}
-
 build() {
 	run_configure "$1"
 	make -j $NUMJOBS
