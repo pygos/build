@@ -16,8 +16,6 @@ build_package() {
 		rm -f "$REPODIR/${f}.pkg"
 	done
 
-	fetch_package
-
 	rm -rf "$SYSROOT" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 	mkdir -p "$SYSROOT" "$PKGBUILDDIR" "$PKGDEPLOYDIR"
 
@@ -25,6 +23,7 @@ build_package() {
 		pkg install -omD $DEPENDS
 	fi
 
+	run_pkg_command "download"
 	run_pkg_command "build"
 	run_pkg_command "deploy"
 	deploy_dev_cleanup
