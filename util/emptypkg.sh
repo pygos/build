@@ -9,9 +9,16 @@ apply_patches() {
 }
 
 pkg_scan_dir() {
-	find -H "$1" -type d -printf "dir \"%p\" 0%m 0 0\\n" | tail -n +2
-	find -H "$1" -type l -printf "slink \"%p\" 0%m 0 0 %l\\n"
-	find -H "$1" -type f -printf "file \"%p\" 0%m 0 0\\n"
+	local sp="$PKGDEPLOYDIR/$1"
+
+	find -H "$sp" -type d -printf "dir \"%p\" 0%m 0 0\\n" | tail -n +2 |\
+		sed "s#$PKGDEPLOYDIR/##g"
+
+	find -H "$sp" -type l -printf "slink \"%p\" 0%m 0 0 %l\\n" |\
+		sed "s#$PKGDEPLOYDIR/##g"
+
+	find -H "$sp" -type f -printf "file \"%p\" 0%m 0 0\\n" |\
+		sed "s#$PKGDEPLOYDIR/##g"
 }
 
 fetch_package() {

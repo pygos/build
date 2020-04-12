@@ -80,8 +80,7 @@ deploy() {
 		echo "dir srv 0755 0 0" >> "$PKGDEPLOYDIR/nginx.files"
 		echo "dir srv/www 0755 0 0" >> "$PKGDEPLOYDIR/nginx.files"
 
-		pkg_scan_dir "$PKGDEPLOYDIR/srv/www" |\
-		     sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/nginx.files"
+		pkg_scan_dir "srv/www" >> "$PKGDEPLOYDIR/nginx.files"
 	fi
 
 	cat_file_override "nginx.conf" > "$PKGDEPLOYDIR/etc/nginx/nginx.conf"

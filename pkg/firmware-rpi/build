@@ -12,8 +12,7 @@ deploy() {
 	cp -r ${SOURCE}/boot/* "$PKGDEPLOYDIR/"
 	cp $SCRIPTDIR/pkg/$PKGNAME/*.{files,desc} "$PKGDEPLOYDIR"
 
-	pkg_scan_dir "$PKGDEPLOYDIR/overlays" |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/boot-rpi-dtbo.files"
+	pkg_scan_dir "overlays" >> "$PKGDEPLOYDIR/boot-rpi-dtbo.files"
 }
 
 check_update() {

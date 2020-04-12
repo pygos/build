@@ -67,9 +67,7 @@ deploy() {
 
 			echo "dir lib 0755 0 0" > "$PKGDEPLOYDIR/linux-modules.files"
 
-			pkg_scan_dir "$PKGDEPLOYDIR/lib" | \
-				sed "s#$PKGDEPLOYDIR/##g" \
-				    >> "$PKGDEPLOYDIR/linux-modules.files"
+			pkg_scan_dir "lib" >> "$PKGDEPLOYDIR/linux-modules.files"
 			;;
 		esac
 	done

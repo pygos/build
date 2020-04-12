@@ -21,11 +21,8 @@ deploy() {
 
 	sed -i 's@/usr@@g' "$PKGDEPLOYDIR/bin/tzselect"
 
-	pkg_scan_dir "$PKGDEPLOYDIR/share/zoneinfo" | \
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/tzdata.files"
-
-	pkg_scan_dir "$PKGDEPLOYDIR/share/zoneinfo-leaps" | \
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/tzdata.files"
+	pkg_scan_dir "share/zoneinfo" >> "$PKGDEPLOYDIR/tzdata.files"
+	pkg_scan_dir "share/zoneinfo-leaps" >> "$PKGDEPLOYDIR/tzdata.files"
 }
 
 check_update() {

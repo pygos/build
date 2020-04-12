@@ -60,8 +60,7 @@ deploy() {
 	cp libssp_nonshared.a "$PKGDEPLOYDIR/lib"
 
 	cp "$SCRIPTDIR/pkg/$PKGNAME/libc-dev.files" "$PKGDEPLOYDIR"
-	pkg_scan_dir "$PKGDEPLOYDIR/include" |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/libc-dev.files"
+	pkg_scan_dir "include" >> "$PKGDEPLOYDIR/libc-dev.files"
 
 	if [ "x$TC_HARDENING" = "xyes" ]; then
 		echo "requires libc linux-dev fortify-headers" > \

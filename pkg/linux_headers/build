@@ -20,6 +20,5 @@ deploy() {
 
 	echo "dir include 0755 0 0" > "$PKGDEPLOYDIR/linux-dev.files"
 
-	pkg_scan_dir "$PKGDEPLOYDIR/include" |\
-		sed "s#$PKGDEPLOYDIR/##g" >> "$PKGDEPLOYDIR/linux-dev.files"
+	pkg_scan_dir "include" >> "$PKGDEPLOYDIR/linux-dev.files"
 }
