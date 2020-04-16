@@ -1,8 +1,8 @@
-VERSION="5.2.4"
+VERSION="5.2.5"
 SRCDIR="xz-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://tukaani.org/xz/"
-SHA256SUM="9717ae363760dedf573dad241420c5fea86256b65bc21d2cf71b2b12f0544f4b"
+SHA256SUM="3e1e518ffc912f86608a8cb35e4bd41ad1aec210df2a47aaa1f95e7f5576ef56"
 DEPENDS="toolchain"
 SUBPKG="xz xz-dev"
 
