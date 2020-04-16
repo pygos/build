@@ -1,8 +1,8 @@
-VERSION="2.80"
+VERSION="2.81"
 SRCDIR="dnsmasq-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="http://www.thekelleys.org.uk/dnsmasq"
-SHA256SUM="cdaba2785e92665cf090646cba6f94812760b9d7d8c8d0cfb07ac819377a63bb"
+SHA256SUM="749ca903537c5197c26444ac24b0dce242cf42595fdfe6b9a5b9e4c7ad32f8fb"
 DEPENDS="toolchain"
 
 build() {
