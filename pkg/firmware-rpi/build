@@ -1,8 +1,8 @@
-VERSION="1.20190620"
+VERSION="1.20200212"
 SRCDIR="firmware-${VERSION}"
 TARBALL="${VERSION}.tar.gz"
 URL="https://github.com/raspberrypi/firmware/archive"
-SHA256SUM="7ff2cfb5ea19fbd1d770ebbbcdab791830ebbc6fd36b6da1dee9edf4088f69d6"
+SHA256SUM="e3b0577beb62d886a45016447bdf8c2d57b794d3d71b502868b16ba82ff8fe43"
 DEPENDS="toolchain"
 SUBPKG="boot-rpi boot-rpi-dtbo boot-rpi-dtb"
 
