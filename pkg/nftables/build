@@ -1,8 +1,8 @@
-VERSION="0.9.3"
+VERSION="0.9.4"
 SRCDIR="nftables-${VERSION}"
 TARBALL="${SRCDIR}.tar.bz2"
 URL="https://netfilter.org/projects/nftables/files"
-SHA256SUM="956b915ce2a7aeaff123e49006be7a0690a0964e96c062703181a36e2e5edb78"
+SHA256SUM="08b8683a9db5fba980bc092b75288af98d218bbe8ab446daf2338570d0730f9a"
 DEPENDS="libmnl-dev libnftnl-dev gmp-dev readline-dev ncurses-dev toolchain"
 SUBPKG="nftables nftables-dev"
 
