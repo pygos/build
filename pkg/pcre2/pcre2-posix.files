@@ -1,4 +1,4 @@
-slink lib/libpcre2-8.so.0 0777 0 0 libpcre2-8.so.0.8.0
-file lib/libpcre2-8.so.0.8.0 0755 0 0
-slink lib/libpcre2-posix.so.2 0777 0 0 libpcre2-posix.so.2.0.2
-file lib/libpcre2-posix.so.2.0.2 0755 0 0
+slink lib/libpcre2-8.so.0 0777 0 0 libpcre2-8.so.0.9.0
+file lib/libpcre2-8.so.0.9.0 0755 0 0
+slink lib/libpcre2-posix.so.2 0777 0 0 libpcre2-posix.so.2.0.3
+file lib/libpcre2-posix.so.2.0.3 0755 0 0

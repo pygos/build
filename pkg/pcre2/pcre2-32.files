@@ -1,2 +1,2 @@
-slink lib/libpcre2-32.so.0 0777 0 0 libpcre2-32.so.0.8.0
-file lib/libpcre2-32.so.0.8.0 0755 0 0
+slink lib/libpcre2-32.so.0 0777 0 0 libpcre2-32.so.0.9.0
+file lib/libpcre2-32.so.0.9.0 0755 0 0

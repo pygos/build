@@ -7,5 +7,5 @@ file include/pcre2.h 0644 0 0
 file include/pcre2posix.h 0644 0 0
 file lib/pkgconfig/libpcre2-posix.pc 0644 0 0
 file lib/pkgconfig/libpcre2-8.pc 0644 0 0
-slink lib/libpcre2-posix.so 0777 0 0 libpcre2-posix.so.2.0.2
-slink lib/libpcre2-8.so 0777 0 0 libpcre2-8.so.0.8.0
+slink lib/libpcre2-posix.so 0777 0 0 libpcre2-posix.so.2.0.3
+slink lib/libpcre2-8.so 0777 0 0 libpcre2-8.so.0.9.0
