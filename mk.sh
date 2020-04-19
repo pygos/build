@@ -47,7 +47,6 @@ export BUILD_PATH_PREFIX_MAP="$PKGSRCDIR=src:$BUILDROOT=build"
 
 ############################# include utilities ##############################
 source "$SCRIPTDIR/util/pkgcmd.sh"
-source "$SCRIPTDIR/util/misc.sh"
 source "$SCRIPTDIR/util/override.sh"
 source "$SCRIPTDIR/util/autotools.sh"
 source "$SCRIPTDIR/util/build_package.sh"
