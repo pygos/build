@@ -6,12 +6,9 @@ SHA256SUM="bb2373338140c3de7251e548526f1f70cb742739a962aad3f10238343a2c674c"
 DEPENDS="toolchain"
 SUBPKG="tzdata tzdata-dev"
 
-prepare() {
-	sed -i 's/sbin/bin/g' Makefile
-}
-
 build() {
 	cp -r ${1}/* ${PKGBUILDDIR}
+	sed -i 's/sbin/bin/g' Makefile
 	make -j $NUMJOBS
 }
 

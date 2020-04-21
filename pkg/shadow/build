@@ -5,10 +5,6 @@ URL="https://github.com/shadow-maint/shadow/releases/download/${VERSION}"
 SHA256SUM="a3ad4630bdc41372f02a647278a8c3514844295d36eefe68ece6c3a641c1ae62"
 DEPENDS="toolchain"
 
-prepare() {
-	sed -i 's/groups$(EXEEXT) //' src/Makefile.in
-}
-
 build() {
 	run_configure "$1" --disable-man --without-libpam --without-selinux \
 		     --with-sha-crypt --with-group-name-max-length=32
