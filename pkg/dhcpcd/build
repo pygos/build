@@ -1,8 +1,8 @@
-VERSION="9.0.1"
+VERSION="9.0.2"
 SRCDIR="dhcpcd-${VERSION}"
 TARBALL="${SRCDIR}.tar.xz"
 URL="https://roy.marples.name/downloads/dhcpcd"
-SHA256SUM="faa6da04904e2a5b809a40760db7535aab2fca02d8cf30c3bba5f7b433b773b2"
+SHA256SUM="f6e9f2fca7f5ebaf67915ff2ff66122eec0e7acb490f3c816781d65ccb5dd121"
 DEPENDS="toolchain"
 
 build() {
@@ -10,7 +10,7 @@ build() {
 
 	cp -r $SOURCE/* $PKGBUILDDIR
 
-	run_configure "."
+	run_configure "." --enable-privsep --privsepuser="dhcpcd"
 	make -j $NUMJOBS
 }
 
