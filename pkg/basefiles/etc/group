@@ -5,4 +5,5 @@ dnsmasq:x:51:
 unbound:x:52:
 syslogd:x:53:
 nginx:x:54:
+dhcpcd:x:55:
 nogroup:x:99:
